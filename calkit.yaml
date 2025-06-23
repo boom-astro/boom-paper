@@ -26,6 +26,9 @@ pipeline:
         - paper/figures/workflow.pdf
         - paper/aasjournal.bst
         - paper/aastex631.cls
+figures:
+  - path: paper/figures/workflow.pdf
+    title: BOOM workflow
 publications:
   - path: paper/main.pdf
     title: A real-time, multi-survey, optical alert system broker operating
