@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO: This should actually run the benchmarks!
-echo "\newcommand{\boomthroughputfactor}{TBD}" > paper/results.tex
+echo "# This file was automatically generated; edits will be overwritten!"
+echo "\newcommand{\boomthroughputfactor}{TBD}" >> paper/results.tex
+echo "\newcommand{\kakfaingestratembps}{XXXXX}" >> paper/results.tex
+echo "\newcommand{\kakfaingestfactor}{XXXXX}" >> paper/results.tex

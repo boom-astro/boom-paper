@@ -139,7 +139,7 @@ The \texttt{Redis}/\texttt{Valkey} queues serve as an intermediary in-memory sto
 
 \texttt{Kafka} is currently the standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes. Additionally, its ecosystem of tools and libraries provides a foundation for building the broader system. While \texttt{Redis}/\texttt{Valkey} could have been used as a message broker, adopting \texttt{Kafka} ensures compatibility with existing downstream services, which are designed to consume alerts from \texttt{Kafka} topics. Maintaining a custom messaging solution would have introduced unnecessary complexity. By utilizing \texttt{Kafka} for external message brokering and \texttt{Redis}/\texttt{Valkey} for internal caching and task queuing, \texttt{BOOM} maintains a clear separation between its public-facing alert distribution and internal data processing workflows, optimizing both performance and interoperability.
 
-To evaluate scalability, we tested various Kafka producer configurations simulating an LSST-like data stream. Our results show that our Kafka cluster can ingest all topics at \rednote{XXXXX} MB/s, approximately \rednote{XXXXX} times faster than the anticipated LSST average alert production rate.
+To evaluate scalability, we tested various Kafka producer configurations simulating an LSST-like data stream. Our results show that our Kafka cluster can ingest all topics at \rednote{\kakfaingestratembps} MB/s, approximately \rednote{\kakfaingestfactor} times faster than the anticipated LSST average alert production rate.
 
 \subsection{\texttt{MongoDB} and filters}
 

@@ -31,30 +31,30 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: c13d5e85d5fcf393c9e2d67c0d6948a0
-      size: 30257
+      md5: 4f9da530a3b21586ce2f9eee18e92e02
+      size: 30285
     - path: paper/references.bib
       hash: md5
       md5: 1c4bda6ff1237961e82fc142650d08b6
       size: 1030386
     - path: paper/results.tex
       hash: md5
-      md5: 304cd2dbd2cc89363ddb35c04b91e695
-      size: 40
+      md5: 5f3b2274468cd3e008b2849d0b09680c
+      size: 120
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 03d4859487eb069efbc8bbd162d28fe1
+      md5: 6742ddf10e2d7304fa7061f049c3f291
       size: 7960770
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
     - path: scripts/run-benchmarks.sh
       hash: md5
-      md5: f46f4e38dbe34d840682f54412ebebb5
-      size: 137
+      md5: b8322603ff4d3a5e83d5393ddcb9c227
+      size: 349
     outs:
     - path: paper/results.tex
       hash: md5
-      md5: 304cd2dbd2cc89363ddb35c04b91e695
-      size: 40
+      md5: 5f3b2274468cd3e008b2849d0b09680c
+      size: 120
