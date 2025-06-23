@@ -12,6 +12,8 @@ stages:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
       - scripts/run-benchmarks.sh
+      - boom/src
+      - boom/Cargo.lock
     outs:
       - paper/results.tex:
           cache: false

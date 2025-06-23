@@ -49,6 +49,15 @@ stages:
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 17c2e970d54fd43973130c0cb496d0f5
+      size: 124963
+    - path: boom/src
+      hash: md5
+      md5: 928d781c3e826b53e79da5215e0a09c1.dir
+      size: 250853
+      nfiles: 37
     - path: scripts/run-benchmarks.sh
       hash: md5
       md5: 1c645c1912c220a6f1f1b07e0d2241dc

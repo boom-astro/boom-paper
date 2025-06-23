@@ -15,6 +15,9 @@ pipeline:
       kind: shell-script
       script_path: scripts/run-benchmarks.sh
       environment: _system
+      inputs:
+        - boom/src
+        - boom/Cargo.lock
       outputs:
         - path: paper/results.tex
           storage: git
