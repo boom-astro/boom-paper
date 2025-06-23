@@ -11,11 +11,6 @@ pipeline:
   # TODO: Add stage for actually running the benchmarks
   # TODO: Add stage for analyzing Kowalski logs for comparison
   stages:
-    sync-overleaf:
-      kind: shell-command
-      command: calkit overleaf sync --no-commit --no-push
-      environment: _system
-      always_run: true
     build-paper:
       kind: latex
       environment: tex
