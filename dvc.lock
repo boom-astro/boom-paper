@@ -39,22 +39,22 @@ stages:
       size: 1030386
     - path: paper/results.tex
       hash: md5
-      md5: 5f3b2274468cd3e008b2849d0b09680c
-      size: 120
+      md5: c13e23589a77173ddec14e1c43937a53
+      size: 188
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 6742ddf10e2d7304fa7061f049c3f291
+      md5: 9230fb9db06dc15c9019a2d656e60df6
       size: 7960770
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
     - path: scripts/run-benchmarks.sh
       hash: md5
-      md5: b8322603ff4d3a5e83d5393ddcb9c227
-      size: 349
+      md5: 1c645c1912c220a6f1f1b07e0d2241dc
+      size: 369
     outs:
     - path: paper/results.tex
       hash: md5
-      md5: 5f3b2274468cd3e008b2849d0b09680c
-      size: 120
+      md5: c13e23589a77173ddec14e1c43937a53
+      size: 188
