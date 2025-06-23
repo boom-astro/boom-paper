@@ -119,13 +119,13 @@ We describe the future of \texttt{BOOM} and how we envision its role in the comm
 
 In the following subsections, we present the key design features and implemented capabilities within \texttt{BOOM}.
 \texttt{BOOM} is designed for full parallelization. The database and alert processors all scale horizontally, allowing additional workers to be added at any stage to accommodate changes in workload. Alerts can be processed in any order, meaning they do not need to follow a strict time sequence.
-\texttt{BOOM} operates with workers, separating the machine learning, cross-matching, filtering, ingestion, etc. into different processes. Each of these workers are described in the following.
+\texttt{BOOM} operates with workers, separating the machine learning, cross-matching, filtering, ingestion, etc. into different processes. Each of these workers are described herein.
 
 \subsection{Apache \texttt{Kafka}}
 
 Optical alerts are transmitted as Avro packets\footnote{\url{https://avro.apache.org}}, which contain associated image stamps, metadata, and historical detection information, as detailed in \url{https://zwickytransientfacility.github.io/ztf-avro-alert/schema.html}. To receive alert streams, BOOM utilizes Apache Kafka\footnote{\url{https://kafka.apache.org}}, which also facilitates communication between different pipeline steps via independent Kafka topics. 
 
-\texttt{BOOM} employs \texttt{Kafka} consumers for handling the ingestion of transient alerts from astronomical surveys. These consumers listen to Kafka topics where alerts are streamed in real-time, retrieving the data and pushing it into \texttt{Redis}/\texttt{Valkey} queues for further processing. The design allows multiple consumers to operate simultaneously, ensuring high-throughput data handling. 
+\texttt{BOOM} employs \texttt{Kafka} consumers for handling the ingestion of transient alerts from astronomical surveys. These consumers listen to Kafka topics where alerts are streamed in real-time, retrieving the data and pushing it into \texttt{Redis}/\texttt{Valkey} queues for further processing. The design allows multiple consumers to operate simultaneously, ensuring high-throughput.
 
 \rednote{Describe how we regulate ingestion}
 \rednote{Parallelization with Kafka partitions}
