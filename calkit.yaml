@@ -8,9 +8,16 @@ environments:
     description: TeXlive via Docker.
 pipeline:
   # TODO: Add stage for exporting workflow diagram
-  # TODO: Add stage for actually running the benchmarks
   # TODO: Add stage for analyzing Kowalski logs for comparison
   stages:
+    # TODO: Actually run the benchmarks here
+    run-benchmarks:
+      kind: shell-script
+      script_path: scripts/run-benchmarks.sh
+      environment: _system
+      outputs:
+        - path: paper/results.tex
+          storage: git
     build-paper:
       kind: latex
       environment: tex
@@ -21,6 +28,7 @@ pipeline:
         - paper/figures/workflow.pdf
         - paper/aasjournal.bst
         - paper/aastex631.cls
+        - paper/results.tex
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
@@ -39,6 +47,7 @@ publications:
         - references.bib
         - aasjournal.bst
         - aastex631.cls
+        - results.tex
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
       dvc_sync_paths:

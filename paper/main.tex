@@ -50,6 +50,9 @@
 \newcommand{\ztfink}[1]{ZTF-Fink}
 \newcommand{\fink}{{\sc Fink}}
 
+% Load results from results.tex so these can be updated automatically
+\input{results}
+
 %\graphicspath{{./plots/}}
 
 \begin{document}
@@ -59,7 +62,7 @@
 % Abstract of the paper
 \begin{abstract}
 With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \texttt{BOOM} (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
-Harnessing the performance of a \texttt{Rust}-based software stack relying on a non-relational (NoSQL) \texttt{MongoDB} database combined with a \texttt{Redis}/\texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing, we demonstrate feature parity with the existing ZTF system with a throughput \rednote{$\sim TBD \times$} higher.
+Harnessing the performance of a \texttt{Rust}-based software stack relying on a non-relational (NoSQL) \texttt{MongoDB} database combined with a \texttt{Redis}/\texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing, we demonstrate feature parity with the existing ZTF system with a throughput \rednote{$\sim \boomthroughputfactor \times$} higher.
 We describe the workflow that enables the real-time processing, as well as results with custom filters we have built to demonstrate the system's capabilities.
 We further outline the development plan for \texttt{BABAMUL}, the public version of \texttt{BOOM} processing LSST alerts.
 Finally, we outline the development plans for \texttt{BOOM} as we begin the LSST era.
