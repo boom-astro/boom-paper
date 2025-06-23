@@ -10,7 +10,9 @@ calkit clone --recursive petebachant/boom-paper
 
 This will require that you have installed
 [Calkit](https://github.com/calkit/calkit) and setup both
-cloud and Overleaf integration.
+[cloud](https://docs.calkit.org/cloud-integration/)
+and
+[Overleaf integration](https://docs.calkit.org/overleaf/).
 
 To run the benchmarks and build the paper, execute:
 
