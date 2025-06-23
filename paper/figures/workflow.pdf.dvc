@@ -1,0 +1,5 @@
+outs:
+- md5: bbdeb3fea7b0d744ffba650a0d0c40db
+  size: 7722175
+  hash: md5
+  path: workflow.pdf

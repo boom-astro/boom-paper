@@ -1,5 +1,52 @@
-owner: petebachant
 name: boom-paper
-title: BOOM paper
-description: The first paper about BOOM development.
-git_repo_url: https://github.com/petebachant/boom-paper
+title: A real-time, multi-survey, optical alert system broker operating
+  at scale
+environments:
+  tex:
+    kind: docker
+    image: texlive/texlive:latest-full
+    description: TeXlive via Docker.
+pipeline:
+  # TODO: Add stage for exporting workflow diagram
+  # TODO: Add stage for actually running the benchmarks
+  # TODO: Add stage for analyzing Kowalski logs for comparison
+  stages:
+    sync-overleaf:
+      kind: shell-command
+      command: calkit overleaf sync --no-commit --no-push
+      environment: _system
+      always_run: true
+    build-paper:
+      kind: latex
+      environment: tex
+      target_path: paper/main.tex
+      force: true
+      inputs:
+        - paper/references.bib
+        - paper/figures/workflow.pdf
+        - paper/aasjournal.bst
+        - paper/aastex631.cls
+publications:
+  - path: paper/main.pdf
+    title: A real-time, multi-survey, optical alert system broker operating
+      at scale
+    description:
+    kind: journal-article
+    stage: build-paper
+    overleaf:
+      project_id: 67eb247c542af4e06002e7e8
+      wdir: paper
+      sync_paths:
+        - main.tex
+        - references.bib
+        - aasjournal.bst
+        - aastex631.cls
+      # Keep these out of Git in this project so we don't bloat the repo, but
+      # can still version them with DVC
+      dvc_sync_paths:
+        - figures/workflow.key
+        - figures/workflow.pdf
+      push_paths: []
+      last_sync_commit: d276cf96c76fc66803fc03ca21bbac13a0eb5d6a
+references:
+  - path: paper/references.bib

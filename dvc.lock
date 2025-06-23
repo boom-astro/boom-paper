@@ -1,0 +1,11 @@
+schema: '2.0'
+stages:
+  _check-env-tex:
+    cmd: calkit check environment --name tex
+    outs:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: ec9afca969d944c7600455ea745416bf
+      size: 2790
+  sync-overleaf:
+    cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
