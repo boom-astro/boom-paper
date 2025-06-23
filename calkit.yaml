@@ -47,13 +47,13 @@ publications:
         - references.bib
         - aasjournal.bst
         - aastex631.cls
-        - results.tex
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
       dvc_sync_paths:
         - figures/workflow.key
         - figures/workflow.pdf
-      push_paths: []
+      push_paths:
+        - results.tex
       last_sync_commit: cc513d5988226db98c611a341d2127c79aa707bd
 references:
   - path: paper/references.bib
