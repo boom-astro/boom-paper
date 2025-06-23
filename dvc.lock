@@ -5,7 +5,40 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: ec9afca969d944c7600455ea745416bf
-      size: 2790
+      md5: c0376c6ba6cd17ec8b92fab0bb3554a7
+      size: 2399
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
+  build-paper:
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode -f
+      -pdf paper/main.tex
+    deps:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: c0376c6ba6cd17ec8b92fab0bb3554a7
+      size: 2399
+    - path: paper/aasjournal.bst
+      hash: md5
+      md5: 1e2d4614828005814bd64e3c665b8e99
+      size: 36130
+    - path: paper/aastex631.cls
+      hash: md5
+      md5: 3a8503ea2dc529eec05658a2b11d12d0
+      size: 231673
+    - path: paper/figures/workflow.pdf
+      hash: md5
+      md5: bbdeb3fea7b0d744ffba650a0d0c40db
+      size: 7722175
+    - path: paper/main.tex
+      hash: md5
+      md5: 2b578cdad05f536cda82528851df2dec
+      size: 30152
+    - path: paper/references.bib
+      hash: md5
+      md5: 1c4bda6ff1237961e82fc142650d08b6
+      size: 1030386
+    outs:
+    - path: paper/main.pdf
+      hash: md5
+      md5: 70a74d85b90a7e9fa70396edf0d6cbfb
+      size: 7960770

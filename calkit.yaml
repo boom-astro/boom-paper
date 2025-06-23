@@ -50,7 +50,7 @@ publications:
         - figures/workflow.key
         - figures/workflow.pdf
       push_paths: []
-      last_sync_commit: 323f06ca322ccfb092ef1140fdde466c55438614
+      last_sync_commit: 58114df6df75d9010ba4c78fb609cd04d1426b66
 references:
   - path: paper/references.bib
 showcase:

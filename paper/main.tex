@@ -1,4 +1,4 @@
- \documentclass[twocolumn]{aastex631}
+ \documentclass[linenumbers,twocolumn]{aastex631}
 
 \usepackage{longtable}
 \usepackage[flushleft]{threeparttable}
@@ -15,9 +15,9 @@
 \usepackage{subfigure}
 \usepackage{rotating}
 \usepackage{enumitem}\setlist[description]{font=\textendash\enskip\scshape\bfseries}
-\usepackage{lineno}
+% \usepackage{lineno}
 
-\linenumbers
+% \linenumbers
 
 %\usepackage[doublespacing]{setspace}
 
@@ -60,7 +60,7 @@
 \begin{abstract}
 With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \texttt{BOOM} (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
 Harnessing the performance of a \texttt{Rust}-based software stack relying on a non-relational (NoSQL) \texttt{MongoDB} database combined with a \texttt{Redis}/\texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing, we demonstrate feature parity with the existing ZTF system with a throughput \rednote{$\sim TBD \times$} higher.
-We describe the workflow that enables the real-time processing, as well as results with custom filters we have built to demonstrate the system's capabilities. 
+We describe the workflow that enables the real-time processing, as well as results with custom filters we have built to demonstrate the system's capabilities.
 We further outline the development plan for \texttt{BABAMUL}, the public version of \texttt{BOOM} processing LSST alerts.
 Finally, we outline the development plans for \texttt{BOOM} as we begin the LSST era.
 \end{abstract}
@@ -79,11 +79,11 @@ Real-time processing and rapid follow-up of this alert stream is critical for ma
 
 There is a large software ecosystem enabling time-domain astronomy.
 For example, the General Coordinates Network (GCN; \citealt{SiRa2023}) and the Scalable Cyberinfrastructure to support Multi-Messenger Astrophysics\footnote{\url{https://scimma.org/}} (SCiMMA) project are platforms where multi-messenger instruments share real-time alerts with the community that can then be either followed-up directly or cross-matched with alert streams.
-Depending on the type of transient, it is common for identified transient objects to be shared with the community on the Transient Name Server\footnote{\url{https://www.wis-tns.org/}} (TNS) or the Minor Planet Center\footnote{\url{https://minorplanetcenter.net/}} (MPC). 
+Depending on the type of transient, it is common for identified transient objects to be shared with the community on the Transient Name Server\footnote{\url{https://www.wis-tns.org/}} (TNS) or the Minor Planet Center\footnote{\url{https://minorplanetcenter.net/}} (MPC).
 These streams are ingested into Target and Observation Managers (TOM), otherwise known as Marshals, which enable coordinated follow-up efforts; examples include \texttt{YSE-PZ} \citep{CoJo2023}, TOM Toolkit \citep{StBo2018}, and \texttt{SkyPortal} \citep{WaCr2019,Coughlin_2023}.
 
 Feeding these Marshals are the ``enriched'' alert streams from the brokers, which include, among others, ALeRCE \citep{FoCa2021}, AMPEL \citep{Nordin:2019kxt}, ANTARES \citep{MaSt2021}, Fink \citep{MoPe2020}, Lasair \citep{SmWi2019}, Pitt-Google, and BABAMUL (the plans for which we will discuss further below). These brokers filter the optical alert streams to identify targets of interest. Alerts are produced when a significant ($< 5 \sigma$) residual flux is detected from a point source in a subtracted image, and are distributed via Kafka\footnote{https://kafka.apache.org} in Apache avro format. While each survey provides a different dataframe---and therefore uses a different schema to serialize it---they all include key properties such as:
-\begin{itemize} 
+\begin{itemize}
 \item Position and brightness of the current detection
 \item Ancillary detection data and higher-level derived values, including real--bogus scores, which helps distinguish real transients from image artifacts.
 \item The associated triplet of science, reference, and subtraction images
@@ -96,7 +96,7 @@ To identify the most interesting objects for particular science cases, brokers c
 Specifically, to supplement LSST's alert stream, a variety of other optical systems such as the La Silla Schmidt Southern Survey (LS4; \citealt{miller2025lasillaschmidtsouthern}) and ZTF will be trailing the LSST footprint nightly. To maximize the science synergies enabled by these coordinated observations, brokers will need to perform joint filtering on these alert streams. This will be essential to, for example, readily identify fast transients within these streams, as the relatively slow cadence of LSST will otherwise make it difficult to identify such phenomena, and the limited depth from other optical surveys makes it difficult to precisely constrain their rate of evolution.
 
 It is with these considerations in mind that we present \texttt{BOOM}, a broker that builds upon our experience with \texttt{Kowalski}\footnote{\url{https://github.com/skyportal/Kowalski}}, an open-source, multi-survey data archive and alert broker \citep{DuMa2019} that has run in production for the ZTF collaboration for the last seven years.
-In this paper, we will describe several important developments and design choices with \texttt{BOOM} that ready it for the upcoming LSST era. 
+In this paper, we will describe several important developments and design choices with \texttt{BOOM} that ready it for the upcoming LSST era.
 Although this paper focuses mainly on the design and conceptual framework of \texttt{BOOM}, we encourage the interested reader to also see the documentation in the repository\footnote{https://github.com/boom-astro/boom} and to explore the repository alongside this text.
 As an example of important design choices, due to the fact that multiple observatories will observe the LSST footprint, \texttt{BOOM} has, as a top priority, the ability to jointly filter on multiple alert streams, a relatively unique capability in the broker community.
 Furthermore, one of the main differences between \texttt{BOOM} and \texttt{Kowalski}---and most other alert brokers---was moving away from Python and instead writing the project in Rust, a compiled programming language with performance characteristics that make it much better suited to attaining a high throughput of alerts at scale. Processing additional alert streams in parallel already increases the data volume by at least an order of magnitude, and jointly filtering on multiple streams at once requires even more computation, as every alert packet needs to be cross-matched with all other overlapping surveys' alert streams.
@@ -123,14 +123,14 @@ In the following subsections, we present the key design features and implemented
 
 \subsection{Apache \texttt{Kafka}}
 
-Optical alerts are transmitted as Avro packets\footnote{\url{https://avro.apache.org}}, which contain associated image stamps, metadata, and historical detection information, as detailed in \url{https://zwickytransientfacility.github.io/ztf-avro-alert/schema.html}. To receive alert streams, BOOM utilizes Apache Kafka\footnote{\url{https://kafka.apache.org}}, which also facilitates communication between different pipeline steps via independent Kafka topics. 
+Optical alerts are transmitted as Avro packets\footnote{\url{https://avro.apache.org}}, which contain associated image stamps, metadata, and historical detection information, as detailed in \url{https://zwickytransientfacility.github.io/ztf-avro-alert/schema.html}. To receive alert streams, BOOM utilizes Apache Kafka\footnote{\url{https://kafka.apache.org}}, which also facilitates communication between different pipeline steps via independent Kafka topics.
 
 \texttt{BOOM} employs \texttt{Kafka} consumers for handling the ingestion of transient alerts from astronomical surveys. These consumers listen to Kafka topics where alerts are streamed in real-time, retrieving the data and pushing it into \texttt{Redis}/\texttt{Valkey} queues for further processing. The design allows multiple consumers to operate simultaneously, ensuring high-throughput.
 
 \rednote{Describe how we regulate ingestion}
 \rednote{Parallelization with Kafka partitions}
 
-The \texttt{Redis}/\texttt{Valkey} queues serve as an intermediary in-memory storage layer to manage the flow of transient alert data between Kafka consumers and downstream processing workers. By acting as a buffer, \texttt{Redis}/\texttt{Valkey} allows Kafka consumers to quickly offload alerts without waiting for processing to complete, reducing bottlenecks in the ingestion pipeline. Its in-memory operation ensures low-latency retrieval, enabling fast access for the alert ingestion, machine learning, and filtering units. Additionally, it helps prevent \texttt{MongoDB} overload by temporarily holding alerts before they are enriched and stored, mitigating the risk of overwhelming the database during high alert volumes. The queue structure also facilitates parallel processing, allowing different processing units—such as machine learning classifiers and cross-matching services—to consume alerts independently. 
+The \texttt{Redis}/\texttt{Valkey} queues serve as an intermediary in-memory storage layer to manage the flow of transient alert data between Kafka consumers and downstream processing workers. By acting as a buffer, \texttt{Redis}/\texttt{Valkey} allows Kafka consumers to quickly offload alerts without waiting for processing to complete, reducing bottlenecks in the ingestion pipeline. Its in-memory operation ensures low-latency retrieval, enabling fast access for the alert ingestion, machine learning, and filtering units. Additionally, it helps prevent \texttt{MongoDB} overload by temporarily holding alerts before they are enriched and stored, mitigating the risk of overwhelming the database during high alert volumes. The queue structure also facilitates parallel processing, allowing different processing units—such as machine learning classifiers and cross-matching services—to consume alerts independently.
 \rednote{Memory considerations?}
 \rednote{Wait mechanism?}
 
@@ -142,10 +142,10 @@ To evaluate scalability, we tested various Kafka producer configurations simulat
 
 \texttt{MongoDB} has proven to be a highly effective choice for alert brokering, as demonstrated by its successful implementation in \texttt{Kowalski}. Its cross-language support, flexibility, and powerful query language make it well-suited for building complex filtering pipelines for transient alerts. Additionally, \texttt{MongoDB} offers both performance and scalability, essential for handling large data volumes efficiently. While \texttt{PostgreSQL} was a potential alternative, it would have required schema enforcement, limiting adaptability in an alert stream where fields can vary significantly. Moreover, \texttt{PostgreSQL} would have necessitated database migrations whenever a new astronomical catalog was integrated for crossmatching. By contrast, \texttt{MongoDB}'s schema-free design allows \texttt{BOOM} to dynamically accommodate new data sources without modifying the database structure, ensuring a more adaptable and maintainable system for real-time alert processing.
 
-The alert ingestion workers are responsible for processing and enriching transient alerts after they are retrieved from \texttt{Redis}/\texttt{Valkey} queues. These workers handle tasks such as extracting relevant fields, applying filtering criteria, and preparing the alerts for storage in \texttt{MongoDB}. To optimize performance, they are designed to operate in parallel, ensuring that multiple alerts can be processed simultaneously. 
+The alert ingestion workers are responsible for processing and enriching transient alerts after they are retrieved from \texttt{Redis}/\texttt{Valkey} queues. These workers handle tasks such as extracting relevant fields, applying filtering criteria, and preparing the alerts for storage in \texttt{MongoDB}. To optimize performance, they are designed to operate in parallel, ensuring that multiple alerts can be processed simultaneously.
 As alerts arrive, \texttt{BOOM} stores the original Avro files in \texttt{MongoDB} collections for future analysis. To optimize database size, a selected subset of key fields is extracted and stored directly in the database.
 
-While it is theoretically possible to query \texttt{MongoDB} in a way that directly maps results to Rust structs, as well as to serialize Rust structs when writing data, the \texttt{MongoDB} crate inherently performs serialization and deserialization. However, Rust structs enforce a schema, meaning that fields cannot be dynamically omitted when they are null. This would result in a significant number of null fields being stored in the database, leading to unnecessary data bloat. To address this, \texttt{BOOM} utilizes the bson crate to serialize Rust structs into BSON documents, allowing for a sanitization step where null fields and other unwanted attributes are removed before insertion into MongoDB. When querying the database, results can be retrieved either as BSON documents or deserialized Rust structs, depending on the specific use case and processing requirements. 
+While it is theoretically possible to query \texttt{MongoDB} in a way that directly maps results to Rust structs, as well as to serialize Rust structs when writing data, the \texttt{MongoDB} crate inherently performs serialization and deserialization. However, Rust structs enforce a schema, meaning that fields cannot be dynamically omitted when they are null. This would result in a significant number of null fields being stored in the database, leading to unnecessary data bloat. To address this, \texttt{BOOM} utilizes the bson crate to serialize Rust structs into BSON documents, allowing for a sanitization step where null fields and other unwanted attributes are removed before insertion into MongoDB. When querying the database, results can be retrieved either as BSON documents or deserialized Rust structs, depending on the specific use case and processing requirements.
 
 \rednote{Write about filtering}
 
@@ -174,7 +174,7 @@ A more complex challenge is designing analysis units that work across different 
 
 \subsection{Integration with \texttt{SkyPortal}}
 
-As described above, the purpose of filters implemented in brokers like \texttt{BOOM} is to greatly limit the number of alerts that may correspond to astrophysical phenomena of interest for a given user. This rate limiting is typically a combination of automated filtering (e.g. with ML) and/or human inspection. 
+As described above, the purpose of filters implemented in brokers like \texttt{BOOM} is to greatly limit the number of alerts that may correspond to astrophysical phenomena of interest for a given user. This rate limiting is typically a combination of automated filtering (e.g. with ML) and/or human inspection.
 
 We have integrated the output of \texttt{BOOM} filters within \texttt{SkyPortal}, where each filter is organized into a dedicated user ``group.'' While for some configurations all candidates are automatically saved to a group, e.g. for automated triggering of spectroscopic follow-up, many times, users manually vet these alerts through a process known as candidate scanning.
 
@@ -184,9 +184,9 @@ The candidates interface displays contextual image cutouts from ZTF and other re
 
 \subsection{Joint ZTF + DECam program}
 
-The DECam Search for Intermediate Redshift Transients (DESIRT; PI Palmese) is a DECam wide field survey that observes ${\sim}100$ square degrees of sky in current Dark Energy Spectroscopic Instrument (DESI) tiles as part of the larger DECam DESI Transient Survey (2DTS) \citep{palmese_desirt_2022, hall_decam_2025}. DESIRT observes in the $gri$ bands down to a depth of $r\approx23.5$ on a $3$ day cadence with the goal of producing high quality light curves for thousands of extragalactic transients at a $z > 0.2$ or a peak brightness of $r\approx20.5$. As part of the 2DTS experiment, ZTF has also begun observations with a daily cadence of the same fields in the sky, offering intra-night observations at an even greater cadence. 
+The DECam Search for Intermediate Redshift Transients (DESIRT; PI Palmese) is a DECam wide field survey that observes ${\sim}100$ square degrees of sky in current Dark Energy Spectroscopic Instrument (DESI) tiles as part of the larger DECam DESI Transient Survey (2DTS) \citep{palmese_desirt_2022, hall_decam_2025}. DESIRT observes in the $gri$ bands down to a depth of $r\approx23.5$ on a $3$ day cadence with the goal of producing high quality light curves for thousands of extragalactic transients at a $z > 0.2$ or a peak brightness of $r\approx20.5$. As part of the 2DTS experiment, ZTF has also begun observations with a daily cadence of the same fields in the sky, offering intra-night observations at an even greater cadence.
 
-DESIRT uses a difference imaging pipeline developed in \citet{hu_image_2022} that utilizes graphic processing units (GPUs) to quickly produce transient alerts. A real-bogus convolution neural net is used to remove artifacts. Finally, all known stars are removed through a Gaia cross match \citep{vallenari_gaia_2023} and the remaining transinents manually reviewed and the interesting alerts are publicly reported on TNS. This program offers a unique prelude to the issues of matching alert streams between a relatively smaller telescope such as ZTF and larger telescope like LSST. The observational depth of DESIRT is $\sim$\,3\,mag deeper than ZTF, comparable to the $\sim$\,4\,mag difference LSST will have. 
+DESIRT uses a difference imaging pipeline developed in \citet{hu_image_2022} that utilizes graphic processing units (GPUs) to quickly produce transient alerts. A real-bogus convolution neural net is used to remove artifacts. Finally, all known stars are removed through a Gaia cross match \citep{vallenari_gaia_2023} and the remaining transinents manually reviewed and the interesting alerts are publicly reported on TNS. This program offers a unique prelude to the issues of matching alert streams between a relatively smaller telescope such as ZTF and larger telescope like LSST. The observational depth of DESIRT is $\sim$\,3\,mag deeper than ZTF, comparable to the $\sim$\,4\,mag difference LSST will have.
 
 To test \texttt{BOOM}'s abilities to handle alert streams with vastly different depths, a Kafka stream with ZTF-styled avro alerts was developed, and all nights of observations since the restart of DESIRT in February 2025 have been imported into \texttt{BOOM} and \rednote{I think this is where y'all take over with the results of the alerts}
 
@@ -227,4 +227,3 @@ M.W.C. acknowledges support from the National Science Foundation with grant numb
 
 \label{lastpage}
 \end{document}
-
