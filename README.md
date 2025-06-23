@@ -8,6 +8,10 @@ To clone the project, including all datasets and artifacts, run:
 calkit clone --recursive petebachant/boom-paper
 ```
 
+This will require that you have installed
+[Calkit](https://github.com/calkit/calkit) and setup both
+cloud and Overleaf integration.
+
 To run the benchmarks and build the paper, execute:
 
 ```sh
