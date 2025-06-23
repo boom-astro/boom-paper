@@ -14,6 +14,12 @@ This will require that you have installed
 and
 [Overleaf integration](https://docs.calkit.org/overleaf/).
 
+To sync the paper with Overleaf, execute:
+
+```sh
+calkit overleaf sync
+```
+
 To run the benchmarks and build the paper, execute:
 
 ```sh
