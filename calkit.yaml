@@ -50,3 +50,5 @@ publications:
       last_sync_commit: d276cf96c76fc66803fc03ca21bbac13a0eb5d6a
 references:
   - path: paper/references.bib
+showcase:
+  - publication: paper/main.pdf
