@@ -70,9 +70,9 @@ services:
     image: boom/boom-benchmarking:latest
     hostname: scheduler
     build:
-      context: ${PWD}/boom
-      dockerfile: ${PWD}/config/boom/Dockerfile
+      dockerfile: ${PWD}/Dockerfile-boom
+      context: ${PWD}
+    command:
+      - /app/scheduler
     networks:
       - boom
-    volumes:
-      - ${PWD}/config/boom/config.yaml:/app/config.yaml

@@ -3,15 +3,15 @@ FROM rust:1.87-slim-bookworm AS builder
 WORKDIR /app
 
 # Copy the Cargo.toml and Cargo.lock files
-COPY Cargo.toml Cargo.lock ./
+COPY ./boom/Cargo.toml ./boom/Cargo.lock ./
 
 RUN apt-get update && \
     apt-get install -y curl gcc g++ libhdf5-dev perl make libsasl2-dev && \
     apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy the source code
-COPY src ./src
-COPY api ./api
+COPY ../../boom/src ./src
+COPY ../../boom/api ./api
 
 # Build the application (all of the binaries)
 RUN cargo build --release --workspace
@@ -22,7 +22,10 @@ FROM debian:bookworm-slim
 
 WORKDIR /app
 
-# Copy the built executable from the builder stage
+# Copy in the config file
+COPY ./config/boom/config.yaml /app/config.yaml
+
+# Copy the built executables from the builder stage
 COPY --from=builder /app/target/release/scheduler /app/scheduler
 COPY --from=builder /app/target/release/kafka_consumer /app/kafka_consumer
 COPY --from=builder /app/target/release/kafka_producer /app/kafka_producer

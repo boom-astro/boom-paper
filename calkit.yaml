@@ -6,6 +6,11 @@ environments:
     kind: docker
     image: texlive/texlive:latest-full
     description: TeXlive via Docker.
+  boom:
+    kind: docker
+    path: Dockerfile-boom
+    image: boom/boom-benchmarking
+    description: BOOM benchmarking image
 pipeline:
   # TODO: Add stage for exporting workflow diagram
   # TODO: Add stage for analyzing Kowalski logs for comparison
