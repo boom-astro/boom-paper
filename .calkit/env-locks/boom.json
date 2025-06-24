@@ -5,7 +5,7 @@
         ],
         "Parent": "",
         "Comment": "buildkit.dockerfile.v0",
-        "Created": "2025-06-24T20:44:02.184514672Z",
+        "Created": "2025-06-24T21:06:42.163171292Z",
         "Author": "",
         "Config": {
             "Env": [
@@ -19,7 +19,7 @@
         },
         "Architecture": "arm64",
         "Os": "linux",
-        "Size": 75144238,
+        "Size": 75372790,
         "GraphDriver": {
             "Data": null,
             "Name": "overlayfs"
@@ -29,18 +29,24 @@
             "Layers": [
                 "sha256:6edfb9bfff297d06f01fa2685d7162e3d1b2ecdcc73666de3aa8b78c0ba0471d",
                 "sha256:85ac77ff6b6448dbce832261c006dd2112f5ded19e7d7654f8c9a0d898c9ac27",
-                "sha256:8adaa21eaf8dc91d7a63f2fae12cb6b7ce798113aedc5acaa0a1dbc627fb4847",
-                "sha256:8f2d2043b0a7ee8b9dffebef9e4baaaf7290bacf0b145c84e77952da3c7903b5",
-                "sha256:e760b59f8c604219f3c847bf61148d54e6d27d6afdbab066017331db3b03f7c9",
-                "sha256:fa1c9c59c3cb15f9653c82dc45b0ca8d2440b4f815eb3d6e871f85a00b02b2c3"
+                "sha256:37ce29b6a487be3781a250628496f1b3419299ab8d1e877c037fed76199300ae",
+                "sha256:5345ba81fa7098185942c447fcdb3cd43d97f2f6b4025cd0bd2c5f3f54015fb6",
+                "sha256:6838b27970684144a00dee2e0fbdc38ceed91c6733307c8fa1372e3d11958249",
+                "sha256:ea74400810b56142292d0a754d508bf95982ed8e9d0eb1ce4b84d1fee37e0543",
+                "sha256:df061c111b84be8d9a0e7d8c477b1d03d60c7f2fd25e7adfa4f5776ea93616fb"
             ]
         },
         "Descriptor": {
             "mediaType": "application/vnd.oci.image.index.v1+json",
-            "digest": "sha256:126baf7ba9e8e90474ccc80cd5def3c2d3356f41abe11ce2459715d7cf2dd982",
+            "digest": "sha256:826ec62b2c3b8dfd1ede934fba4e556bfea29c9f33fc6884c5f1f61db6779df8",
             "size": 856
         },
-        "DockerfileMD5": "99c8f332769b40433ab774ccf001b5a2",
-        "DepsMD5s": {}
+        "DockerfileMD5": "6e2fe0fce050fa8216f40b9b9b00a2d9",
+        "DepsMD5s": {
+            "boom/src": "8d8eb1d5163262ab2779aad610686384",
+            "boom/Cargo.lock": "17c2e970d54fd43973130c0cb496d0f5",
+            "boom/Cargo.toml": "05b9e8c41359fe97fc0cd21bc81ca573",
+            "config/boom/config.yaml": "bd2ca454c5a92b723cc755d47d0a8c1d"
+        }
     }
 ]

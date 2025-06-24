@@ -22,6 +22,10 @@ FROM debian:bookworm-slim
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libsasl2-2 && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy in the config file
 COPY ./config/boom/config.yaml /app/config.yaml
 

@@ -11,6 +11,12 @@ environments:
     path: Dockerfile-boom
     image: boom/boom-benchmarking
     description: BOOM benchmarking image
+    user: root
+    deps:
+      - boom/src
+      - boom/Cargo.lock
+      - boom/Cargo.toml
+      - config/boom/config.yaml
 pipeline:
   # TODO: Add stage for exporting workflow diagram
   # TODO: Add stage for analyzing Kowalski logs for comparison

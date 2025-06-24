@@ -55,8 +55,8 @@ stages:
       size: 124963
     - path: boom/src
       hash: md5
-      md5: 928d781c3e826b53e79da5215e0a09c1.dir
-      size: 250853
+      md5: 9413bdb5a0bacb628f247f36ea6be885.dir
+      size: 251282
       nfiles: 37
     - path: scripts/run-benchmarks.sh
       hash: md5
@@ -67,3 +67,15 @@ stages:
       hash: md5
       md5: c13e23589a77173ddec14e1c43937a53
       size: 188
+  _check-env-boom:
+    cmd: calkit check environment --name boom
+    deps:
+    - path: Dockerfile-boom
+      hash: md5
+      md5: 6e2fe0fce050fa8216f40b9b9b00a2d9
+      size: 1122
+    outs:
+    - path: .calkit/env-locks/boom.json
+      hash: md5
+      md5: 8a0de1617fcb8cdaef74e70efafac3dc
+      size: 2016
