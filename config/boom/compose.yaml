@@ -1,0 +1,96 @@
+volumes:
+  mongodb:
+  valkey:
+
+networks:
+  boom:
+
+services:
+  mongo:
+    image: mongo:8.0
+    hostname: mongo
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    volumes:
+      - mongodb:/data/db
+    restart: always
+    networks:
+      - boom
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      start_period: 20s
+  valkey:
+    image: valkey/valkey:7.2.6
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - VALKEY_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey:/data
+    restart: always
+    networks:
+      - boom
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  broker:
+    image: apache/kafka:latest
+    hostname: broker
+    ports:
+      - 9092:9092
+    networks:
+      - boom
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_NODE_ID: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:29093
+      KAFKA_LISTENERS: PLAINTEXT://broker:29092,CONTROLLER://broker:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
+      KAFKA_NUM_PARTITIONS: 15
+  api:
+    image: boom/boom-api:latest
+    hostname: api
+    ports:
+      - "4000:4000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api
+    networks:
+      - boom
+    profiles:
+      - prod
+    volumes:
+      - ${PWD}/config.yaml:/app/config.yaml
+  scheduler:
+    image: boom/boom-scheduler:latest
+    hostname: scheduler
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: scheduler
+    networks:
+      - boom
+    profiles:
+      - prod
+    volumes:
+      - ${PWD}/config.yaml:/app/config.yaml
