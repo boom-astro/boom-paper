@@ -1,3 +1,5 @@
+name: boom-benchmarking
+
 networks:
   boom:
 
@@ -58,6 +60,28 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       KAFKA_NUM_PARTITIONS: 15
+  # Run the Kafka producer just once
+  producer:
+    image: boom/boom-benchmarking:latest
+    hostname: producer
+    build:
+      dockerfile: ${PWD}/Dockerfile-boom
+      context: ${PWD}
+    command:
+      - /app/kafka_producer
+      - ztf
+      - "20250614"
+      - public
+    # Kafka is hard-coded as localhost in the producer
+    network_mode: "host"
+    depends_on:
+      - broker
+      - mongo
+      - valkey
+    # Mount local data directory so we don't need to redownload
+    volumes:
+      - ${PWD}/data/alerts:/app/data/alerts
+      - ${PWD}/config/boom/config.yaml:/app/config.yaml
   scheduler:
     image: boom/boom-benchmarking:latest
     hostname: scheduler
@@ -68,3 +92,10 @@ services:
       - /app/scheduler
     networks:
       - boom
+    depends_on:
+      - producer
+      - broker
+      - mongo
+      - valkey
+    volumes:
+      - ${PWD}/config/boom/config.yaml:/app/config.yaml

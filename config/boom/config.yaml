@@ -14,9 +14,9 @@ workers:
   ZTF:
     command_interval: 500
     alert:
-      n_workers: 1
+      n_workers: 3
     ml:
-      n_workers: 1
+      n_workers: 3
     filter:
       n_workers: 1
   LSST:
@@ -75,7 +75,7 @@ crossmatch:
       distance_key: "z"
       distance_max: 30.0
       distance_max_near: 300.0
-      projection: 
+      projection:
         _id: 0
         ra: 1
         dec: 1
