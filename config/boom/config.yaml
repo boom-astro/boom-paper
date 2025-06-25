@@ -1,5 +1,5 @@
 database:
-  host: localhost
+  host: mongo
   port: 27017
   name: boom
   max_pool_size: 200
@@ -8,7 +8,7 @@ database:
   password: mongoadminsecret
   srv: false
 redis:
-  host: localhost
+  host: valkey
   port: 6379
 workers:
   ZTF:
