@@ -90,6 +90,7 @@ services:
       context: ${PWD}
     command:
       - /app/scheduler
+      - ztf
     networks:
       - boom
     depends_on:
