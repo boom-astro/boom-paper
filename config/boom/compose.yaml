@@ -1,7 +1,3 @@
-volumes:
-  mongodb:
-  valkey:
-
 networks:
   boom:
 
@@ -16,8 +12,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
-    volumes:
-      - mongodb:/data/db
     restart: always
     networks:
       - boom
@@ -33,8 +27,6 @@ services:
       - VALKEY_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
       - "6379:6379"
-    volumes:
-      - valkey:/data
     restart: always
     networks:
       - boom
