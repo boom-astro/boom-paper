@@ -29,7 +29,7 @@ services:
     # run as a replica set of size 1 called rs0 using keyfile for internal authorization
     command: [ "--keyFile", "/opt/keyfile", "--replSet", "rs0", "--bind_ip_all" ]
   # TODO: Add Kafka and Kafka producer
-  kafka-input:
+  broker:
     image: apache/kafka:latest
     hostname: broker
     ports:
@@ -52,6 +52,27 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       KAFKA_NUM_PARTITIONS: 15
+  producer:
+    image: boom/boom-benchmarking:latest
+    hostname: producer
+    build:
+      dockerfile: ${PWD}/Dockerfile-boom
+      context: ${PWD}
+      pull: false
+    command:
+      - /app/kafka_producer
+      - ztf
+      - "20250614"
+      - public
+    # Kafka is hard-coded as localhost in the producer
+    network_mode: "host"
+    depends_on:
+      broker:
+        condition: service_started
+    # Mount local data directory so we don't need to redownload
+    volumes:
+      - ${PWD}/data/alerts:/app/data/alerts
+      - ${PWD}/config/boom/config.yaml:/app/config.yaml
   ingester:
     build:
       context: ${PWD}/kowalski
@@ -67,6 +88,9 @@ services:
       - mongo:kowalski-mongo
     restart: always
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+      producer:
+        condition: service_completed_successfully
     networks:
       - kowalski
