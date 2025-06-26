@@ -31,6 +31,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy in the config file
 COPY ./config/boom/config.yaml /app/config.yaml
 
+# Copy in the ML models
+COPY boom/data/models /app/data/models
+
 # Copy the built executables from the builder stage
 COPY --from=builder /app/target/release/scheduler /app/scheduler
 COPY --from=builder /app/target/release/kafka_consumer /app/kafka_consumer

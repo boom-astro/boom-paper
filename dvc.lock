@@ -72,10 +72,60 @@ stages:
     deps:
     - path: Dockerfile-boom
       hash: md5
-      md5: 6e2fe0fce050fa8216f40b9b9b00a2d9
-      size: 1122
+      md5: f38d41b714385e400ba4b7c53d1d7dab
+      size: 1225
     outs:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 8a0de1617fcb8cdaef74e70efafac3dc
-      size: 2016
+      md5: d85d43e5e6aab5b10ad4168355fde5c3
+      size: 1309
+  benchmark-boom:
+    cmd: bash --noprofile --norc scripts/benchmark-boom.sh
+    deps:
+    - path: .calkit/env-locks/boom.json
+      hash: md5
+      md5: d85d43e5e6aab5b10ad4168355fde5c3
+      size: 1309
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 9bfc469a3d04968b453874c8c2ada965
+      size: 126660
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: 8e8daf6d3bec0efbad62c78c6ca7eeef
+      size: 1489
+    - path: boom/src
+      hash: md5
+      md5: 500a1fa9e0f050c1f7c52eede63dd758.dir
+      size: 252247
+      nfiles: 37
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 8e316864aaabd27afacf74d3a2f6e214
+      size: 3858
+    - path: config/boom/config-consumer.yaml
+      hash: md5
+      md5: e84e781c5978506b93283e865bf039ec
+      size: 1823
+    - path: config/boom/config.yaml
+      hash: md5
+      md5: b752fb658677c78ccdfb44bda085910d
+      size: 1816
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 2b632ef08192515cb6f0aaad6caa8fb3
+      size: 805
+      isexec: true
+    outs:
+    - path: logs/boom/consumer.log
+      hash: md5
+      md5: 54d9b5c7ed3701655c9ea9ccda11627c
+      size: 79208
+    - path: logs/boom/producer.log
+      hash: md5
+      md5: 5e3d0f5304d4eda0c70f5da6bed5fcbf
+      size: 630
+    - path: logs/boom/scheduler.log
+      hash: md5
+      md5: b4306156c9eeedc5b259a9363258e740
+      size: 736451

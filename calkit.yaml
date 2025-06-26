@@ -11,16 +11,34 @@ environments:
     path: Dockerfile-boom
     image: boom/boom-benchmarking
     description: BOOM benchmarking image
+    user: root
     deps:
       - boom/src
       - boom/Cargo.lock
       - boom/Cargo.toml
       - config/boom/config.yaml
+      - boom/data/models
 pipeline:
-  # TODO: Add stage for exporting workflow diagram
-  # TODO: Add stage for analyzing Kowalski logs for comparison
   stages:
-    # TODO: Actually run the benchmarks here
+    # TODO: Add manual step stage for exporting workflow diagram
+    benchmark-boom:
+      kind: shell-script
+      script_path: scripts/benchmark-boom.sh
+      environment: _system
+      inputs:
+        - boom/src
+        - boom/Cargo.lock
+        - boom/Cargo.toml
+        - config/boom/config.yaml
+        - config/boom/compose.yaml
+        - config/boom/config-consumer.yaml
+        - .calkit/env-locks/boom.json
+      outputs:
+        - logs/boom/producer.log
+        - logs/boom/consumer.log
+        - logs/boom/scheduler.log
+    # TODO: Run Kowalski benchmarks here
+    # TODO: Analyze logs
     run-benchmarks:
       kind: shell-script
       script_path: scripts/run-benchmarks.sh

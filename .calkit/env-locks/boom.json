@@ -4,7 +4,7 @@
     ],
     "Architecture": "arm64",
     "Os": "linux",
-    "Size": 80486781,
+    "Size": 81479077,
     "RootFS": {
         "Type": "layers",
         "Layers": [
@@ -12,16 +12,18 @@
             "sha256:fb21a5f689e58bbe7c7b4b78ad3501c0e8c078c864853c9d1e5cb4c809eb1656",
             "sha256:7cfc20b0579cdf7e2f9a8e5a9b39b491da3004aa12f198c025dae5cd4733e2e7",
             "sha256:e323efcaee734221059546f9e5265f59aeeb1b3dd141fde0535671b1fa9c85d2",
-            "sha256:f2ac11dfa84f969a6b48c49dd892c8ec42fa8c5aba66faf4fcc8cb2819fcefec",
-            "sha256:d6fc0287fb3fb0ecb4eb4e63eeeccf9ff1b53d3e146786921a1e461d67c24a81",
-            "sha256:87cc06197eaee17ac0aa74587a4cf782c45ae46e5f2164da4c2cb382713c2637"
+            "sha256:3d5dcf4816bb86aa961ceef490404c9038915583cfdaf3694ee8f6de6de3a61f",
+            "sha256:b319ae7c4fd915d22204e712ca413135cac84895d48117ea70ee1af9c0f21bc5",
+            "sha256:ac402706684b10e2eca7212f5c8e71c1b8d94317a14d2c0e442be3c6f5fcc288",
+            "sha256:f0a488e74149c56fd1d0a753c551f348902e32ee84366ef3e4654328f8938d01"
         ]
     },
-    "DockerfileMD5": "ae5cbf37943e8016e891e5825886573b",
+    "DockerfileMD5": "f38d41b714385e400ba4b7c53d1d7dab",
     "DepsMD5s": {
         "boom/src": "0473b1517b728dfe45869925e3728741",
         "boom/Cargo.lock": "9bfc469a3d04968b453874c8c2ada965",
         "boom/Cargo.toml": "8e8daf6d3bec0efbad62c78c6ca7eeef",
-        "config/boom/config.yaml": "b752fb658677c78ccdfb44bda085910d"
+        "config/boom/config.yaml": "b752fb658677c78ccdfb44bda085910d",
+        "boom/data/models": "00687503162a2eef5a3c303676498bfa"
     }
 }
