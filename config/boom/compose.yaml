@@ -32,6 +32,8 @@ services:
     restart: always
     networks:
       - boom
+    # Disable persistence for benchmarking, so we start fresh
+    command: valkey-server --save "" --appendonly no
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -82,6 +84,27 @@ services:
     volumes:
       - ${PWD}/data/alerts:/app/data/alerts
       - ${PWD}/config/boom/config.yaml:/app/config.yaml
+  # TODO: Add a prestart script here to load in some filters and have others
+  # depend on its "service_completed_successfully" healthcheck
+  consumer:
+    image: boom/boom-benchmarking:latest
+    hostname: consumer
+    build:
+      dockerfile: ${PWD}/Dockerfile-boom
+      context: ${PWD}
+    command:
+      - /app/kafka_consumer
+      - ztf
+      - "20250614"
+      - public
+    # Kafka is hard-coded as localhost in the consumer
+    network_mode: "host"
+    depends_on:
+      producer:
+        condition: service_completed_successfully
+    volumes:
+      # Need to use a separate config here to connect to services on localhost
+      - ${PWD}/config/boom/config-consumer.yaml:/app/config.yaml
   scheduler:
     image: boom/boom-benchmarking:latest
     hostname: scheduler

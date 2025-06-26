@@ -1,52 +1,32 @@
-[
-    {
-        "RepoTags": [
-            "boom/boom-benchmarking:latest"
-        ],
-        "Parent": "",
-        "Comment": "buildkit.dockerfile.v0",
-        "Created": "2025-06-24T21:06:42.163171292Z",
-        "Author": "",
-        "Config": {
-            "Env": [
-                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-            ],
-            "Cmd": [
-                "/app/scheduler"
-            ],
-            "WorkingDir": "/app",
-            "ArgsEscaped": true
-        },
-        "Architecture": "arm64",
-        "Os": "linux",
-        "Size": 75372790,
-        "GraphDriver": {
-            "Data": null,
-            "Name": "overlayfs"
-        },
-        "RootFS": {
-            "Type": "layers",
-            "Layers": [
-                "sha256:6edfb9bfff297d06f01fa2685d7162e3d1b2ecdcc73666de3aa8b78c0ba0471d",
-                "sha256:85ac77ff6b6448dbce832261c006dd2112f5ded19e7d7654f8c9a0d898c9ac27",
-                "sha256:37ce29b6a487be3781a250628496f1b3419299ab8d1e877c037fed76199300ae",
-                "sha256:5345ba81fa7098185942c447fcdb3cd43d97f2f6b4025cd0bd2c5f3f54015fb6",
-                "sha256:6838b27970684144a00dee2e0fbdc38ceed91c6733307c8fa1372e3d11958249",
-                "sha256:ea74400810b56142292d0a754d508bf95982ed8e9d0eb1ce4b84d1fee37e0543",
-                "sha256:df061c111b84be8d9a0e7d8c477b1d03d60c7f2fd25e7adfa4f5776ea93616fb"
-            ]
-        },
-        "Descriptor": {
-            "mediaType": "application/vnd.oci.image.index.v1+json",
-            "digest": "sha256:826ec62b2c3b8dfd1ede934fba4e556bfea29c9f33fc6884c5f1f61db6779df8",
-            "size": 856
-        },
-        "DockerfileMD5": "6e2fe0fce050fa8216f40b9b9b00a2d9",
-        "DepsMD5s": {
-            "boom/src": "8d8eb1d5163262ab2779aad610686384",
-            "boom/Cargo.lock": "17c2e970d54fd43973130c0cb496d0f5",
-            "boom/Cargo.toml": "05b9e8c41359fe97fc0cd21bc81ca573",
-            "config/boom/config.yaml": "bd2ca454c5a92b723cc755d47d0a8c1d"
-        }
+{
+    "RepoTags": [
+        "boom/boom-benchmarking:latest"
+    ],
+    "Architecture": "arm64",
+    "Os": "linux",
+    "Size": 80486781,
+    "RootFS": {
+        "Type": "layers",
+        "Layers": [
+            "sha256:6edfb9bfff297d06f01fa2685d7162e3d1b2ecdcc73666de3aa8b78c0ba0471d",
+            "sha256:fb21a5f689e58bbe7c7b4b78ad3501c0e8c078c864853c9d1e5cb4c809eb1656",
+            "sha256:7cfc20b0579cdf7e2f9a8e5a9b39b491da3004aa12f198c025dae5cd4733e2e7",
+            "sha256:e323efcaee734221059546f9e5265f59aeeb1b3dd141fde0535671b1fa9c85d2",
+            "sha256:f2ac11dfa84f969a6b48c49dd892c8ec42fa8c5aba66faf4fcc8cb2819fcefec",
+            "sha256:d6fc0287fb3fb0ecb4eb4e63eeeccf9ff1b53d3e146786921a1e461d67c24a81",
+            "sha256:87cc06197eaee17ac0aa74587a4cf782c45ae46e5f2164da4c2cb382713c2637"
+        ]
+    },
+    "Descriptor": {
+        "mediaType": "application/vnd.oci.image.index.v1+json",
+        "digest": "sha256:525c1b7e2b0206e0a3fb3723a93afa0075b8709a9f430ed471f19bc967844354",
+        "size": 856
+    },
+    "DockerfileMD5": "ae5cbf37943e8016e891e5825886573b",
+    "DepsMD5s": {
+        "boom/src": "0473b1517b728dfe45869925e3728741",
+        "boom/Cargo.lock": "9bfc469a3d04968b453874c8c2ada965",
+        "boom/Cargo.toml": "8e8daf6d3bec0efbad62c78c6ca7eeef",
+        "config/boom/config.yaml": "b752fb658677c78ccdfb44bda085910d"
     }
-]
+}
