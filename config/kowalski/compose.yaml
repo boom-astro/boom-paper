@@ -56,6 +56,7 @@ services:
     build:
       context: ${PWD}/kowalski
       dockerfile: ingester.Dockerfile
+      pull: false
     image: kowalski-boom-benchmarking
     ports:
       - "8787:8787"
