@@ -5,8 +5,8 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c0376c6ba6cd17ec8b92fab0bb3554a7
-      size: 2399
+      md5: 1d0f47499b5986e3b18b700441dc8e3d
+      size: 1045
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
   build-paper:
@@ -15,8 +15,8 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c0376c6ba6cd17ec8b92fab0bb3554a7
-      size: 2399
+      md5: 1d0f47499b5986e3b18b700441dc8e3d
+      size: 1045
     - path: paper/aasjournal.bst
       hash: md5
       md5: 1e2d4614828005814bd64e3c665b8e99
@@ -44,19 +44,19 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 9230fb9db06dc15c9019a2d656e60df6
-      size: 7960770
+      md5: de967934110f1319a5844e0d400d114a
+      size: 7960777
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
     - path: boom/Cargo.lock
       hash: md5
-      md5: 17c2e970d54fd43973130c0cb496d0f5
-      size: 124963
+      md5: 9bfc469a3d04968b453874c8c2ada965
+      size: 126660
     - path: boom/src
       hash: md5
-      md5: 9413bdb5a0bacb628f247f36ea6be885.dir
-      size: 251282
+      md5: 500a1fa9e0f050c1f7c52eede63dd758.dir
+      size: 252247
       nfiles: 37
     - path: scripts/run-benchmarks.sh
       hash: md5
@@ -77,14 +77,14 @@ stages:
     outs:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: d85d43e5e6aab5b10ad4168355fde5c3
+      md5: 4641a035a76433c2f86a215861a39647
       size: 1309
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: d85d43e5e6aab5b10ad4168355fde5c3
+      md5: 4641a035a76433c2f86a215861a39647
       size: 1309
     - path: boom/Cargo.lock
       hash: md5
@@ -119,13 +119,15 @@ stages:
     outs:
     - path: logs/boom/consumer.log
       hash: md5
-      md5: 54d9b5c7ed3701655c9ea9ccda11627c
-      size: 79208
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
     - path: logs/boom/producer.log
       hash: md5
-      md5: 5e3d0f5304d4eda0c70f5da6bed5fcbf
-      size: 630
+      md5: ad2d3788df72705349cfc6b817fdd8fe
+      size: 378937
     - path: logs/boom/scheduler.log
       hash: md5
-      md5: b4306156c9eeedc5b259a9363258e740
-      size: 736451
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
+  make-kowalski-version-file:
+    cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
