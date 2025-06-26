@@ -4,7 +4,7 @@
     ],
     "Architecture": "arm64",
     "Os": "linux",
-    "Size": 81479077,
+    "Size": 81479072,
     "RootFS": {
         "Type": "layers",
         "Layers": [
@@ -12,10 +12,10 @@
             "sha256:fb21a5f689e58bbe7c7b4b78ad3501c0e8c078c864853c9d1e5cb4c809eb1656",
             "sha256:7cfc20b0579cdf7e2f9a8e5a9b39b491da3004aa12f198c025dae5cd4733e2e7",
             "sha256:e323efcaee734221059546f9e5265f59aeeb1b3dd141fde0535671b1fa9c85d2",
-            "sha256:3d5dcf4816bb86aa961ceef490404c9038915583cfdaf3694ee8f6de6de3a61f",
-            "sha256:b319ae7c4fd915d22204e712ca413135cac84895d48117ea70ee1af9c0f21bc5",
-            "sha256:ac402706684b10e2eca7212f5c8e71c1b8d94317a14d2c0e442be3c6f5fcc288",
-            "sha256:f0a488e74149c56fd1d0a753c551f348902e32ee84366ef3e4654328f8938d01"
+            "sha256:f750d178e78f5f5ff5994637de98e629d1fc9059abf9118b43e0432591cc10c1",
+            "sha256:895e49fb95951f943a241d40f6b62f17be972ee689f01d885690796c903190e1",
+            "sha256:599332dda20ca927f677a0702df9c6a45063ae7733188ac8b296a013afb22cf2",
+            "sha256:eb612eaa9c1c79834f7f11c412888766613d451fc99750958ada00b7c55b4599"
         ]
     },
     "DockerfileMD5": "f38d41b714385e400ba4b7c53d1d7dab",
