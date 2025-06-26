@@ -119,15 +119,15 @@ stages:
     outs:
     - path: logs/boom/consumer.log
       hash: md5
-      md5: d41d8cd98f00b204e9800998ecf8427e
-      size: 0
+      md5: 779b6a3e4b6e7b0fa8791e21b9bc81cf
+      size: 76924
     - path: logs/boom/producer.log
       hash: md5
-      md5: ad2d3788df72705349cfc6b817fdd8fe
-      size: 378937
+      md5: 67df914fcdaaa4d9cc494339c94423bf
+      size: 629
     - path: logs/boom/scheduler.log
       hash: md5
-      md5: d41d8cd98f00b204e9800998ecf8427e
-      size: 0
+      md5: cb37a4d032818e9b1f8d87e785b4a55a
+      size: 789690
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
