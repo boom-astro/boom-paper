@@ -17,11 +17,6 @@
             "sha256:87cc06197eaee17ac0aa74587a4cf782c45ae46e5f2164da4c2cb382713c2637"
         ]
     },
-    "Descriptor": {
-        "mediaType": "application/vnd.oci.image.index.v1+json",
-        "digest": "sha256:525c1b7e2b0206e0a3fb3723a93afa0075b8709a9f430ed471f19bc967844354",
-        "size": 856
-    },
     "DockerfileMD5": "ae5cbf37943e8016e891e5825886573b",
     "DepsMD5s": {
         "boom/src": "0473b1517b728dfe45869925e3728741",
