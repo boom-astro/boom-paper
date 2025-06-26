@@ -28,6 +28,11 @@ pipeline:
       command: echo benchmarking > kowalski/version.txt
       environment: _system
       always_run: true
+    make-kowalski-mongo-key-file:
+      kind: shell-command
+      command: echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
+      environment: _system
+      always_run: true
     benchmark-boom:
       kind: shell-script
       script_path: scripts/benchmark-boom.sh
