@@ -5,7 +5,11 @@ networks:
 
 services:
   mongo:
-    image: mongo:8.0
+    image: kowalski-mongo
+    build:
+      context: ${PWD}/kowalski
+      dockerfile: mongo.Dockerfile
+      pull: false
     hostname: mongo
     expose:
       - "27017"
