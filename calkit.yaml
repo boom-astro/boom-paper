@@ -21,6 +21,14 @@ environments:
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
+    make-kowalski-version-file:
+      kind: shell-command
+      command: echo benchmarking > kowalski/version.txt
+      environment: _system
+      outputs:
+        - path: kowalski/version.txt
+          storage: null
+      always_run: true
     benchmark-boom:
       kind: shell-script
       script_path: scripts/benchmark-boom.sh
