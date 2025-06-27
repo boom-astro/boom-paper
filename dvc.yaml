@@ -25,6 +25,13 @@ stages:
     always_changed: true
     desc: Automatically generated from the 'make-kowalski-version-file'
       stage in calkit.yaml. Changes made here will be overwritten.
+  make-kowalski-mongo-key-file:
+    cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
+    deps: []
+    outs: []
+    always_changed: true
+    desc: Automatically generated from the 'make-kowalski-mongo-key-file'
+      stage in calkit.yaml. Changes made here will be overwritten.
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
