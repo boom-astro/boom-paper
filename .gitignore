@@ -20,3 +20,5 @@ scripts/convert2onnx/models_output/
 *.log
 *.bbl
 *.blg
+logs/kowalski
+*.pdf
