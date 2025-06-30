@@ -5,8 +5,8 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 1d0f47499b5986e3b18b700441dc8e3d
-      size: 1045
+      md5: c690074afac5591de499368a2502eb82
+      size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
   build-paper:
@@ -15,8 +15,8 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 1d0f47499b5986e3b18b700441dc8e3d
-      size: 1045
+      md5: c690074afac5591de499368a2502eb82
+      size: 1171
     - path: paper/aasjournal.bst
       hash: md5
       md5: 1e2d4614828005814bd64e3c665b8e99
@@ -31,8 +31,8 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: eeabd39becb757109259b403cbd55fb4
-      size: 30308
+      md5: 395056363374c6bed71be2dec676113b
+      size: 47331
     - path: paper/references.bib
       hash: md5
       md5: 1c4bda6ff1237961e82fc142650d08b6
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 298ec87438d43564532c186a16b063ea
-      size: 7960738
+      md5: 02ff6fa0709623452313dbd870e34dc1
+      size: 7983778
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
