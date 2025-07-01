@@ -41,10 +41,10 @@ kowalski:
     group: "kowalski"
     scala_version: "2.13"
     kafka_version: "3.4.1"
-    bootstrap.servers: "192.168.0.64:9092,192.168.0.65:9092,192.168.0.66:9092"
-    zookeeper: "192.168.0.64:2181"
-    bootstrap.test.servers: "localhost:9092"
-    zookeeper.test: "localhost:2181"
+    bootstrap.servers: "broker:9092"
+    zookeeper: "broker:2181"
+    bootstrap.test.servers: "broker:9092"
+    zookeeper.test: "broker:2181"
     path: "kafka_2.13-3.4.1"
     processes_per_topic:
       ZTF: 1
