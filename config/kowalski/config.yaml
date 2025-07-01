@@ -41,10 +41,10 @@ kowalski:
     group: "kowalski"
     scala_version: "2.13"
     kafka_version: "3.4.1"
-    bootstrap.servers: "broker:9092"
-    zookeeper: "broker:2181"
-    bootstrap.test.servers: "broker:9092"
-    zookeeper.test: "broker:2181"
+    bootstrap.servers: "localhost:9092"
+    zookeeper: "localhost:2181"
+    bootstrap.test.servers: "localhost:9092"
+    zookeeper.test: "localhost:2181"
     path: "kafka_2.13-3.4.1"
     processes_per_topic:
       ZTF: 1
@@ -52,7 +52,7 @@ kowalski:
   database:
     max_pool_size: 200
     max_wired_tiger_cache: # in GB or % of available RAM, e.g. 50% or 10GB. If no unit is specified, GB is assumed
-    host: "mongo"
+    host: "localhost"
     port: 27017 # if not null, must be same as in entrypoint of mongo container
     replica_set: null
     db: "kowalski"

@@ -85,8 +85,6 @@ services:
       - ${PWD}/logs/kowalski:/kowalski/logs
       - ${PWD}/config/kowalski/config.yaml:/kowalski/config.yaml
       - ${PWD}/config/kowalski/supervisord.conf:/kowalski/conf/supervisord_ingester.conf
-    links:
-      - mongo:kowalski-mongo
     restart: always
     depends_on:
       mongo:
@@ -97,5 +95,4 @@ services:
       - /bin/bash
       - -c
       - "source env/bin/activate && make init_models && PYTHONPATH=. python -m supervisor.supervisord -n -c conf/supervisord_ingester.conf"
-    networks:
-      - kowalski
+    network_mode: "host"
