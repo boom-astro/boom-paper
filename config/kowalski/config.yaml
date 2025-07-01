@@ -1266,6 +1266,6 @@ kowalski:
 
   enabled:
     ztf: True
-    pgir: True
-    wntr: True
-    turbo: True
+    pgir: False
+    wntr: False
+    turbo: False
