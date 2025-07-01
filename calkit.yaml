@@ -97,7 +97,7 @@ publications:
         - figures/workflow.pdf
       push_paths:
         - results.tex
-      last_sync_commit: a1c54e227fe854a3a70d88c644849694f12eae8c
+      last_sync_commit: d18d1cb8e2dc392f5fde17a046406fbfcc8552e9
 references:
   - path: paper/references.bib
 showcase:
