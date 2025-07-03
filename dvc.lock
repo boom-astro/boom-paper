@@ -77,8 +77,8 @@ stages:
     outs:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 4641a035a76433c2f86a215861a39647
-      size: 1309
+      md5: 3a3814b3e57bab9f61df1aebf89d5261
+      size: 1442
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
@@ -131,3 +131,15 @@ stages:
       size: 789690
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
+  _check-env-analyze-logs:
+    cmd: calkit check environment --name analyze-logs
+    deps:
+    - path: config/envs/analyze-logs.txt
+      hash: md5
+      md5: 8dbb896d89b7bbae0bd44a3db397e6fb
+      size: 47
+    outs:
+    - path: .calkit/env-locks/analyze-logs.txt
+      hash: md5
+      md5: 9d2de0d52ceece21aede1df04e1cf862
+      size: 2097

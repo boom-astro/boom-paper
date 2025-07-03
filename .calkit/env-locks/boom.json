@@ -2,20 +2,23 @@
     "RepoTags": [
         "boom/boom-benchmarking:latest"
     ],
+    "RepoDigests": [
+        "boom/boom-benchmarking@sha256:8e67106e5086f98898709302eda6ed83da36d4ba267be2bb47adff004f06c6b6"
+    ],
     "Architecture": "arm64",
     "Os": "linux",
-    "Size": 81479072,
+    "Size": 81479128,
     "RootFS": {
         "Type": "layers",
         "Layers": [
-            "sha256:6edfb9bfff297d06f01fa2685d7162e3d1b2ecdcc73666de3aa8b78c0ba0471d",
-            "sha256:fb21a5f689e58bbe7c7b4b78ad3501c0e8c078c864853c9d1e5cb4c809eb1656",
-            "sha256:7cfc20b0579cdf7e2f9a8e5a9b39b491da3004aa12f198c025dae5cd4733e2e7",
-            "sha256:e323efcaee734221059546f9e5265f59aeeb1b3dd141fde0535671b1fa9c85d2",
-            "sha256:f750d178e78f5f5ff5994637de98e629d1fc9059abf9118b43e0432591cc10c1",
-            "sha256:895e49fb95951f943a241d40f6b62f17be972ee689f01d885690796c903190e1",
-            "sha256:599332dda20ca927f677a0702df9c6a45063ae7733188ac8b296a013afb22cf2",
-            "sha256:eb612eaa9c1c79834f7f11c412888766613d451fc99750958ada00b7c55b4599"
+            "sha256:58d7b7786e983ece7504ec6d3ac44cf4cebc474260a3b3ace4b26fd59935c22e",
+            "sha256:a6076c6a347c1aca7eda29b8073edb1ec42ae6ff97a8f86d647a9764d05231fd",
+            "sha256:b7ceb0a96752066c162575c9e5fecd95f56900636a38a2acb284ff173b4fafd3",
+            "sha256:997fe44228901fafe22be2dad242293393e1b31a9891dbdf76735e778c6910b3",
+            "sha256:e83444e96c2138bbd9b31dfff7e663688128e1e94854cf5b62dbff2935ea0cca",
+            "sha256:10f071d02bb72dfea047ab14e9f096de32ee61654d3b76d556c3082fb7c6fea1",
+            "sha256:c052d0a328b4bd00fd87e323606fb40149979b1b574725556bf69223785aeb39",
+            "sha256:2f91639e2ecb0d4076b6ea06bf5c7be12ef0b39ca040a7968e71237b4f646579"
         ]
     },
     "DockerfileMD5": "f38d41b714385e400ba4b7c53d1d7dab",
