@@ -41,9 +41,9 @@ kowalski:
     group: "kowalski"
     scala_version: "2.13"
     kafka_version: "3.4.1"
-    bootstrap.servers: "broker:9092"
+    bootstrap.servers: "broker:29092"
     zookeeper: "broker:2181"
-    bootstrap.test.servers: "broker:9092"
+    bootstrap.test.servers: "broker:29092"
     zookeeper.test: "broker:2181"
     path: "kafka_2.13-3.4.1"
     processes_per_topic:
