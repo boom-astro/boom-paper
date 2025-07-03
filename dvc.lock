@@ -84,8 +84,8 @@ stages:
     deps:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 4641a035a76433c2f86a215861a39647
-      size: 1309
+      md5: 3a3814b3e57bab9f61df1aebf89d5261
+      size: 1442
     - path: boom/Cargo.lock
       hash: md5
       md5: 9bfc469a3d04968b453874c8c2ada965
@@ -113,22 +113,22 @@ stages:
       size: 1816
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: 2b632ef08192515cb6f0aaad6caa8fb3
-      size: 805
+      md5: 3f33bc90589d17ea0b52792be10113eb
+      size: 1025
       isexec: true
     outs:
     - path: logs/boom/consumer.log
       hash: md5
-      md5: 779b6a3e4b6e7b0fa8791e21b9bc81cf
-      size: 76924
+      md5: 0f2dd1b40f623efcb5fa69ae194e3a16
+      size: 62309
     - path: logs/boom/producer.log
       hash: md5
-      md5: 67df914fcdaaa4d9cc494339c94423bf
-      size: 629
+      md5: 97a173a9cc14222ed440ea1403945146
+      size: 630
     - path: logs/boom/scheduler.log
       hash: md5
-      md5: cb37a4d032818e9b1f8d87e785b4a55a
-      size: 789690
+      md5: dd9082692127b5b4fbca19be04bd5839
+      size: 631406
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
   _check-env-analyze-logs:
