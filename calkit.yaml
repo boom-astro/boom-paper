@@ -49,7 +49,19 @@ pipeline:
         - logs/boom/producer.log
         - logs/boom/consumer.log
         - logs/boom/scheduler.log
-    # TODO: Run Kowalski benchmarks here
+    benchmark-kowalski:
+      kind: shell-script
+      script_path: scripts/benchmark-kowalski.sh
+      environment: _system
+      inputs:
+        - config/kowalski/config.yaml
+        - config/kowalski/compose.yaml
+        - config/kowalski/supervisord.conf
+        - kowalski/ingester.Dockerfile
+        - kowalski/kowalski
+        - kowalski/Makefile
+      outputs:
+        - logs/kowalski
     # TODO: Analyze logs
     run-benchmarks:
       kind: shell-script
