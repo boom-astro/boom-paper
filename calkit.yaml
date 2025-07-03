@@ -18,6 +18,11 @@ environments:
       - boom/Cargo.toml
       - config/boom/config.yaml
       - boom/data/models
+  analyze-logs:
+    path: config/envs/analyze-logs.txt
+    kind: uv-venv
+    prefix: .venv
+    python: '3.13'
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
