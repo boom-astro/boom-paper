@@ -5,7 +5,7 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c690074afac5591de499368a2502eb82
+      md5: c25288f842fbbf08b32381c979e0e12e
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
@@ -15,7 +15,7 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c690074afac5591de499368a2502eb82
+      md5: c25288f842fbbf08b32381c979e0e12e
       size: 1171
     - path: paper/aasjournal.bst
       hash: md5
@@ -31,12 +31,12 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: 395056363374c6bed71be2dec676113b
-      size: 47331
+      md5: 971fde2bf3c95df0e3ba235b0031a40e
+      size: 47949
     - path: paper/references.bib
       hash: md5
-      md5: 1c4bda6ff1237961e82fc142650d08b6
-      size: 1030386
+      md5: e28caf9f2df60abd3a7046f962edbbc3
+      size: 1032229
     - path: paper/results.tex
       hash: md5
       md5: c13e23589a77173ddec14e1c43937a53
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 02ff6fa0709623452313dbd870e34dc1
-      size: 7983778
+      md5: 9d4354bbee512d52b649bdcaffa17b18
+      size: 7986883
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -77,14 +77,14 @@ stages:
     outs:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 3a3814b3e57bab9f61df1aebf89d5261
+      md5: 988e69c394d4d5415ea86d755917f1b8
       size: 1442
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 3a3814b3e57bab9f61df1aebf89d5261
+      md5: 988e69c394d4d5415ea86d755917f1b8
       size: 1442
     - path: boom/Cargo.lock
       hash: md5
@@ -101,7 +101,7 @@ stages:
       nfiles: 37
     - path: config/boom/compose.yaml
       hash: md5
-      md5: 8e316864aaabd27afacf74d3a2f6e214
+      md5: 824f03efabe7c4f0e846cc6968ac2cac
       size: 3858
     - path: config/boom/config-consumer.yaml
       hash: md5
@@ -119,16 +119,16 @@ stages:
     outs:
     - path: logs/boom/consumer.log
       hash: md5
-      md5: 0f2dd1b40f623efcb5fa69ae194e3a16
-      size: 62309
+      md5: 03c554d1d055a98e29e5691b95568e5a
+      size: 4987
     - path: logs/boom/producer.log
       hash: md5
-      md5: 97a173a9cc14222ed440ea1403945146
-      size: 630
+      md5: 24302053e854abbb172ad279d627d88b
+      size: 628
     - path: logs/boom/scheduler.log
       hash: md5
-      md5: dd9082692127b5b4fbca19be04bd5839
-      size: 631406
+      md5: 16b18425b29c2ece94c67ac988292bb1
+      size: 553500
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
   _check-env-analyze-logs:
@@ -145,3 +145,95 @@ stages:
       size: 2097
   make-kowalski-mongo-key-file:
     cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
+  benchmark-kowalski:
+    cmd: bash --noprofile --norc scripts/benchmark-kowalski.sh
+    deps:
+    - path: config/kowalski/compose.yaml
+      hash: md5
+      md5: 522a7ab441743ed8444e51aa720623a1
+      size: 3257
+    - path: config/kowalski/config.yaml
+      hash: md5
+      md5: 47b8dbbf9933634befe1e6960875d972
+      size: 37314
+    - path: config/kowalski/supervisord.conf
+      hash: md5
+      md5: e4551a531a506d3f4bcfa429239f4f41
+      size: 1119
+    - path: kowalski/Makefile
+      hash: md5
+      md5: acd8ea2eccdc60f398008d3108ae25d8
+      size: 3728
+    - path: kowalski/ingester.Dockerfile
+      hash: md5
+      md5: 9e13312ab68b655f4d0907c8cd26b90d
+      size: 4637
+    - path: kowalski/kowalski
+      hash: md5
+      md5: 67a94df680d77e3d03cae4d82046f3cd.dir
+      size: 931133
+      nfiles: 81
+    - path: scripts/benchmark-kowalski.sh
+      hash: md5
+      md5: 2de4e8ee6bd2a1c6694c4da868e35322
+      size: 743
+      isexec: true
+    outs:
+    - path: logs/kowalski
+      hash: md5
+      md5: 90c4130293578d99d5061d8d8a5063eb.dir
+      size: 53305128
+      nfiles: 3
+  _clean-nb-analyze-logs:
+    cmd: calkit nb clean "notebooks/analyze-logs.ipynb"
+    deps:
+    - path: notebooks/analyze-logs.ipynb
+      hash: md5
+      md5: d4612241de954e89575fe3e4379ed9fe
+      size: 2754
+    outs:
+    - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
+      hash: md5
+      md5: 25a14e381c95477c8a24d9cef38aa0df
+      size: 2444
+  analyze-logs:
+    cmd: calkit nb execute --environment analyze-logs --no-check --to html "notebooks/analyze-logs.ipynb"
+    deps:
+    - path: .calkit/env-locks/analyze-logs.txt
+      hash: md5
+      md5: 9d2de0d52ceece21aede1df04e1cf862
+      size: 2097
+    - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
+      hash: md5
+      md5: 25a14e381c95477c8a24d9cef38aa0df
+      size: 2444
+    - path: logs/boom/consumer.log
+      hash: md5
+      md5: 03c554d1d055a98e29e5691b95568e5a
+      size: 4987
+    - path: logs/boom/producer.log
+      hash: md5
+      md5: 24302053e854abbb172ad279d627d88b
+      size: 628
+    - path: logs/boom/scheduler.log
+      hash: md5
+      md5: 16b18425b29c2ece94c67ac988292bb1
+      size: 553500
+    - path: logs/kowalski
+      hash: md5
+      md5: 90c4130293578d99d5061d8d8a5063eb.dir
+      size: 53305128
+      nfiles: 3
+    outs:
+    - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
+      hash: md5
+      md5: a44ef14062fa1a5dcd8623181c8bd1a4
+      size: 3528
+    - path: .calkit/notebooks/html/notebooks/analyze-logs.html
+      hash: md5
+      md5: e8eaa182013cd0a05b8da0c4f30397de
+      size: 275783
+    - path: paper/results.tex
+      hash: md5
+      md5: c13e23589a77173ddec14e1c43937a53
+      size: 188

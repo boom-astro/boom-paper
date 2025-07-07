@@ -71,6 +71,9 @@ pipeline:
       kind: jupyter-notebook
       notebook_path: notebooks/analyze-logs.ipynb
       environment: analyze-logs
+      html_storage: git
+      executed_ipynb_storage: git
+      cleaned_ipynb_storage: git
       inputs:
         - from_stage_outputs: benchmark-boom
         - from_stage_outputs: benchmark-kowalski

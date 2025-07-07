@@ -97,9 +97,9 @@ stages:
           cache: false
           persist: false
       - .calkit/notebooks/executed/notebooks/analyze-logs.ipynb:
-          cache: true
+          cache: false
       - .calkit/notebooks/html/notebooks/analyze-logs.html:
-          cache: true
+          cache: false
     desc: Automatically generated from the 'analyze-logs' stage in calkit.yaml.
       Changes made here will be overwritten.
   build-paper:

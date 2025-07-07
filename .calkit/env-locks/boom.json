@@ -3,7 +3,7 @@
         "boom/boom-benchmarking:latest"
     ],
     "RepoDigests": [
-        "boom/boom-benchmarking@sha256:8e67106e5086f98898709302eda6ed83da36d4ba267be2bb47adff004f06c6b6"
+        "boom/boom-benchmarking@sha256:61c14f4d36ff78c806474316a8e471d4347cbb660341bdc5e63d1e3de33541f7"
     ],
     "Architecture": "arm64",
     "Os": "linux",
