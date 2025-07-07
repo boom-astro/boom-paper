@@ -207,13 +207,13 @@ stages:
       nfiles: 5
     - path: logs/kowalski
       hash: md5
-      md5: 8fc5f2d5f2a6362e00c71902fadb88cb.dir
-      size: 53684246
+      md5: 7ead695e9343bbacf8a6cd0261cf9334.dir
+      size: 53685310
       nfiles: 4
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: f5244f351c869cd2e58d945aafd6737a
+      md5: 65371b960b4bdd7fed160d37071e9df7
       size: 4622
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
