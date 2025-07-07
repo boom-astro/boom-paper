@@ -7561,13 +7561,37 @@ a.anchor-link {
 
 <span class="c1"># TODO: Actually read this data from the logs</span>
 
-<span class="n">t1_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"2025-07-07 21:37:28,870"</span><span class="p">)</span>
-<span class="n">t2_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"2025-07-07 21:45:30,706"</span><span class="p">)</span>
+<span class="n">boom_consumer_log_fpath</span> <span class="o">=</span> <span class="s2">"logs/boom/consumer.log"</span>
+<span class="n">boom_scheduler_log_fpath</span> <span class="o">=</span> <span class="s2">"logs/boom/scheduler.log"</span>
 
-<span class="n">t1_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"2025-07-07T21:20:35.127418"</span><span class="p">)</span>
-<span class="n">t2_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"2025-07-07T21:21:08.818841"</span><span class="p">)</span>
+<span class="c1"># To calculate BOOM wall time, take first timestamp from the consumer log as</span>
+<span class="c1"># the start and the last timestamp of the scheduler as the end</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">boom_consumer_log_fpath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">t1_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[2m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[0m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">boom_scheduler_log_fpath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">t2_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[2m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[0m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="p">)</span>
 
-<span class="p">(</span><span class="n">t2_k</span> <span class="o">-</span> <span class="n">t1_k</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2_b</span> <span class="o">-</span> <span class="n">t1_b</span><span class="p">)</span>
+<span class="c1"># To calculate Kowalski wall time, just use the supervisord logs</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"logs/kowalski/supervisord.log"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"dask-cluster entered RUNNING state"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">t1_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"T"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]))</span>
+            <span class="k">break</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"received SIGTERM indicating exit request"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">t2_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"T"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]))</span>
+            <span class="k">break</span>
+
+<span class="n">boom_throughput_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">t2_k</span> <span class="o">-</span> <span class="n">t1_k</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2_b</span> <span class="o">-</span> <span class="n">t1_b</span><span class="p">)</span>
+<span class="n">boom_throughput_factor</span>
 </pre></div>
 </div>
 </div>
@@ -7580,7 +7604,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>14.306311728062065</pre>
+<pre>11.027272572741163</pre>
 </div>
 </div>
 </div>
