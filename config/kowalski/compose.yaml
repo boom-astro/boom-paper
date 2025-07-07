@@ -28,6 +28,7 @@ services:
       start_period: 20s
     # run as a replica set of size 1 called rs0 using keyfile for internal authorization
     command: [ "--keyFile", "/opt/keyfile", "--replSet", "rs0", "--bind_ip_all" ]
+    mem_limit: 4GB
   # TODO: Add Kafka and Kafka producer
   broker:
     image: apache/kafka:latest
@@ -52,6 +53,7 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       KAFKA_NUM_PARTITIONS: 15
+    mem_limit: 2GB
   producer:
     image: boom/boom-benchmarking:latest
     hostname: producer
@@ -62,7 +64,7 @@ services:
     command:
       - /app/kafka_producer
       - ztf
-      - "20250614"
+      - "20250311"
       - public
     # Kafka is hard-coded as localhost in the producer
     network_mode: "host"
@@ -97,3 +99,4 @@ services:
       - "source env/bin/activate && make init_models && PYTHONPATH=. python -m supervisor.supervisord -n -c conf/supervisord_ingester.conf"
     networks:
       - kowalski
+    mem_limit: 24GB

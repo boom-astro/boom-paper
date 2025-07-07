@@ -72,7 +72,7 @@ services:
     command:
       - /app/kafka_producer
       - ztf
-      - "20250614"
+      - "20250311"
       - public
     # Kafka is hard-coded as localhost in the producer
     network_mode: "host"
@@ -94,7 +94,7 @@ services:
     command:
       - /app/kafka_consumer
       - ztf
-      - "20250614"
+      - "20250311"
       - public
     # Kafka is hard-coded as localhost in the consumer
     network_mode: "host"
