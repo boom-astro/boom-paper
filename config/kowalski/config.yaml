@@ -1198,7 +1198,7 @@ kowalski:
     host: 127.0.0.1
     scheduler_port: 8786
     dashboard_address: :8787
-    n_workers: 4
+    n_workers: 6
     threads_per_worker: 1
     lifetime: 24 hours
     lifetime_stagger: 1 hours

@@ -51,9 +51,7 @@ pipeline:
         - config/boom/config-consumer.yaml
         - .calkit/env-locks/boom.json
       outputs:
-        - logs/boom/producer.log
-        - logs/boom/consumer.log
-        - logs/boom/scheduler.log
+        - logs/boom
     benchmark-kowalski:
       kind: shell-script
       script_path: scripts/benchmark-kowalski.sh

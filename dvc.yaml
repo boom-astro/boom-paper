@@ -54,9 +54,7 @@ stages:
       - config/boom/config-consumer.yaml
       - .calkit/env-locks/boom.json
     outs:
-      - logs/boom/producer.log
-      - logs/boom/consumer.log
-      - logs/boom/scheduler.log
+      - logs/boom
     desc: Automatically generated from the 'benchmark-boom' stage in calkit.yaml.
       Changes made here will be overwritten.
   benchmark-kowalski:
@@ -88,9 +86,7 @@ stages:
     deps:
       - .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       - .calkit/env-locks/analyze-logs.txt
-      - logs/boom/producer.log
-      - logs/boom/consumer.log
-      - logs/boom/scheduler.log
+      - logs/boom
       - logs/kowalski
     outs:
       - paper/results.tex:
