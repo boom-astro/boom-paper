@@ -28,9 +28,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsasl2-2 ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy in the config file
-COPY ./config/boom/config.yaml /app/config.yaml
-
 # Copy in the ML models
 COPY boom/data/models /app/data/models
 

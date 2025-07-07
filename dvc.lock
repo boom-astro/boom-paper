@@ -39,13 +39,13 @@ stages:
       size: 1032229
     - path: paper/results.tex
       hash: md5
-      md5: c13e23589a77173ddec14e1c43937a53
-      size: 188
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
+      size: 186
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 9d4354bbee512d52b649bdcaffa17b18
-      size: 7986883
+      md5: 16f6fabfceaf51c37e3047d56bfdb9a9
+      size: 7986235
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -72,20 +72,20 @@ stages:
     deps:
     - path: Dockerfile-boom
       hash: md5
-      md5: f38d41b714385e400ba4b7c53d1d7dab
-      size: 1225
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
     outs:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 988e69c394d4d5415ea86d755917f1b8
-      size: 1442
+      md5: fb1633d7248b37100660db4799fa9ccf
+      size: 1355
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
     - path: .calkit/env-locks/boom.json
       hash: md5
-      md5: 988e69c394d4d5415ea86d755917f1b8
-      size: 1442
+      md5: fb1633d7248b37100660db4799fa9ccf
+      size: 1355
     - path: boom/Cargo.lock
       hash: md5
       md5: 9bfc469a3d04968b453874c8c2ada965
@@ -119,8 +119,8 @@ stages:
     outs:
     - path: logs/boom
       hash: md5
-      md5: 80272f96bd8ad725dde1e065faa2ce7f.dir
-      size: 740576
+      md5: 66e3c30c0c2c9b3df556f189f94fd19f.dir
+      size: 735629
       nfiles: 5
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
@@ -182,13 +182,13 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a943995a5839dd2bdb5556909c9b6a23
-      size: 3849
+      md5: ed4f94e363ad1fca04640c29a80074dd
+      size: 3836
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 0204aa1db2115e82f2c21d452c4b3307
-      size: 3538
+      md5: a6eae81355e0ec8a474def8475179e01
+      size: 3533
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html "notebooks/analyze-logs.ipynb"
     deps:
@@ -198,12 +198,12 @@ stages:
       size: 2097
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 0204aa1db2115e82f2c21d452c4b3307
-      size: 3538
+      md5: a6eae81355e0ec8a474def8475179e01
+      size: 3533
     - path: logs/boom
       hash: md5
-      md5: 80272f96bd8ad725dde1e065faa2ce7f.dir
-      size: 740576
+      md5: 66e3c30c0c2c9b3df556f189f94fd19f.dir
+      size: 735629
       nfiles: 5
     - path: logs/kowalski
       hash: md5
@@ -213,13 +213,13 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 4816711639752daf551e18e80832e8dd
-      size: 4621
+      md5: 25acd9a60ad924bc62e071c51a563be6
+      size: 4616
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 7d25bf72cc424884ca47cf00cd260d62
-      size: 279997
+      md5: 6e8811927852063bcd3308f3b9996f1d
+      size: 280160
     - path: paper/results.tex
       hash: md5
-      md5: c13e23589a77173ddec14e1c43937a53
-      size: 188
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
+      size: 186

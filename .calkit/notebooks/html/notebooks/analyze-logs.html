@@ -7602,7 +7602,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>5.078261203801599</pre>
+<pre>5.188965807354545</pre>
 </div>
 </div>
 </div>
@@ -7616,8 +7616,6 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Put actual results here</span>
-
-<span class="n">boom_throughput_factor</span> <span class="o">=</span> <span class="s2">"TBD"</span>
 <span class="n">kafka_ingest_strate_mbps</span> <span class="o">=</span> <span class="s2">"XXXXX"</span>
 <span class="n">kafka_ingest_factor</span> <span class="o">=</span> <span class="s2">"XXXXX"</span>
 
@@ -7630,7 +7628,9 @@ a.anchor-link {
 <span class="c1"># This might be better with an f-string, but this is TeX and who wants to deal</span>
 <span class="c1"># with escaping all the braces?</span>
 <span class="n">template</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"BOOM_THROUGHPUT_FACTOR"</span><span class="p">,</span> <span class="n">boom_throughput_factor</span><span class="p">)</span>
+    <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="s2">"BOOM_THROUGHPUT_FACTOR"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">boom_throughput_factor</span><span class="p">)</span><span class="si">:</span><span class="s2">1d</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"KAFKA_INGEST_STRATE_MBPS"</span><span class="p">,</span> <span class="n">kafka_ingest_strate_mbps</span><span class="p">)</span>
     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"KAFKA_INGEST_FACTOR"</span><span class="p">,</span> <span class="n">kafka_ingest_factor</span><span class="p">)</span>
 <span class="p">)</span>
