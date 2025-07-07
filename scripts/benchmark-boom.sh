@@ -18,12 +18,10 @@ docker compose -f $COMPOSE_CONFIG logs scheduler -f > logs/boom/scheduler.log &
 docker compose -f $COMPOSE_CONFIG stats consumer --format json > logs/boom/consumer.stats.log &
 docker compose -f $COMPOSE_CONFIG stats scheduler --format json > logs/boom/scheduler.stats.log &
 
-# Wait until we see "queue is empty" 10 times in the scheduler logs
-# This is not foolproof, but it should work for now
-# TODO: This should probably look at the filter worker
-# We could also potentially look at the size of the queues in Valkey
+# Wait until we see all alerts with classifications
+EXPECTED_ALERTS=29142
 echo "Waiting for all tasks to complete"
-while [ $(grep -c "queue is empty" logs/boom/scheduler.log) -lt 10 ]; do
+while [ $(docker compose -f config/boom/compose.yaml exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
