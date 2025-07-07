@@ -119,8 +119,8 @@ stages:
     outs:
     - path: logs/boom
       hash: md5
-      md5: 5bbbbe3aeb0c22550d85cdc5bb45287f.dir
-      size: 754317
+      md5: 80272f96bd8ad725dde1e065faa2ce7f.dir
+      size: 740576
       nfiles: 5
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
@@ -202,8 +202,8 @@ stages:
       size: 3538
     - path: logs/boom
       hash: md5
-      md5: a5aa5f910ecafebd34015beafe6a80f4.dir
-      size: 742361
+      md5: 80272f96bd8ad725dde1e065faa2ce7f.dir
+      size: 740576
       nfiles: 5
     - path: logs/kowalski
       hash: md5
@@ -213,12 +213,12 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 96c1867560a72b281b2d7624992715c8
-      size: 4622
+      md5: 4816711639752daf551e18e80832e8dd
+      size: 4621
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: c8419b0712251849b884bb9d491a38bc
-      size: 279998
+      md5: 7d25bf72cc424884ca47cf00cd260d62
+      size: 279997
     - path: paper/results.tex
       hash: md5
       md5: c13e23589a77173ddec14e1c43937a53
