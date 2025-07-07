@@ -143,3 +143,5 @@ stages:
       hash: md5
       md5: 9d2de0d52ceece21aede1df04e1cf862
       size: 2097
+  make-kowalski-mongo-key-file:
+    cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
