@@ -6,18 +6,6 @@ environments:
     kind: docker
     image: texlive/texlive:latest-full
     description: TeXlive via Docker.
-  boom:
-    kind: docker
-    path: Dockerfile-boom
-    image: boom/boom-benchmarking
-    description: BOOM benchmarking image
-    user: root
-    deps:
-      - boom/src
-      - boom/Cargo.lock
-      - boom/Cargo.toml
-      - config/boom/config.yaml
-      - boom/data/models
   analyze-logs:
     path: config/envs/analyze-logs.txt
     kind: uv-venv
@@ -26,18 +14,6 @@ environments:
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
-    # This stage is here because Kowalski can't be built by default with a
-    # simple docker build; it is built with a Python script
-    make-kowalski-version-file:
-      kind: shell-command
-      command: echo benchmarking > kowalski/version.txt
-      environment: _system
-      always_run: true
-    make-kowalski-mongo-key-file:
-      kind: shell-command
-      command: echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
-      environment: _system
-      always_run: true
     benchmark-boom:
       kind: shell-script
       script_path: scripts/benchmark-boom.sh
@@ -49,7 +25,7 @@ pipeline:
         - config/boom/config.yaml
         - config/boom/compose.yaml
         - config/boom/config-consumer.yaml
-        - .calkit/env-locks/boom.json
+        - Dockerfile-boom
       outputs:
         - logs/boom
     benchmark-kowalski:

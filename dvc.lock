@@ -82,10 +82,10 @@ stages:
   benchmark-boom:
     cmd: bash --noprofile --norc scripts/benchmark-boom.sh
     deps:
-    - path: .calkit/env-locks/boom.json
+    - path: Dockerfile-boom
       hash: md5
-      md5: fb1633d7248b37100660db4799fa9ccf
-      size: 1355
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
     - path: boom/Cargo.lock
       hash: md5
       md5: 9bfc469a3d04968b453874c8c2ada965
@@ -119,8 +119,8 @@ stages:
     outs:
     - path: logs/boom
       hash: md5
-      md5: 66e3c30c0c2c9b3df556f189f94fd19f.dir
-      size: 735629
+      md5: 6957606609d7b08900e7335f5e408e95.dir
+      size: 742279
       nfiles: 5
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
@@ -168,14 +168,14 @@ stages:
       nfiles: 81
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: 81a2f134cceff538dd10ce21ec1988c0
-      size: 908
+      md5: d7caf55478d9b67bbe3fbd7f4ac28849
+      size: 1065
       isexec: true
     outs:
     - path: logs/kowalski
       hash: md5
-      md5: 7ead695e9343bbacf8a6cd0261cf9334.dir
-      size: 53685310
+      md5: 0610f7735a54536ff80060da258972b6.dir
+      size: 53712290
       nfiles: 4
   _clean-nb-analyze-logs:
     cmd: calkit nb clean "notebooks/analyze-logs.ipynb"
@@ -202,23 +202,23 @@ stages:
       size: 3533
     - path: logs/boom
       hash: md5
-      md5: 66e3c30c0c2c9b3df556f189f94fd19f.dir
-      size: 735629
+      md5: 6957606609d7b08900e7335f5e408e95.dir
+      size: 742279
       nfiles: 5
     - path: logs/kowalski
       hash: md5
-      md5: 7ead695e9343bbacf8a6cd0261cf9334.dir
-      size: 53685310
+      md5: 75b98db73d5d951ad7b070a1fd62fa43.dir
+      size: 53711058
       nfiles: 4
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 25acd9a60ad924bc62e071c51a563be6
-      size: 4616
+      md5: 15f01331f353ae6051ef6fb8f23755b0
+      size: 4615
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 6e8811927852063bcd3308f3b9996f1d
-      size: 280160
+      md5: 9cd80cb204fd1a8604c3d1983752a955
+      size: 280159
     - path: paper/results.tex
       hash: md5
       md5: 9ff462c9a22dc17cd59d5dc7e88ec62b

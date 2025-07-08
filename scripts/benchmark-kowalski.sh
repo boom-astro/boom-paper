@@ -2,6 +2,10 @@
 
 COMPOSE_CONFIG="config/kowalski/compose.yaml"
 
+# Create some files that must exist for Kowalski to work
+echo benchmarking > kowalski/version.txt
+echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
+
 # Remove any existing containers
 docker compose -f $COMPOSE_CONFIG down
 docker compose -f config/boom/compose.yaml down
