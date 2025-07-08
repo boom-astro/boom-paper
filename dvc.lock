@@ -174,8 +174,8 @@ stages:
     outs:
     - path: logs/kowalski
       hash: md5
-      md5: 0610f7735a54536ff80060da258972b6.dir
-      size: 53712290
+      md5: 3e74780802caabf14eca340a062d11d5.dir
+      size: 53713452
       nfiles: 4
   _clean-nb-analyze-logs:
     cmd: calkit nb clean "notebooks/analyze-logs.ipynb"
