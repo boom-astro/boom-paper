@@ -134,7 +134,7 @@ stages:
     outs:
     - path: .calkit/env-locks/analyze-logs.txt
       hash: md5
-      md5: 9d2de0d52ceece21aede1df04e1cf862
+      md5: bc1acb39f7277a5c19e3b693a7a8a2a4
       size: 2097
   make-kowalski-mongo-key-file:
     cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
@@ -182,24 +182,24 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: ed4f94e363ad1fca04640c29a80074dd
-      size: 3836
+      md5: e308e8e1b7f9d8d62247505b1c77e588
+      size: 3505
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a6eae81355e0ec8a474def8475179e01
-      size: 3533
+      md5: e308e8e1b7f9d8d62247505b1c77e588
+      size: 3505
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html "notebooks/analyze-logs.ipynb"
     deps:
     - path: .calkit/env-locks/analyze-logs.txt
       hash: md5
-      md5: 9d2de0d52ceece21aede1df04e1cf862
+      md5: bc1acb39f7277a5c19e3b693a7a8a2a4
       size: 2097
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a6eae81355e0ec8a474def8475179e01
-      size: 3533
+      md5: e308e8e1b7f9d8d62247505b1c77e588
+      size: 3505
     - path: logs/boom
       hash: md5
       md5: 6957606609d7b08900e7335f5e408e95.dir
@@ -213,12 +213,12 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 4dab1bee89e9805e5aeaa9b70070aa6d
-      size: 4615
+      md5: d8630e69b5cd74165e2dba20d8ebbdf5
+      size: 4587
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 9cd80cb204fd1a8604c3d1983752a955
-      size: 280159
+      md5: 3171e21199692e86304c7fa7ace8df4f
+      size: 280131
     - path: paper/results.tex
       hash: md5
       md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
