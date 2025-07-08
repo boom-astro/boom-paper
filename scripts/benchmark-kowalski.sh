@@ -13,6 +13,10 @@ docker compose -f config/boom/compose.yaml down
 # Spin up services with Docker Compose
 docker compose -f $COMPOSE_CONFIG up --build -d
 
+# Send the logs to file so we can analyze later
+mkdir -p logs/kowalski
+docker compose -f $COMPOSE_CONFIG logs producer > logs/kowalski/producer.log &
+
 # Detect that all alerts have been processed
 # First wait for the file to be created
 echo "Waiting for Dask cluster log file to be created"

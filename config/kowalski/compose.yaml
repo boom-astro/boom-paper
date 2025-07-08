@@ -69,6 +69,9 @@ services:
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       KAFKA_NUM_PARTITIONS: 15
     mem_limit: 2GB
+    healthcheck:
+      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
+      interval: 10s
   producer:
     image: boom/boom-benchmarking:latest
     hostname: producer
@@ -85,7 +88,7 @@ services:
     network_mode: "host"
     depends_on:
       broker:
-        condition: service_started
+        condition: service_healthy
     # Mount local data directory so we don't need to redownload
     volumes:
       - ${PWD}/data/alerts:/app/data/alerts
@@ -109,7 +112,7 @@ services:
       producer:
         condition: service_completed_successfully
       broker:
-        condition: service_started
+        condition: service_healthy
     command:
       - /bin/bash
       - -c
@@ -117,3 +120,7 @@ services:
     networks:
       - kowalski
     mem_limit: 24GB
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536

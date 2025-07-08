@@ -45,6 +45,7 @@ stages:
       - kowalski/ingester.Dockerfile
       - kowalski/kowalski
       - kowalski/Makefile
+      - kowalski/requirements
       - scripts/mongo-import-ned.sh
       - data/kowalski.NED.json.gz
     outs:
