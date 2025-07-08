@@ -40,7 +40,7 @@ services:
       - ${PWD}/scripts/mongo-import-ned.sh:/mongo-import-ned.sh
       - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
     environment:
-      - DB_NAME=boom
+      - DB_NAME=kowalski
       - DB_ADD_URI=&replicaSet=rs0
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret

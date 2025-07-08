@@ -152,8 +152,8 @@ stages:
     deps:
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: c564a2fbf82657dc0e737fe0fa558351
-      size: 3794
+      md5: 75e5331e97a5ee29ee6b28af1b8fb7a2
+      size: 3798
     - path: config/kowalski/config.yaml
       hash: md5
       md5: 4aca796f28a0aa662f6dc5aac96cc312
@@ -181,8 +181,8 @@ stages:
       nfiles: 81
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: 347eb5794c4735c9a692c07b681abaf6
-      size: 1073
+      md5: e1cab22d9f6f3a32fd10e8a22e4ae965
+      size: 1236
       isexec: true
     - path: scripts/mongo-import-ned.sh
       hash: md5
@@ -192,20 +192,20 @@ stages:
     outs:
     - path: logs/kowalski
       hash: md5
-      md5: 14073b8429a974c935e75e8d2c306315.dir
-      size: 53683378
+      md5: 11570a0c3e89fa766c9f1961279c58a4.dir
+      size: 53701143
       nfiles: 4
   _clean-nb-analyze-logs:
     cmd: calkit nb clean "notebooks/analyze-logs.ipynb"
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: e308e8e1b7f9d8d62247505b1c77e588
-      size: 3505
+      md5: 81de866d2dbe7ad1868011dfae57b921
+      size: 4588
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: e308e8e1b7f9d8d62247505b1c77e588
+      md5: 923168cdd5473bf5f9275157dad2ad99
       size: 3505
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html "notebooks/analyze-logs.ipynb"
@@ -216,7 +216,7 @@ stages:
       size: 2097
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: e308e8e1b7f9d8d62247505b1c77e588
+      md5: 923168cdd5473bf5f9275157dad2ad99
       size: 3505
     - path: logs/boom
       hash: md5
@@ -225,17 +225,17 @@ stages:
       nfiles: 5
     - path: logs/kowalski
       hash: md5
-      md5: 14073b8429a974c935e75e8d2c306315.dir
-      size: 53683378
+      md5: 11570a0c3e89fa766c9f1961279c58a4.dir
+      size: 53701143
       nfiles: 4
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: efb7d0f69ee9a335b6048476e3bd0564
+      md5: ea0696bbd2fde42b460b012ace999930
       size: 4589
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 403a9fc8e5dc376a8bbc54f7eeb92565
+      md5: 92103135dec985d477b6bd0b4e9f0722
       size: 280133
     - path: paper/results.tex
       hash: md5
