@@ -26,6 +26,8 @@ pipeline:
         - config/boom/compose.yaml
         - config/boom/config-consumer.yaml
         - Dockerfile-boom
+        - scripts/mongo-import-ned.sh
+        - data/kowalski.NED.json.gz
       outputs:
         - logs/boom
     benchmark-kowalski:
@@ -39,6 +41,8 @@ pipeline:
         - kowalski/ingester.Dockerfile
         - kowalski/kowalski
         - kowalski/Makefile
+        - scripts/mongo-import-ned.sh
+        - data/kowalski.NED.json.gz
       outputs:
         - logs/kowalski
     analyze-logs:

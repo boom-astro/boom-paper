@@ -11,7 +11,7 @@ docker compose -f $COMPOSE_CONFIG down
 docker compose -f config/boom/compose.yaml down
 
 # Spin up services with Docker Compose
-docker compose -f $COMPOSE_CONFIG up -d
+docker compose -f $COMPOSE_CONFIG up --build -d
 
 # Detect that all alerts have been processed
 # First wait for the file to be created

@@ -21,6 +21,22 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       interval: 10s
       start_period: 20s
+  mongo-import-ned:
+    image: mongo:8.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - boom
+    volumes:
+      - ${PWD}/scripts/mongo-import-ned.sh:/mongo-import-ned.sh
+      - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+    environment:
+      - DB_NAME=boom
+      - DB_ADD_URI=
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    entrypoint: ["/bin/bash", "/mongo-import-ned.sh"]
   valkey:
     image: valkey/valkey:7.2.6
     environment:
@@ -69,6 +85,7 @@ services:
     build:
       dockerfile: ${PWD}/Dockerfile-boom
       context: ${PWD}
+      pull: false
     command:
       - /app/kafka_producer
       - ztf
@@ -91,6 +108,7 @@ services:
     build:
       dockerfile: ${PWD}/Dockerfile-boom
       context: ${PWD}
+      pull: false
     command:
       - /app/kafka_consumer
       - ztf
@@ -105,6 +123,8 @@ services:
         condition: service_started
       valkey:
         condition: service_healthy
+      mongo-import-ned:
+        condition: service_completed_successfully
     volumes:
       # Need to use a separate config here to connect to services on localhost
       - ${PWD}/config/boom/config-consumer.yaml:/app/config.yaml
@@ -114,6 +134,7 @@ services:
     build:
       dockerfile: ${PWD}/Dockerfile-boom
       context: ${PWD}
+      pull: false
     command:
       - /app/scheduler
       - ztf
@@ -124,8 +145,8 @@ services:
         condition: service_completed_successfully
       broker:
         condition: service_started
-      mongo:
-        condition: service_healthy
+      mongo-import-ned:
+        condition: service_completed_successfully
       valkey:
         condition: service_healthy
     volumes:

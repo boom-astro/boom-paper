@@ -29,7 +29,22 @@ services:
     # run as a replica set of size 1 called rs0 using keyfile for internal authorization
     command: [ "--keyFile", "/opt/keyfile", "--replSet", "rs0", "--bind_ip_all" ]
     mem_limit: 4GB
-  # TODO: Add Kafka and Kafka producer
+  mongo-import-ned:
+    image: mongo:8.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - kowalski
+    volumes:
+      - ${PWD}/scripts/mongo-import-ned.sh:/mongo-import-ned.sh
+      - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+    environment:
+      - DB_NAME=boom
+      - DB_ADD_URI=&replicaSet=rs0
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    entrypoint: ["/bin/bash", "/mongo-import-ned.sh"]
   broker:
     image: apache/kafka:latest
     hostname: broker
@@ -89,10 +104,12 @@ services:
       - ${PWD}/config/kowalski/supervisord.conf:/kowalski/conf/supervisord_ingester.conf
     restart: always
     depends_on:
-      mongo:
-        condition: service_healthy
+      mongo-import-ned:
+        condition: service_completed_successfully
       producer:
         condition: service_completed_successfully
+      broker:
+        condition: service_started
     command:
       - /bin/bash
       - -c

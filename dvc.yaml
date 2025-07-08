@@ -29,6 +29,8 @@ stages:
       - config/boom/compose.yaml
       - config/boom/config-consumer.yaml
       - Dockerfile-boom
+      - scripts/mongo-import-ned.sh
+      - data/kowalski.NED.json.gz
     outs:
       - logs/boom
     desc: Automatically generated from the 'benchmark-boom' stage in calkit.yaml.
@@ -43,6 +45,8 @@ stages:
       - kowalski/ingester.Dockerfile
       - kowalski/kowalski
       - kowalski/Makefile
+      - scripts/mongo-import-ned.sh
+      - data/kowalski.NED.json.gz
     outs:
       - logs/kowalski
     desc: Automatically generated from the 'benchmark-kowalski' stage in

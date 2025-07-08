@@ -7,7 +7,7 @@ docker compose -f $COMPOSE_CONFIG down
 docker compose -f config/kowalski/compose.yaml down
 
 # Spin up BOOM services with Docker Compose
-docker compose -f $COMPOSE_CONFIG up -d
+docker compose -f $COMPOSE_CONFIG up --build -d
 
 # Send the logs to file so we can analyze later
 mkdir -p logs/boom
