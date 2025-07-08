@@ -24,10 +24,11 @@ done
 docker compose -f $COMPOSE_CONFIG stats ingester --format json \
     > logs/kowalski/ingester.stats.log &
 
-# Simply look for 'MLing' a certain number of times
-EXPECTED_ALERTS=29124
+# Simply look for a word in the logs a certain number of times
+INDICATOR="MLing"
+EXPECTED_ALERTS=29130
 echo "Waiting for all tasks to complete"
-while [ $(grep -c MLing logs/kowalski/dask_cluster.log) -lt $EXPECTED_ALERTS ]; do
+while [ $(grep -c $INDICATOR logs/kowalski/dask_cluster.log) -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
