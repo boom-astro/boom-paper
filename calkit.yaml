@@ -95,7 +95,7 @@ publications:
         - figures/workflow.pdf
       push_paths:
         - results.tex
-      last_sync_commit: 588dc27175b1d122798b412faa948473b3b692cb
+      last_sync_commit: fafe762b6b1a77844f9a539c2a50b1c14a2252d7
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
