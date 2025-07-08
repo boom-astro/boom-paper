@@ -200,8 +200,8 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 81de866d2dbe7ad1868011dfae57b921
-      size: 4588
+      md5: 923168cdd5473bf5f9275157dad2ad99
+      size: 3505
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
