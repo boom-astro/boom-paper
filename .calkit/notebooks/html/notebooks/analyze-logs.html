@@ -7629,7 +7629,7 @@ a.anchor-link {
 <span class="c1"># with escaping all the braces?</span>
 <span class="n">template</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-        <span class="s2">"BOOM_THROUGHPUT_FACTOR"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">boom_throughput_factor</span><span class="p">)</span><span class="si">:</span><span class="s2">1d</span><span class="si">}</span><span class="s2">"</span>
+        <span class="s2">"BOOM_THROUGHPUT_FACTOR"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">boom_throughput_factor</span><span class="p">)</span><span class="si">:</span><span class="s2">1d</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"KAFKA_INGEST_STRATE_MBPS"</span><span class="p">,</span> <span class="n">kafka_ingest_strate_mbps</span><span class="p">)</span>
     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"KAFKA_INGEST_FACTOR"</span><span class="p">,</span> <span class="n">kafka_ingest_factor</span><span class="p">)</span>

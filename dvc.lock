@@ -31,21 +31,21 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: 971fde2bf3c95df0e3ba235b0031a40e
-      size: 47949
+      md5: 5d6306a6b6eb7ad7e16b57141028c91b
+      size: 48484
     - path: paper/references.bib
       hash: md5
-      md5: e28caf9f2df60abd3a7046f962edbbc3
-      size: 1032229
+      md5: 13dc6985b749757f77b14fcb9724a404
+      size: 1095715
     - path: paper/results.tex
       hash: md5
-      md5: c0177f67795647bf29a932ca2e829d3b
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
       size: 186
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 36d8ef4c58b1d49a318af32a4861d411
-      size: 7986279
+      md5: bb7acb71c9bff22be6f0f6a54e360247
+      size: 7988505
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -205,13 +205,13 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 923168cdd5473bf5f9275157dad2ad99
-      size: 3505
+      md5: 04847858ea69b9304897efe4a1096c61
+      size: 3810
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 923168cdd5473bf5f9275157dad2ad99
-      size: 3505
+      md5: 7182a68414694cf9662f2976378c707f
+      size: 3507
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html "notebooks/analyze-logs.ipynb"
     deps:
@@ -221,8 +221,8 @@ stages:
       size: 2097
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 923168cdd5473bf5f9275157dad2ad99
-      size: 3505
+      md5: 7182a68414694cf9662f2976378c707f
+      size: 3507
     - path: logs/boom
       hash: md5
       md5: 70fa8c0fad293b9941d7d4b8d8cf4678.dir
@@ -236,13 +236,13 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: ca88605cd00e7bd14cbd5a314f901ef1
-      size: 4588
+      md5: ae122925360e6b72afe26b613294c9fb
+      size: 4590
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: a2d52d9188a42f9fd9299c9b3d6bacfc
-      size: 280132
+      md5: d5481654f1ff7a84ba459171717bd64d
+      size: 280134
     - path: paper/results.tex
       hash: md5
-      md5: c0177f67795647bf29a932ca2e829d3b
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
       size: 186
