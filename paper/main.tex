@@ -45,8 +45,6 @@
 \newcommand{\ztfrest}{\text{ZTFReST }}
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\jp}[1]{{\textcolor{blue}{#1}}}
-\newcommand\myworries[1]{\textcolor{red}{#1}}
-
 
 \newcommand{\nmma}{\text{NMMA }}
 
@@ -173,6 +171,7 @@ and filter a stream one alert at a time,
 but instead is composed of dedicated processes
 for each of these processing steps;
 \rednote{this approach and technical choice is detailed in section X}.
+\todo[inline]{Fix reference for section.}
 There, \texttt{Valkey} is used to communicate data between various
 processes with high-throughput.
 However, memory usage becomes a concern when relying heavily on
@@ -188,7 +187,14 @@ and do not have a noticeable memory impact.
 
 \texttt{MongoDB} has proven to be a highly effective choice for alert brokering, as demonstrated by its successful implementation in \texttt{Kowalski}. Its cross-language support, flexibility, and powerful query language make it well-suited for building complex filtering pipelines for transient alerts. Namely, the \texttt{aggregation pipeline} feature has allowed us to define not only complex queries but also a pipeline of queries with multiple stages, such as a cycle of filtering (\$match stage), computing (\$project, \$addField, \$lookup ... stages) steps, well-suited to implement astronomical alert filtering pipelines. \texttt{MongoDB} offers both performance and scalability, essential for handling large data volumes efficiently. While \texttt{PostgreSQL} was a potential alternative, it would have required schema enforcement, limiting adaptability in an alert stream where fields can vary significantly or evolve in time. Moreover, \texttt{PostgreSQL} would have necessitated database migrations whenever a new astronomical catalog was integrated for crossmatching, and does not offer native support for common spatial queries (e.g. cone searches). By contrast, \texttt{MongoDB}'s schema-free design allows \texttt{BOOM} to dynamically accommodate new data sources without modifying the database structure, and natively supports \texttt{GeoJSON} indexes for fast spatial queries, such as cone-searches or nearest neighbour searches without any client-side implementation or extensions required. Just like \texttt{Kowalski}, \texttt{BOOM} relies very heavily on \texttt{MongoDB}'s support for cone-searches of alert streams with archival/static catalogs, and other alert streams.
 
-\myworries{This section deserves more work, I think we could maybe give a little more technical details about what things look like, and maybe that's also the right place to describe how each survey has 3 catalogs: one for individual candidates/alerts, one for images/cutouts associated to these alerts, and one for astronomical objects.}
+\todo[inline]{
+    This section deserves more work,
+    I think we could maybe give a little more technical details about
+    what things look like, and maybe that's also the right place to describe
+    how each survey has 3 catalogs: one for individual candidates/alerts,
+    one for images/cutouts associated to these alerts,
+    and one for astronomical objects.
+}
 
 \subsection{Parallelized and Distributed Alerts Processing}
 
@@ -256,12 +262,15 @@ While most popular machine learning frameworks have been designed in Python and 
 \end{itemize}
 
 After experimenting with all 4 approaches, integrating \texttt{ort} in a \texttt{rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio. So far, all \texttt{Kowalski} models have been converted to \texttt{ONNX} and have been implemented in \texttt{BOOM}.
-\myworries{Should talk about CIDER if we have something that we can run soon enough}
+
+\todo[inline]{
+    Should talk about CIDER if we have something that we can run soon enough
+}
 
 \subsection{Filter Worker}
 \label{sec:filter}
 
-\myworries{TODO: write about the filter worker}
+\todo[inline]{TODO: write about the filter worker}
 
 % \subsection{\texttt{Apache Kafka}}
 
@@ -307,7 +316,7 @@ After experimenting with all 4 approaches, integrating \texttt{ort} in a \texttt
 
 % A more complex challenge is designing analysis units that work across different alert sources. For instance, different optical surveys may use varying conventions for encoding filter information, reference systems, and magnitude uncertainties. Additionally, powerful alert metrics are unique to specific surveys. Until standardized formats are adopted, analysis classes will need to be tailored to each new alert stream.
 
-\myworries{To rewrite with the sections written above in mind}
+\todo[inline]{To rewrite with the sections written above in mind}
 
 \section{Deployments, Science Validation and First Results}
 \label{sec:science}

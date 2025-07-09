@@ -31,8 +31,8 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: 630900718221a84187410044c6a2d464
-      size: 48485
+      md5: 4eb66dd4c62878c24054da586e93661e
+      size: 49334
     - path: paper/references.bib
       hash: md5
       md5: 8e1f3d5979dd3cc3c470e3e23ce6579c
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 374d10d78f856be7b0dde7d46707a188
-      size: 7988533
+      md5: afca2a3811d3cc11ff546bf2eb3fd2d7
+      size: 7994832
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -246,3 +246,15 @@ stages:
       hash: md5
       md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
       size: 186
+  _check-env-simulate-queues:
+    cmd: calkit check environment --name simulate-queues
+    deps:
+    - path: config/envs/simulate-queues.txt
+      hash: md5
+      md5: 464f0d4065b3712b113770ed47fe0eb6
+      size: 31
+    outs:
+    - path: .calkit/env-locks/simulate-queues.txt
+      hash: md5
+      md5: eec05be61c8ddea2ecff277783563fe3
+      size: 2007
