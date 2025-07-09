@@ -22,3 +22,4 @@ scripts/convert2onnx/models_output/
 *.blg
 logs/kowalski
 *.pdf
+*.synctex.gz

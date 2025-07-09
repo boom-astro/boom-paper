@@ -10,7 +10,7 @@ environments:
     path: config/envs/analyze-logs.txt
     kind: uv-venv
     prefix: .venv
-    python: "3.13"
+    python: "3.13.5"
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram

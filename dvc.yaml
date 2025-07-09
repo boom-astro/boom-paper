@@ -81,7 +81,7 @@ stages:
       Changes made here will be overwritten.
   build-paper:
     cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode
-      -f -pdf paper/main.tex
+      -silent -f -synctex=1 -pdf paper/main.tex
     deps:
       - paper/main.tex
       - paper/references.bib

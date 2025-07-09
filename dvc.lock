@@ -10,8 +10,8 @@ stages:
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode -f
-      -pdf paper/main.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode -silent
+      -f -synctex=1 -pdf paper/main.tex
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: dbde5abea6c6b50d8027d05863f8c9fe
-      size: 7988505
+      md5: 25b39ac68dcf18e111d65c272f9b1c2e
+      size: 7988531
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -138,12 +138,12 @@ stages:
     deps:
     - path: config/envs/analyze-logs.txt
       hash: md5
-      md5: 8dbb896d89b7bbae0bd44a3db397e6fb
-      size: 47
+      md5: f59d0ee92a7e4a82cb5afed288df17a9
+      size: 61
     outs:
     - path: .calkit/env-locks/analyze-logs.txt
       hash: md5
-      md5: 9d2de0d52ceece21aede1df04e1cf862
+      md5: bc1acb39f7277a5c19e3b693a7a8a2a4
       size: 2097
   make-kowalski-mongo-key-file:
     cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
@@ -205,8 +205,8 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 04847858ea69b9304897efe4a1096c61
-      size: 3810
+      md5: 7182a68414694cf9662f2976378c707f
+      size: 3507
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
@@ -217,7 +217,7 @@ stages:
     deps:
     - path: .calkit/env-locks/analyze-logs.txt
       hash: md5
-      md5: 9d2de0d52ceece21aede1df04e1cf862
+      md5: bc1acb39f7277a5c19e3b693a7a8a2a4
       size: 2097
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
@@ -236,7 +236,7 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: ae122925360e6b72afe26b613294c9fb
+      md5: 5d510d9d477f80c330851b0fc51c0cbb
       size: 4590
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
