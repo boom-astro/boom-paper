@@ -17,6 +17,8 @@
 \usepackage{enumitem}\setlist[description]{font=\textendash\enskip\scshape\bfseries}
 % \usepackage{lineno}
 
+\usepackage[colorinlistoftodos]{todonotes}
+
 % \linenumbers
 
 %\usepackage[doublespacing]{setspace}
@@ -70,6 +72,8 @@ Finally, we outline the development plans for \texttt{BOOM} as we begin the LSST
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoftodos
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
@@ -131,14 +135,54 @@ In the following subsections, we present the key design features and implemented
 
 % To evaluate scalability, we tested various Kafka producer configurations simulating an LSST-like data stream. Our results show that our Kafka cluster can ingest all topics at \rednote{\kakfaingestratembps} MB/s, approximately \rednote{\kakfaingestfactor} times faster than the anticipated LSST average alert production rate.
 
-\myworries{maybe the section under that comment should move elsewhere, or be in some info-card like we did in the NSF WOU ZTF+LSST proposal, to highlight the capabilities of rusts and its relevance for this project?}
+\todo[inline]{
+    maybe the section under that comment should move elsewhere, or be in some
+    info-card like we did in the NSF WOU ZTF+LSST proposal, to highlight the
+    capabilities of Rust and its relevance for this project?
+}
 
 Instead of implementing an alert consumer software for every survey, we heavily rely on \texttt{rust}'s \texttt{Trait} system. \texttt{Trait} lets a developer define a blueprint for \texttt{Struct}s, which are \texttt{rust}'s data structure equivalent to Python classes. Thereafter, functions can be written to not take specific \texttt{Struct}s as input, but anything that implements one or more \texttt{Trait}s. For example, we define the \texttt{AlertConsumer} trait with a method definition called \texttt{consume} (responsible for reading from \texttt{Kafka} with survey-specific parameters). Then, the main function responsible for reading from \texttt{Kafka} specifies that it takes any \texttt{Struct} that implements the \texttt{AlertConsumer} trait as input. This ensures type-safety across a codebase, while minimizing duplication and without sacrificing performance. Also, when multiple \texttt{Struct}s implementing the same \texttt{Trait} have an identical implementation for a function, that function can simply be defined and implemented in the trait itself, to avoid re-defining it in any of the \texttt{Struct}s.
 This \texttt{Trait}, \texttt{Struct}s, and generic functions pattern is repeated throughout the BOOM codebase, where all alert processors that share common operations between at least two surveys can be deduplicated. By ensuring that little to no code is duplicated from one survey to another, we can ensure BOOM's scability as more surveys are supported in the future.
 
 \subsection{Job scheduling with \texttt{Valkey}}
 
-Whereas \texttt{Kafka} shines when it comes to reliably sharing messages at scale across the web, it is not the most performant solution for inter-process communication, as topics are stored on disk, which results in a throughput limited by the host's IO capabilities. Instead, we opted for \texttt{Valkey}, a high-performance in-memory datastore backed by the Linux Foundation. \texttt{Valkey} can be used for a variety of workflows, including caching and message queues. Unlike \texttt{Kafka}, all data stored with \texttt{Valkey} lives in RAM, ensuring a much higher throughout than physically possible on HDDs or SSDs. Once data is read from the various survey's \texttt{Kafka} topics, \texttt{BOOM}'s \texttt{Kafka} consumer stores alerts to be processed in a \texttt{Valkey} list; this is a simple array from which processes on the same machine or network can read from, one element at a time or in batches. When read from a list, messages are removed from it, and therefore only are retrieved by one process at a time. This is precisely what we need for \texttt{BOOM}, where alert processing is not performed by one but many processes, to parallelize over the streams. Also, \texttt{BOOM} does not rely on one process to ingest, enrich, and filter a stream one alert at a time, but instead is composed of dedicated processes for each of these processing steps; \rednote{this approach and technical choice is detailed in section X}. There, \texttt{Valkey} is used to communicate data between various processes with high-throughput. However, memory usage becomes a concern when relying heavily on in-memory storage technologies. With this in mind, \texttt{BOOM} sets limits on how many \texttt{Apache} Avro alert packets are stored in memory at once. Other message queues used in \texttt{BOOM} only share a minimal amount of information (mostly pointers to database documents, and unique identifiers of alert packets), and do not have a noticeable memory impact.
+Whereas \texttt{Kafka} shines when it comes to reliably sharing
+messages at scale across the web,
+it is not the most performant solution for inter-process communication,
+as topics are stored on disk,
+which results in a throughput limited by the host's I/O capabilities.
+Instead, we opted for \texttt{Valkey},
+a high-performance in-memory datastore backed by the Linux Foundation.
+\texttt{Valkey} can be used for a variety of workflows,
+including caching and message queues.
+Unlike \texttt{Kafka},
+all data stored with \texttt{Valkey} lives in RAM,
+ensuring a much higher throughout than physically possible on HDDs or SSDs.
+Once data is read from the various survey's \texttt{Kafka} topics,
+\texttt{BOOM}'s \texttt{Kafka} consumer stores alerts to be processed in
+a \texttt{Valkey} list;
+this is a simple array from which processes on the same machine or network
+can read from, one element at a time or in batches.
+When read from a list, messages are removed from it,
+and therefore only are retrieved by one process at a time.
+This is precisely what we need for \texttt{BOOM},
+where alert processing is not performed by one but many processes,
+to parallelize over the streams.
+Also, \texttt{BOOM} does not rely on one process to ingest, enrich,
+and filter a stream one alert at a time,
+but instead is composed of dedicated processes
+for each of these processing steps;
+\rednote{this approach and technical choice is detailed in section X}.
+There, \texttt{Valkey} is used to communicate data between various
+processes with high-throughput.
+However, memory usage becomes a concern when relying heavily on
+in-memory storage technologies.
+With this in mind, \texttt{BOOM} sets limits on how many
+\texttt{Apache} Avro alert packets are stored in memory at once.
+Other message queues used in \texttt{BOOM} only share a minimal amount of
+information (mostly pointers to database documents,
+and unique identifiers of alert packets),
+and do not have a noticeable memory impact.
 
 \subsection{Spatial query-ready database with \texttt{MongoDB}}
 
@@ -148,7 +192,41 @@ Whereas \texttt{Kafka} shines when it comes to reliably sharing messages at scal
 
 \subsection{Parallelized and Distributed Alerts Processing}
 
-It had become clear with \texttt{Kowalski} that making one process responsible for processing one alert at a time in its entirety (i.e. ingestion, enrichment, and filtering) does not allow us to scale optimally. When one of the processing steps becomes a bottleneck, the only solution with a single worker approach is to make more copies of the same worker, rather than only scale the processing step that requires more resources to keep up with the expected throughput. For example, with the advances of machine learning techniques yielding ever larger and complex models, adding more models to run on an alert stream requires more compute time not for every step of the processing but only to run these additional models. Therefore, the ability to only scale processes responsible of running models without also allocating resources to other processing steps which do not need them, is much more effective and scalable. Next, we will describe how the alert processing steps have been split in multiple ``workers:''
+It had become clear with \texttt{Kowalski} that making one process responsible
+for processing one alert at a time in its entirety
+(i.e. ingestion, enrichment,
+and filtering) does not allow us to scale optimally.
+When one of the processing steps becomes a bottleneck,
+the only solution with a single worker approach is
+to make more copies of the same worker,
+rather than only scale the processing
+step that requires more resources to keep up with the expected throughput.
+For example,
+with the advances of machine learning techniques yielding ever larger
+and complex models,
+adding more models to run on an alert stream requires more
+compute time not for every step of the processing but only to run these
+additional models.
+Therefore, the ability to only scale processes responsible of
+running models without also allocating resources to other processing steps,
+which do not need them, is much more effective and scalable.
+Next, we will describe
+how the alert processing steps have been split in multiple ``workers:''
+
+\todo[inline]{
+    PB: I'm still struggling to understand how splitting a serial pipeline
+    into multiple queues increases throughput without running on a cluster
+    with heterogeneous compute nodes, for example.
+    Maybe a diagram would be helpful here.
+    It seems like batching, not multiple stations,
+    would produce the biggest performance gain.
+    Or, doing ML inference for all models in parallel,
+    since that's the only thing we can do concurrently to a given alert.
+    I started a notebook in the \texttt{boom-paper} repo on GitHub
+    to simulate the different architectures using SimPy
+    in case we want some evidence to back up this relatively strong statement:
+    ``much more effective and scalable''.
+}
 
 \subsubsection{Alert Ingestion Worker}
 
