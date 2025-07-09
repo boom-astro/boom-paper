@@ -5,7 +5,7 @@ The first paper about BOOM development.
 To clone the project, including all datasets and artifacts, run:
 
 ```sh
-calkit clone --recursive petebachant/boom-paper
+calkit clone --recursive boom-astro/boom-paper
 ```
 
 This will require that you have installed
