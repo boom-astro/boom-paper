@@ -39,12 +39,12 @@ stages:
       size: 1096957
     - path: paper/results.tex
       hash: md5
-      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
+      md5: 01610e99158412e9f45c0e8b3b5069be
       size: 186
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: cb71002ee121dda1c9e7f93e95ea0739
+      md5: 6cafeb290d619be6e8ae25c014e21a5e
       size: 7994800
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
@@ -128,8 +128,8 @@ stages:
     outs:
     - path: logs/boom
       hash: md5
-      md5: 70fa8c0fad293b9941d7d4b8d8cf4678.dir
-      size: 758779
+      md5: 9ea0867502d5561f7cf36f2640ea97d7.dir
+      size: 1723609
       nfiles: 5
   make-kowalski-version-file:
     cmd: bash --noprofile --norc -c "echo benchmarking > kowalski/version.txt"
@@ -197,8 +197,8 @@ stages:
     outs:
     - path: logs/kowalski
       hash: md5
-      md5: 6be0542999904820e04260f3c103dd37.dir
-      size: 53677394
+      md5: a44e88593fb776bf3f385dcdda35e8f6.dir
+      size: 53702818
       nfiles: 5
   _clean-nb-analyze-logs:
     cmd: calkit nb clean "notebooks/analyze-logs.ipynb"
@@ -225,26 +225,26 @@ stages:
       size: 3507
     - path: logs/boom
       hash: md5
-      md5: 70fa8c0fad293b9941d7d4b8d8cf4678.dir
-      size: 758779
+      md5: 9ea0867502d5561f7cf36f2640ea97d7.dir
+      size: 1723609
       nfiles: 5
     - path: logs/kowalski
       hash: md5
-      md5: 6be0542999904820e04260f3c103dd37.dir
-      size: 53677394
+      md5: a44e88593fb776bf3f385dcdda35e8f6.dir
+      size: 53702818
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 5d510d9d477f80c330851b0fc51c0cbb
-      size: 4590
+      md5: bc9ee73fabf018a096667105bd1c1200
+      size: 4591
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: d5481654f1ff7a84ba459171717bd64d
-      size: 280134
+      md5: 193a23c1a9488cf067885e8200d25e2a
+      size: 280135
     - path: paper/results.tex
       hash: md5
-      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
+      md5: 01610e99158412e9f45c0e8b3b5069be
       size: 186
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
