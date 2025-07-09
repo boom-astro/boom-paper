@@ -11,6 +11,11 @@ environments:
     kind: uv-venv
     prefix: .venv
     python: "3.13.5"
+  simulate-queues:
+    path: config/envs/simulate-queues.txt
+    kind: uv-venv
+    prefix: .venv2
+    python: 3.13.5
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
