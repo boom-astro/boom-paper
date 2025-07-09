@@ -75,6 +75,10 @@ pipeline:
         - paper/aasjournal.bst
         - paper/aastex631.cls
         - paper/results.tex
+datasets:
+  - path: data/kowalski.NED.json.gz
+    title: NED archival catalog
+    description: Alerts from the NED archival catalog exported from Kowalski.
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
