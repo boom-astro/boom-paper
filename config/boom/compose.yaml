@@ -94,8 +94,10 @@ services:
       - ztf
       - "20250311"
       - public
-    # Kafka is hard-coded as localhost in the producer
-    network_mode: "host"
+      - --server_url
+      - broker:29092
+    networks:
+      - boom
     depends_on:
       broker:
         condition: service_healthy
@@ -112,13 +114,10 @@ services:
       dockerfile: ${PWD}/Dockerfile-boom
       context: ${PWD}
       pull: false
-    command:
-      - /app/kafka_consumer
-      - ztf
-      - "20250311"
-      - public
-    # Kafka is hard-coded as localhost in the consumer
-    network_mode: "host"
+    networks:
+      - boom
+    # have it sleep 5 seconds to allow kafka to finish producing
+    command: ["/bin/sh", "-c", "sleep 5 && /app/kafka_consumer ztf 20250311 public"]
     depends_on:
       producer:
         condition: service_completed_successfully
@@ -130,7 +129,7 @@ services:
         condition: service_completed_successfully
     volumes:
       # Need to use a separate config here to connect to services on localhost
-      - ${PWD}/config/boom/config-consumer.yaml:/app/config.yaml
+      - ${PWD}/config/boom/config.yaml:/app/config.yaml
   scheduler:
     image: boom/boom-benchmarking:latest
     hostname: scheduler
@@ -141,6 +140,8 @@ services:
     command:
       - /app/scheduler
       - ztf
+    environment:
+      RUST_LOG: debug,ort=error
     networks:
       - boom
     depends_on:

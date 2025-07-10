@@ -84,8 +84,10 @@ services:
       - ztf
       - "20250311"
       - public
-    # Kafka is hard-coded as localhost in the producer
-    network_mode: "host"
+      - --server_url
+      - broker:29092
+    networks:
+      - kowalski
     depends_on:
       broker:
         condition: service_healthy
