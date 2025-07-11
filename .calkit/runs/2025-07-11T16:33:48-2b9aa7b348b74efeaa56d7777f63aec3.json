@@ -1,0 +1,14 @@
+{
+  "id": "2b9aa7b348b74efeaa56d7777f63aec3",
+  "system_id": "525d5a3d01b391a5c8fe52fc787ac8fa5e2c851a",
+  "start_time": "2025-07-11T16:33:48.105943+00:00",
+  "end_time": "2025-07-11T16:34:17.548927+00:00",
+  "status": "failed",
+  "stages": {
+    "benchmark-boom": {
+      "start_time": "2025-07-11T16:33:48.651561+00:00",
+      "end_time": "2025-07-11T16:34:17.157490+00:00",
+      "status": "failed"
+    }
+  }
+}

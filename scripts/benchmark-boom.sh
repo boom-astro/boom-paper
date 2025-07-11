@@ -29,3 +29,5 @@ echo "All tasks completed; shutting down BOOM services"
 
 # Shut down the BOOM services
 docker compose -f $COMPOSE_CONFIG down
+
+exit 0
