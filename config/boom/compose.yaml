@@ -79,7 +79,7 @@ services:
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       KAFKA_NUM_PARTITIONS: 15
     healthcheck:
-      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
+      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server 0.0.0.0:9092
       interval: 10s
   # Run the Kafka producer just once
   producer:
@@ -94,7 +94,7 @@ services:
       - ztf
       - "20250311"
       - public
-      - --server_url
+      - --server-url
       - broker:29092
     networks:
       - boom

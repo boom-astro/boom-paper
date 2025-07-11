@@ -70,7 +70,7 @@ services:
       KAFKA_NUM_PARTITIONS: 15
     mem_limit: 2GB
     healthcheck:
-      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
+      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server 0.0.0.0:9092
       interval: 10s
   producer:
     image: boom/boom-benchmarking:latest
@@ -84,7 +84,7 @@ services:
       - ztf
       - "20250311"
       - public
-      - --server_url
+      - --server-url
       - broker:29092
     networks:
       - kowalski
