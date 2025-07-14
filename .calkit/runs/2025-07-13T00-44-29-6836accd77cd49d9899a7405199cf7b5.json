@@ -6,7 +6,7 @@
   "targets": [],
   "force": false,
   "dvc_args": [],
-  "status": "success",
+  "status": "completed",
   "stages": {
     "_check-env-tex": {
       "start_time": "2025-07-13T00:44:29.629000",
