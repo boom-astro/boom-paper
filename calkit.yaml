@@ -15,32 +15,51 @@ environments:
     path: config/envs/simulate-queues.txt
     kind: uv-venv
     prefix: .venv2
-    python: 3.13.5
+    python: "3.13.5"
+  run:
+    path: config/envs/run.txt
+    kind: uv-venv
+    prefix: .venv3
+    python: "3.13.5"
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
     benchmark-boom:
-      kind: shell-script
-      script_path: scripts/benchmark-boom.sh
-      environment: _system
+      kind: python-script
+      script_path: scripts/benchmark-boom.py
+      args:
+        - --n-alert-workers={n_alert_workers}
+        - --n-ml-workers={n_ml_workers}
+        - --n-filter-workers={n_filter_workers}
+      environment: run
       inputs:
         - boom/src
         - boom/Cargo.lock
         - boom/Cargo.toml
-        - config/boom/config.yaml
+        - scripts/benchmark-boom.sh
+        - config/boom/config-template.yaml
         - config/boom/compose.yaml
         - config/boom/config-consumer.yaml
         - Dockerfile-boom
         - scripts/mongo-import-ned.sh
         - data/kowalski.NED.json.gz
+      iterate_over:
+        - arg_name: n_alert_workers
+          values: [3]
+        - arg_name: n_ml_workers
+          values: [3, 6, 9]
+        - arg_name: n_filter_workers
+          values: [1]
       outputs:
-        - logs/boom
+        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
     benchmark-kowalski:
-      kind: shell-script
-      script_path: scripts/benchmark-kowalski.sh
-      environment: _system
+      kind: python-script
+      script_path: scripts/benchmark-kowalski.py
+      args:
+        - --n-workers={n_workers}
+      environment: run
       inputs:
-        - config/kowalski/config.yaml
+        - config/kowalski/config-template.yaml
         - config/kowalski/compose.yaml
         - config/kowalski/supervisord.conf
         - kowalski/ingester.Dockerfile
@@ -48,9 +67,13 @@ pipeline:
         - kowalski/Makefile
         - kowalski/requirements
         - scripts/mongo-import-ned.sh
+        - scripts/benchmark-kowalski.sh
         - data/kowalski.NED.json.gz
+      iterate_over:
+        - arg_name: n_workers
+          values: [6]
       outputs:
-        - logs/kowalski
+        - logs/kowalski-n={n_workers}
     analyze-logs:
       kind: jupyter-notebook
       notebook_path: notebooks/analyze-logs.ipynb
