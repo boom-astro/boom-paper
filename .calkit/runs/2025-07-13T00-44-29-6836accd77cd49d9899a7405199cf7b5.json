@@ -1,0 +1,128 @@
+{
+  "id": "6836accd77cd49d9899a7405199cf7b5",
+  "system_id": "22f79ee50ea6864b124eed73a6fec387039555bb",
+  "start_time": "2025-07-13T00:44:29.451816+00:00",
+  "end_time": "2025-07-13T00:44:36.326690+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-13T00:44:29.629000",
+      "end_time": "2025-07-13T00:44:30.371000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-13T00:44:30.371000",
+      "end_time": "2025-07-13T00:44:31.217000",
+      "status": "completed"
+    },
+    "benchmark-boom": {
+      "start_time": "2025-07-13T00:44:31.217000",
+      "end_time": "2025-07-13T00:44:31.217000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski": {
+      "start_time": "2025-07-13T00:44:31.319000",
+      "end_time": "2025-07-13T00:44:31.319000",
+      "status": "skipped"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-13T00:44:31.390000",
+      "end_time": "2025-07-13T00:44:31.390000",
+      "status": "skipped"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-13T00:44:31.413000",
+      "end_time": "2025-07-13T00:44:35.603000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-13T00:44:35.603000",
+      "end_time": "2025-07-13T00:44:35.603000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "0b083beb9bc245586b090f9838fd57b1fb11ac92",
+  "git_branch": "main",
+  "git_changed_files_before": [],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [],
+  "git_changed_files_after": [],
+  "git_staged_files_after": [
+    "dvc.lock"
+  ],
+  "git_untracked_files_after": [],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "benchmark-boom": [
+      {
+        "changed outs": {
+          "logs/boom": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski": [
+      {
+        "changed outs": {
+          "logs/kowalski": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/boom": "modified",
+          "logs/kowalski": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {
+      "modified": [
+        "logs/boom/",
+        "logs/kowalski/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "paper/main.pdf",
+      "paper/figures/workflow.key",
+      "paper/figures/workflow.pdf"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/kowalski/",
+      "paper/main.pdf",
+      "paper/figures/workflow.key",
+      "paper/figures/workflow.pdf",
+      "logs/boom/",
+      "data/kowalski.NED.json.gz"
+    ]
+  }
+}

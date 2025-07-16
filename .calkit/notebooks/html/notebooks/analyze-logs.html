@@ -7543,7 +7543,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/Users/theodlz/dev25/boom-paper
+<pre>/Users/pete/calkit/boom-paper
 </pre>
 </div>
 </div>
@@ -7576,15 +7576,11 @@ a.anchor-link {
         <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[2m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x1b</span><span class="s2">[0m"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
     <span class="p">)</span>
 
-<span class="n">boom_wall_time</span> <span class="o">=</span> <span class="n">t2_b</span> <span class="o">-</span> <span class="n">t1_b</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BOOM wall time: </span><span class="si">{</span><span class="n">boom_wall_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> minutes"</span><span class="p">)</span>
-
-
 <span class="c1"># To calculate Kowalski wall time, just use the supervisord logs</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"logs/kowalski/supervisord.log"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s2">"alert-broker-ztf entered RUNNING state"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"dask-cluster entered RUNNING state"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
             <span class="n">t1_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"T"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]))</span>
             <span class="k">break</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
@@ -7592,12 +7588,8 @@ a.anchor-link {
             <span class="n">t2_k</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">"T"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]))</span>
             <span class="k">break</span>
 
-<span class="c1"># print the total time of each, in minutes</span>
-<span class="n">kowalski_wall_time</span> <span class="o">=</span> <span class="n">t2_k</span> <span class="o">-</span> <span class="n">t1_k</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Kowalski wall time: </span><span class="si">{</span><span class="n">kowalski_wall_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> minutes"</span><span class="p">)</span>
-
-<span class="n">boom_throughput_factor</span> <span class="o">=</span> <span class="n">kowalski_wall_time</span> <span class="o">/</span> <span class="n">boom_wall_time</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BOOM throughput factor: </span><span class="si">{</span><span class="n">boom_throughput_factor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">boom_throughput_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">t2_k</span> <span class="o">-</span> <span class="n">t1_k</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2_b</span> <span class="o">-</span> <span class="n">t1_b</span><span class="p">)</span>
+<span class="n">boom_throughput_factor</span>
 </pre></div>
 </div>
 </div>
@@ -7607,13 +7599,10 @@ a.anchor-link {
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>BOOM wall time: 1.63 minutes
-Kowalski wall time: 8.22 minutes
-BOOM throughput factor: 5.032619489775478
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>0.9082351961359658</pre>
 </div>
 </div>
 </div>
