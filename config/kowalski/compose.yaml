@@ -3,6 +3,10 @@ name: kowalski-boom-benchmarking`
 networks:
   kowalski:
 
+volumes:
+  mongodb:
+  kafka:
+
 services:
   mongo:
     image: kowalski-mongo
@@ -29,6 +33,8 @@ services:
     # run as a replica set of size 1 called rs0 using keyfile for internal authorization
     command: [ "--keyFile", "/opt/keyfile", "--replSet", "rs0", "--bind_ip_all" ]
     mem_limit: 4GB
+    volumes:
+      - mongodb:/data/db
   mongo-import-ned:
     image: mongo:8.0
     depends_on:
