@@ -24,6 +24,7 @@ environments:
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
+    # TODO: Cache producer and NED loading
     benchmark-boom:
       kind: python-script
       script_path: scripts/benchmark-boom.py
@@ -50,6 +51,11 @@ pipeline:
           values: [3, 6, 9]
         - arg_name: n_filter_workers
           values: [1]
+        # - arg_name: repetition
+        #   values:
+        #     - range:
+        #         start: 1
+        #         stop: 50
       outputs:
         - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
     benchmark-kowalski:
