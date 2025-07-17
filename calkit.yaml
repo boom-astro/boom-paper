@@ -29,7 +29,6 @@ pipeline:
         - boom/Cargo.toml
         - config/boom/config.yaml
         - config/boom/compose.yaml
-        - config/boom/config-consumer.yaml
         - Dockerfile-boom
         - scripts/mongo-import-ned.sh
         - data/kowalski.NED.json.gz
