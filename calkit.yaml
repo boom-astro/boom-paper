@@ -40,7 +40,6 @@ pipeline:
         - scripts/benchmark-boom.sh
         - config/boom/config-template.yaml
         - config/boom/compose.yaml
-        - config/boom/config-consumer.yaml
         - Dockerfile-boom
         - scripts/mongo-import-ned.sh
         - data/kowalski.NED.json.gz

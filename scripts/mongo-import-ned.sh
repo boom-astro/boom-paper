@@ -21,3 +21,8 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
     db.ZTF_alerts.drop();
     db.ZTF_alerts_aux.drop();
     db.ZTF_alerts_cutouts.drop();"
+
+# Create a 2d index on coordinates.radec_geojson
+echo "Creating 2d index on coordinates.radec_geojson"
+mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
+    --eval "db.NED.createIndex({ 'coordinates.radec_geojson': '2dsphere' })"
