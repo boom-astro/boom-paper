@@ -1,0 +1,300 @@
+{
+  "id": "d94e367bdf88432e96e35a9290b2928d",
+  "system_id": "bdeaf677f3a2bf538c530486278e74cda6ebe199",
+  "start_time": "2025-07-18T14:57:13.823662+00:00",
+  "end_time": "2025-07-18T14:58:27.997810+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "failed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-18T14:57:14.048000",
+      "end_time": "2025-07-18T14:57:14.783000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-18T14:57:14.783000",
+      "end_time": "2025-07-18T14:57:15.512000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-18T14:57:15.512000",
+      "end_time": "2025-07-18T14:57:16.226000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-18T14:57:16.226000",
+      "end_time": "2025-07-18T14:58:27.601000",
+      "status": "failed"
+    }
+  },
+  "git_rev": "1e88bc0aecde94ca74b1355db391d9a03421c91c",
+  "git_branch": "parameterize",
+  "git_changed_files_before": [
+    ".calkit/env-locks/tex.json",
+    "config/boom/compose.yaml",
+    "config/kowalski/compose.yaml",
+    "dvc.lock"
+  ],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    ".calkit/systems/bdeaf677f3a2bf538c530486278e74cda6ebe199.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/env-locks/tex.json",
+    "config/boom/compose.yaml",
+    "config/kowalski/compose.yaml",
+    "dvc.lock"
+  ],
+  "git_staged_files_after": [],
+  "git_untracked_files_after": [
+    ".calkit/systems/bdeaf677f3a2bf538c530486278e74cda6ebe199.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-boom@3-3-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=3-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@6": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-import-ned.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=6": "deleted"
+        }
+      }
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb": "modified",
+          ".calkit/env-locks/analyze-logs.txt": "modified",
+          "logs/boom-na=3-nml=3-nf=1": "modified",
+          "logs/boom-na=3-nml=6-nf=1": "modified",
+          "logs/boom-na=3-nml=9-nf=1": "modified",
+          "logs/kowalski-n=6": "deleted"
+        }
+      },
+      {
+        "changed outs": {
+          "paper/results.tex": "modified",
+          ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "build-paper": [
+      {
+        "changed deps": {
+          "paper/results.tex": "modified",
+          ".calkit/env-locks/tex.json": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {
+      "modified": [
+        "logs/boom-na=3-nml=3-nf=1/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "paper/main.pdf",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.key"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-boom@3-3-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=3-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-1": [
+      {
+        "changed deps": {
+          "config/boom/config-template.yaml": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-import-ned.sh": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@6": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-import-ned.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=6": "deleted"
+        }
+      }
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb": "modified",
+          ".calkit/env-locks/analyze-logs.txt": "modified",
+          "logs/boom-na=3-nml=3-nf=1": "modified",
+          "logs/boom-na=3-nml=6-nf=1": "modified",
+          "logs/boom-na=3-nml=9-nf=1": "modified",
+          "logs/kowalski-n=6": "deleted"
+        }
+      },
+      {
+        "changed outs": {
+          "paper/results.tex": "modified",
+          ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "build-paper": [
+      {
+        "changed deps": {
+          "paper/results.tex": "modified",
+          ".calkit/env-locks/tex.json": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {
+      "modified": [
+        "logs/boom-na=3-nml=3-nf=1/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "paper/main.pdf",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.key"
+    ]
+  }
+}
