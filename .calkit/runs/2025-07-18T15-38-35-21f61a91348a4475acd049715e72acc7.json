@@ -1,0 +1,135 @@
+{
+  "id": "21f61a91348a4475acd049715e72acc7",
+  "system_id": "bdeaf677f3a2bf538c530486278e74cda6ebe199",
+  "start_time": "2025-07-18T15:38:35.510668+00:00",
+  "end_time": "2025-07-18T15:38:40.281380+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-18T15:38:35.755000",
+      "end_time": "2025-07-18T15:38:36.528000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-18T15:38:36.528000",
+      "end_time": "2025-07-18T15:38:37.292000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-18T15:38:37.292000",
+      "end_time": "2025-07-18T15:38:37.981000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-18T15:38:37.981000",
+      "end_time": "2025-07-18T15:38:37.981000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-18T15:38:37.993000",
+      "end_time": "2025-07-18T15:38:37.993000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-18T15:38:38.006000",
+      "end_time": "2025-07-18T15:38:38.006000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-18T15:38:38.020000",
+      "end_time": "2025-07-18T15:38:38.020000",
+      "status": "skipped"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-18T15:38:38.034000",
+      "end_time": "2025-07-18T15:38:39.919000",
+      "status": "completed"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-18T15:38:39.919000",
+      "end_time": "2025-07-18T15:38:39.919000",
+      "status": "skipped"
+    },
+    "build-paper": {
+      "start_time": "2025-07-18T15:38:39.935000",
+      "end_time": "2025-07-18T15:38:39.935000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "86695da2e7a5a78fc623a7273bc8053b02c2c4ca",
+  "git_branch": "parameterize",
+  "git_changed_files_before": [],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [],
+  "git_changed_files_after": [],
+  "git_staged_files_after": [
+    "dvc.lock"
+  ],
+  "git_untracked_files_after": [],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "paper/main.pdf",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "paper/main.pdf",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key"
+    ]
+  }
+}
