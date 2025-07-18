@@ -2,6 +2,9 @@
 
 COMPOSE_CONFIG="config/boom/compose.yaml"
 
+# Logs folder is the first argument to the script
+LOGS_DIR=${1:-logs/boom}
+
 # Remove any existing containers
 docker compose -f $COMPOSE_CONFIG down
 docker compose -f config/kowalski/compose.yaml down
@@ -10,13 +13,13 @@ docker compose -f config/kowalski/compose.yaml down
 docker compose -f $COMPOSE_CONFIG up --build -d
 
 # Send the logs to file so we can analyze later
-mkdir -p logs/boom
-docker compose -f $COMPOSE_CONFIG logs producer > logs/boom/producer.log &
-docker compose -f $COMPOSE_CONFIG logs consumer -f > logs/boom/consumer.log &
-docker compose -f $COMPOSE_CONFIG logs scheduler -f > logs/boom/scheduler.log &
+mkdir -p $LOGS_DIR
+docker compose -f $COMPOSE_CONFIG logs producer > $LOGS_DIR/producer.log &
+docker compose -f $COMPOSE_CONFIG logs consumer -f > $LOGS_DIR/consumer.log &
+docker compose -f $COMPOSE_CONFIG logs scheduler -f > $LOGS_DIR/scheduler.log &
 # Also log stats from containers for later analysis
-docker compose -f $COMPOSE_CONFIG stats consumer --format json > logs/boom/consumer.stats.log &
-docker compose -f $COMPOSE_CONFIG stats scheduler --format json > logs/boom/scheduler.stats.log &
+docker compose -f $COMPOSE_CONFIG stats consumer --format json > $LOGS_DIR/consumer.stats.log &
+docker compose -f $COMPOSE_CONFIG stats scheduler --format json > $LOGS_DIR/scheduler.stats.log &
 
 # Wait until we see all alerts with classifications
 EXPECTED_ALERTS=29142
