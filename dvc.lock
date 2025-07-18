@@ -227,28 +227,28 @@ stages:
       size: 4036
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 1677474ff8b800298c1aec7cae9d5354.dir
-      size: 2405217
+      md5: 5487cb4b7208dfb8cca715b455f5e2af.dir
+      size: 2412553
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: b78eeda407fd0939fa7b82c716a4b601.dir
-      size: 1329264
+      md5: e35ea8e6faedbfebdb0717be9ea52cd3.dir
+      size: 1336600
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: 77da76050efef082fdc8d3e26434d913.dir
-      size: 866976
+      md5: cfba4b010e65291b41b61feae3ceac5c.dir
+      size: 874340
       nfiles: 5
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 6dc29af0d58c726ad5845809228a3856.dir
-      size: 53675792
+      md5: e3e5f052f5b790f1eeb3c231f09ea157.dir
+      size: 53679460
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 1bf9f098118f388dee4b629dd9c4a377
+      md5: 11c01220bda090ea72a729d190c924cb
       size: 5166
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
