@@ -5,7 +5,7 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 0fe6c0412ddc5a3ae036a4b073fb8328
+      md5: 8cdedbc4ad2a8b2eb9d06d7ee0391b5b
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
@@ -15,7 +15,7 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 0fe6c0412ddc5a3ae036a4b073fb8328
+      md5: 8cdedbc4ad2a8b2eb9d06d7ee0391b5b
       size: 1171
     - path: paper/aasjournal.bst
       hash: md5
@@ -39,13 +39,13 @@ stages:
       size: 1096957
     - path: paper/results.tex
       hash: md5
-      md5: 01610e99158412e9f45c0e8b3b5069be
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
       size: 186
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: e1a8a5a56ac354623917729e11a0d121
-      size: 7994910
+      md5: f7741b2cd049b6309b5922cf325b235f
+      size: 7994580
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -206,8 +206,8 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 1917205fcd604cfa8f204937d0592741
-      size: 4386
+      md5: cda7cda9cf85fc71637534b39c0ba062
+      size: 4036
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
@@ -227,36 +227,36 @@ stages:
       size: 4036
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 5487cb4b7208dfb8cca715b455f5e2af.dir
-      size: 2412553
+      md5: de78c4a02a7f12bda011243dc06888e7.dir
+      size: 440322
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: e35ea8e6faedbfebdb0717be9ea52cd3.dir
-      size: 1336600
+      md5: 248dbe574fc3616f4c2821e6318eafe0.dir
+      size: 382748
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: cfba4b010e65291b41b61feae3ceac5c.dir
-      size: 874340
+      md5: 8f668c4cdf62acdd007ae1863be6ee53.dir
+      size: 374291
       nfiles: 5
     - path: logs/kowalski-n=6
       hash: md5
-      md5: e3e5f052f5b790f1eeb3c231f09ea157.dir
-      size: 53679460
+      md5: 02b659f407c6ad04825c0b1b005653e0.dir
+      size: 53653646
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 11c01220bda090ea72a729d190c924cb
-      size: 5166
+      md5: bd004a9bc3d62fb958e365cac5945263
+      size: 5165
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 48fe31fb492cb6f9d7a0fe495ecb691d
-      size: 282182
+      md5: 738d729eb0507f12ec14ec955fdba43f
+      size: 282181
     - path: paper/results.tex
       hash: md5
-      md5: 01610e99158412e9f45c0e8b3b5069be
+      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
       size: 186
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
@@ -304,13 +304,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: b46f509b3bd1979d156577f41306427b.dir
-      size: 275947
+      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
+      size: 278584
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
-      md5: b5dad3a14d31f2cbc0e72ae6900fe909
-      size: 4716
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
     - path: config/boom/config-template.yaml
       hash: md5
       md5: ec3ac9575b3cc1baee476a7ad0def08a
@@ -336,8 +336,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 5487cb4b7208dfb8cca715b455f5e2af.dir
-      size: 2412553
+      md5: de78c4a02a7f12bda011243dc06888e7.dir
+      size: 440322
       nfiles: 5
   benchmark-boom@3-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -361,13 +361,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: b46f509b3bd1979d156577f41306427b.dir
-      size: 275947
+      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
+      size: 278584
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
-      md5: b5dad3a14d31f2cbc0e72ae6900fe909
-      size: 4716
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
     - path: config/boom/config-template.yaml
       hash: md5
       md5: ec3ac9575b3cc1baee476a7ad0def08a
@@ -393,8 +393,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: e35ea8e6faedbfebdb0717be9ea52cd3.dir
-      size: 1336600
+      md5: 248dbe574fc3616f4c2821e6318eafe0.dir
+      size: 382748
       nfiles: 5
   benchmark-boom@3-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -418,13 +418,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: b46f509b3bd1979d156577f41306427b.dir
-      size: 275947
+      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
+      size: 278584
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
-      md5: b5dad3a14d31f2cbc0e72ae6900fe909
-      size: 4716
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
     - path: config/boom/config-template.yaml
       hash: md5
       md5: ec3ac9575b3cc1baee476a7ad0def08a
@@ -450,8 +450,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: cfba4b010e65291b41b61feae3ceac5c.dir
-      size: 874340
+      md5: 8f668c4cdf62acdd007ae1863be6ee53.dir
+      size: 374291
       nfiles: 5
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -463,8 +463,8 @@ stages:
       size: 14
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: 3b5844cc4b7a398aeda821d77a3e960b
-      size: 4041
+      md5: 361a4445fcc4460b24adcbc32e0f095b
+      size: 4082
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: a0297d7c2edf0436a91f6e9a326fb164
@@ -512,6 +512,6 @@ stages:
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: e3e5f052f5b790f1eeb3c231f09ea157.dir
-      size: 53679460
+      md5: 26dd09dae401c5e1ab4d418209714ecd.dir
+      size: 53655816
       nfiles: 5
