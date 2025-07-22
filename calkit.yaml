@@ -1,6 +1,20 @@
 name: boom-paper
 title: A real-time, multi-survey, optical alert system broker operating
   at scale
+dependencies:
+  - kind: env-var
+    name: LARGE_MACHINE_USER
+  - kind: env-var
+    name: SSH_KEY_PATH
+    default: ~/.ssh/id_ed25519
+  - kind: env-var
+    name: LARGE_MACHINE_HOST
+machines:
+  large:
+    host: $LARGE_MACHINE_HOST
+    user: $LARGE_MACHINE_USER
+    key: $SSH_KEY_PATH
+    wdir: ~/calkit/boom-paper
 environments:
   tex:
     kind: docker
