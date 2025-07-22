@@ -84,6 +84,7 @@ stages:
       n_workers:
         - 3
         - 6
+        - 7
         - 9
     desc: Automatically generated from the 'benchmark-kowalski' stage 
       in calkit.yaml. Changes made here will be overwritten.
@@ -107,6 +108,7 @@ stages:
       - logs/boom-na=3-nml=9-nf=1
       - logs/kowalski-n=3
       - logs/kowalski-n=6
+      - logs/kowalski-n=7
       - logs/kowalski-n=9
     outs:
       - paper/results.tex:

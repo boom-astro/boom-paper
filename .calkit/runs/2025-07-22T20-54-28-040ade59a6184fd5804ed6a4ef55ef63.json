@@ -1,0 +1,203 @@
+{
+  "id": "040ade59a6184fd5804ed6a4ef55ef63",
+  "system_id": "8e7a934d43d9279a20e2fd88dd3f30d297a95854",
+  "start_time": "2025-07-22T20:54:28.896285+00:00",
+  "end_time": "2025-07-22T20:54:34.289714+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-22T20:54:29.054000",
+      "end_time": "2025-07-22T20:54:29.629000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-22T20:54:29.629000",
+      "end_time": "2025-07-22T20:54:30.217000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-22T20:54:30.217000",
+      "end_time": "2025-07-22T20:54:30.729000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-22T20:54:30.729000",
+      "end_time": "2025-07-22T20:54:30.729000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-22T20:54:30.735000",
+      "end_time": "2025-07-22T20:54:30.735000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-22T20:54:30.743000",
+      "end_time": "2025-07-22T20:54:30.743000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@3": {
+      "start_time": "2025-07-22T20:54:30.750000",
+      "end_time": "2025-07-22T20:54:30.750000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-22T20:54:30.758000",
+      "end_time": "2025-07-22T20:54:30.758000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@7": {
+      "start_time": "2025-07-22T20:54:30.782000",
+      "end_time": "2025-07-22T20:54:30.782000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@9": {
+      "start_time": "2025-07-22T20:54:30.870000",
+      "end_time": "2025-07-22T20:54:30.870000",
+      "status": "skipped"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-22T20:54:30.875000",
+      "end_time": "2025-07-22T20:54:30.875000",
+      "status": "skipped"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-22T20:54:30.901000",
+      "end_time": "2025-07-22T20:54:33.536000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-22T20:54:33.536000",
+      "end_time": "2025-07-22T20:54:33.536000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "50bb487462321d4518a10b5e7356c2fe1c5a1c93",
+  "git_branch": "main",
+  "git_changed_files_before": [
+    ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "calkit.yaml",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb",
+    "paper/results.tex",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_before": [
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_before": [
+    ".calkit/runs/2025-07-22T20-02-33-e2e26b3256914f6eaf0813932e48aa51.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "calkit.yaml",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb",
+    "paper/results.tex",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_after": [
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/runs/2025-07-22T20-02-33-e2e26b3256914f6eaf0813932e48aa51.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@7": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=7": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=7": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=7/"
+      ],
+      "modified": [
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=7/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/kowalski-n=3/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=9/",
+      "logs/boom-na=3-nml=3-nf=1/"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=7/"
+      ],
+      "modified": [
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/kowalski-n=3/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=9/",
+      "logs/boom-na=3-nml=3-nf=1/"
+    ]
+  }
+}
