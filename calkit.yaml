@@ -92,6 +92,8 @@ pipeline:
       outputs:
         - path: paper/results.tex
           storage: git
+        - path: results
+          storage: git
     build-paper:
       kind: latex
       environment: tex

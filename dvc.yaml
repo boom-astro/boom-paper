@@ -108,6 +108,9 @@ stages:
       - paper/results.tex:
           cache: false
           persist: false
+      - results:
+          cache: false
+          persist: false
       - .calkit/notebooks/executed/notebooks/analyze-logs.ipynb:
           cache: false
       - .calkit/notebooks/html/notebooks/analyze-logs.html:

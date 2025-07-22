@@ -39,13 +39,13 @@ stages:
       size: 1096957
     - path: paper/results.tex
       hash: md5
-      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
-      size: 186
+      md5: 745ade2839bf29a0a18e13ea538b885a
+      size: 188
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: f7741b2cd049b6309b5922cf325b235f
-      size: 7994580
+      md5: 1a98c2320fed514a91adff8b6a39a645
+      size: 7994579
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -206,13 +206,13 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: cda7cda9cf85fc71637534b39c0ba062
-      size: 4036
+      md5: 103bfdde6cf5726387d616010b441935
+      size: 11517
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: cda7cda9cf85fc71637534b39c0ba062
-      size: 4036
+      md5: c47e3f962856b2800fb289973c27d3ce
+      size: 7244
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html 
       "notebooks/analyze-logs.ipynb"
@@ -223,8 +223,8 @@ stages:
       size: 2109
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: cda7cda9cf85fc71637534b39c0ba062
-      size: 4036
+      md5: c47e3f962856b2800fb289973c27d3ce
+      size: 7244
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
       md5: de78c4a02a7f12bda011243dc06888e7.dir
@@ -242,22 +242,27 @@ stages:
       nfiles: 5
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 02b659f407c6ad04825c0b1b005653e0.dir
-      size: 53653646
+      md5: 26dd09dae401c5e1ab4d418209714ecd.dir
+      size: 53655816
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: bd004a9bc3d62fb958e365cac5945263
-      size: 5165
+      md5: b0e8b6b80fabc8bcc4af8bf8988796c9
+      size: 12293
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 738d729eb0507f12ec14ec955fdba43f
-      size: 282181
+      md5: ccbdc22162e86b31b5606f644d2aa042
+      size: 298431
     - path: paper/results.tex
       hash: md5
-      md5: 9ff462c9a22dc17cd59d5dc7e88ec62b
-      size: 186
+      md5: 745ade2839bf29a0a18e13ea538b885a
+      size: 188
+    - path: results
+      hash: md5
+      md5: a4bcecab1642c9a7f850238e9b46ed74.dir
+      size: 399
+      nfiles: 2
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
     deps:
