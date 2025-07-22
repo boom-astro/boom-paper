@@ -1,6 +1,6 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker operating
-  at scale
+title: A real-time, multi-survey, optical alert system broker 
+  operating at scale
 environments:
   tex:
     kind: docker
@@ -76,7 +76,7 @@ pipeline:
         - data/kowalski.NED.json.gz
       iterate_over:
         - arg_name: n_workers
-          values: [6]
+          values: [3, 6, 9]
       outputs:
         - logs/kowalski-n={n_workers}
     analyze-logs:
@@ -128,14 +128,15 @@ metrics:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from Kowalski.
+    description: Alerts from the NED archival catalog exported from 
+      Kowalski.
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker operating
-      at scale
+    title: A real-time, multi-survey, optical alert system broker 
+      operating at scale
     description:
     kind: journal-article
     stage: build-paper
@@ -154,11 +155,12 @@ publications:
         - figures/workflow.pdf
       push_paths:
         - results.tex
-      last_sync_commit: 96ee8df1dad20ef70f8cdcf33d01c8c51de23b46
+      last_sync_commit: 045bac5a425351f195bbd2cb776ce6ea630afa23
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski benchmarks.
+    description: Analyze the logs from the BOOM and Kowalski 
+      benchmarks.
 references:
   - path: paper/references.bib
 showcase:

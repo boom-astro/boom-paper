@@ -7665,7 +7665,7 @@ a.anchor-link {
     <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n_alert_workers"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
     <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n_ml_workers"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
     <span class="o">&amp;</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n_filter_workers"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"wall_time_s"</span><span class="p">)</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">kowalski_wall_time</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_kowalski</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"n_workers"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span>
     <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"wall_time_s"</span><span class="p">))</span>
@@ -7694,9 +7694,13 @@ Analyzing config: na=3-nml=6-nf=1
 BOOM wall time: 0.93 minutes
 Analyzing config: na=3-nml=9-nf=1
 BOOM wall time: 0.76 minutes
+Analyzing Kowalski config: n=3
+Kowalski wall time: 8.45 minutes
 Analyzing Kowalski config: n=6
 Kowalski wall time: 6.75 minutes
-BOOM throughput factor: 135.0
+Analyzing Kowalski config: n=9
+Kowalski wall time: 5.00 minutes
+BOOM throughput factor: 4.7
 shape: (3, 6)
 ┌─────────────────┬──────────────┬─────────────────┬────────────────┬────────────────┬─────────────┐
 │ n_alert_workers ┆ n_ml_workers ┆ n_filter_worker ┆ start_time     ┆ end_time       ┆ wall_time_s │
@@ -7714,13 +7718,15 @@ shape: (3, 6)
 │                 ┆              ┆                 ┆ 15:00.460241   ┆ 15:45.998778   ┆             │
 │                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
 └─────────────────┴──────────────┴─────────────────┴────────────────┴────────────────┴─────────────┘
-shape: (1, 4)
+shape: (3, 4)
 ┌───────────┬─────────────────────┬─────────────────────┬─────────────┐
 │ n_workers ┆ start_time          ┆ end_time            ┆ wall_time_s │
 │ ---       ┆ ---                 ┆ ---                 ┆ ---         │
 │ i64       ┆ datetime[μs]        ┆ datetime[μs]        ┆ i64         │
 ╞═══════════╪═════════════════════╪═════════════════════╪═════════════╡
+│ 3         ┆ 2025-07-22 19:51:41 ┆ 2025-07-22 20:00:08 ┆ 507         │
 │ 6         ┆ 2025-07-22 18:20:51 ┆ 2025-07-22 18:27:36 ┆ 405         │
+│ 9         ┆ 2025-07-22 19:42:03 ┆ 2025-07-22 19:47:03 ┆ 300         │
 └───────────┴─────────────────────┴─────────────────────┴─────────────┘
 </pre>
 </div>
