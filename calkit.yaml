@@ -15,6 +15,26 @@ machines:
     user: $LARGE_MACHINE_USER
     key: $SSH_KEY_PATH
     wdir: ~/calkit/boom-paper
+    # Sync method: scp, rsync, repo, repo-branch
+    # This defines how we get files back and forth to/from this machine, if
+    # we're running on it from some other machine
+    sync:
+      method: scp
+      send_paths:
+        - "./*"
+      get_paths:
+        - logs
+        - .calkit/systems
+        - .calkit/runs
+        - .calkit/logs
+        - .calkit/env-locks
+      ignore_paths:
+        - .venv
+        - .venv2
+        - .venv3
+        - .git
+        - .calkit
+        - logs
 environments:
   tex:
     kind: docker
