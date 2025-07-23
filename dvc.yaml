@@ -82,7 +82,10 @@ stages:
       - logs/kowalski-n=${item.n_workers}
     matrix:
       n_workers:
+        - 3
         - 6
+        - 7
+        - 9
     desc: Automatically generated from the 'benchmark-kowalski' stage 
       in calkit.yaml. Changes made here will be overwritten.
   _clean-nb-analyze-logs:
@@ -103,9 +106,15 @@ stages:
       - logs/boom-na=3-nml=3-nf=1
       - logs/boom-na=3-nml=6-nf=1
       - logs/boom-na=3-nml=9-nf=1
+      - logs/kowalski-n=3
       - logs/kowalski-n=6
+      - logs/kowalski-n=7
+      - logs/kowalski-n=9
     outs:
       - paper/results.tex:
+          cache: false
+          persist: false
+      - results:
           cache: false
           persist: false
       - .calkit/notebooks/executed/notebooks/analyze-logs.ipynb:

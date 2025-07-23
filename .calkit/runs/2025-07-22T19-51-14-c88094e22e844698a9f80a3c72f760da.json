@@ -1,0 +1,227 @@
+{
+  "id": "c88094e22e844698a9f80a3c72f760da",
+  "system_id": "f49596f44c53beb2b1e6edcc7b3bcd70643b10f5",
+  "start_time": "2025-07-22T19:51:14.979263+00:00",
+  "end_time": "2025-07-22T20:00:19.159701+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-22T19:51:15.148000",
+      "end_time": "2025-07-22T19:51:15.704000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-22T19:51:15.704000",
+      "end_time": "2025-07-22T19:51:16.253000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-22T19:51:16.253000",
+      "end_time": "2025-07-22T19:51:16.764000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-22T19:51:16.764000",
+      "end_time": "2025-07-22T19:51:16.764000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-22T19:51:16.770000",
+      "end_time": "2025-07-22T19:51:16.770000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-22T19:51:16.777000",
+      "end_time": "2025-07-22T19:51:16.777000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@3": {
+      "start_time": "2025-07-22T19:51:16.804000",
+      "end_time": "2025-07-22T20:00:13.090000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-22T20:00:13.090000",
+      "end_time": "2025-07-22T20:00:13.090000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@9": {
+      "start_time": "2025-07-22T20:00:13.126000",
+      "end_time": "2025-07-22T20:00:13.126000",
+      "status": "skipped"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-22T20:00:13.223000",
+      "end_time": "2025-07-22T20:00:15.143000",
+      "status": "completed"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-22T20:00:15.143000",
+      "end_time": "2025-07-22T20:00:18.401000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-22T20:00:18.401000",
+      "end_time": "2025-07-22T20:00:18.401000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "2c59ac6568895511ea7b6bfa5bfc131da34d5b97",
+  "git_branch": "main",
+  "git_changed_files_before": [
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_before": [
+    "calkit.yaml",
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_before": [
+    ".calkit/runs/2025-07-22T19-33-38-89f9581251ec449788ee4553f2632828.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb",
+    "paper/results.tex",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_after": [
+    "calkit.yaml",
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/runs/2025-07-22T19-33-38-89f9581251ec449788ee4553f2632828.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=3": "not in cache"
+        }
+      }
+    ],
+    "benchmark-kowalski@9": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=9": "modified"
+        }
+      }
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=3": "modified",
+          "logs/kowalski-n=9": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [
+      "logs/kowalski-n=3/"
+    ],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=9/",
+        "logs/kowalski-n=3/"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=9/",
+        "logs/kowalski-n=3/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "logs/kowalski-n=6/",
+      "data/kowalski.NED.json.gz",
+      "paper/main.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.pdf"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=3": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=3": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=9/",
+        "logs/kowalski-n=3/"
+      ],
+      "modified": [
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=3/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.key",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "logs/kowalski-n=6/",
+      "data/kowalski.NED.json.gz",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "paper/figures/workflow.pdf"
+    ]
+  }
+}

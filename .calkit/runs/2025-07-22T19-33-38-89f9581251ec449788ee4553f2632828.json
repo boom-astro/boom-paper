@@ -1,0 +1,235 @@
+{
+  "id": "89f9581251ec449788ee4553f2632828",
+  "system_id": "f49596f44c53beb2b1e6edcc7b3bcd70643b10f5",
+  "start_time": "2025-07-22T19:33:38.268062+00:00",
+  "end_time": "2025-07-22T19:47:12.801857+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-22T19:33:38.557000",
+      "end_time": "2025-07-22T19:33:39.084000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-22T19:33:39.084000",
+      "end_time": "2025-07-22T19:33:39.606000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-22T19:33:39.606000",
+      "end_time": "2025-07-22T19:33:40.098000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-22T19:33:40.098000",
+      "end_time": "2025-07-22T19:33:40.098000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-22T19:33:40.105000",
+      "end_time": "2025-07-22T19:33:40.105000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-22T19:33:40.112000",
+      "end_time": "2025-07-22T19:33:40.112000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@3": {
+      "start_time": "2025-07-22T19:33:40.132000",
+      "end_time": "2025-07-22T19:41:38.047000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-22T19:41:38.047000",
+      "end_time": "2025-07-22T19:41:38.047000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@9": {
+      "start_time": "2025-07-22T19:41:38.072000",
+      "end_time": "2025-07-22T19:47:07.429000",
+      "status": "completed"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-22T19:47:07.429000",
+      "end_time": "2025-07-22T19:47:09.051000",
+      "status": "completed"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-22T19:47:09.051000",
+      "end_time": "2025-07-22T19:47:11.973000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-22T19:47:11.973000",
+      "end_time": "2025-07-22T19:47:11.973000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "2c59ac6568895511ea7b6bfa5bfc131da34d5b97",
+  "git_branch": "main",
+  "git_changed_files_before": [
+    "calkit.yaml",
+    "dvc.yaml"
+  ],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [],
+  "git_changed_files_after": [
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "dvc.yaml",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_after": [
+    "calkit.yaml",
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_after": [],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-import-ned.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=3": "deleted"
+        }
+      }
+    ],
+    "benchmark-kowalski@9": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-import-ned.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=9": "deleted"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=3": "deleted",
+          "logs/kowalski-n=9": "deleted"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "paper/main.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.pdf",
+      "paper/figures/workflow.key"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=3": "not in cache"
+        }
+      }
+    ],
+    "benchmark-kowalski@9": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=9": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=3": "modified",
+          "logs/kowalski-n=9": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [
+      "logs/kowalski-n=3/"
+    ],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=9/",
+        "logs/kowalski-n=3/"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=3/",
+        "logs/kowalski-n=9/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "paper/main.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "paper/figures/workflow.pdf",
+      "paper/figures/workflow.key"
+    ]
+  }
+}

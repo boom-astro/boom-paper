@@ -1,0 +1,183 @@
+{
+  "id": "e8afb28c1564419eb3dae1592ae4350d",
+  "system_id": "f49596f44c53beb2b1e6edcc7b3bcd70643b10f5",
+  "start_time": "2025-07-22T19:32:09.119963+00:00",
+  "end_time": "2025-07-22T19:32:19.395343+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-22T19:32:09.300000",
+      "end_time": "2025-07-22T19:32:12.224000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-22T19:32:12.224000",
+      "end_time": "2025-07-22T19:32:12.779000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-22T19:32:12.779000",
+      "end_time": "2025-07-22T19:32:13.302000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-22T19:32:13.302000",
+      "end_time": "2025-07-22T19:32:13.302000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-22T19:32:13.316000",
+      "end_time": "2025-07-22T19:32:13.316000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-22T19:32:13.327000",
+      "end_time": "2025-07-22T19:32:13.327000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-22T19:32:13.355000",
+      "end_time": "2025-07-22T19:32:13.355000",
+      "status": "skipped"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-22T19:32:13.433000",
+      "end_time": "2025-07-22T19:32:14.375000",
+      "status": "completed"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-22T19:32:14.375000",
+      "end_time": "2025-07-22T19:32:17.040000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-22T19:32:17.040000"
+    }
+  },
+  "git_rev": "5d1f2d9b74afc4a0d77362d0745ba58884b40e6e",
+  "git_branch": "main",
+  "git_changed_files_before": [
+    "calkit.yaml",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb"
+  ],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    "results/boom.csv",
+    "results/kowalski.csv"
+  ],
+  "git_changed_files_after": [
+    ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "calkit.yaml",
+    "dvc.yaml",
+    "notebooks/analyze-logs.ipynb",
+    "paper/results.tex"
+  ],
+  "git_staged_files_after": [
+    "dvc.lock"
+  ],
+  "git_untracked_files_after": [
+    "results/boom.csv",
+    "results/kowalski.csv"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@6": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=6": "modified"
+        }
+      }
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=6": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "results": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=6/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "data/kowalski.NED.json.gz",
+      "paper/figures/workflow.key",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "paper/figures/workflow.pdf",
+      "paper/main.pdf"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "modified": [
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "data/kowalski.NED.json.gz",
+      "paper/figures/workflow.key",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "logs/kowalski-n=6/",
+      "paper/figures/workflow.pdf"
+    ]
+  }
+}
