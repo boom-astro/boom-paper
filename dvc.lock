@@ -5,7 +5,7 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 8cdedbc4ad2a8b2eb9d06d7ee0391b5b
+      md5: 3eef375856c47663223bc46949a6d7db
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
@@ -324,8 +324,8 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
-      size: 278584
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
@@ -356,8 +356,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: de78c4a02a7f12bda011243dc06888e7.dir
-      size: 440322
+      md5: ed4832385b7ce4aab390889b715a9eca.dir
+      size: 513451
       nfiles: 5
   benchmark-boom@3-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -381,8 +381,8 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
-      size: 278584
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
@@ -413,8 +413,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: 248dbe574fc3616f4c2821e6318eafe0.dir
-      size: 382748
+      md5: 66da9c7f18aa27ffd870eb4bbdc089d5.dir
+      size: 451644
       nfiles: 5
   benchmark-boom@3-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -438,8 +438,8 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: 1445b67a27ff6a7eb7c3ea3653f718d3.dir
-      size: 278584
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
       nfiles: 39
     - path: config/boom/compose.yaml
       hash: md5
@@ -470,8 +470,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: 8f668c4cdf62acdd007ae1863be6ee53.dir
-      size: 374291
+      md5: 38671eca76e07d5e8fa4795d2b4a42b6.dir
+      size: 539765
       nfiles: 5
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -532,9 +532,9 @@ stages:
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 26dd09dae401c5e1ab4d418209714ecd.dir
-      size: 53655816
-      nfiles: 5
+      md5: e942b2983ae846ef9b74e6181afbe59c.dir
+      size: 53175610
+      nfiles: 3
   benchmark-kowalski@3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
       --n-workers=3
@@ -594,9 +594,9 @@ stages:
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: f7de16affcffdceba56ac9b5af60d12f.dir
-      size: 53823139
-      nfiles: 5
+      md5: f2c0c997b269cc658613ac03d2448323.dir
+      size: 53225212
+      nfiles: 3
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
       --n-workers=9
@@ -718,6 +718,519 @@ stages:
     outs:
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 3c2daea29f06e7a106a7122a4afd9f32.dir
-      size: 53595284
+      md5: 4dbd8008553e5f3f1376c8b2c624fced.dir
+      size: 53174209
+      nfiles: 3
+  benchmark-boom@1-3-1:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=3 --n-filter-workers=1
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=3-nf=1
+      hash: md5
+      md5: e1b68fec05119642bcf3707313036bae.dir
+      size: 1716597
+      nfiles: 5
+  benchmark-boom@1-3-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=3 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=3-nf=3
+      hash: md5
+      md5: b0f9b0d7c99bee546272b57ae7d80bd4.dir
+      size: 1763922
+      nfiles: 5
+  benchmark-boom@1-6-1:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=6 --n-filter-workers=1
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=6-nf=1
+      hash: md5
+      md5: c5ec510df137c2e0228510e725843221.dir
+      size: 1724420
+      nfiles: 5
+  benchmark-boom@1-6-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=6 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=6-nf=3
+      hash: md5
+      md5: 4f606196f82425d812cd42a3fc5b9dce.dir
+      size: 1761936
+      nfiles: 5
+  benchmark-boom@1-9-1:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=9 --n-filter-workers=1
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=9-nf=1
+      hash: md5
+      md5: 38fd62dfb5e52f717099e01e45417c1d.dir
+      size: 1800944
+      nfiles: 5
+  benchmark-boom@1-9-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=9 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=1-nml=9-nf=3
+      hash: md5
+      md5: 3b0d2a7378a4ad47f14319bd88a136c3.dir
+      size: 1776595
+      nfiles: 5
+  benchmark-boom@3-3-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=3 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=3-nml=3-nf=3
+      hash: md5
+      md5: f85d042b72ac6285cf6a391546745a41.dir
+      size: 550660
+      nfiles: 5
+  benchmark-boom@3-6-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=6 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=3-nml=6-nf=3
+      hash: md5
+      md5: b6d0b94b12b49fed8d67b7281d0db39a.dir
+      size: 540329
+      nfiles: 5
+  benchmark-boom@3-9-3:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=9 --n-filter-workers=3
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: Dockerfile-boom
+      hash: md5
+      md5: c3ae93706b5217df6b70af7a5a819bd2
+      size: 1150
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 46326e467856f42a9411c85f128dd5bd
+      size: 127525
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: c44142425c3c50ed0030a4d9002d8ae9
+      size: 1500
+    - path: boom/src
+      hash: md5
+      md5: 4757aeafc7ccb00861e8336860125d39.dir
+      size: 280806
+      nfiles: 39
+    - path: config/boom/compose.yaml
+      hash: md5
+      md5: 2e269f0a53d495d47340e20b460461ca
+      size: 4776
+    - path: config/boom/config-template.yaml
+      hash: md5
+      md5: ec3ac9575b3cc1baee476a7ad0def08a
+      size: 1965
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: scripts/benchmark-boom.py
+      hash: md5
+      md5: 103b6891331bcd55276033fe3cc36466
+      size: 1310
+    - path: scripts/benchmark-boom.sh
+      hash: md5
+      md5: 9289b72bbdb7b6f701b617dac996f930
+      size: 1436
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/boom-na=3-nml=9-nf=3
+      hash: md5
+      md5: d91bab32c6d66364f5fcbf9c80d4d2d0.dir
+      size: 535684
       nfiles: 5

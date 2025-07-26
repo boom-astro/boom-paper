@@ -1,6 +1,8 @@
 name: boom-paper
 title: A real-time, multi-survey, optical alert system broker
   operating at scale
+dependencies:
+  - git-lfs
 environments:
   tex:
     kind: docker
