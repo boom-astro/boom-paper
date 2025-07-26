@@ -47,7 +47,7 @@ pipeline:
         - data/kowalski.NED.json.gz
       iterate_over:
         - arg_name: n_alert_workers
-          values: [1, 3]
+          values: [1, 3, 6]
         - arg_name: n_ml_workers
           values: [3, 6, 9]
         - arg_name: n_filter_workers
