@@ -7688,36 +7688,76 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Analyzing config: na=3-nml=3-nf=1
-BOOM wall time: 1.46 minutes
+<pre>Analyzing config: na=1-nml=3-nf=1
+BOOM wall time: 3.39 minutes
+Analyzing config: na=1-nml=3-nf=3
+BOOM wall time: 3.41 minutes
+Analyzing config: na=1-nml=6-nf=1
+BOOM wall time: 3.35 minutes
+Analyzing config: na=1-nml=6-nf=3
+BOOM wall time: 3.40 minutes
+Analyzing config: na=1-nml=9-nf=1
+BOOM wall time: 3.33 minutes
+Analyzing config: na=1-nml=9-nf=3
+BOOM wall time: 3.36 minutes
+Analyzing config: na=3-nml=3-nf=1
+BOOM wall time: 1.26 minutes
+Analyzing config: na=3-nml=3-nf=3
+BOOM wall time: 1.26 minutes
 Analyzing config: na=3-nml=6-nf=1
-BOOM wall time: 0.93 minutes
+BOOM wall time: 0.98 minutes
+Analyzing config: na=3-nml=6-nf=3
+BOOM wall time: 1.17 minutes
 Analyzing config: na=3-nml=9-nf=1
-BOOM wall time: 0.76 minutes
+BOOM wall time: 1.17 minutes
+Analyzing config: na=3-nml=9-nf=3
+BOOM wall time: 1.17 minutes
 Analyzing Kowalski config: n=3
-Kowalski wall time: 8.45 minutes
+Kowalski wall time: 13.70 minutes
 Analyzing Kowalski config: n=6
-Kowalski wall time: 6.75 minutes
+Kowalski wall time: 7.60 minutes
 Analyzing Kowalski config: n=7
-Kowalski wall time: 6.02 minutes
+Kowalski wall time: 7.53 minutes
 Analyzing Kowalski config: n=9
 Kowalski wall time: 5.00 minutes
-BOOM throughput factor: 4.1
-shape: (3, 6)
+BOOM throughput factor: 6.0
+shape: (12, 6)
 ┌─────────────────┬──────────────┬─────────────────┬────────────────┬────────────────┬─────────────┐
 │ n_alert_workers ┆ n_ml_workers ┆ n_filter_worker ┆ start_time     ┆ end_time       ┆ wall_time_s │
 │ ---             ┆ ---          ┆ s               ┆ ---            ┆ ---            ┆ ---         │
 │ i64             ┆ i64          ┆ ---             ┆ datetime[μs,   ┆ datetime[μs,   ┆ i64         │
 │                 ┆              ┆ i64             ┆ UTC]           ┆ UTC]           ┆             │
 ╞═════════════════╪══════════════╪═════════════════╪════════════════╪════════════════╪═════════════╡
-│ 3               ┆ 3            ┆ 1               ┆ 2025-07-22 18: ┆ 2025-07-22 18: ┆ 87          │
-│                 ┆              ┆                 ┆ 11:46.278040   ┆ 13:13.996275   ┆             │
+│ 1               ┆ 3            ┆ 1               ┆ 2025-07-26 13: ┆ 2025-07-26 14: ┆ 203         │
+│                 ┆              ┆                 ┆ 57:58.582496   ┆ 01:22.206319   ┆             │
 │                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 3               ┆ 6            ┆ 1               ┆ 2025-07-22 18: ┆ 2025-07-22 18: ┆ 55          │
-│                 ┆              ┆                 ┆ 13:39.304012   ┆ 14:34.866897   ┆             │
+│ 1               ┆ 3            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 204         │
+│                 ┆              ┆                 ┆ 01:50.517109   ┆ 05:14.828588   ┆             │
 │                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 3               ┆ 9            ┆ 1               ┆ 2025-07-22 18: ┆ 2025-07-22 18: ┆ 45          │
-│                 ┆              ┆                 ┆ 15:00.460241   ┆ 15:45.998778   ┆             │
+│ 1               ┆ 6            ┆ 1               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 200         │
+│                 ┆              ┆                 ┆ 05:43.382253   ┆ 09:04.326004   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 1               ┆ 6            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 203         │
+│                 ┆              ┆                 ┆ 09:32.439424   ┆ 12:56.149828   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 1               ┆ 9            ┆ 1               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 200         │
+│                 ┆              ┆                 ┆ 13:25.298541   ┆ 16:45.386242   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ …               ┆ …            ┆ …               ┆ …              ┆ …              ┆ …           │
+│ 3               ┆ 3            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 75          │
+│                 ┆              ┆                 ┆ 22:45.697116   ┆ 24:01.382890   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 3               ┆ 6            ┆ 1               ┆ 2025-07-26 15: ┆ 2025-07-26 15: ┆ 58          │
+│                 ┆              ┆                 ┆ 54:31.038399   ┆ 55:29.638974   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 3               ┆ 6            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 69          │
+│                 ┆              ┆                 ┆ 26:07.006711   ┆ 27:16.928287   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 3               ┆ 9            ┆ 1               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 70          │
+│                 ┆              ┆                 ┆ 27:45.715454   ┆ 28:56.074401   ┆             │
+│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
+│ 3               ┆ 9            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 70          │
+│                 ┆              ┆                 ┆ 29:24.137897   ┆ 30:34.584486   ┆             │
 │                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
 └─────────────────┴──────────────┴─────────────────┴────────────────┴────────────────┴─────────────┘
 shape: (4, 4)
@@ -7726,9 +7766,9 @@ shape: (4, 4)
 │ ---       ┆ ---                 ┆ ---                 ┆ ---         │
 │ i64       ┆ datetime[μs]        ┆ datetime[μs]        ┆ i64         │
 ╞═══════════╪═════════════════════╪═════════════════════╪═════════════╡
-│ 3         ┆ 2025-07-22 19:51:41 ┆ 2025-07-22 20:00:08 ┆ 507         │
-│ 6         ┆ 2025-07-22 18:20:51 ┆ 2025-07-22 18:27:36 ┆ 405         │
-│ 7         ┆ 2025-07-22 20:03:00 ┆ 2025-07-22 20:09:01 ┆ 361         │
+│ 3         ┆ 2025-07-26 14:37:04 ┆ 2025-07-26 14:50:46 ┆ 822         │
+│ 6         ┆ 2025-07-26 14:51:18 ┆ 2025-07-26 14:58:54 ┆ 456         │
+│ 7         ┆ 2025-07-26 14:59:27 ┆ 2025-07-26 15:06:59 ┆ 452         │
 │ 9         ┆ 2025-07-22 19:42:03 ┆ 2025-07-22 19:47:03 ┆ 300         │
 └───────────┴─────────────────────┴─────────────────────┴─────────────┘
 </pre>
