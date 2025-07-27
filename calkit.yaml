@@ -78,7 +78,7 @@ pipeline:
         - data/kowalski.NED.json.gz
       iterate_over:
         - arg_name: n_workers
-          values: [3, 6, 7, 9]
+          values: [3, 6, 7, 9, 12, 15]
       outputs:
         - logs/kowalski-n={n_workers}
     analyze-logs:
