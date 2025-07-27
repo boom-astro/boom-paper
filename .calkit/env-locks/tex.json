@@ -3,23 +3,23 @@
         "texlive/texlive:latest-full"
     ],
     "RepoDigests": [
-        "texlive/texlive@sha256:f337358e79e747165d87760ace7f26b23c7f539a2acbd2ace7edb5be01612d2c"
+        "texlive/texlive@sha256:072c3939f5124e86e9be175250e585fa8fddea3cdf50577f51c5729371a8f107"
     ],
-    "Architecture": "amd64",
+    "Architecture": "arm64",
     "Os": "linux",
-    "Size": 5223080245,
+    "Size": 2467471264,
     "RootFS": {
         "Type": "layers",
         "Layers": [
-            "sha256:607439488d7a362b12df6b9e5d685ef34f0167c3c49485b1e1ae923913decf3c",
-            "sha256:6ef306aad2ba969f25e2f20fa7d47dcd74b9b59b0e63b593af573a47032235dc",
-            "sha256:efa68ea8421246e23deee1fed861cf0271d4f1f7127bedeb45c2115da98def13",
+            "sha256:d5743fc0c42cf985982538058490e47ca8ef78c029a62303e9ba5dba54afdd8c",
+            "sha256:9a7c6541a0ac27931ecc29facd7da839ab90913032e6a4b74a4f907a626c7724",
+            "sha256:f9c6399a6681b4acbc6d05bb1cd8cc902e33569c3381fdcb0896bce6f1681666",
             "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-            "sha256:76d71d5e66ac3b61eef3c06148dc8d91038ceb892edcab7dfbd2a50b5396b117",
-            "sha256:cf701d722cdb319fb5416cba2b8ab44baf9ef2309feffb435bb3691c786d4384",
-            "sha256:c7a794128da71ee9b1472f1b5459fcbb6e37b780563d4c724f6cc9942e357c44",
-            "sha256:710d6b9d8cda7d2a77dabdb6c75a7a13bac126d1581cad4ab6ce6f6a28f06e4b",
-            "sha256:675ccbce3d534756481cd3a6bde69dd5a9eefbb7cbe27b6ac112e1e989e8ee58"
+            "sha256:1e2a8a170db53b3a0c7209b1ae313c97f9dc25b558949def51474448d8becff2",
+            "sha256:5d26ff7b17764c139fe073c441ab3365bad49a7b3c7a331dfa7ede1c78261cb1",
+            "sha256:3e231486876a4819504183c162b6dbe9857f59492ddaa94a0f5fb269221a650a",
+            "sha256:589318afaa6e1e84fbf74f39f440ca79f591de328c70135bec335fc178ee81cf",
+            "sha256:015f78a7af6e5d4a7c2955b5084a725b1dba661fdae641a046e4065a8f54bdfa"
         ]
     },
     "DockerfileMD5": null,

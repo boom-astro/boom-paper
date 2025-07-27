@@ -7543,7 +7543,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/raid/home/pbachant/calkit/boom-paper
+<pre>/Users/pete/calkit/boom-paper
 </pre>
 </div>
 </div>
@@ -7596,6 +7596,9 @@ a.anchor-link {
     <span class="n">boom_scheduler_log_fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"logs/boom-</span><span class="si">{</span><span class="n">boom_config</span><span class="si">}</span><span class="s2">/scheduler.log"</span>
     <span class="c1"># To calculate BOOM wall time, take first timestamp from the consumer log</span>
     <span class="c1"># as the start and the last timestamp of the scheduler as the end</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">boom_consumer_log_fpath</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"WARNING: </span><span class="si">{</span><span class="n">boom_consumer_log_fpath</span><span class="si">}</span><span class="s2"> does not exist"</span><span class="p">)</span>
+        <span class="k">continue</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">boom_consumer_log_fpath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
         <span class="n">t1_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
@@ -7709,13 +7712,7 @@ BOOM wall time: 0.98 minutes
 Analyzing config: na=3-nml=6-nf=3
 BOOM wall time: 1.17 minutes
 Analyzing config: na=3-nml=9-nf=1
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>BOOM wall time: 1.17 minutes
+BOOM wall time: 1.17 minutes
 Analyzing config: na=3-nml=9-nf=3
 BOOM wall time: 1.17 minutes
 Analyzing config: na=6-nml=3-nf=1
@@ -7730,13 +7727,7 @@ Analyzing config: na=6-nml=9-nf=1
 BOOM wall time: 0.57 minutes
 Analyzing config: na=6-nml=9-nf=3
 BOOM wall time: 0.57 minutes
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Analyzing Kowalski config: n=3
+Analyzing Kowalski config: n=3
 Kowalski wall time: 13.70 minutes
 Analyzing Kowalski config: n=6
 Kowalski wall time: 7.60 minutes

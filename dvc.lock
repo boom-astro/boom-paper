@@ -5,7 +5,7 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 3eef375856c47663223bc46949a6d7db
+      md5: 5540fc5586e6f83b35422b7d1ddddae3
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
@@ -15,7 +15,7 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 3eef375856c47663223bc46949a6d7db
+      md5: 5540fc5586e6f83b35422b7d1ddddae3
       size: 1171
     - path: paper/aasjournal.bst
       hash: md5
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 442a24b9a0adf71d1e1460301f2d2d28
-      size: 7994582
+      md5: c73e993e34217a8775490653c68cb1e0
+      size: 7994729
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -206,13 +206,13 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: b31e565715dc12635152e0173c548822
-      size: 7268
+      md5: 3d32d900ea6da57dcb9da4cd93b90d6b
+      size: 16506
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: b31e565715dc12635152e0173c548822
-      size: 7268
+      md5: e4f881d7e42a8d01bf1bf545209b67cd
+      size: 7434
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html 
       "notebooks/analyze-logs.ipynb"
@@ -223,8 +223,8 @@ stages:
       size: 2109
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: b31e565715dc12635152e0173c548822
-      size: 7268
+      md5: e4f881d7e42a8d01bf1bf545209b67cd
+      size: 7434
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
       md5: e1b68fec05119642bcf3707313036bae.dir
@@ -287,33 +287,33 @@ stages:
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=1
       hash: md5
-      md5: 8dfc8e24d97693a609b7b89d8292aa9d.dir
-      size: 950299
+      md5: 11e07025e10b3cae15c8aabcfc58434f.dir
+      size: 960407
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=3
       hash: md5
-      md5: 1fb93c3eed722f9d26d631458a034233.dir
-      size: 801016
+      md5: b62b3859ee3113e5fcc1967f1497ab0a.dir
+      size: 811208
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=1
       hash: md5
-      md5: 8f326aa67686f575f983a53d06d21c54.dir
-      size: 643217
+      md5: af74f8bc65b3a1ab63d2aacc3a4faf0b.dir
+      size: 653297
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=3
       hash: md5
-      md5: 261b4fbee6e708fe9a516d0acf28a18d.dir
-      size: 549991
+      md5: 62944bbfe2e8d373c14f5a083749c231.dir
+      size: 560239
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=1
       hash: md5
-      md5: 6ed7776602ae99ae99b4c0bc88f3b058.dir
-      size: 467734
+      md5: 889156918efc133a3afade0d7a83a55b.dir
+      size: 477870
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=3
       hash: md5
-      md5: 528084e353abeebbdb24560033c5c653.dir
-      size: 390918
+      md5: 671e4aecd60014d8b6502702abc0397f.dir
+      size: 401082
       nfiles: 5
     - path: logs/kowalski-n=3
       hash: md5
@@ -338,12 +338,12 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: dc435d641eb671b47241890fa3283b72
-      size: 17095
+      md5: dc2fc81050cf650b6f19b69a91320194
+      size: 17079
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 3f80380ae58b1244a8a99b5b4d266b17
-      size: 302920
+      md5: 382da44d3305a92f68779b016293fe92
+      size: 303098
     - path: paper/results.tex
       hash: md5
       md5: d19de228508c21689c3e8e8b07f5dc82
