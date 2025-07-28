@@ -731,8 +731,8 @@ stages:
     outs:
     - path: logs/kowalski-n=9
       hash: md5
-      md5: f1422c57c1f5142e13b4db8185684b65.dir
-      size: 54919664
+      md5: 46d51b480750c61073a05314ce4b46ed.dir
+      size: 53601171
       nfiles: 5
   benchmark-kowalski@7:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
