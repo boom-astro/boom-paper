@@ -596,8 +596,8 @@ stages:
       size: 938
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: ea773982e7408790df6c27f2b84b0113
-      size: 1387
+      md5: f6aad19c415c0278dc333bee317e2279
+      size: 1411
       isexec: true
     - path: scripts/mongo-import-ned.sh
       hash: md5
@@ -607,9 +607,9 @@ stages:
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: e942b2983ae846ef9b74e6181afbe59c.dir
-      size: 53175610
-      nfiles: 3
+      md5: c31f8d495862b93e347b43be703d64e2.dir
+      size: 56204841
+      nfiles: 5
   benchmark-kowalski@3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
       --n-workers=3
@@ -658,8 +658,8 @@ stages:
       size: 938
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: ea773982e7408790df6c27f2b84b0113
-      size: 1387
+      md5: f6aad19c415c0278dc333bee317e2279
+      size: 1411
       isexec: true
     - path: scripts/mongo-import-ned.sh
       hash: md5
@@ -669,9 +669,9 @@ stages:
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: f2c0c997b269cc658613ac03d2448323.dir
-      size: 53225212
-      nfiles: 3
+      md5: 160160dea2e33be34c3e59fd84b9cd29.dir
+      size: 55794388
+      nfiles: 5
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
       --n-workers=9
@@ -720,8 +720,8 @@ stages:
       size: 938
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: ea773982e7408790df6c27f2b84b0113
-      size: 1387
+      md5: f6aad19c415c0278dc333bee317e2279
+      size: 1411
       isexec: true
     - path: scripts/mongo-import-ned.sh
       hash: md5
@@ -731,8 +731,8 @@ stages:
     outs:
     - path: logs/kowalski-n=9
       hash: md5
-      md5: 51423d5adce6294dd7f540dce59069fa.dir
-      size: 53527654
+      md5: f1422c57c1f5142e13b4db8185684b65.dir
+      size: 54919664
       nfiles: 5
   benchmark-kowalski@7:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -782,8 +782,8 @@ stages:
       size: 938
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: ea773982e7408790df6c27f2b84b0113
-      size: 1387
+      md5: f6aad19c415c0278dc333bee317e2279
+      size: 1411
       isexec: true
     - path: scripts/mongo-import-ned.sh
       hash: md5
@@ -793,9 +793,9 @@ stages:
     outs:
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 4dbd8008553e5f3f1376c8b2c624fced.dir
-      size: 53174209
-      nfiles: 3
+      md5: 63558c93057dfb4a0c64683a1696822e.dir
+      size: 53620736
+      nfiles: 5
   benchmark-boom@1-3-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
       --n-alert-workers=1 --n-ml-workers=3 --n-filter-workers=1
@@ -1710,6 +1710,68 @@ stages:
     outs:
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 06be77100cf0ff4263433644bf162d24.dir
-      size: 53621091
+      md5: 189eb0bd558ee26cc7f7c5ae59831051.dir
+      size: 54466450
+      nfiles: 5
+  benchmark-kowalski@15:
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=15
+    deps:
+    - path: .calkit/env-locks/run.txt
+      hash: md5
+      md5: a5368ac627a916b79e0f013647a3268e
+      size: 14
+    - path: config/kowalski/compose.yaml
+      hash: md5
+      md5: 361a4445fcc4460b24adcbc32e0f095b
+      size: 4082
+    - path: config/kowalski/config-template.yaml
+      hash: md5
+      md5: a0297d7c2edf0436a91f6e9a326fb164
+      size: 23494
+    - path: config/kowalski/supervisord.conf
+      hash: md5
+      md5: 88e77d45ef9cc62ba3d000aeaa367d7d
+      size: 1321
+    - path: data/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    - path: kowalski/Makefile
+      hash: md5
+      md5: acd8ea2eccdc60f398008d3108ae25d8
+      size: 3728
+    - path: kowalski/ingester.Dockerfile
+      hash: md5
+      md5: 9e13312ab68b655f4d0907c8cd26b90d
+      size: 4637
+    - path: kowalski/kowalski
+      hash: md5
+      md5: 67a94df680d77e3d03cae4d82046f3cd.dir
+      size: 931133
+      nfiles: 81
+    - path: kowalski/requirements
+      hash: md5
+      md5: 0f387c5dafc67d32b61c497738556400.dir
+      size: 1306
+      nfiles: 5
+    - path: scripts/benchmark-kowalski.py
+      hash: md5
+      md5: a3ceea12244806f4d64e1bb2f79ec380
+      size: 938
+    - path: scripts/benchmark-kowalski.sh
+      hash: md5
+      md5: f6aad19c415c0278dc333bee317e2279
+      size: 1411
+      isexec: true
+    - path: scripts/mongo-import-ned.sh
+      hash: md5
+      md5: 36ef76e0f31f62adced566cf6362d418
+      size: 1255
+      isexec: true
+    outs:
+    - path: logs/kowalski-n=15
+      hash: md5
+      md5: 0011be9e07d646830410d704f970a74c.dir
+      size: 54007134
       nfiles: 5
