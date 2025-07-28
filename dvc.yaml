@@ -89,6 +89,8 @@ stages:
         - 6
         - 7
         - 9
+        - 12
+        - 15
     desc: Automatically generated from the 'benchmark-kowalski' stage 
       in calkit.yaml. Changes made here will be overwritten.
   _clean-nb-analyze-logs:
@@ -128,6 +130,8 @@ stages:
       - logs/kowalski-n=6
       - logs/kowalski-n=7
       - logs/kowalski-n=9
+      - logs/kowalski-n=12
+      - logs/kowalski-n=15
     outs:
       - paper/results.tex:
           cache: false
