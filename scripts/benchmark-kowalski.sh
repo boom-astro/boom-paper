@@ -28,13 +28,10 @@ done
 docker compose -f $COMPOSE_CONFIG stats ingester --format json \
     > logs/kowalski/ingester.stats.log &
 
-# Simply look for a word in the logs a certain number of times
-# This strangely seems to be a bit inexact, i.e., some runs get more tasks
-# run than others even with the dataset held constant
-INDICATOR="MLing"
-EXPECTED_ALERTS=29120
+# Wait until we see all alerts with classifications
+EXPECTED_ALERTS=29142
 echo "Waiting for all tasks to complete"
-while [ $(grep -c $INDICATOR logs/kowalski/dask_cluster.log) -lt $EXPECTED_ALERTS ]; do
+while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
