@@ -31,7 +31,7 @@ docker compose -f $COMPOSE_CONFIG stats ingester --format json \
 # Wait until we see all alerts with classifications
 EXPECTED_ALERTS=29142
 echo "Waiting for all tasks to complete"
-while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
