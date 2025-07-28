@@ -7591,7 +7591,6 @@ a.anchor-link {
         <span class="sa">f</span><span class="s2">"nml=</span><span class="si">{</span><span class="n">current_params</span><span class="p">[</span><span class="s1">'n_ml_workers'</span><span class="p">]</span><span class="si">}</span><span class="s2">-"</span>
         <span class="sa">f</span><span class="s2">"nf=</span><span class="si">{</span><span class="n">current_params</span><span class="p">[</span><span class="s1">'n_filter_workers'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Analyzing config: </span><span class="si">{</span><span class="n">boom_config</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">boom_consumer_log_fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"logs/boom-</span><span class="si">{</span><span class="n">boom_config</span><span class="si">}</span><span class="s2">/consumer.log"</span>
     <span class="n">boom_scheduler_log_fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"logs/boom-</span><span class="si">{</span><span class="n">boom_config</span><span class="si">}</span><span class="s2">/scheduler.log"</span>
     <span class="c1"># To calculate BOOM wall time, take first timestamp from the consumer log</span>
@@ -7613,7 +7612,6 @@ a.anchor-link {
     <span class="n">current_params</span><span class="p">[</span><span class="s2">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">t1_b</span>
     <span class="n">current_params</span><span class="p">[</span><span class="s2">"end_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2_b</span>
     <span class="n">boom_wall_time</span> <span class="o">=</span> <span class="n">t2_b</span> <span class="o">-</span> <span class="n">t1_b</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BOOM wall time: </span><span class="si">{</span><span class="n">boom_wall_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> minutes"</span><span class="p">)</span>
     <span class="n">results_boom</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_params</span><span class="p">)</span>
 
 <span class="n">df_boom</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_boom</span><span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
@@ -7630,9 +7628,12 @@ a.anchor-link {
 <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">param_vals</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="n">param_name</span><span class="p">:</span> <span class="n">val</span><span class="p">}</span>
     <span class="n">kowalski_config</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"n=</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Analyzing Kowalski config: </span><span class="si">{</span><span class="n">kowalski_config</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">log_fpath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"logs/kowalski-</span><span class="si">{</span><span class="n">kowalski_config</span><span class="si">}</span><span class="s2">/supervisord.log"</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">log_fpath</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"WARNING: </span><span class="si">{</span><span class="n">log_fpath</span><span class="si">}</span><span class="s2"> does not exist"</span><span class="p">)</span>
+        <span class="k">continue</span>
     <span class="c1"># To calculate Kowalski wall time, just use the supervisord logs</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"logs/kowalski-</span><span class="si">{</span><span class="n">kowalski_config</span><span class="si">}</span><span class="s2">/supervisord.log"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_fpath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
             <span class="k">if</span> <span class="s2">"alert-broker-ztf entered RUNNING state"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
@@ -7647,10 +7648,6 @@ a.anchor-link {
     <span class="n">res</span><span class="p">[</span><span class="s2">"start_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">t1_k</span>
     <span class="n">res</span><span class="p">[</span><span class="s2">"end_time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2_k</span>
     <span class="n">results_kowalski</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">"Kowalski wall time: </span><span class="si">{</span><span class="n">kowalski_wall_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> "</span>
-        <span class="s2">"minutes"</span>
-    <span class="p">)</span>
 
 <span class="n">df_kowalski</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_kowalski</span><span class="p">)</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
     <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"end_time"</span><span class="p">)</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">"start_time"</span><span class="p">))</span>
@@ -7677,8 +7674,6 @@ a.anchor-link {
 
 <span class="n">boom_throughput_factor</span> <span class="o">=</span> <span class="n">kowalski_wall_time</span> <span class="o">/</span> <span class="n">boom_wall_time</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BOOM throughput factor: </span><span class="si">{</span><span class="n">boom_throughput_factor</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_boom</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_kowalski</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7691,102 +7686,75 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Analyzing config: na=1-nml=3-nf=1
-BOOM wall time: 3.39 minutes
-Analyzing config: na=1-nml=3-nf=3
-BOOM wall time: 3.41 minutes
-Analyzing config: na=1-nml=6-nf=1
-BOOM wall time: 3.35 minutes
-Analyzing config: na=1-nml=6-nf=3
-BOOM wall time: 3.40 minutes
-Analyzing config: na=1-nml=9-nf=1
-BOOM wall time: 3.33 minutes
-Analyzing config: na=1-nml=9-nf=3
-BOOM wall time: 3.36 minutes
-Analyzing config: na=3-nml=3-nf=1
-BOOM wall time: 1.26 minutes
-Analyzing config: na=3-nml=3-nf=3
-BOOM wall time: 1.26 minutes
-Analyzing config: na=3-nml=6-nf=1
-BOOM wall time: 0.98 minutes
-Analyzing config: na=3-nml=6-nf=3
-BOOM wall time: 1.17 minutes
-Analyzing config: na=3-nml=9-nf=1
-BOOM wall time: 1.17 minutes
-Analyzing config: na=3-nml=9-nf=3
-BOOM wall time: 1.17 minutes
-Analyzing config: na=6-nml=3-nf=1
-BOOM wall time: 1.26 minutes
-Analyzing config: na=6-nml=3-nf=3
-BOOM wall time: 1.29 minutes
-Analyzing config: na=6-nml=6-nf=1
-BOOM wall time: 0.76 minutes
-Analyzing config: na=6-nml=6-nf=3
-BOOM wall time: 0.76 minutes
-Analyzing config: na=6-nml=9-nf=1
-BOOM wall time: 0.57 minutes
-Analyzing config: na=6-nml=9-nf=3
-BOOM wall time: 0.57 minutes
-Analyzing Kowalski config: n=3
-Kowalski wall time: 13.70 minutes
-Analyzing Kowalski config: n=6
-Kowalski wall time: 7.60 minutes
-Analyzing Kowalski config: n=7
-Kowalski wall time: 7.53 minutes
-Analyzing Kowalski config: n=9
-Kowalski wall time: 5.00 minutes
-BOOM throughput factor: 6.0
-shape: (18, 6)
-┌─────────────────┬──────────────┬─────────────────┬────────────────┬────────────────┬─────────────┐
-│ n_alert_workers ┆ n_ml_workers ┆ n_filter_worker ┆ start_time     ┆ end_time       ┆ wall_time_s │
-│ ---             ┆ ---          ┆ s               ┆ ---            ┆ ---            ┆ ---         │
-│ i64             ┆ i64          ┆ ---             ┆ datetime[μs,   ┆ datetime[μs,   ┆ i64         │
-│                 ┆              ┆ i64             ┆ UTC]           ┆ UTC]           ┆             │
-╞═════════════════╪══════════════╪═════════════════╪════════════════╪════════════════╪═════════════╡
-│ 1               ┆ 3            ┆ 1               ┆ 2025-07-26 13: ┆ 2025-07-26 14: ┆ 203         │
-│                 ┆              ┆                 ┆ 57:58.582496   ┆ 01:22.206319   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 1               ┆ 3            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 204         │
-│                 ┆              ┆                 ┆ 01:50.517109   ┆ 05:14.828588   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 1               ┆ 6            ┆ 1               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 200         │
-│                 ┆              ┆                 ┆ 05:43.382253   ┆ 09:04.326004   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 1               ┆ 6            ┆ 3               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 203         │
-│                 ┆              ┆                 ┆ 09:32.439424   ┆ 12:56.149828   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 1               ┆ 9            ┆ 1               ┆ 2025-07-26 14: ┆ 2025-07-26 14: ┆ 200         │
-│                 ┆              ┆                 ┆ 13:25.298541   ┆ 16:45.386242   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ …               ┆ …            ┆ …               ┆ …              ┆ …              ┆ …           │
-│ 6               ┆ 3            ┆ 3               ┆ 2025-07-27 15: ┆ 2025-07-27 15: ┆ 77          │
-│                 ┆              ┆                 ┆ 36:38.287178   ┆ 37:55.580432   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 6               ┆ 6            ┆ 1               ┆ 2025-07-27 15: ┆ 2025-07-27 15: ┆ 45          │
-│                 ┆              ┆                 ┆ 38:23.841527   ┆ 39:09.432452   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 6               ┆ 6            ┆ 3               ┆ 2025-07-27 15: ┆ 2025-07-27 15: ┆ 45          │
-│                 ┆              ┆                 ┆ 39:37.877089   ┆ 40:23.529754   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 6               ┆ 9            ┆ 1               ┆ 2025-07-27 15: ┆ 2025-07-27 15: ┆ 34          │
-│                 ┆              ┆                 ┆ 40:52.256626   ┆ 41:26.735076   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-│ 6               ┆ 9            ┆ 3               ┆ 2025-07-27 15: ┆ 2025-07-27 15: ┆ 34          │
-│                 ┆              ┆                 ┆ 41:55.776808   ┆ 42:30.164219   ┆             │
-│                 ┆              ┆                 ┆ UTC            ┆ UTC            ┆             │
-└─────────────────┴──────────────┴─────────────────┴────────────────┴────────────────┴─────────────┘
-shape: (4, 4)
-┌───────────┬─────────────────────┬─────────────────────┬─────────────┐
-│ n_workers ┆ start_time          ┆ end_time            ┆ wall_time_s │
-│ ---       ┆ ---                 ┆ ---                 ┆ ---         │
-│ i64       ┆ datetime[μs]        ┆ datetime[μs]        ┆ i64         │
-╞═══════════╪═════════════════════╪═════════════════════╪═════════════╡
-│ 3         ┆ 2025-07-26 14:37:04 ┆ 2025-07-26 14:50:46 ┆ 822         │
-│ 6         ┆ 2025-07-26 14:51:18 ┆ 2025-07-26 14:58:54 ┆ 456         │
-│ 7         ┆ 2025-07-26 14:59:27 ┆ 2025-07-26 15:06:59 ┆ 452         │
-│ 9         ┆ 2025-07-22 19:42:03 ┆ 2025-07-22 19:47:03 ┆ 300         │
-└───────────┴─────────────────────┴─────────────────────┴─────────────┘
+<pre>BOOM throughput factor: 6.1
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e675cb1c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">set_tbl_rows</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">df_boom</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (18, 6)</small><table border="1" class="dataframe"><thead><tr><th>n_alert_workers</th><th>n_ml_workers</th><th>n_filter_workers</th><th>start_time</th><th>end_time</th><th>wall_time_s</th></tr><tr><td>i64</td><td>i64</td><td>i64</td><td>datetime[μs, UTC]</td><td>datetime[μs, UTC]</td><td>i64</td></tr></thead><tbody><tr><td>1</td><td>3</td><td>1</td><td>2025-07-26 13:57:58.582496 UTC</td><td>2025-07-26 14:01:22.206319 UTC</td><td>203</td></tr><tr><td>1</td><td>3</td><td>3</td><td>2025-07-26 14:01:50.517109 UTC</td><td>2025-07-26 14:05:14.828588 UTC</td><td>204</td></tr><tr><td>1</td><td>6</td><td>1</td><td>2025-07-26 14:05:43.382253 UTC</td><td>2025-07-26 14:09:04.326004 UTC</td><td>200</td></tr><tr><td>1</td><td>6</td><td>3</td><td>2025-07-26 14:09:32.439424 UTC</td><td>2025-07-26 14:12:56.149828 UTC</td><td>203</td></tr><tr><td>1</td><td>9</td><td>1</td><td>2025-07-26 14:13:25.298541 UTC</td><td>2025-07-26 14:16:45.386242 UTC</td><td>200</td></tr><tr><td>1</td><td>9</td><td>3</td><td>2025-07-26 14:17:12.892137 UTC</td><td>2025-07-26 14:20:34.701545 UTC</td><td>201</td></tr><tr><td>3</td><td>3</td><td>1</td><td>2025-07-26 14:21:02.639867 UTC</td><td>2025-07-26 14:22:17.955626 UTC</td><td>75</td></tr><tr><td>3</td><td>3</td><td>3</td><td>2025-07-26 14:22:45.697116 UTC</td><td>2025-07-26 14:24:01.382890 UTC</td><td>75</td></tr><tr><td>3</td><td>6</td><td>1</td><td>2025-07-26 15:54:31.038399 UTC</td><td>2025-07-26 15:55:29.638974 UTC</td><td>58</td></tr><tr><td>3</td><td>6</td><td>3</td><td>2025-07-26 14:26:07.006711 UTC</td><td>2025-07-26 14:27:16.928287 UTC</td><td>69</td></tr><tr><td>3</td><td>9</td><td>1</td><td>2025-07-26 14:27:45.715454 UTC</td><td>2025-07-26 14:28:56.074401 UTC</td><td>70</td></tr><tr><td>3</td><td>9</td><td>3</td><td>2025-07-26 14:29:24.137897 UTC</td><td>2025-07-26 14:30:34.584486 UTC</td><td>70</td></tr><tr><td>6</td><td>3</td><td>1</td><td>2025-07-27 15:34:54.077404 UTC</td><td>2025-07-27 15:36:09.669751 UTC</td><td>75</td></tr><tr><td>6</td><td>3</td><td>3</td><td>2025-07-27 15:36:38.287178 UTC</td><td>2025-07-27 15:37:55.580432 UTC</td><td>77</td></tr><tr><td>6</td><td>6</td><td>1</td><td>2025-07-27 15:38:23.841527 UTC</td><td>2025-07-27 15:39:09.432452 UTC</td><td>45</td></tr><tr><td>6</td><td>6</td><td>3</td><td>2025-07-27 15:39:37.877089 UTC</td><td>2025-07-27 15:40:23.529754 UTC</td><td>45</td></tr><tr><td>6</td><td>9</td><td>1</td><td>2025-07-27 15:40:52.256626 UTC</td><td>2025-07-27 15:41:26.735076 UTC</td><td>34</td></tr><tr><td>6</td><td>9</td><td>3</td><td>2025-07-27 15:41:55.776808 UTC</td><td>2025-07-27 15:42:30.164219 UTC</td><td>34</td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=969757c3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_kowalski</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6, 4)</small><table border="1" class="dataframe"><thead><tr><th>n_workers</th><th>start_time</th><th>end_time</th><th>wall_time_s</th></tr><tr><td>i64</td><td>datetime[μs]</td><td>datetime[μs]</td><td>i64</td></tr></thead><tbody><tr><td>3</td><td>2025-07-28 16:21:39</td><td>2025-07-28 16:35:36</td><td>837</td></tr><tr><td>6</td><td>2025-07-28 16:13:39</td><td>2025-07-28 16:21:08</td><td>449</td></tr><tr><td>7</td><td>2025-07-28 17:00:29</td><td>2025-07-28 17:08:05</td><td>456</td></tr><tr><td>9</td><td>2025-07-28 17:19:50</td><td>2025-07-28 17:27:30</td><td>460</td></tr><tr><td>12</td><td>2025-07-28 16:44:14</td><td>2025-07-28 16:51:53</td><td>459</td></tr><tr><td>15</td><td>2025-07-28 16:52:23</td><td>2025-07-28 17:00:01</td><td>458</td></tr></tbody></table></div>
 </div>
 </div>
 </div>
@@ -7796,7 +7764,7 @@ shape: (4, 4)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Put actual results here</span>
