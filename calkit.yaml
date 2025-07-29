@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
+title: A real-time, multi-survey, optical alert system broker
   operating at scale
 dependencies:
   - git-lfs
@@ -43,7 +43,7 @@ pipeline:
         - config/boom/config-template.yaml
         - config/boom/compose.yaml
         - Dockerfile-boom
-        - scripts/mongo-import-ned.sh
+        - scripts/mongo-init.sh
         - data/kowalski.NED.json.gz
       iterate_over:
         - arg_name: n_alert_workers
@@ -73,7 +73,7 @@ pipeline:
         - kowalski/kowalski
         - kowalski/Makefile
         - kowalski/requirements
-        - scripts/mongo-import-ned.sh
+        - scripts/mongo-init.sh
         - scripts/benchmark-kowalski.sh
         - data/kowalski.NED.json.gz
       iterate_over:
@@ -130,14 +130,14 @@ metrics:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -161,7 +161,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 references:
   - path: paper/references.bib

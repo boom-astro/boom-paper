@@ -35,7 +35,7 @@ services:
     mem_limit: 4GB
     volumes:
       - mongodb:/data/db
-  mongo-import-ned:
+  mongo-init:
     image: mongo:8.0
     depends_on:
       mongo:
@@ -43,14 +43,15 @@ services:
     networks:
       - kowalski
     volumes:
-      - ${PWD}/scripts/mongo-import-ned.sh:/mongo-import-ned.sh
+      - ${PWD}/scripts/mongo-init.sh:/mongo-init.sh
       - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/config/kowalski/cats150.kowalski.json:/cats150.kowalski.json
     environment:
       - DB_NAME=kowalski
       - DB_ADD_URI=&replicaSet=rs0
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
-    entrypoint: ["/bin/bash", "/mongo-import-ned.sh"]
+    entrypoint: ["/bin/bash", "/mongo-init.sh"]
   broker:
     image: apache/kafka:latest
     hostname: broker
@@ -116,7 +117,7 @@ services:
       - ${PWD}/config/kowalski/supervisord.conf:/kowalski/conf/supervisord_ingester.conf
     restart: always
     depends_on:
-      mongo-import-ned:
+      mongo-init:
         condition: service_completed_successfully
       producer:
         condition: service_completed_successfully

@@ -27,7 +27,7 @@ services:
       start_period: 20s
     volumes:
       - mongodb:/data/db
-  mongo-import-ned:
+  mongo-init:
     image: mongo:8.0
     depends_on:
       mongo:
@@ -35,14 +35,15 @@ services:
     networks:
       - boom
     volumes:
-      - ${PWD}/scripts/mongo-import-ned.sh:/mongo-import-ned.sh
+      - ${PWD}/scripts/mongo-init.sh:/mongo-init.sh
       - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/config/boom/cats150.boom.json:/cats150.boom.json
     environment:
       - DB_NAME=boom
       - DB_ADD_URI=
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
-    entrypoint: ["/bin/bash", "/mongo-import-ned.sh"]
+    entrypoint: ["/bin/bash", "/mongo-init.sh"]
   valkey:
     image: valkey/valkey:7.2.6
     environment:
@@ -133,7 +134,7 @@ services:
         condition: service_healthy
       valkey:
         condition: service_healthy
-      mongo-import-ned:
+      mongo-init:
         condition: service_completed_successfully
     volumes:
       # Need to use a separate config here to connect to services on localhost
@@ -157,7 +158,7 @@ services:
         condition: service_completed_successfully
       broker:
         condition: service_healthy
-      mongo-import-ned:
+      mongo-init:
         condition: service_completed_successfully
       valkey:
         condition: service_healthy

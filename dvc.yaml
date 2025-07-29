@@ -46,7 +46,7 @@ stages:
       - config/boom/config-template.yaml
       - config/boom/compose.yaml
       - Dockerfile-boom
-      - scripts/mongo-import-ned.sh
+      - scripts/mongo-init.sh
       - data/kowalski.NED.json.gz
       - .calkit/env-locks/run.txt
     outs:
@@ -77,7 +77,7 @@ stages:
       - kowalski/kowalski
       - kowalski/Makefile
       - kowalski/requirements
-      - scripts/mongo-import-ned.sh
+      - scripts/mongo-init.sh
       - scripts/benchmark-kowalski.sh
       - data/kowalski.NED.json.gz
       - .calkit/env-locks/run.txt
