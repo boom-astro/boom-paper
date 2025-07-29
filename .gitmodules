@@ -3,4 +3,4 @@
 	url = https://github.com/boom-astro/boom.git
 [submodule "kowalski"]
 	path = kowalski
-	url = https://github.com/skyportal/kowalski.git
+	url = https://github.com/petebachant/kowalski.git
