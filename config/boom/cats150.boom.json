@@ -1,9 +1,10 @@
 {
-  "filter_id": "something",
+  "filter_id": 1,
   "active": true,
   "catalog": "ZTF_alerts",
   "permissions": [1, 2, 3],
   "group_id": 41,
+  "active_fid": "first",
   "fv": [
     {
       "fid": "first",

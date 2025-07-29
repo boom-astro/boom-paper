@@ -1,12 +1,13 @@
 {
   "filter_id": 1,
-  "group_id": 1,
+  "group_id": 41,
   "catalog": "ZTF_alerts",
   "permissions": [1, 2, 3],
   "active": true,
   "autosave": false,
   "auto_followup": {},
   "update_annotations": false,
+  "active_fid": "first",
   "fv": [
     {
       "fid": "first",

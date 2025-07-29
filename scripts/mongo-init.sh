@@ -28,14 +28,9 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
     --eval "db.NED.createIndex({ 'coordinates.radec_geojson': '2dsphere' })"
 
 # Insert a cats150 filter into filters collection
-FILTERS_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('filters')")
-if [ "$FILTERS_COLLECTION_EXISTS" = "false" ]; then
-    echo "Inserting cats150 filter into filters collection"
-    mongoimport \
-        "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin$DB_ADD_URI" \
-        --collection filters \
-        --file /cats150.$DB_NAME.json \
-        --drop
-else
-    echo "Filters collection already exists; skipping insertion of cats150 filter"
-fi
+echo "Inserting cats150 filter into filters collection"
+mongoimport \
+    "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin$DB_ADD_URI" \
+    --collection filters \
+    --file /cats150.$DB_NAME.json \
+    --drop
