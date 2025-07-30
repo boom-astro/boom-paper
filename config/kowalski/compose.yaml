@@ -45,7 +45,7 @@ services:
     volumes:
       - ${PWD}/scripts/mongo-init.sh:/mongo-init.sh
       - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
-      - ${PWD}/config/kowalski/cats150.kowalski.json:/cats150.kowalski.json
+      - ${PWD}/config/kowalski/cats150.json:/cats150.json
     environment:
       - DB_NAME=kowalski
       - DB_ADD_URI=&replicaSet=rs0
