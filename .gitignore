@@ -24,3 +24,5 @@ logs/kowalski
 *.pdf
 *.synctex.gz
 *.tdo
+
+config/*/cats150.json

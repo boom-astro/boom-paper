@@ -1,6 +1,7 @@
 """Script to benchmark BOOM."""
 
 import argparse
+import json
 import os
 import subprocess
 
@@ -34,6 +35,30 @@ config["workers"]["ZTF"]["ml"]["n_workers"] = args.n_ml_workers
 config["workers"]["ZTF"]["filter"]["n_workers"] = args.n_filter_workers
 with open("config/boom/config.yaml", "w") as f:
     yaml.safe_dump(config, f, default_flow_style=False)
+
+# Reformat filter for insertion into database
+with open("config/boom/cats150.boom.json", "r") as f:
+    cats150 = json.load(f)
+for_insert = {
+    "filter_id": 1,
+    "group_id": 41,
+    "catalog": "ZTF_alerts",
+    "permissions": [1, 2, 3],
+    "active": True,
+    "autosave": False,
+    "auto_followup": {},
+    "update_annotations": False,
+    "active_fid": "first",
+    "fv": [
+        {
+            "fid": "first",
+            "created_at": "2021-01-01T00:00:00",
+            "pipeline": json.dumps(cats150),
+        }
+    ],
+}
+with open("config/boom/cats150.json", "w") as f:
+    json.dump(for_insert, f)
 
 logs_dir = os.path.join(
     "logs",
