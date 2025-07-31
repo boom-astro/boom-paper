@@ -1,0 +1,802 @@
+{
+  "id": "bd73015940d84ba58d0dafa660743304",
+  "system_id": "dd9d03ea0933c2e65da7a2cf477cca0ca9e21e6b",
+  "start_time": "2025-07-31T02:14:20.373519+00:00",
+  "end_time": "2025-07-31T03:43:29.205088+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-07-31T02:14:20.686000",
+      "end_time": "2025-07-31T02:14:22.937000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-07-31T02:14:22.937000",
+      "end_time": "2025-07-31T02:14:26.316000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-07-31T02:14:26.316000",
+      "end_time": "2025-07-31T02:14:27.686000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-3-1": {
+      "start_time": "2025-07-31T02:14:27.686000",
+      "end_time": "2025-07-31T02:18:21.850000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-3-3": {
+      "start_time": "2025-07-31T02:18:21.850000",
+      "end_time": "2025-07-31T02:22:17.979000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-6-1": {
+      "start_time": "2025-07-31T02:22:17.979000",
+      "end_time": "2025-07-31T02:26:12.533000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-6-3": {
+      "start_time": "2025-07-31T02:26:12.533000",
+      "end_time": "2025-07-31T02:30:09.583000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-9-1": {
+      "start_time": "2025-07-31T02:30:09.583000",
+      "end_time": "2025-07-31T02:34:02.624000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-9-3": {
+      "start_time": "2025-07-31T02:34:02.624000",
+      "end_time": "2025-07-31T02:37:51.919000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-07-31T02:37:51.919000",
+      "end_time": "2025-07-31T02:39:36.803000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-3-3": {
+      "start_time": "2025-07-31T02:39:36.803000",
+      "end_time": "2025-07-31T02:41:22.688000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-07-31T02:41:22.688000",
+      "end_time": "2025-07-31T02:43:00.807000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-6-3": {
+      "start_time": "2025-07-31T02:43:00.807000",
+      "end_time": "2025-07-31T02:44:36.871000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-07-31T02:44:36.871000",
+      "end_time": "2025-07-31T02:46:13.825000",
+      "status": "completed"
+    },
+    "benchmark-boom@3-9-3": {
+      "start_time": "2025-07-31T02:46:13.825000",
+      "end_time": "2025-07-31T02:47:55.042000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-3-1": {
+      "start_time": "2025-07-31T02:47:55.042000",
+      "end_time": "2025-07-31T02:49:40.466000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-3-3": {
+      "start_time": "2025-07-31T02:49:40.466000",
+      "end_time": "2025-07-31T02:51:24.047000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-6-1": {
+      "start_time": "2025-07-31T02:51:24.047000",
+      "end_time": "2025-07-31T02:52:39.388000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-6-3": {
+      "start_time": "2025-07-31T02:52:39.388000",
+      "end_time": "2025-07-31T02:53:54.784000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-9-1": {
+      "start_time": "2025-07-31T02:53:54.784000",
+      "end_time": "2025-07-31T02:54:59.497000",
+      "status": "completed"
+    },
+    "benchmark-boom@6-9-3": {
+      "start_time": "2025-07-31T02:54:59.497000",
+      "end_time": "2025-07-31T02:56:05.906000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@3": {
+      "start_time": "2025-07-31T02:56:05.906000",
+      "end_time": "2025-07-31T03:10:13.235000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-07-31T03:10:13.235000",
+      "end_time": "2025-07-31T03:10:13.235000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@7": {
+      "start_time": "2025-07-31T03:10:13.702000",
+      "end_time": "2025-07-31T03:18:28.702000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@9": {
+      "start_time": "2025-07-31T03:18:28.702000",
+      "end_time": "2025-07-31T03:26:42.391000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@12": {
+      "start_time": "2025-07-31T03:26:42.391000",
+      "end_time": "2025-07-31T03:34:50.762000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@15": {
+      "start_time": "2025-07-31T03:34:50.762000",
+      "end_time": "2025-07-31T03:43:03.221000",
+      "status": "completed"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-07-31T03:43:03.221000",
+      "end_time": "2025-07-31T03:43:03.221000",
+      "status": "skipped"
+    },
+    "analyze-logs": {
+      "start_time": "2025-07-31T03:43:03.483000",
+      "end_time": "2025-07-31T03:43:20.015000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-07-31T03:43:20.015000"
+    }
+  },
+  "git_rev": "8e819167ac86902ffd0ba220369c50311fc0f03e",
+  "git_branch": "add-filters",
+  "git_changed_files_before": [],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    ".calkit/systems/dd9d03ea0933c2e65da7a2cf477cca0ca9e21e6b.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/env-locks/tex.json",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "results/boom.csv",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_after": [
+    "dvc.lock"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/systems/dd9d03ea0933c2e65da7a2cf477cca0ca9e21e6b.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-boom@1-3-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-3-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-6-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-6-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-9-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-9-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-3-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-3-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-3-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-3-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-6-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-6-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-9-1": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-9-3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-boom.py": "modified",
+          "boom/src": "modified",
+          "scripts/benchmark-boom.sh": "modified",
+          "config/boom/compose.yaml": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/boom/cats150.boom.json": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@6": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=6": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@7": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@9": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@12": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@15": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "kowalski/kowalski": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=6": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=6/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=1-nml=3-nf=3/",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=6-nml=9-nf=1/",
+      "paper/figures/workflow.key",
+      "logs/boom-na=1-nml=6-nf=3/",
+      "logs/boom-na=3-nml=9-nf=3/",
+      "logs/boom-na=1-nml=9-nf=1/",
+      "logs/boom-na=1-nml=6-nf=1/",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "logs/boom-na=3-nml=3-nf=3/",
+      "logs/boom-na=1-nml=9-nf=3/",
+      "logs/boom-na=6-nml=3-nf=1/",
+      "logs/boom-na=3-nml=6-nf=3/",
+      "logs/kowalski-n=7/",
+      "logs/boom-na=1-nml=3-nf=1/",
+      "logs/kowalski-n=12/",
+      "paper/main.pdf",
+      "logs/boom-na=6-nml=3-nf=3/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/kowalski-n=9/",
+      "logs/kowalski-n=15/",
+      "logs/boom-na=6-nml=6-nf=1/",
+      "logs/boom-na=6-nml=6-nf=3/",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "data/kowalski.NED.json.gz",
+      "logs/boom-na=6-nml=9-nf=3/",
+      "logs/kowalski-n=3/"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-boom@1-3-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=3-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-3-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=3-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-6-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=6-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-6-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=6-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-9-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=9-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@1-9-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=1-nml=9-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-3-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=3-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-3-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=3-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=6-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-6-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=6-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=9-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@3-9-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=3-nml=9-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-3-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=3-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-3-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=3-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-6-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=6-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-6-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=6-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-9-1": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=9-nf=1": "modified"
+        }
+      }
+    ],
+    "benchmark-boom@6-9-3": [
+      {
+        "changed outs": {
+          "logs/boom-na=6-nml=9-nf=3": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@3": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=3": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@7": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=7": "not in cache"
+        }
+      }
+    ],
+    "benchmark-kowalski@9": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=9": "not in cache"
+        }
+      }
+    ],
+    "benchmark-kowalski@12": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=12": "not in cache"
+        }
+      }
+    ],
+    "benchmark-kowalski@15": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=15": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/boom-na=1-nml=3-nf=1": "modified",
+          "logs/boom-na=1-nml=3-nf=3": "modified",
+          "logs/boom-na=1-nml=6-nf=1": "modified",
+          "logs/boom-na=1-nml=6-nf=3": "modified",
+          "logs/boom-na=1-nml=9-nf=1": "modified",
+          "logs/boom-na=1-nml=9-nf=3": "modified",
+          "logs/boom-na=3-nml=3-nf=1": "modified",
+          "logs/boom-na=3-nml=3-nf=3": "modified",
+          "logs/boom-na=3-nml=6-nf=1": "modified",
+          "logs/boom-na=3-nml=6-nf=3": "modified",
+          "logs/boom-na=3-nml=9-nf=1": "modified",
+          "logs/boom-na=3-nml=9-nf=3": "modified",
+          "logs/boom-na=6-nml=3-nf=1": "modified",
+          "logs/boom-na=6-nml=3-nf=3": "modified",
+          "logs/boom-na=6-nml=6-nf=1": "modified",
+          "logs/boom-na=6-nml=6-nf=3": "modified",
+          "logs/boom-na=6-nml=9-nf=1": "modified",
+          "logs/boom-na=6-nml=9-nf=3": "modified",
+          "logs/kowalski-n=3": "modified",
+          "logs/kowalski-n=7": "modified",
+          "logs/kowalski-n=9": "modified",
+          "logs/kowalski-n=12": "modified",
+          "logs/kowalski-n=15": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [
+      "logs/kowalski-n=7/",
+      "logs/kowalski-n=9/",
+      "logs/kowalski-n=12/"
+    ],
+    "not_in_remote": [],
+    "committed": {
+      "modified": [
+        "logs/boom-na=6-nml=9-nf=3/",
+        "logs/boom-na=1-nml=9-nf=1/",
+        "logs/kowalski-n=15/",
+        "logs/boom-na=1-nml=3-nf=1/",
+        "logs/boom-na=6-nml=3-nf=3/",
+        "logs/boom-na=1-nml=6-nf=3/",
+        "logs/boom-na=3-nml=9-nf=1/",
+        "logs/boom-na=1-nml=9-nf=3/",
+        "logs/boom-na=1-nml=6-nf=1/",
+        "logs/kowalski-n=3/",
+        "logs/kowalski-n=6/",
+        "logs/boom-na=6-nml=3-nf=1/",
+        "logs/kowalski-n=7/",
+        "logs/kowalski-n=9/",
+        "logs/boom-na=1-nml=3-nf=3/",
+        "logs/boom-na=3-nml=6-nf=3/",
+        "logs/boom-na=3-nml=9-nf=3/",
+        "logs/kowalski-n=12/",
+        "logs/boom-na=6-nml=6-nf=3/",
+        "logs/boom-na=3-nml=3-nf=1/",
+        "logs/boom-na=6-nml=6-nf=1/",
+        "logs/boom-na=6-nml=9-nf=1/",
+        "logs/boom-na=3-nml=6-nf=1/",
+        "logs/boom-na=3-nml=3-nf=3/",
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/boom-na=6-nml=9-nf=3/",
+        "logs/boom-na=1-nml=9-nf=1/",
+        "logs/kowalski-n=15/",
+        "logs/boom-na=1-nml=3-nf=1/",
+        "logs/boom-na=6-nml=3-nf=3/",
+        "logs/boom-na=1-nml=6-nf=3/",
+        "logs/boom-na=3-nml=9-nf=1/",
+        "logs/boom-na=1-nml=9-nf=3/",
+        "logs/boom-na=1-nml=6-nf=1/",
+        "logs/kowalski-n=3/",
+        "logs/boom-na=6-nml=3-nf=1/",
+        "logs/kowalski-n=7/",
+        "logs/kowalski-n=9/",
+        "logs/boom-na=1-nml=3-nf=3/",
+        "logs/boom-na=3-nml=6-nf=3/",
+        "logs/boom-na=3-nml=9-nf=3/",
+        "logs/kowalski-n=12/",
+        "logs/boom-na=6-nml=6-nf=3/",
+        "logs/boom-na=3-nml=3-nf=1/",
+        "logs/boom-na=6-nml=6-nf=1/",
+        "logs/boom-na=6-nml=9-nf=1/",
+        "logs/boom-na=3-nml=6-nf=1/",
+        "logs/boom-na=3-nml=3-nf=3/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "data/kowalski.NED.json.gz",
+      "paper/figures/workflow.key",
+      "paper/figures/workflow.pdf"
+    ]
+  }
+}
