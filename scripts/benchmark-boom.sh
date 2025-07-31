@@ -23,8 +23,16 @@ docker compose -f $COMPOSE_CONFIG stats scheduler --format json > $LOGS_DIR/sche
 
 # Wait until we see all alerts with classifications
 EXPECTED_ALERTS=29142
-echo "Waiting for all tasks to complete"
-while [ $(docker compose -f config/boom/compose.yaml exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+echo "Waiting for all ML tasks to complete"
+while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+    sleep 1
+done
+
+# Wait until we've filtered all alerts
+# We'll have log lines like `0/2 alerts passed`, from which we want to sum
+# the denominators
+echo "Waiting for filters to run on all alerts"
+while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "alerts passed" | awk '{print $10}' | sed 's|/||' | awk '{sum += $1} END {print sum}') -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
