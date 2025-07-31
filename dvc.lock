@@ -445,8 +445,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 992415e74f1f1002832fcf135b112127.dir
-      size: 4028336
+      md5: 17f3c256c2e3b75483886f1beccb2b68.dir
+      size: 4060592
       nfiles: 5
   benchmark-boom@3-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -506,8 +506,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: a1e2d87176b8644d109ae46f00afc38d.dir
-      size: 3785392
+      md5: d26fcbef201acf557d96c7285b4e1ee1.dir
+      size: 3817704
       nfiles: 5
   benchmark-boom@3-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -567,8 +567,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: 57df34df2165343de1d8cc02b4a68270.dir
-      size: 3547563
+      md5: ad04a4ff34f324268ca85ff2f9a7e27a.dir
+      size: 3579791
       nfiles: 5
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -699,8 +699,8 @@ stages:
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: 2dcd9cdb6b73195fa79d691217a91212.dir
-      size: 61873564
+      md5: a5f3fd92bf3da6e3ae4933b30bb70de3.dir
+      size: 61889930
       nfiles: 5
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -765,8 +765,8 @@ stages:
     outs:
     - path: logs/kowalski-n=9
       hash: md5
-      md5: 3cb798869d94f51a89992155988e8fde.dir
-      size: 60536524
+      md5: b6a91d6cdafabf5f7e7f4bea9f0d0df7.dir
+      size: 60552820
       nfiles: 5
   benchmark-kowalski@7:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -831,8 +831,8 @@ stages:
     outs:
     - path: logs/kowalski-n=7
       hash: md5
-      md5: cc6d2f408305dd8556623ba8f3d0a30a.dir
-      size: 61031834
+      md5: 8002caed0af4d0c823faaae265a0813b.dir
+      size: 61047836
       nfiles: 5
   benchmark-boom@1-3-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -892,8 +892,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
-      md5: 31ec043cd103c2c9ca6cecad019846cc.dir
-      size: 7541167
+      md5: 28c6204949de0406f435e45ecd7af898.dir
+      size: 7573507
       nfiles: 5
   benchmark-boom@1-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -953,8 +953,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=3-nf=3
       hash: md5
-      md5: b299b53be4de4ff2a59f8e5a7b38e10c.dir
-      size: 7301232
+      md5: 6efaf26cc9361a65f88c8990341b0663.dir
+      size: 7333096
       nfiles: 5
   benchmark-boom@1-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1014,8 +1014,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=6-nf=1
       hash: md5
-      md5: 11cdc7d1084ce3293dcaac542b6810fd.dir
-      size: 6798232
+      md5: e61c76ae91edf80ba3e189b2e036fd5d.dir
+      size: 6830264
       nfiles: 5
   benchmark-boom@1-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1075,8 +1075,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=6-nf=3
       hash: md5
-      md5: e9776de66ff38eac6fba0513ab37fa88.dir
-      size: 6637497
+      md5: 3e87029f53f4db658a3b323248da4918.dir
+      size: 6669893
       nfiles: 5
   benchmark-boom@1-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1136,8 +1136,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=9-nf=1
       hash: md5
-      md5: 9f90da30cda57e62682ddc7d8c220765.dir
-      size: 6079760
+      md5: 232cb9145757e56c166555d7bb1365d5.dir
+      size: 6111820
       nfiles: 5
   benchmark-boom@1-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1197,8 +1197,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=9-nf=3
       hash: md5
-      md5: d4ab5e7401f83808801b913317045b12.dir
-      size: 5886049
+      md5: 8ff2b54f5e04efa7caee52d5a4190d6d.dir
+      size: 5918333
       nfiles: 5
   benchmark-boom@3-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1258,8 +1258,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=3-nf=3
       hash: md5
-      md5: 8693a36eb7f63f63d0e1b8e4eb2e7875.dir
-      size: 3898995
+      md5: 280246f5625efea4f279df089bb1fc95.dir
+      size: 3931139
       nfiles: 5
   benchmark-boom@3-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1319,8 +1319,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=6-nf=3
       hash: md5
-      md5: 6572eda7a5ccc38e8bbd1f128af1fbc6.dir
-      size: 3659547
+      md5: cc874722c6736530a3c76a595558129c.dir
+      size: 3692195
       nfiles: 5
   benchmark-boom@3-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1380,8 +1380,8 @@ stages:
     outs:
     - path: logs/boom-na=3-nml=9-nf=3
       hash: md5
-      md5: 3a37d75af5874b70ed4856f5c2805290.dir
-      size: 3508136
+      md5: c3eef69a8d9ec58c2c7a1923959f6bff.dir
+      size: 3540140
       nfiles: 5
   benchmark-boom@6-3-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1441,8 +1441,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=3-nf=1
       hash: md5
-      md5: 786e0e153b95182fabd4f2a7e3d3a370.dir
-      size: 3085666
+      md5: bf8bc6fb536ffa5e624600e8fc08fb91.dir
+      size: 3117894
       nfiles: 5
   benchmark-boom@6-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1502,8 +1502,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=3-nf=3
       hash: md5
-      md5: 9074a8152d7cda5da83961b9089a9adf.dir
-      size: 2940507
+      md5: baa8a4231e573a755875caab41d22e42.dir
+      size: 2972819
       nfiles: 5
   benchmark-boom@6-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1563,8 +1563,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=6-nf=1
       hash: md5
-      md5: 8dd1a6e24174072a1035923e60234590.dir
-      size: 2792576
+      md5: 86263e701c797aec2064699ea09f1d21.dir
+      size: 2824244
       nfiles: 5
   benchmark-boom@6-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1624,8 +1624,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=6-nf=3
       hash: md5
-      md5: 9704d7cc17a28de3269a22f12e51dea9.dir
-      size: 2698840
+      md5: dfdef7433416a9a1e47cee0484698c9d.dir
+      size: 2730928
       nfiles: 5
   benchmark-boom@6-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1685,8 +1685,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=9-nf=1
       hash: md5
-      md5: 581013d85ad90200031e130b489b6916.dir
-      size: 2614856
+      md5: 847fe4b77d69b80a2b9b34867abd1f37.dir
+      size: 2646496
       nfiles: 5
   benchmark-boom@6-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1746,8 +1746,8 @@ stages:
     outs:
     - path: logs/boom-na=6-nml=9-nf=3
       hash: md5
-      md5: 19c9d541ec257a9f8e840c3bcb270202.dir
-      size: 2541788
+      md5: e2d39a7776d40d13f760f2b6cd644403.dir
+      size: 2574212
       nfiles: 5
   benchmark-kowalski@12:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -1812,8 +1812,8 @@ stages:
     outs:
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 37fd15dc1e11b9d890445bac564bfdbf.dir
-      size: 60070017
+      md5: 0789268f58d61f33f5ed1e253589abf9.dir
+      size: 60086047
       nfiles: 5
   benchmark-kowalski@15:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -1878,6 +1878,6 @@ stages:
     outs:
     - path: logs/kowalski-n=15
       hash: md5
-      md5: 736d293bc269962b8bdae1fb87e0f1b1.dir
-      size: 59629602
+      md5: 2c4e083b5d50594564ecf0b97d49a8ab.dir
+      size: 59645758
       nfiles: 5
