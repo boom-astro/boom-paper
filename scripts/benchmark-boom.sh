@@ -32,7 +32,7 @@ done
 # We'll have log lines like `0/2 alerts passed`, from which we want to sum
 # the denominators
 echo "Waiting for filters to run on all alerts"
-while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "alerts passed" | awk '{print $10}' | sed 's|/||' | awk '{sum += $1} END {print sum}') -lt $EXPECTED_ALERTS ]; do
+while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter" | awk '{print $10}' | sed 's|/||' | awk '{sum += $1} END {print sum}') -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
