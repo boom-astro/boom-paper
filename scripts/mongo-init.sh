@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
-# The NED collection name is just 'NED' for BOOM, but 'NED_BetaV3' for Kowalski
-if [ $DB_NAME = "kowalski" ]; then
-    NED_COLLECTION_NAME="NED_BetaV3"
-else
-    NED_COLLECTION_NAME="NED"
-fi
-
 # Only import NED alerts if the collection does not exist
+NED_COLLECTION_NAME="NED"
 NED_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('$NED_COLLECTION_NAME')")
 echo "NED collection exists: $NED_COLLECTION_EXISTS"
 
