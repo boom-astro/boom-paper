@@ -3,18 +3,18 @@
         "$match": {
             "candidate.rb": {
                 "$gte": 0.3
-            }, 
+            },
             "candidate.drb": {
                 "$gt": 0.5
-            }, 
+            },
             "candidate.fwhm": {
-                "$gt": 0.5, 
+                "$gt": 0.5,
                 "$lt": 8
-            }, 
+            },
             "candidate.nbad": {
                 "$lt": 5
             },
-            "candidate.isdiffpos": true, 
+            "candidate.isdiffpos": true,
             "$and": [
                 {
                     "$or": [
@@ -66,14 +66,14 @@
     },
     {
         "$project": {
-            "objectId": 1, 
+            "objectId": 1,
             "candidate": {
-                "jd": 1, 
-                "magpsf": 1, 
-                "sigmapsf": 1, 
-                "jdstarthist": 1, 
-                "ndethist": 1, 
-                "drb": 1, 
+                "jd": 1,
+                "magpsf": 1,
+                "sigmapsf": 1,
+                "jdstarthist": 1,
+                "ndethist": 1,
+                "drb": 1,
                 "rb": 1
             },
             "stationary": {
@@ -81,8 +81,8 @@
                     {
                         "$anyElementTrue": {
                             "$map": {
-                                "input": "$prv_candidates", 
-                                "as": "cand", 
+                                "input": "$prv_candidates",
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -137,8 +137,8 @@
                                     "$ifNull": [
                                         "$fp_hists", []
                                     ]
-                                }, 
-                                "as": "cand", 
+                                },
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -176,7 +176,7 @@
                         }
                     }
                 ]
-            }, 
+            },
             "star": {
                 "$and": [
                     {
@@ -189,7 +189,7 @@
                         ]
                     }
                 ]
-            }, 
+            },
             "near_brightstar": {
                 "$or": [
                     {
@@ -288,7 +288,7 @@
                         ]
                     }
                 ]
-            }, 
+            },
             "mag_cut": {
                 "$or": [
                     {
@@ -302,8 +302,8 @@
                     }, {
                         "$anyElementTrue": {
                             "$map": {
-                                "input": "$prv_candidates", 
-                                "as": "cand", 
+                                "input": "$prv_candidates",
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -342,8 +342,8 @@
                                     "$ifNull": [
                                         "$fp_hists", []
                                     ]
-                                }, 
-                                "as": "cand", 
+                                },
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -373,25 +373,25 @@
         }
     }, {
         "$match": {
-            "star": false, 
-            "near_brightstar": false, 
-            "stationary": true, 
+            "star": false,
+            "near_brightstar": false,
+            "stationary": true,
             "mag_cut": true
         }
     }, {
         "$project": {
-            "objectId": 1, 
+            "objectId": 1,
             "annotations": {
                 "mag": {
                     "$round": [
                         "$candidate.magpsf", 4
                     ]
-                }, 
+                },
                 "jd": {
                     "$round": [
                         "$candidate.jd", 4
                     ]
-                }, 
+                },
                 "age": {
                     "$round": [
                         {
@@ -400,12 +400,12 @@
                             ]
                         }, 4
                     ]
-                }, 
+                },
                 "drb": {
                     "$round": [
                         "$candidate.drb", 2
                     ]
-                }, 
+                },
                 "nb_detections": "$candidate.ndethist"
             }
         }
