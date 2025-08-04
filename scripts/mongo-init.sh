@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
+# The NED collection name is just 'NED' for BOOM, but 'NED_BetaV3' for Kowalski
+if [ $DB_NAME = "kowalski" ]; then
+    NED_COLLECTION_NAME="NED_BetaV3"
+else
+    NED_COLLECTION_NAME="NED"
+fi
+
 # Only import NED alerts if the collection does not exist
-NED_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('NED')")
+NED_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('$NED_COLLECTION_NAME')")
 echo "NED collection exists: $NED_COLLECTION_EXISTS"
 
 if [ "$NED_COLLECTION_EXISTS" = "false" ]; then
@@ -9,7 +16,7 @@ if [ "$NED_COLLECTION_EXISTS" = "false" ]; then
     gunzip -kc /kowalski.NED.json.gz | \
         mongoimport \
         "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin$DB_ADD_URI" \
-        --collection NED \
+        --collection $NED_COLLECTION_NAME \
         --jsonArray \
         --drop
 else
@@ -25,7 +32,7 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
 # Create a 2d index on coordinates.radec_geojson
 echo "Creating 2d index on coordinates.radec_geojson"
 mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
-    --eval "db.NED.createIndex({ 'coordinates.radec_geojson': '2dsphere' })"
+    --eval "db.$NED_COLLECTION_NAME.createIndex({ 'coordinates.radec_geojson': '2dsphere' })"
 
 # Insert a cats150 filter into filters collection
 echo "Inserting cats150 filter into filters collection"
