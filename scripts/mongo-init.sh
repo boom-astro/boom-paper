@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Only import NED alerts if the collection does not exist
-NED_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('NED_alerts')")
+NED_COLLECTION_EXISTS=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" --quiet --eval "db.getCollectionNames().includes('NED')")
 echo "NED collection exists: $NED_COLLECTION_EXISTS"
 
 if [ "$NED_COLLECTION_EXISTS" = "false" ]; then
@@ -9,7 +9,7 @@ if [ "$NED_COLLECTION_EXISTS" = "false" ]; then
     gunzip -kc /kowalski.NED.json.gz | \
         mongoimport \
         "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin$DB_ADD_URI" \
-        --collection NED_alerts \
+        --collection NED \
         --jsonArray \
         --drop
 else
