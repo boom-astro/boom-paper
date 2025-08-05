@@ -2,6 +2,11 @@
 
 COMPOSE_CONFIG="config/kowalski/compose.yaml"
 
+# A function that returns the current date and time
+current_datetime() {
+    date +%Y%m%d_%H%M%S
+}
+
 # Create some files that must exist for Kowalski to work
 echo benchmarking > kowalski/version.txt
 echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
@@ -28,12 +33,17 @@ done
 docker compose -f $COMPOSE_CONFIG stats ingester --format json \
     > logs/kowalski/ingester.stats.log &
 
-# Wait until we see all alerts with classifications
 EXPECTED_ALERTS=29142
-echo "Waiting for all tasks to complete"
-while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+
+# instead just look for log lines like `number of filters passed: ...`
+echo "$(current_datetime) Waiting for all alerts to be processed"
+while [ $(docker compose -f $COMPOSE_CONFIG exec ingester /bin/bash -c "grep 'number of filters passed' /kowalski/logs/dask_cluster.log | wc -l") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
+echo "$(current_datetime) All tasks completed; shutting down Kowalski services"
+
 # Shut down the services
 docker compose -f $COMPOSE_CONFIG down
+
+exit 0
