@@ -3,6 +3,7 @@ title: A real-time, multi-survey, optical alert system broker
   operating at scale
 dependencies:
   - git-lfs
+  - jq
 environments:
   tex:
     kind: docker
