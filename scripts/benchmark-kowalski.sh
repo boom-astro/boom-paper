@@ -2,6 +2,11 @@
 
 COMPOSE_CONFIG="config/kowalski/compose.yaml"
 
+# A function that returns the current date and time
+current_datetime() {
+    date +%Y%m%d_%H%M%S
+}
+
 # Create some files that must exist for Kowalski to work
 echo benchmarking > kowalski/version.txt
 echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
@@ -28,9 +33,10 @@ done
 docker compose -f $COMPOSE_CONFIG stats ingester --format json \
     > logs/kowalski/ingester.stats.log &
 
-# Wait until we see all alerts with classifications
 EXPECTED_ALERTS=29142
-echo "Waiting for all tasks to complete"
+
+# Wait until we see all alerts with classifications
+echo "$(current_datetime) Waiting for all alerts to be ingested and classified"
 while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
