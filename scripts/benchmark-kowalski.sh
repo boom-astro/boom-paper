@@ -38,9 +38,12 @@ EXPECTED_ALERTS=29142
 # instead just look for log lines like `number of filters passed: ...`
 echo "$(current_datetime) Waiting for all alerts to be processed"
 while [ $(docker compose -f $COMPOSE_CONFIG exec ingester /bin/bash -c "grep 'number of filters passed' /kowalski/logs/dask_cluster.log | wc -l") -lt $EXPECTED_ALERTS ]; do
-    echo "$(current_datetime) Waiting for alerts to be processed"
     sleep 1
 done
 
+echo "$(current_datetime) All tasks completed; shutting down Kowalski services"
+
 # Shut down the services
 docker compose -f $COMPOSE_CONFIG down
+
+exit 0
