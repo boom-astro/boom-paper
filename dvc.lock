@@ -227,132 +227,132 @@ stages:
       size: 7516
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
-      md5: 28c6204949de0406f435e45ecd7af898.dir
-      size: 7573507
+      md5: 15fe65fc304f649a96f0206b28c6e7c7.dir
+      size: 4303294
       nfiles: 5
     - path: logs/boom-na=1-nml=3-nf=3
       hash: md5
-      md5: 6efaf26cc9361a65f88c8990341b0663.dir
-      size: 7333096
+      md5: 78278d4976d28ca9354d78c0e6fe5f88.dir
+      size: 4060409
       nfiles: 5
     - path: logs/boom-na=1-nml=6-nf=1
       hash: md5
-      md5: e61c76ae91edf80ba3e189b2e036fd5d.dir
-      size: 6830264
+      md5: 89eb47f37fdbc3cda8780b2f970f797e.dir
+      size: 3528787
       nfiles: 5
     - path: logs/boom-na=1-nml=6-nf=3
       hash: md5
-      md5: 3e87029f53f4db658a3b323248da4918.dir
-      size: 6669893
+      md5: d92842ccbc9a9583f1fab2e78e14417a.dir
+      size: 3330425
       nfiles: 5
     - path: logs/boom-na=1-nml=9-nf=1
       hash: md5
-      md5: 232cb9145757e56c166555d7bb1365d5.dir
-      size: 6111820
+      md5: cf1b24f8aa4d133ad2e464e12f879158.dir
+      size: 2811446
       nfiles: 5
     - path: logs/boom-na=1-nml=9-nf=3
       hash: md5
-      md5: 8ff2b54f5e04efa7caee52d5a4190d6d.dir
-      size: 5918333
+      md5: a64f024f2294896a6e53262e6586210c.dir
+      size: 2609584
       nfiles: 5
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 17f3c256c2e3b75483886f1beccb2b68.dir
-      size: 4060592
+      md5: f6d54387c539e8a42bd5b077d7b06bb7.dir
+      size: 1763782
       nfiles: 5
     - path: logs/boom-na=3-nml=3-nf=3
       hash: md5
-      md5: 280246f5625efea4f279df089bb1fc95.dir
-      size: 3931139
+      md5: fdf6ea91c32d9755eaf6782e9ce5401b.dir
+      size: 1612546
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: d26fcbef201acf557d96c7285b4e1ee1.dir
-      size: 3817704
+      md5: d6c4da8b5dd00a4fda0088d44de16837.dir
+      size: 1531306
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=3
       hash: md5
-      md5: cc874722c6736530a3c76a595558129c.dir
-      size: 3692195
+      md5: f0a2d1c5e8f68722ea5cdc289c27b054.dir
+      size: 1417060
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: ad04a4ff34f324268ca85ff2f9a7e27a.dir
-      size: 3579791
+      md5: 52ef3a601a681b679ba2be0bcc297c31.dir
+      size: 1308143
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=3
       hash: md5
-      md5: c3eef69a8d9ec58c2c7a1923959f6bff.dir
-      size: 3540140
+      md5: 4e7813ba3afb005fd7743280a859e89f.dir
+      size: 1234729
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=1
       hash: md5
-      md5: bf8bc6fb536ffa5e624600e8fc08fb91.dir
-      size: 3117894
+      md5: ff493ff2a13f3aadc0a8b6a1782afe4c.dir
+      size: 1000612
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=3
       hash: md5
-      md5: 36c7a4566378af74172c7b37ab652eed.dir
-      size: 475823
+      md5: c0e2c369cfc06adcf14bd8f4cb23bc9a.dir
+      size: 841523
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=1
       hash: md5
-      md5: d860bac7de578a00f1825f58b30534cf.dir
-      size: 409119
+      md5: 7cb460a0c89aa07bbb956bd98a65bc0b.dir
+      size: 688317
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=3
       hash: md5
-      md5: dfdef7433416a9a1e47cee0484698c9d.dir
-      size: 2730928
+      md5: 3f500a535404dd98bdf36167acec647d.dir
+      size: 594974
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=1
       hash: md5
-      md5: 847fe4b77d69b80a2b9b34867abd1f37.dir
-      size: 2646496
+      md5: bb645d8827f82be422c93c0a4be3914c.dir
+      size: 512828
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=3
       hash: md5
-      md5: e2d39a7776d40d13f760f2b6cd644403.dir
-      size: 2574212
+      md5: 49ca502d3a6a4597b073df725ae9aec9.dir
+      size: 442485
       nfiles: 5
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 0789268f58d61f33f5ed1e253589abf9.dir
-      size: 60086047
+      md5: 96e3ff8560d99e0d1f92f349d9f63ede.dir
+      size: 59176020
       nfiles: 5
     - path: logs/kowalski-n=15
       hash: md5
-      md5: 2c4e083b5d50594564ecf0b97d49a8ab.dir
-      size: 59645758
+      md5: 22fe2874812d911ec3465378e907e364.dir
+      size: 58748626
       nfiles: 5
     - path: logs/kowalski-n=3
       hash: md5
-      md5: a5f3fd92bf3da6e3ae4933b30bb70de3.dir
-      size: 61889930
+      md5: be76cc827f40337be2bd81dbdcef2240.dir
+      size: 61360722
       nfiles: 5
     - path: logs/kowalski-n=6
       hash: md5
-      md5: df5810fa9910225d31064a1e89d67a70.dir
-      size: 58703765
+      md5: 33bc1a2ed163880c22285e7dee813342.dir
+      size: 60531222
       nfiles: 5
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 8002caed0af4d0c823faaae265a0813b.dir
-      size: 61047836
+      md5: 8bc7205129dc1d921329537686f5bde2.dir
+      size: 60058625
       nfiles: 5
     - path: logs/kowalski-n=9
       hash: md5
-      md5: b6a91d6cdafabf5f7e7f4bea9f0d0df7.dir
-      size: 60552820
+      md5: 11ec62a89cc40352a275d8fd0c9e0732.dir
+      size: 59623359
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 75cd38d09061cc2bad22cfe0789e5ad2
+      md5: fc1519dc690bb05934207b53676111d6
       size: 23212
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: f0d69e3525402deba7f659901bedb317
+      md5: 84fdea57dd67650bf07846b7114e346b
       size: 300306
     - path: paper/results.tex
       hash: md5
@@ -360,7 +360,7 @@ stages:
       size: 186
     - path: results
       hash: md5
-      md5: e3d10c9597ae9619fc8f829e331f8a28.dir
+      md5: a8ac5c3ffe65d546cd26520ed1e52d78.dir
       size: 1802
       nfiles: 2
   _check-env-simulate-queues:
@@ -409,13 +409,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -434,19 +434,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: 17f3c256c2e3b75483886f1beccb2b68.dir
-      size: 4060592
+      md5: 6846e96857291b3fc7eccd0c478156dc.dir
+      size: 1963450
       nfiles: 5
   benchmark-boom@3-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -470,13 +470,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -495,19 +495,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: d26fcbef201acf557d96c7285b4e1ee1.dir
-      size: 3817704
+      md5: e06c827c19836e539545222c4f00e8f7.dir
+      size: 1731114
       nfiles: 5
   benchmark-boom@3-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -531,13 +531,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -556,19 +556,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: ad04a4ff34f324268ca85ff2f9a7e27a.dir
-      size: 3579791
+      md5: b81545d9d2ff2233b15fd9807c804d58.dir
+      size: 1507419
       nfiles: 5
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -580,8 +580,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -608,8 +608,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -627,14 +627,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: df5810fa9910225d31064a1e89d67a70.dir
-      size: 58703765
+      md5: a42c192c0fb9ee0d6cf6839be692731d.dir
+      size: 60631042
       nfiles: 5
   benchmark-kowalski@3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -646,8 +646,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -674,8 +674,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -693,14 +693,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: a5f3fd92bf3da6e3ae4933b30bb70de3.dir
-      size: 61889930
+      md5: f83d7a0de838a2730074cf1763dbd26c.dir
+      size: 61460654
       nfiles: 5
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -712,8 +712,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -740,8 +740,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -759,14 +759,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=9
       hash: md5
-      md5: b6a91d6cdafabf5f7e7f4bea9f0d0df7.dir
-      size: 60552820
+      md5: cfcbcda24de96d732d01c51c27539a49.dir
+      size: 59723221
       nfiles: 5
   benchmark-kowalski@7:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -778,8 +778,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -806,8 +806,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -825,14 +825,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 8002caed0af4d0c823faaae265a0813b.dir
-      size: 61047836
+      md5: a2599e2911b1227d00e722903da78c37.dir
+      size: 60158613
       nfiles: 5
   benchmark-boom@1-3-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -856,13 +856,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -881,19 +881,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
-      md5: 28c6204949de0406f435e45ecd7af898.dir
-      size: 7573507
+      md5: 9ecd56db018896da7ec131b4a30c4aac.dir
+      size: 4502738
       nfiles: 5
   benchmark-boom@1-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -917,13 +917,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -942,19 +942,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=3-nf=3
       hash: md5
-      md5: 6efaf26cc9361a65f88c8990341b0663.dir
-      size: 7333096
+      md5: a222d8a9384032fefd2a5e237605b5cf.dir
+      size: 4259601
       nfiles: 5
   benchmark-boom@1-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -978,13 +978,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1003,19 +1003,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=6-nf=1
       hash: md5
-      md5: e61c76ae91edf80ba3e189b2e036fd5d.dir
-      size: 6830264
+      md5: e0ddcd6d90915b47612ac5e9f19911eb.dir
+      size: 3728343
       nfiles: 5
   benchmark-boom@1-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1039,13 +1039,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1064,19 +1064,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=6-nf=3
       hash: md5
-      md5: 3e87029f53f4db658a3b323248da4918.dir
-      size: 6669893
+      md5: d272ecc3cbe1b6b919a99faab6ed6865.dir
+      size: 3530261
       nfiles: 5
   benchmark-boom@1-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1100,13 +1100,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1125,19 +1125,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=9-nf=1
       hash: md5
-      md5: 232cb9145757e56c166555d7bb1365d5.dir
-      size: 6111820
+      md5: 0b5994defda53e99f4180c06be3c5cc3.dir
+      size: 3010974
       nfiles: 5
   benchmark-boom@1-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1161,13 +1161,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1186,19 +1186,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=1-nml=9-nf=3
       hash: md5
-      md5: 8ff2b54f5e04efa7caee52d5a4190d6d.dir
-      size: 5918333
+      md5: 34b1ac8ae054a829c276ebed665e026c.dir
+      size: 2809168
       nfiles: 5
   benchmark-boom@3-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1222,13 +1222,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1247,19 +1247,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=3-nf=3
       hash: md5
-      md5: 280246f5625efea4f279df089bb1fc95.dir
-      size: 3931139
+      md5: 28647418c0b4b0c268ecb00b97503a00.dir
+      size: 1811906
       nfiles: 5
   benchmark-boom@3-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1283,13 +1283,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1308,19 +1308,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=6-nf=3
       hash: md5
-      md5: cc874722c6736530a3c76a595558129c.dir
-      size: 3692195
+      md5: 7bd3d6af12c29b6db51723be817672da.dir
+      size: 1616980
       nfiles: 5
   benchmark-boom@3-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1344,13 +1344,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1369,19 +1369,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=3-nml=9-nf=3
       hash: md5
-      md5: c3eef69a8d9ec58c2c7a1923959f6bff.dir
-      size: 3540140
+      md5: 7505d785b6d2ffd93e0b3371e30833a2.dir
+      size: 1434061
       nfiles: 5
   benchmark-boom@6-3-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1405,13 +1405,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1430,19 +1430,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=3-nf=1
       hash: md5
-      md5: bf8bc6fb536ffa5e624600e8fc08fb91.dir
-      size: 3117894
+      md5: fa0ccac981a9800876188fd4a38e2e03.dir
+      size: 1200112
       nfiles: 5
   benchmark-boom@6-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1466,13 +1466,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1491,19 +1491,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=3-nf=3
       hash: md5
-      md5: 36c7a4566378af74172c7b37ab652eed.dir
-      size: 475823
+      md5: 8947ac32110a63302b3a71b796ae1306.dir
+      size: 1040743
       nfiles: 5
   benchmark-boom@6-6-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1527,13 +1527,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1552,19 +1552,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=6-nf=1
       hash: md5
-      md5: d860bac7de578a00f1825f58b30534cf.dir
-      size: 409119
+      md5: 5cfc8b7778abc6146764b78207615622.dir
+      size: 887761
       nfiles: 5
   benchmark-boom@6-6-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1588,13 +1588,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1613,19 +1613,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=6-nf=3
       hash: md5
-      md5: dfdef7433416a9a1e47cee0484698c9d.dir
-      size: 2730928
+      md5: d4aef1679e0219de9acc8cc135e8a3a7.dir
+      size: 794726
       nfiles: 5
   benchmark-boom@6-9-1:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1649,13 +1649,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1674,19 +1674,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=9-nf=1
       hash: md5
-      md5: 847fe4b77d69b80a2b9b34867abd1f37.dir
-      size: 2646496
+      md5: c75efa0cbdba84c8dab50f896d73dc79.dir
+      size: 712216
       nfiles: 5
   benchmark-boom@6-9-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
@@ -1710,13 +1710,13 @@ stages:
       size: 1500
     - path: boom/src
       hash: md5
-      md5: e3e4b413d3d7ebb27cb31e1080e6d3ca.dir
-      size: 292758
+      md5: cc4d268a144f0972e4fe82a2e611d511.dir
+      size: 301549
       nfiles: 39
     - path: config/boom/cats150.boom.json
       hash: md5
-      md5: 38a8b7899045b2c75e1498d2e0e61ee4
-      size: 23361
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/boom/compose.yaml
       hash: md5
       md5: 659e9a9a82af91ec5589722fdca6fd58
@@ -1735,19 +1735,19 @@ stages:
       size: 1933
     - path: scripts/benchmark-boom.sh
       hash: md5
-      md5: f34dee1930b4305f53245395aafe6fb1
+      md5: f3372260d845d0bec98619cd25b54a6f
       size: 1809
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/boom-na=6-nml=9-nf=3
       hash: md5
-      md5: e2d39a7776d40d13f760f2b6cd644403.dir
-      size: 2574212
+      md5: 2fd123be03a54888426d8afcc2229620.dir
+      size: 642181
       nfiles: 5
   benchmark-kowalski@12:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -1759,8 +1759,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -1787,8 +1787,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -1806,14 +1806,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 0789268f58d61f33f5ed1e253589abf9.dir
-      size: 60086047
+      md5: c3b00973729956e810cf39f6d0d1e292.dir
+      size: 59275644
       nfiles: 5
   benchmark-kowalski@15:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -1825,8 +1825,8 @@ stages:
       size: 14
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
-      md5: df589c5f5d26dd30278dc5b2adf8a65a
-      size: 23433
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
     - path: config/kowalski/compose.yaml
       hash: md5
       md5: c5805388497602a1182c3ba1b84c871e
@@ -1853,8 +1853,8 @@ stages:
       size: 4637
     - path: kowalski/kowalski
       hash: md5
-      md5: 09c36871a29dfd2a55d4ed1ffd48ef92.dir
-      size: 933284
+      md5: 3726a383e282f5e400023ad19b6117a5.dir
+      size: 933282
       nfiles: 81
     - path: kowalski/requirements
       hash: md5
@@ -1872,12 +1872,12 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 4c1591c3ae74b204dc9279a6fc87a386
-      size: 1536
+      md5: d7ff4e3966a63babd65f430258631fe2
+      size: 1599
       isexec: true
     outs:
     - path: logs/kowalski-n=15
       hash: md5
-      md5: 2c4e083b5d50594564ecf0b97d49a8ab.dir
-      size: 59645758
+      md5: 9b214b9e5b1f14d0ffe431c7a318083f.dir
+      size: 58848600
       nfiles: 5
