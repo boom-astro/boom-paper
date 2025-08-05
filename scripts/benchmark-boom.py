@@ -41,13 +41,10 @@ with open("config/boom/cats150.boom.json", "r") as f:
     cats150 = json.load(f)
 for_insert = {
     "filter_id": 1,
-    "group_id": 41,
+    "group_id": 1,
     "catalog": "ZTF_alerts",
     "permissions": [1, 2, 3],
     "active": True,
-    "autosave": False,
-    "auto_followup": {},
-    "update_annotations": False,
     "active_fid": "first",
     "fv": [
         {

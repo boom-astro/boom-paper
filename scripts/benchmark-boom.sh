@@ -27,6 +27,7 @@ docker compose -f $COMPOSE_CONFIG stats consumer --format json > $LOGS_DIR/consu
 docker compose -f $COMPOSE_CONFIG stats scheduler --format json > $LOGS_DIR/scheduler.stats.log &
 
 EXPECTED_ALERTS=29142
+NB_FILTERS=10
 
 # Wait until we see all alerts
 echo "$(current_datetime) Waiting for all alerts to be ingested"
@@ -44,7 +45,7 @@ done
 # We'll have log lines like `0/2 alerts passed`, from which we want to sum
 # the denominators
 echo "$(current_datetime) Waiting for filters to run on all alerts"
-while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter" | awk '{print $10}' | sed 's|/||' | awk '{sum += $1} END {print sum}') -lt $EXPECTED_ALERTS ]; do
+while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter $NB_FILTERS" | awk -F'/' '{sum += $NF} END {print sum}') -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 

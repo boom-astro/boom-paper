@@ -31,10 +31,25 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
     db.ZTF_alerts_cutouts.drop();
     db.filters.drop();"
 
-# Insert a cats150 filter into filters collection
-echo "Inserting cats150 filter into filters collection"
-mongoimport \
-    "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin$DB_ADD_URI" \
-    --collection filters \
-    --file /cats150.json \
-    --drop
+# add the filters table with an index on filter_id
+mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
+    --eval "db.createCollection('filters'); db.filters.createIndex({ filter_id: 1 })"
+
+NB_FILTERS=10
+
+# ingest NB_FILTERS copies of the cats150 filter into filters collection
+echo "Ingesting $NB_FILTERS copies of the cats150 filter into filters collection"
+for i in $(seq 1 $NB_FILTERS); do
+    echo "Inserting cats150 filter with filter_id $i into filters collection"
+    # the file contains one document, so we read and edit the filter_id field
+    EDITED_FILTER_CONTENT=$(jq --argjson id "$i" '.filter_id = $id' /cats150.json)
+    ADDED=$(mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
+        --eval "db.filters.insertOne($EDITED_FILTER_CONTENT)")
+    if [ $? -ne 0 ]; then
+        echo "Failed to insert filter with filter_id $i: $ADDED"
+        exit 1
+    fi
+done
+
+echo "MongoDB initialization script completed successfully"
+exit 0

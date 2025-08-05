@@ -35,9 +35,10 @@ docker compose -f $COMPOSE_CONFIG stats ingester --format json \
 
 EXPECTED_ALERTS=29142
 
-# Wait until we see all alerts with classifications
-echo "$(current_datetime) Waiting for all alerts to be ingested and classified"
-while [ $(docker compose -f config/kowalski/compose.yaml exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+# instead just look for log lines like `number of filters passed: ...`
+echo "$(current_datetime) Waiting for all alerts to be processed"
+while [ $(docker compose -f $COMPOSE_CONFIG exec ingester /bin/bash -c "grep 'number of filters passed' /kowalski/logs/dask_cluster.log | wc -l") -lt $EXPECTED_ALERTS ]; do
+    echo "$(current_datetime) Waiting for alerts to be processed"
     sleep 1
 done
 
