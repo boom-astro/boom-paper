@@ -227,132 +227,132 @@ stages:
       size: 7516
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
-      md5: 15fe65fc304f649a96f0206b28c6e7c7.dir
-      size: 4303294
+      md5: 9ecd56db018896da7ec131b4a30c4aac.dir
+      size: 4502738
       nfiles: 5
     - path: logs/boom-na=1-nml=3-nf=3
       hash: md5
-      md5: 78278d4976d28ca9354d78c0e6fe5f88.dir
-      size: 4060409
+      md5: a222d8a9384032fefd2a5e237605b5cf.dir
+      size: 4259601
       nfiles: 5
     - path: logs/boom-na=1-nml=6-nf=1
       hash: md5
-      md5: 89eb47f37fdbc3cda8780b2f970f797e.dir
-      size: 3528787
+      md5: e0ddcd6d90915b47612ac5e9f19911eb.dir
+      size: 3728343
       nfiles: 5
     - path: logs/boom-na=1-nml=6-nf=3
       hash: md5
-      md5: d92842ccbc9a9583f1fab2e78e14417a.dir
-      size: 3330425
+      md5: d272ecc3cbe1b6b919a99faab6ed6865.dir
+      size: 3530261
       nfiles: 5
     - path: logs/boom-na=1-nml=9-nf=1
       hash: md5
-      md5: cf1b24f8aa4d133ad2e464e12f879158.dir
-      size: 2811446
+      md5: 0b5994defda53e99f4180c06be3c5cc3.dir
+      size: 3010974
       nfiles: 5
     - path: logs/boom-na=1-nml=9-nf=3
       hash: md5
-      md5: a64f024f2294896a6e53262e6586210c.dir
-      size: 2609584
+      md5: 34b1ac8ae054a829c276ebed665e026c.dir
+      size: 2809168
       nfiles: 5
     - path: logs/boom-na=3-nml=3-nf=1
       hash: md5
-      md5: f6d54387c539e8a42bd5b077d7b06bb7.dir
-      size: 1763782
+      md5: 6846e96857291b3fc7eccd0c478156dc.dir
+      size: 1963450
       nfiles: 5
     - path: logs/boom-na=3-nml=3-nf=3
       hash: md5
-      md5: fdf6ea91c32d9755eaf6782e9ce5401b.dir
-      size: 1612546
+      md5: 28647418c0b4b0c268ecb00b97503a00.dir
+      size: 1811906
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=1
       hash: md5
-      md5: d6c4da8b5dd00a4fda0088d44de16837.dir
-      size: 1531306
+      md5: e06c827c19836e539545222c4f00e8f7.dir
+      size: 1731114
       nfiles: 5
     - path: logs/boom-na=3-nml=6-nf=3
       hash: md5
-      md5: f0a2d1c5e8f68722ea5cdc289c27b054.dir
-      size: 1417060
+      md5: 7bd3d6af12c29b6db51723be817672da.dir
+      size: 1616980
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=1
       hash: md5
-      md5: 52ef3a601a681b679ba2be0bcc297c31.dir
-      size: 1308143
+      md5: b81545d9d2ff2233b15fd9807c804d58.dir
+      size: 1507419
       nfiles: 5
     - path: logs/boom-na=3-nml=9-nf=3
       hash: md5
-      md5: 4e7813ba3afb005fd7743280a859e89f.dir
-      size: 1234729
+      md5: 7505d785b6d2ffd93e0b3371e30833a2.dir
+      size: 1434061
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=1
       hash: md5
-      md5: ff493ff2a13f3aadc0a8b6a1782afe4c.dir
-      size: 1000612
+      md5: fa0ccac981a9800876188fd4a38e2e03.dir
+      size: 1200112
       nfiles: 5
     - path: logs/boom-na=6-nml=3-nf=3
       hash: md5
-      md5: c0e2c369cfc06adcf14bd8f4cb23bc9a.dir
-      size: 841523
+      md5: 8947ac32110a63302b3a71b796ae1306.dir
+      size: 1040743
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=1
       hash: md5
-      md5: 7cb460a0c89aa07bbb956bd98a65bc0b.dir
-      size: 688317
+      md5: 5cfc8b7778abc6146764b78207615622.dir
+      size: 887761
       nfiles: 5
     - path: logs/boom-na=6-nml=6-nf=3
       hash: md5
-      md5: 3f500a535404dd98bdf36167acec647d.dir
-      size: 594974
+      md5: d4aef1679e0219de9acc8cc135e8a3a7.dir
+      size: 794726
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=1
       hash: md5
-      md5: bb645d8827f82be422c93c0a4be3914c.dir
-      size: 512828
+      md5: c75efa0cbdba84c8dab50f896d73dc79.dir
+      size: 712216
       nfiles: 5
     - path: logs/boom-na=6-nml=9-nf=3
       hash: md5
-      md5: 49ca502d3a6a4597b073df725ae9aec9.dir
-      size: 442485
+      md5: 2fd123be03a54888426d8afcc2229620.dir
+      size: 642181
       nfiles: 5
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 96e3ff8560d99e0d1f92f349d9f63ede.dir
-      size: 59176020
+      md5: c3b00973729956e810cf39f6d0d1e292.dir
+      size: 59275644
       nfiles: 5
     - path: logs/kowalski-n=15
       hash: md5
-      md5: 22fe2874812d911ec3465378e907e364.dir
-      size: 58748626
+      md5: 9b214b9e5b1f14d0ffe431c7a318083f.dir
+      size: 58848600
       nfiles: 5
     - path: logs/kowalski-n=3
       hash: md5
-      md5: be76cc827f40337be2bd81dbdcef2240.dir
-      size: 61360722
+      md5: 05dad2ad73fe75ceaa3910299bb42469.dir
+      size: 59093216
       nfiles: 5
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 33bc1a2ed163880c22285e7dee813342.dir
-      size: 60531222
+      md5: a42c192c0fb9ee0d6cf6839be692731d.dir
+      size: 60631042
       nfiles: 5
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 8bc7205129dc1d921329537686f5bde2.dir
-      size: 60058625
+      md5: a2599e2911b1227d00e722903da78c37.dir
+      size: 60158613
       nfiles: 5
     - path: logs/kowalski-n=9
       hash: md5
-      md5: 11ec62a89cc40352a275d8fd0c9e0732.dir
-      size: 59623359
+      md5: cfcbcda24de96d732d01c51c27539a49.dir
+      size: 59723221
       nfiles: 5
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: fc1519dc690bb05934207b53676111d6
+      md5: 7a27a6291c2b79ca3100ad9f715b2d82
       size: 23212
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 84fdea57dd67650bf07846b7114e346b
+      md5: 495c90f09c22a0fa004c07c0a2833a5e
       size: 300306
     - path: paper/results.tex
       hash: md5
@@ -360,7 +360,7 @@ stages:
       size: 186
     - path: results
       hash: md5
-      md5: a8ac5c3ffe65d546cd26520ed1e52d78.dir
+      md5: 3a2a1762424f1040574c4f04c2590ea2.dir
       size: 1802
       nfiles: 2
   _check-env-simulate-queues:
@@ -699,8 +699,8 @@ stages:
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: f83d7a0de838a2730074cf1763dbd26c.dir
-      size: 61460654
+      md5: 03f29e7df4dbd0abac13cce18fa450f4.dir
+      size: 59093286
       nfiles: 5
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
