@@ -672,7 +672,7 @@ kowalski:
 
   misc:
     # working stand-alone or in conjunction with a SkyPortal instance?
-    broker: False
+    broker: True
     supported_penquins_versions:
       [
         "2.0.0",

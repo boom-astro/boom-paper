@@ -3,21 +3,18 @@
         "$match": {
             "candidate.rb": {
                 "$gte": 0.3
-            }, 
+            },
             "candidate.drb": {
                 "$gt": 0.5
-            }, 
+            },
             "candidate.fwhm": {
-                "$gt": 0.5, 
+                "$gt": 0.5,
                 "$lt": 8
-            }, 
-            "candidate.ndethist": {
-                "$lte": 200
-            }, 
+            },
             "candidate.nbad": {
                 "$lt": 5
             },
-            "candidate.isdiffpos": true, 
+            "candidate.isdiffpos": {"$in": ["t", "T", "true", "True", true, "1", 1]},
             "$and": [
                 {
                     "$or": [
@@ -68,131 +65,24 @@
         }
     },
     {
-        "$match": {
-            "cross_matches.NED.0": {
-                "$exists": true
-            }
-        }
-    },
-    {
         "$project": {
-            "objectId": 1, 
+            "objectId": 1,
             "candidate": {
-                "jd": 1, 
-                "magpsf": 1, 
-                "sigmapsf": 1, 
-                "jdstarthist": 1, 
-                "ndethist": 1, 
-                "drb": 1, 
+                "jd": 1,
+                "magpsf": 1,
+                "sigmapsf": 1,
+                "jdstarthist": 1,
+                "ndethist": 1,
+                "drb": 1,
                 "rb": 1
-            }, 
-            "ned_150": {
-                "$filter": {
-                    "input": "$cross_matches.NED", 
-                    "as": "host", 
-                    "cond": {
-                        "$and": [
-                            {
-                                "$isNumber": "$$host.z"
-                            }, {
-                                "$lte": [
-                                    "$$host.z", 0.033028
-                                ]
-                            }, {
-                                "$in": [
-                                    "$$host.objtype", [
-                                        "G", "GPair", "GTrpl", "PofG"
-                                    ]
-                                ]
-                            }
-                        ]
-                    }
-                }
-            }, 
-            "ned_150_any_nuclear": {
-                "$anyElementTrue": {
-                    "$map": {
-                        "input": "$cross_matches.NED", 
-                        "as": "host", 
-                        "in": {
-                            "$and": [
-                                {
-                                    "$isNumber": "$$host.z"
-                                }, {
-                                    "$lte": [
-                                        "$$host.z", 0.033028
-                                    ]
-                                }, {
-                                    "$in": [
-                                        "$$host.objtype", [
-                                            "G", "GPair", "GTrpl", "PofG"
-                                        ]
-                                    ]
-                                }, {
-                                    "$lte": [
-                                        "$$host.coordinates.distance_arcsec", 2
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            }, 
-            "ned_150_all_nearby": {
-                "$allElementsTrue": {
-                    "$map": {
-                        "input": "$cross_matches.NED", 
-                        "as": "host", 
-                        "in": {
-                            "$and": [
-                                {
-                                    "$isNumber": "$$host.z"
-                                }, {
-                                    "$in": [
-                                        "$$host.objtype", [
-                                            "G", "GPair", "GTrpl", "PofG"
-                                        ]
-                                    ]
-                                }, {
-                                    "$lte": [
-                                        "$$host.z", 0
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            }, 
-            "ned_distant_hosts": {
-                "$filter": {
-                    "input": "$cross_matches.NED", 
-                    "as": "host", 
-                    "cond": {
-                        "$and": [
-                            {
-                                "$isNumber": "$$host.z"
-                            }, {
-                                "$in": [
-                                    "$$host.objtype", [
-                                        "G", "GPair", "GTrpl", "PofG"
-                                    ]
-                                ]
-                            }, {
-                                "$gt": [
-                                    "$$host.z", 0.033028
-                                ]
-                            }
-                        ]
-                    }
-                }
-            }, 
+            },
             "stationary": {
                 "$or": [
                     {
                         "$anyElementTrue": {
                             "$map": {
-                                "input": "$prv_candidates", 
-                                "as": "cand", 
+                                "input": "$prv_candidates",
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -220,8 +110,8 @@
                                                 "$$cand.magpsf", 99
                                             ]
                                         }, {
-                                            "$eq": [
-                                                "$$cand.isdiffpos", true
+                                            "$in": [
+                                                "$$cand.isdiffpos", ["t", "T", "true", "True", true, "1", 1]
                                             ]
                                         }, {
                                             "$or": [
@@ -247,8 +137,8 @@
                                     "$ifNull": [
                                         "$fp_hists", []
                                     ]
-                                }, 
-                                "as": "cand", 
+                                },
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -286,7 +176,7 @@
                         }
                     }
                 ]
-            }, 
+            },
             "star": {
                 "$and": [
                     {
@@ -299,7 +189,7 @@
                         ]
                     }
                 ]
-            }, 
+            },
             "near_brightstar": {
                 "$or": [
                     {
@@ -398,7 +288,7 @@
                         ]
                     }
                 ]
-            }, 
+            },
             "mag_cut": {
                 "$or": [
                     {
@@ -412,13 +302,13 @@
                     }, {
                         "$anyElementTrue": {
                             "$map": {
-                                "input": "$prv_candidates", 
-                                "as": "cand", 
+                                "input": "$prv_candidates",
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
-                                            "$eq": [
-                                                "$$cand.isdiffpos", true
+                                            "$in": [
+                                                "$$cand.isdiffpos", ["t", "T", "true", "True", true, "1", 1]
                                             ]
                                         }, {
                                             "$or": [
@@ -452,8 +342,8 @@
                                     "$ifNull": [
                                         "$fp_hists", []
                                     ]
-                                }, 
-                                "as": "cand", 
+                                },
+                                "as": "cand",
                                 "in": {
                                     "$and": [
                                         {
@@ -483,59 +373,25 @@
         }
     }, {
         "$match": {
-            "ned_150.0": {
-                "$exists": true
-            }, 
-            "star": false, 
-            "near_brightstar": false, 
-            "stationary": true, 
-            "mag_cut": true, 
-            "$and": [
-                {
-                    "$or": [
-                        {
-                            "ned_150_all_nearby": false
-                        }, {
-                            "candidate.magpsf": {
-                                "$lte": 18
-                            }
-                        }
-                    ]
-                }, {
-                    "$or": [
-                        {
-                            "ned_distant_hosts": {
-                                "$eq": []
-                            }
-                        }, {
-                            "$expr": {
-                                "$lt": [
-                                    {
-                                        "$min": "$ned_150.coordinates.distance_arcsec"
-                                    }, {
-                                        "$min": "$ned_distant_hosts.coordinates.distance_arcsec"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
-            ]
+            "star": false,
+            "near_brightstar": false,
+            "stationary": true,
+            "mag_cut": true
         }
     }, {
         "$project": {
-            "objectId": 1, 
+            "objectId": 1,
             "annotations": {
                 "mag": {
                     "$round": [
                         "$candidate.magpsf", 4
                     ]
-                }, 
+                },
                 "jd": {
                     "$round": [
                         "$candidate.jd", 4
                     ]
-                }, 
+                },
                 "age": {
                     "$round": [
                         {
@@ -544,50 +400,13 @@
                             ]
                         }, 4
                     ]
-                }, 
+                },
                 "drb": {
                     "$round": [
                         "$candidate.drb", 2
                     ]
-                }, 
-                "nb_detections": "$candidate.ndethist", 
-                "ned_150_closest": {
-                    "$round": [
-                        {
-                            "$min": "$ned_150.coordinates.distance_arcsec"
-                        }, 2
-                    ]
-                }, 
-                "ned_150_hosts": {
-                    "$map": {
-                        "input": "$ned_150", 
-                        "as": "match", 
-                        "in": {
-                            "name": "$$match.objname", 
-                            "z": {
-                                "$round": [
-                                    "$$match.z", 6
-                                ]
-                            }, 
-                            "z_err": {
-                                "$round": [
-                                    "$$match.z_unc", 6
-                                ]
-                            }, 
-                            "arcsec": {
-                                "$round": [
-                                    "$$match.coordinates.distance_arcsec", 2
-                                ]
-                            }, 
-                            "kpc": {
-                                "$round": [
-                                    "$$match.coordinates.distance_kpc", 2
-                                ]
-                            }, 
-                            "z_tech": "$$match.z_tech"
-                        }
-                    }
-                }
+                },
+                "nb_detections": "$candidate.ndethist"
             }
         }
     }

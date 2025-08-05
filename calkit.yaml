@@ -3,6 +3,7 @@ title: A real-time, multi-survey, optical alert system broker
   operating at scale
 dependencies:
   - git-lfs
+  - jq
 environments:
   tex:
     kind: docker
@@ -43,8 +44,9 @@ pipeline:
         - config/boom/config-template.yaml
         - config/boom/compose.yaml
         - Dockerfile-boom
-        - scripts/mongo-import-ned.sh
+        - scripts/mongo-init.sh
         - data/kowalski.NED.json.gz
+        - config/boom/cats150.boom.json
       iterate_over:
         - arg_name: n_alert_workers
           values: [1, 3, 6]
@@ -73,9 +75,10 @@ pipeline:
         - kowalski/kowalski
         - kowalski/Makefile
         - kowalski/requirements
-        - scripts/mongo-import-ned.sh
+        - scripts/mongo-init.sh
         - scripts/benchmark-kowalski.sh
         - data/kowalski.NED.json.gz
+        - config/kowalski/cats150.kowalski.json
       iterate_over:
         - arg_name: n_workers
           values: [3, 6, 7, 9, 12, 15]
@@ -157,7 +160,7 @@ publications:
         - figures/workflow.pdf
       push_paths:
         - results.tex
-      last_sync_commit: b3a466bdb76a7c6dc80dbeeaa00d201ef979b51a
+      last_sync_commit: ce79408f850ab1363a67008cc2ef178fa9d6e88e
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
