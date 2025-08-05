@@ -4,7 +4,7 @@ COMPOSE_CONFIG="config/kowalski/compose.yaml"
 
 # A function that returns the current date and time
 current_datetime() {
-    date -z utc "+%Y-%m-%d %H:%M:%S"
+    TZ=utc date "+%Y-%m-%d %H:%M:%S"
 }
 
 # Create some files that must exist for Kowalski to work

@@ -7,7 +7,7 @@ LOGS_DIR=${1:-logs/boom}
 
 # A function that returns the current date and time
 current_datetime() {
-    date -z utc "+%Y-%m-%d %H:%M:%S"
+    TZ=utc date "+%Y-%m-%d %H:%M:%S"
 }
 
 # Remove any existing containers
