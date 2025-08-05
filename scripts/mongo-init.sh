@@ -35,11 +35,11 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
 mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
     --eval "db.createCollection('filters'); db.filters.createIndex({ filter_id: 1 })"
 
-NB_FILTERS=10
+N_FILTERS=10
 
-# ingest NB_FILTERS copies of the cats150 filter into filters collection
-echo "Ingesting $NB_FILTERS copies of the cats150 filter into filters collection"
-for i in $(seq 1 $NB_FILTERS); do
+# ingest N_FILTERS copies of the cats150 filter into filters collection
+echo "Ingesting $N_FILTERS copies of the cats150 filter into filters collection"
+for i in $(seq 1 $N_FILTERS); do
     echo "Inserting cats150 filter with filter_id $i into filters collection"
     # the file contains one document, so we read and edit the filter_id field
     EDITED_FILTER_CONTENT=$(jq --argjson id "$i" '.filter_id = $id' /cats150.json)

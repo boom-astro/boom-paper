@@ -4,7 +4,7 @@ COMPOSE_CONFIG="config/kowalski/compose.yaml"
 
 # A function that returns the current date and time
 current_datetime() {
-    date +%Y%m%d_%H%M%S
+    date -z utc "+%Y-%m-%d %H:%M:%S"
 }
 
 # Create some files that must exist for Kowalski to work
@@ -24,7 +24,7 @@ docker compose -f $COMPOSE_CONFIG logs producer > logs/kowalski/producer.log &
 
 # Detect that all alerts have been processed
 # First wait for the file to be created
-echo "Waiting for Dask cluster log file to be created"
+echo "$(current_datetime) - Waiting for Dask cluster log file to be created"
 while [ ! -f logs/kowalski/dask_cluster.log ]; do
     sleep 1
 done
@@ -33,15 +33,14 @@ done
 docker compose -f $COMPOSE_CONFIG stats ingester --format json \
     > logs/kowalski/ingester.stats.log &
 
+# Look for classifications, since log lines can be unreliable with Dask
+echo "$(current_datetime) - Waiting for all alerts to be ingested and classified"
 EXPECTED_ALERTS=29142
-
-# instead just look for log lines like `number of filters passed: ...`
-echo "$(current_datetime) Waiting for all alerts to be processed"
-while [ $(docker compose -f $COMPOSE_CONFIG exec ingester /bin/bash -c "grep 'number of filters passed' /kowalski/logs/dask_cluster.log | wc -l") -lt $EXPECTED_ALERTS ]; do
+while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
-echo "$(current_datetime) All tasks completed; shutting down Kowalski services"
+echo "$(current_datetime) - All tasks completed; shutting down Kowalski services"
 
 # Shut down the services
 docker compose -f $COMPOSE_CONFIG down

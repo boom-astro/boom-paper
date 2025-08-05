@@ -7,7 +7,7 @@ LOGS_DIR=${1:-logs/boom}
 
 # A function that returns the current date and time
 current_datetime() {
-    date +%Y%m%d_%H%M%S
+    date -z utc "+%Y-%m-%d %H:%M:%S"
 }
 
 # Remove any existing containers
@@ -27,16 +27,16 @@ docker compose -f $COMPOSE_CONFIG stats consumer --format json > $LOGS_DIR/consu
 docker compose -f $COMPOSE_CONFIG stats scheduler --format json > $LOGS_DIR/scheduler.stats.log &
 
 EXPECTED_ALERTS=29142
-NB_FILTERS=10
+N_FILTERS=10
 
 # Wait until we see all alerts
-echo "$(current_datetime) Waiting for all alerts to be ingested"
+echo "$(current_datetime) - Waiting for all alerts to be ingested"
 while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments()") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
 # Wait until we see all alerts with classifications
-echo "$(current_datetime) Waiting for all alerts to be classified"
+echo "$(current_datetime) - Waiting for all alerts to be classified"
 while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
@@ -44,12 +44,12 @@ done
 # Wait until we've filtered all alerts
 # We'll have log lines like `0/2 alerts passed`, from which we want to sum
 # the denominators
-echo "$(current_datetime) Waiting for filters to run on all alerts"
-while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter $NB_FILTERS" | awk -F'/' '{sum += $NF} END {print sum}') -lt $EXPECTED_ALERTS ]; do
+echo "$(current_datetime) - Waiting for filters to run on all alerts"
+while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter $N_FILTERS" | awk -F'/' '{sum += $NF} END {print sum}') -lt $EXPECTED_ALERTS ]; do
     sleep 1
 done
 
-echo "$(current_datetime) All tasks completed; shutting down BOOM services"
+echo "$(current_datetime) - All tasks completed; shutting down BOOM services"
 
 # Shut down the BOOM services
 docker compose -f $COMPOSE_CONFIG down
