@@ -7,6 +7,11 @@ current_datetime() {
     TZ=utc date "+%Y-%m-%d %H:%M:%S"
 }
 
+# A function to check that a number is a valid integer
+is_integer() {
+    [[ "$1" =~ ^-?[0-9]+$ ]]
+}
+
 # Create some files that must exist for Kowalski to work
 echo benchmarking > kowalski/version.txt
 echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml
@@ -36,7 +41,12 @@ docker compose -f $COMPOSE_CONFIG stats ingester --format json \
 # Look for classifications, since log lines can be unreliable with Dask
 echo "$(current_datetime) - Waiting for all alerts to be ingested and classified"
 EXPECTED_ALERTS=29142
-while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongo "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+while true; do
+    COUNT=$(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('kowalski').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })")
+    #$ use the is_integer function to check if COUNT is a valid integer
+    if is_integer "$COUNT" && [ "$COUNT" -ge "$EXPECTED_ALERTS" ]; then
+        break
+    fi
     sleep 1
 done
 
