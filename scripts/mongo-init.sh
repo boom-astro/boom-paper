@@ -35,7 +35,7 @@ mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=a
 mongosh "mongodb://mongoadmin:mongoadminsecret@mongo:27017/$DB_NAME?authSource=admin" \
     --eval "db.createCollection('filters'); db.filters.createIndex({ filter_id: 1 })"
 
-N_FILTERS=10
+N_FILTERS=25
 
 # ingest N_FILTERS copies of the cats150 filter into filters collection
 echo "Ingesting $N_FILTERS copies of the cats150 filter into filters collection"
