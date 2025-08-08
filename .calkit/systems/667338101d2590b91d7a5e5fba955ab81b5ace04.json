@@ -1,0 +1,23 @@
+{
+  "os": "Linux",
+  "os_version": "5.15.0-144-generic",
+  "python_version": "3.13.5",
+  "calkit_version": "0.27.2",
+  "calkit_git_rev": null,
+  "hostname": "sassy",
+  "processor": "x86_64",
+  "platform": "Linux-5.15.0-144-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "python_implementation": "CPython",
+  "python_compiler": "Clang 20.1.4 ",
+  "memory_gb": 125.64835739135742,
+  "cpu_count": 64,
+  "node_id": 198112240255590,
+  "docker_version": "Docker version 28.3.3, build 980b856",
+  "conda_version": null,
+  "mamba_version": null,
+  "uv_version": "uv 0.8.0",
+  "pixi_version": null,
+  "Rscript_version": null,
+  "id": "667338101d2590b91d7a5e5fba955ab81b5ace04"
+}
