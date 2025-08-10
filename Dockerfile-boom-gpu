@@ -16,12 +16,27 @@
 ##
 
 ARG RUST_VERSION=1.87.0
+ARG ORT_VERSION=1.19.0
+
+############################
+# ONNX Runtime (GPU) libs  #
+############################
+# Download official ORT GPU release to guarantee provider shared libs are present.
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04 AS onnxruntime-gpu-libs
+ARG ORT_VERSION
+WORKDIR /opt
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates tar && \
+    curl -L -o onnxruntime.tgz https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-linux-x64-gpu-${ORT_VERSION}.tgz && \
+    tar -xzf onnxruntime.tgz && mv onnxruntime-linux-x64-gpu-${ORT_VERSION} onnxruntime && \
+    rm onnxruntime.tgz && rm -rf /var/lib/apt/lists/*
+RUN ls -1 onnxruntime/lib | sort
 
 ############################
 # GPU BUILDER STAGE        #
 ############################
 FROM nvidia/cuda:12.4.1-devel-ubuntu22.04 AS builder-gpu
 ARG RUST_VERSION
+ARG ORT_VERSION
 WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -39,6 +54,12 @@ RUN apt-get update && \
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain ${RUST_VERSION} && \
     rustc --version && cargo --version
 
+# Copy in official ORT libs (so build script can load-dynamic)
+COPY --from=onnxruntime-gpu-libs /opt/onnxruntime /opt/onnxruntime
+ENV ONNXRUNTIME_LIB_DIR=/opt/onnxruntime/lib \
+    ONNXRUNTIME_INCLUDE_DIR=/opt/onnxruntime/include \
+    LD_LIBRARY_PATH=/opt/onnxruntime/lib:${LD_LIBRARY_PATH}
+
 # Pre-copy manifests for layer caching
 COPY boom/Cargo.toml boom/Cargo.lock ./
 
@@ -54,17 +75,11 @@ COPY boom/data/models ./data/models
 # Build all workspace binaries (release)
 RUN cargo build --release --workspace
 
-# Collect ONNX Runtime shared libraries (downloaded by ort crate under target)
-# Previous attempt missed provider libs due to directory depth; search deeper.
+# (Optional) capture any crate-downloaded variants (should be redundant now)
 RUN set -eux; \
-    mkdir -p /opt/onnxruntime/lib; \
-    # Find all relevant onnxruntime shared objects (core + providers) anywhere under target
-    find target -type f -name 'libonnxruntime*.so*' -exec cp -v {} /opt/onnxruntime/lib/ \; || true; \
-    echo "Copied ONNX Runtime libs:"; ls -1 /opt/onnxruntime/lib || true; \
-    if [ ! -f /opt/onnxruntime/lib/libonnxruntime_providers_shared.so ]; then \
-        echo 'WARNING: libonnxruntime_providers_shared.so not found. The CUDA EP may fail to load.'; \
-        find target -type f -name 'libonnxruntime_providers_shared.so' || true; \
-    fi
+    find target -type f -name 'libonnxruntime*.so*' -exec bash -c 'dest=/opt/onnxruntime/lib/$(basename $0); [ -f "$dest" ] || cp -v "$0" /opt/onnxruntime/lib/' {} \; || true; \
+    echo "Final ORT libs present:"; ls -1 /opt/onnxruntime/lib | sort; \
+    test -f /opt/onnxruntime/lib/libonnxruntime_providers_shared.so
 
 ############################
 # GPU RUNTIME STAGE        #
@@ -83,7 +98,9 @@ COPY --from=builder-gpu /app/target/release/kafka_consumer /app/kafka_consumer
 COPY --from=builder-gpu /app/target/release/kafka_producer /app/kafka_producer
 COPY --from=builder-gpu /app/data/models /app/data/models
 
-# Copy ONNX Runtime libs (if present). If not found, container still works (CPU fallback)
+# Copy official ONNX Runtime libs (guaranteed provider shared lib)
+COPY --from=onnxruntime-gpu-libs /opt/onnxruntime /opt/onnxruntime
+# (Any crate-downloaded additional libs copied as well just in case)
 COPY --from=builder-gpu /opt/onnxruntime/lib /opt/onnxruntime/lib
 
 ENV LD_LIBRARY_PATH=/opt/onnxruntime/lib:${LD_LIBRARY_PATH} \
