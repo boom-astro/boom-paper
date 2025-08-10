@@ -111,7 +111,6 @@ services:
     volumes:
       - ${PWD}/data/alerts:/app/data/alerts
       - ${PWD}/config/boom/config.yaml:/app/config.yaml
-    # GPU not strictly needed; leave CPU for producer to save resources
   consumer:
     image: boom/boom-benchmarking:gpu
     hostname: consumer
@@ -135,10 +134,6 @@ services:
         condition: service_completed_successfully
     volumes:
       - ${PWD}/config/boom/config.yaml:/app/config.yaml
-    device_requests:
-      - driver: nvidia
-        count: 1
-        capabilities: [gpu, compute, utility]
   scheduler:
     image: boom/boom-benchmarking:gpu
     hostname: scheduler
@@ -165,7 +160,10 @@ services:
         condition: service_healthy
     volumes:
       - ${PWD}/config/boom/config.yaml:/app/config.yaml
-    device_requests:
-      - driver: nvidia
-        count: 1
-        capabilities: [gpu, compute, utility]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
