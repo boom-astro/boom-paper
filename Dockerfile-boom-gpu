@@ -55,11 +55,16 @@ COPY boom/data/models ./data/models
 RUN cargo build --release --workspace
 
 # Collect ONNX Runtime shared libraries (downloaded by ort crate under target)
-# We gather anything matching libonnxruntime*.so* (and execution provider libs if present)
+# Previous attempt missed provider libs due to directory depth; search deeper.
 RUN set -eux; \
     mkdir -p /opt/onnxruntime/lib; \
-    find target/release -maxdepth 3 -type f -name 'libonnxruntime*.so*' -exec cp -v {} /opt/onnxruntime/lib/ \; || true; \
-    ls -l /opt/onnxruntime/lib || true
+    # Find all relevant onnxruntime shared objects (core + providers) anywhere under target
+    find target -type f -name 'libonnxruntime*.so*' -exec cp -v {} /opt/onnxruntime/lib/ \; || true; \
+    echo "Copied ONNX Runtime libs:"; ls -1 /opt/onnxruntime/lib || true; \
+    if [ ! -f /opt/onnxruntime/lib/libonnxruntime_providers_shared.so ]; then \
+        echo 'WARNING: libonnxruntime_providers_shared.so not found. The CUDA EP may fail to load.'; \
+        find target -type f -name 'libonnxruntime_providers_shared.so' || true; \
+    fi
 
 ############################
 # GPU RUNTIME STAGE        #
