@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
+title: A real-time, multi-survey, optical alert system broker
   operating at scale
 dependencies:
   - git-lfs
@@ -61,6 +61,31 @@ pipeline:
         #         stop: 50
       outputs:
         - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
+    benchmark-boom-more:
+      kind: python-script
+      script_path: scripts/benchmark-boom.py
+      args:
+        - --n-alert-workers={n_alert_workers}
+        - --n-ml-workers={n_ml_workers}
+        - --n-filter-workers={n_filter_workers}
+      environment: run
+      inputs:
+        - boom/src
+        - boom/Cargo.lock
+        - boom/Cargo.toml
+        - scripts/benchmark-boom.sh
+        - config/boom/config-template.yaml
+        - config/boom/compose.yaml
+        - Dockerfile-boom
+        - scripts/mongo-init.sh
+        - data/kowalski.NED.json.gz
+        - config/boom/cats150.boom.json
+      iterate_over:
+        - arg_name: [n_alert_workers, n_ml_workers, n_filter_workers]
+          values:
+            - [4, 6, 1]
+      outputs:
+        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
     benchmark-kowalski:
       kind: python-script
       script_path: scripts/benchmark-kowalski.py
@@ -93,6 +118,7 @@ pipeline:
       cleaned_ipynb_storage: git
       inputs:
         - from_stage_outputs: benchmark-boom
+        - from_stage_outputs: benchmark-boom-more
         - from_stage_outputs: benchmark-kowalski
       outputs:
         - path: paper/results.tex
@@ -135,14 +161,14 @@ metrics:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -167,7 +193,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 references:
   - path: paper/references.bib
