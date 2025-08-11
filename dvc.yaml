@@ -138,6 +138,9 @@ stages:
       - paper/results.tex:
           cache: false
           persist: false
+      - paper/figures/kowalski-scaling.png:
+          cache: false
+          persist: false
       - results:
           cache: false
           persist: false
