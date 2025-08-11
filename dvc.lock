@@ -31,8 +31,8 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: ed00268ffe43598af6bca1a5aa0436a1
-      size: 49323
+      md5: cd10caf90ff2a003c31739c10ba5475f
+      size: 50069
     - path: paper/references.bib
       hash: md5
       md5: 8e1f3d5979dd3cc3c470e3e23ce6579c
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: c056482c2f48ce8515c3fa185354352f
-      size: 7994603
+      md5: 88f07991efe0d6f93ac5182cf45f37a4
+      size: 8010829
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -206,12 +206,12 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 50070f5a88a8db887cd9f3040548fadf
+      md5: 04f6a7a378f805d9b03a0e20b6effe80
       size: 42837
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 683f79cf6265b9627e723bee44997e0f
+      md5: 3a59592545daac794ee0e3fac6bacdce
       size: 9830
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html 
@@ -223,7 +223,7 @@ stages:
       size: 2195
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 683f79cf6265b9627e723bee44997e0f
+      md5: 3a59592545daac794ee0e3fac6bacdce
       size: 9830
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
@@ -348,16 +348,16 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 7e7cd1678c6b47bb15163a5faf9ae5bc
+      md5: d6dff3020a5e49d62d65827e32d0e944
       size: 46555
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 87a7cad0b34b602edc8182b4fec84b73
+      md5: 35c74cf25865b50ae9179bc6f70e84b6
       size: 308935
     - path: paper/figures/scaling.png
       hash: md5
-      md5: 1c237c02fe64c954ff7807c1914a3572
-      size: 46955
+      md5: 55d8b6d460f299b3809bc2f81dbcee8d
+      size: 25498
     - path: paper/results.tex
       hash: md5
       md5: 1342ce0e406cd27a9320470b1074676d

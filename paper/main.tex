@@ -325,6 +325,25 @@ After experimenting with all 4 approaches, integrating \texttt{ort} in a \texttt
 
 \subsection{Throughput Testing}
 
+Figure~\ref{fig:scaling} shows scaling behavior for both BOOM and its
+predecessor, Kowalski, in terms of normalized throughput versus the
+number of workers.
+In addition to its increased throughput, BOOM performs better as more
+computing resources are added,
+though since there are three different worker counts to vary,
+there is some tuning to get ideal scaling,
+which is seen in the figure as a jagged line compared to Kowalski's
+smoother relationship.
+Overall, this shows that BOOM's throughput will make better use of
+increased computing power.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/scaling.png}
+    \caption{Scalability testing results for BOOM and Kowalski.}
+    \label{fig:scaling}
+\end{figure}
+
 \subsection{Integration with \texttt{SkyPortal}}
 
 As described above, the purpose of filters implemented in brokers like \texttt{BOOM} is to greatly limit the number of alerts that may correspond to astrophysical phenomena of interest for a given user. This rate limiting is typically a combination of automated filtering (e.g. with machine learning) and/or human inspection.
