@@ -31,8 +31,8 @@ stages:
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: cd10caf90ff2a003c31739c10ba5475f
-      size: 50069
+      md5: 023000f8860409d3473e96e48226e1c3
+      size: 50152
     - path: paper/references.bib
       hash: md5
       md5: 8e1f3d5979dd3cc3c470e3e23ce6579c
@@ -44,8 +44,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 88f07991efe0d6f93ac5182cf45f37a4
-      size: 8010829
+      md5: 9d5aabe6f4e8d99f3b32c86f13b1cad1
+      size: 8010905
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
