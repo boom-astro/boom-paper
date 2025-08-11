@@ -97,7 +97,7 @@ pipeline:
       outputs:
         - path: paper/results.tex
           storage: git
-        - path: paper/figures/kowalski-scaling.png
+        - path: paper/figures/scaling.png
           storage: git
         - path: results
           storage: git
@@ -162,7 +162,7 @@ publications:
         - figures/workflow.pdf
       push_paths:
         - results.tex
-        - figures/kowalski-scaling.png
+        - figures/scaling.png
       last_sync_commit: 443669c8835222c1b4d6263c7edb7efc9bd54ee1
 notebooks:
   - path: notebooks/analyze-logs.ipynb
