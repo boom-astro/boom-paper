@@ -118,7 +118,7 @@ pipeline:
         - config/kowalski/cats150.kowalski.json
       iterate_over:
         - arg_name: n_workers
-          values: [3, 6, 7, 9, 12, 15]
+          values: [3, 6, 7, 9, 12, 15, 20, 25]
       outputs:
         - logs/kowalski-n={n_workers}
     analyze-logs:
