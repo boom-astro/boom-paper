@@ -84,6 +84,11 @@ pipeline:
         - arg_name: [n_alert_workers, n_ml_workers, n_filter_workers]
           values:
             - [4, 6, 1]
+            - [5, 8, 1]
+            - [6, 10, 1]
+            - [7, 11, 1]
+            - [8, 13, 1]
+            - [9, 15, 1]
       outputs:
         - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
     benchmark-kowalski:
