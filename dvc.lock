@@ -392,13 +392,13 @@ stages:
       nfiles: 5
     - path: logs/kowalski-n=20
       hash: md5
-      md5: d2658c1a1d6f4c367742f47e1d2f40e8.dir
-      size: 58058865
+      md5: 86f8cc2559824a31dd47b179d6d2d981.dir
+      size: 58058977
       nfiles: 5
     - path: logs/kowalski-n=25
       hash: md5
-      md5: bf61c84b898f5240bf0e16c057454c05.dir
-      size: 57781440
+      md5: aaed4e7669c3e4c78cfbee82fa31729d.dir
+      size: 57781580
       nfiles: 5
     - path: logs/kowalski-n=3
       hash: md5
@@ -423,8 +423,8 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a6cb7da84c24dc57c413a92577a38491
-      size: 54260
+      md5: 0619b91be00b7a43fe9e6a335e937f98
+      size: 54261
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
       md5: 754c59391784c5cdfc15c78582915acf
