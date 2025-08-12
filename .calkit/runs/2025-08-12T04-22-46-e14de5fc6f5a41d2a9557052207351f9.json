@@ -1,0 +1,490 @@
+{
+  "id": "e14de5fc6f5a41d2a9557052207351f9",
+  "system_id": "236faa0b34c4a70f503016f4fa7fd247630c1923",
+  "start_time": "2025-08-12T04:22:46.793021+00:00",
+  "end_time": "2025-08-12T04:33:56.705655+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-tex": {
+      "start_time": "2025-08-12T04:22:47.312000",
+      "end_time": "2025-08-12T04:22:50.080000",
+      "status": "completed"
+    },
+    "_check-env-analyze-logs": {
+      "start_time": "2025-08-12T04:22:50.080000",
+      "end_time": "2025-08-12T04:22:52.961000",
+      "status": "completed"
+    },
+    "_check-env-run": {
+      "start_time": "2025-08-12T04:22:52.961000",
+      "end_time": "2025-08-12T04:22:55.695000",
+      "status": "completed"
+    },
+    "benchmark-boom@1-3-1": {
+      "start_time": "2025-08-12T04:22:55.695000",
+      "end_time": "2025-08-12T04:22:55.695000",
+      "status": "skipped"
+    },
+    "benchmark-boom@1-3-3": {
+      "start_time": "2025-08-12T04:22:55.706000",
+      "end_time": "2025-08-12T04:22:55.706000",
+      "status": "skipped"
+    },
+    "benchmark-boom@1-6-1": {
+      "start_time": "2025-08-12T04:22:55.716000",
+      "end_time": "2025-08-12T04:22:55.716000",
+      "status": "skipped"
+    },
+    "benchmark-boom@1-6-3": {
+      "start_time": "2025-08-12T04:22:55.727000",
+      "end_time": "2025-08-12T04:22:55.727000",
+      "status": "skipped"
+    },
+    "benchmark-boom@1-9-1": {
+      "start_time": "2025-08-12T04:22:55.738000",
+      "end_time": "2025-08-12T04:22:55.738000",
+      "status": "skipped"
+    },
+    "benchmark-boom@1-9-3": {
+      "start_time": "2025-08-12T04:22:55.748000",
+      "end_time": "2025-08-12T04:22:55.748000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-3-1": {
+      "start_time": "2025-08-12T04:22:55.759000",
+      "end_time": "2025-08-12T04:22:55.759000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-3-3": {
+      "start_time": "2025-08-12T04:22:55.769000",
+      "end_time": "2025-08-12T04:22:55.769000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-1": {
+      "start_time": "2025-08-12T04:22:55.780000",
+      "end_time": "2025-08-12T04:22:55.780000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-6-3": {
+      "start_time": "2025-08-12T04:22:55.790000",
+      "end_time": "2025-08-12T04:22:55.790000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-1": {
+      "start_time": "2025-08-12T04:22:55.801000",
+      "end_time": "2025-08-12T04:22:55.801000",
+      "status": "skipped"
+    },
+    "benchmark-boom@3-9-3": {
+      "start_time": "2025-08-12T04:22:55.812000",
+      "end_time": "2025-08-12T04:22:55.812000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-3-1": {
+      "start_time": "2025-08-12T04:22:55.822000",
+      "end_time": "2025-08-12T04:22:55.822000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-3-3": {
+      "start_time": "2025-08-12T04:22:55.833000",
+      "end_time": "2025-08-12T04:22:55.833000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-6-1": {
+      "start_time": "2025-08-12T04:22:55.843000",
+      "end_time": "2025-08-12T04:22:55.843000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-6-3": {
+      "start_time": "2025-08-12T04:22:55.854000",
+      "end_time": "2025-08-12T04:22:55.854000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-9-1": {
+      "start_time": "2025-08-12T04:22:55.864000",
+      "end_time": "2025-08-12T04:22:55.864000",
+      "status": "skipped"
+    },
+    "benchmark-boom@6-9-3": {
+      "start_time": "2025-08-12T04:22:55.875000",
+      "end_time": "2025-08-12T04:22:55.875000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg00": {
+      "start_time": "2025-08-12T04:22:55.885000",
+      "end_time": "2025-08-12T04:22:55.885000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg01": {
+      "start_time": "2025-08-12T04:22:55.895000",
+      "end_time": "2025-08-12T04:22:55.895000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg02": {
+      "start_time": "2025-08-12T04:22:55.906000",
+      "end_time": "2025-08-12T04:22:55.906000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg03": {
+      "start_time": "2025-08-12T04:22:55.916000",
+      "end_time": "2025-08-12T04:22:55.916000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg04": {
+      "start_time": "2025-08-12T04:22:55.926000",
+      "end_time": "2025-08-12T04:22:55.926000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg05": {
+      "start_time": "2025-08-12T04:22:55.936000",
+      "end_time": "2025-08-12T04:22:55.936000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg06": {
+      "start_time": "2025-08-12T04:22:55.947000",
+      "end_time": "2025-08-12T04:22:55.947000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg07": {
+      "start_time": "2025-08-12T04:22:55.957000",
+      "end_time": "2025-08-12T04:22:55.957000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg08": {
+      "start_time": "2025-08-12T04:22:55.967000",
+      "end_time": "2025-08-12T04:22:55.967000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg09": {
+      "start_time": "2025-08-12T04:22:55.977000",
+      "end_time": "2025-08-12T04:22:55.977000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg010": {
+      "start_time": "2025-08-12T04:22:55.987000",
+      "end_time": "2025-08-12T04:22:55.987000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg011": {
+      "start_time": "2025-08-12T04:22:55.998000",
+      "end_time": "2025-08-12T04:22:55.998000",
+      "status": "skipped"
+    },
+    "benchmark-boom-more@_arg012": {
+      "start_time": "2025-08-12T04:22:56.008000",
+      "end_time": "2025-08-12T04:22:56.008000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@3": {
+      "start_time": "2025-08-12T04:22:56.020000",
+      "end_time": "2025-08-12T04:22:56.020000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@6": {
+      "start_time": "2025-08-12T04:22:56.032000",
+      "end_time": "2025-08-12T04:22:56.032000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@7": {
+      "start_time": "2025-08-12T04:22:56.044000",
+      "end_time": "2025-08-12T04:22:56.044000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@9": {
+      "start_time": "2025-08-12T04:22:56.056000",
+      "end_time": "2025-08-12T04:22:56.056000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@12": {
+      "start_time": "2025-08-12T04:22:56.068000",
+      "end_time": "2025-08-12T04:22:56.068000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@15": {
+      "start_time": "2025-08-12T04:22:56.081000",
+      "end_time": "2025-08-12T04:22:56.081000",
+      "status": "skipped"
+    },
+    "benchmark-kowalski@20": {
+      "start_time": "2025-08-12T04:22:56.127000",
+      "end_time": "2025-08-12T04:28:51.478000",
+      "status": "completed"
+    },
+    "benchmark-kowalski@25": {
+      "start_time": "2025-08-12T04:28:51.478000",
+      "end_time": "2025-08-12T04:33:38.684000",
+      "status": "completed"
+    },
+    "_clean-nb-analyze-logs": {
+      "start_time": "2025-08-12T04:33:38.684000",
+      "end_time": "2025-08-12T04:33:44.262000",
+      "status": "completed"
+    },
+    "analyze-logs": {
+      "start_time": "2025-08-12T04:33:44.262000",
+      "end_time": "2025-08-12T04:33:54.660000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-08-12T04:33:54.660000",
+      "end_time": "2025-08-12T04:33:54.660000",
+      "status": "skipped"
+    }
+  },
+  "git_rev": "549b48b0bb140dab9cc54b1bc8ec423fbd70377e",
+  "git_branch": "boom-more",
+  "git_changed_files_before": [
+    ".calkit/env-locks/tex.json",
+    "dvc.lock",
+    "dvc.yaml"
+  ],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    ".calkit/runs/2025-08-12T03-57-39-d8002c884a1a4320ba0a38a047758efe.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/env-locks/tex.json",
+    ".calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/executed/notebooks/analyze-logs.ipynb",
+    ".calkit/notebooks/html/notebooks/analyze-logs.html",
+    "dvc.yaml",
+    "paper/figures/scaling.png",
+    "results/kowalski.csv"
+  ],
+  "git_staged_files_after": [
+    "dvc.lock",
+    "logs/.gitignore"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/runs/2025-08-12T03-57-39-d8002c884a1a4320ba0a38a047758efe.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@20": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=20": "deleted"
+        }
+      }
+    ],
+    "benchmark-kowalski@25": [
+      {
+        "changed deps": {
+          "scripts/benchmark-kowalski.py": "modified",
+          "config/kowalski/config-template.yaml": "modified",
+          "config/kowalski/compose.yaml": "modified",
+          "config/kowalski/supervisord.conf": "modified",
+          "kowalski/ingester.Dockerfile": "modified",
+          "kowalski/kowalski": "modified",
+          "kowalski/Makefile": "modified",
+          "kowalski/requirements": "modified",
+          "scripts/mongo-init.sh": "modified",
+          "scripts/benchmark-kowalski.sh": "modified",
+          "data/kowalski.NED.json.gz": "modified",
+          "config/kowalski/cats150.kowalski.json": "modified",
+          ".calkit/env-locks/run.txt": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "logs/kowalski-n=25": "deleted"
+        }
+      }
+    ],
+    "_clean-nb-analyze-logs": [
+      {
+        "changed deps": {
+          "notebooks/analyze-logs.ipynb": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=20": "deleted",
+          "logs/kowalski-n=25": "deleted"
+        }
+      }
+    ],
+    "build-paper": [
+      {
+        "changed deps": {
+          ".calkit/env-locks/tex.json": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=6-nml=9-nf=1/",
+      "logs/boom-na=1-nml=9-nf=1/",
+      "logs/boom-na=6-nml=6-nf=1/",
+      "logs/kowalski-n=7/",
+      "logs/boom-na=1-nml=3-nf=1/",
+      "logs/boom-na=1-nml=6-nf=3/",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=3/",
+      "logs/kowalski-n=12/",
+      "logs/boom-na=9-nml=14-nf=2/",
+      "logs/boom-na=6-nml=3-nf=1/",
+      "logs/boom-na=5-nml=8-nf=1/",
+      "logs/boom-na=6-nml=10-nf=1/",
+      "logs/boom-na=6-nml=3-nf=3/",
+      "logs/boom-na=3-nml=3-nf=3/",
+      "logs/boom-na=3-nml=6-nf=3/",
+      "logs/boom-na=8-nml=13-nf=1/",
+      "logs/boom-na=3-nml=4-nf=1/",
+      "logs/boom-na=4-nml=7-nf=1/",
+      "paper/figures/workflow.key",
+      "logs/boom-na=6-nml=9-nf=3/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=9-nml=15-nf=1/",
+      "logs/boom-na=3-nml=9-nf=3/",
+      "logs/boom-na=4-nml=6-nf=1/",
+      "logs/boom-na=7-nml=11-nf=1/",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "logs/boom-na=1-nml=3-nf=3/",
+      "logs/boom-na=5-nml=5-nf=1/",
+      "logs/boom-na=2-nml=2-nf=1/",
+      "logs/kowalski-n=9/",
+      "logs/boom-na=6-nml=6-nf=3/",
+      "logs/boom-na=1-nml=2-nf=1/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=1-nml=1-nf=1/",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "logs/boom-na=1-nml=9-nf=3/",
+      "logs/boom-na=1-nml=6-nf=1/",
+      "logs/kowalski-n=15/",
+      "paper/main.pdf"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-tex": [
+      "always changed"
+    ],
+    "_check-env-analyze-logs": [
+      "always changed"
+    ],
+    "_check-env-run": [
+      "always changed"
+    ],
+    "benchmark-kowalski@20": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=20": "modified"
+        }
+      }
+    ],
+    "benchmark-kowalski@25": [
+      {
+        "changed outs": {
+          "logs/kowalski-n=25": "modified"
+        }
+      }
+    ],
+    "analyze-logs": [
+      {
+        "changed deps": {
+          "logs/kowalski-n=20": "modified",
+          "logs/kowalski-n=25": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "added": [
+        "logs/kowalski-n=20/",
+        "logs/kowalski-n=25/"
+      ],
+      "modified": [
+        "paper/main.pdf"
+      ]
+    },
+    "uncommitted": {
+      "modified": [
+        "logs/kowalski-n=20/",
+        "logs/kowalski-n=25/"
+      ]
+    },
+    "untracked": [],
+    "unchanged": [
+      "logs/boom-na=6-nml=9-nf=1/",
+      "logs/boom-na=1-nml=9-nf=1/",
+      "logs/boom-na=6-nml=6-nf=1/",
+      "logs/kowalski-n=7/",
+      "logs/boom-na=1-nml=3-nf=1/",
+      "logs/boom-na=1-nml=6-nf=3/",
+      "data/kowalski.NED.json.gz",
+      "logs/kowalski-n=3/",
+      "logs/kowalski-n=12/",
+      "logs/boom-na=9-nml=14-nf=2/",
+      "logs/boom-na=6-nml=3-nf=1/",
+      "logs/boom-na=5-nml=8-nf=1/",
+      "logs/boom-na=6-nml=10-nf=1/",
+      "logs/boom-na=6-nml=3-nf=3/",
+      "logs/boom-na=3-nml=3-nf=3/",
+      "logs/boom-na=3-nml=6-nf=3/",
+      "logs/boom-na=8-nml=13-nf=1/",
+      "logs/boom-na=3-nml=4-nf=1/",
+      "logs/boom-na=4-nml=7-nf=1/",
+      "paper/figures/workflow.key",
+      "logs/boom-na=6-nml=9-nf=3/",
+      "logs/boom-na=3-nml=9-nf=1/",
+      "logs/boom-na=9-nml=15-nf=1/",
+      "logs/boom-na=3-nml=9-nf=3/",
+      "logs/boom-na=4-nml=6-nf=1/",
+      "logs/boom-na=7-nml=11-nf=1/",
+      "paper/figures/workflow.pdf",
+      "logs/boom-na=3-nml=6-nf=1/",
+      "logs/boom-na=1-nml=3-nf=3/",
+      "logs/boom-na=5-nml=5-nf=1/",
+      "logs/boom-na=2-nml=2-nf=1/",
+      "logs/kowalski-n=9/",
+      "logs/boom-na=6-nml=6-nf=3/",
+      "logs/boom-na=1-nml=2-nf=1/",
+      "logs/kowalski-n=6/",
+      "logs/boom-na=1-nml=1-nf=1/",
+      "logs/boom-na=3-nml=3-nf=1/",
+      "logs/boom-na=1-nml=9-nf=3/",
+      "logs/boom-na=1-nml=6-nf=1/",
+      "logs/kowalski-n=15/"
+    ]
+  }
+}
