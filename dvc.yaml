@@ -89,11 +89,29 @@ stages:
       - logs/boom-na=${item._arg0.n_alert_workers}-nml=${item._arg0.n_ml_workers}-nf=${item._arg0.n_filter_workers}
     matrix:
       _arg0:
+        - n_alert_workers: 1
+          n_ml_workers: 1
+          n_filter_workers: 1
+        - n_alert_workers: 1
+          n_ml_workers: 2
+          n_filter_workers: 1
+        - n_alert_workers: 2
+          n_ml_workers: 2
+          n_filter_workers: 1
+        - n_alert_workers: 3
+          n_ml_workers: 4
+          n_filter_workers: 1
         - n_alert_workers: 4
           n_ml_workers: 6
           n_filter_workers: 1
+        - n_alert_workers: 4
+          n_ml_workers: 7
+          n_filter_workers: 1
         - n_alert_workers: 5
           n_ml_workers: 8
+          n_filter_workers: 1
+        - n_alert_workers: 5
+          n_ml_workers: 5
           n_filter_workers: 1
         - n_alert_workers: 6
           n_ml_workers: 10
@@ -107,6 +125,9 @@ stages:
         - n_alert_workers: 9
           n_ml_workers: 15
           n_filter_workers: 1
+        - n_alert_workers: 9
+          n_ml_workers: 14
+          n_filter_workers: 2
     desc: Automatically generated from the 'benchmark-boom-more' stage
       in calkit.yaml. Changes made here will be overwritten.
   benchmark-kowalski:
@@ -171,12 +192,19 @@ stages:
       - logs/boom-na=6-nml=6-nf=3
       - logs/boom-na=6-nml=9-nf=1
       - logs/boom-na=6-nml=9-nf=3
+      - logs/boom-na=1-nml=1-nf=1
+      - logs/boom-na=1-nml=2-nf=1
+      - logs/boom-na=2-nml=2-nf=1
+      - logs/boom-na=3-nml=4-nf=1
       - logs/boom-na=4-nml=6-nf=1
+      - logs/boom-na=4-nml=7-nf=1
       - logs/boom-na=5-nml=8-nf=1
+      - logs/boom-na=5-nml=5-nf=1
       - logs/boom-na=6-nml=10-nf=1
       - logs/boom-na=7-nml=11-nf=1
       - logs/boom-na=8-nml=13-nf=1
       - logs/boom-na=9-nml=15-nf=1
+      - logs/boom-na=9-nml=14-nf=2
       - logs/kowalski-n=3
       - logs/kowalski-n=6
       - logs/kowalski-n=7
