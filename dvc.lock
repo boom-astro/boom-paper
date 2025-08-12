@@ -206,13 +206,13 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 04f6a7a378f805d9b03a0e20b6effe80
-      size: 42837
+      md5: 71e402e86539dad2a26e5ea743ff3251
+      size: 49811
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 3a59592545daac794ee0e3fac6bacdce
-      size: 9830
+      md5: 4af4aa4c806767097245ebe58816500d
+      size: 10092
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html 
       "notebooks/analyze-logs.ipynb"
@@ -223,8 +223,8 @@ stages:
       size: 2195
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 3a59592545daac794ee0e3fac6bacdce
-      size: 9830
+      md5: 4af4aa4c806767097245ebe58816500d
+      size: 10092
     - path: logs/boom-na=1-nml=1-nf=1
       hash: md5
       md5: 82fc85b03057020d3df8a174712e97f1.dir
@@ -413,24 +413,24 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 67cf22da7ac94dfc1e678bc2e945f5a9
-      size: 46553
+      md5: 08b68b994d38295fa459be85427d6a3c
+      size: 53522
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 35c74cf25865b50ae9179bc6f70e84b6
-      size: 308935
+      md5: 9ef124d181af017216828bd1cd43a51e
+      size: 311439
     - path: paper/figures/scaling.png
       hash: md5
-      md5: 55d8b6d460f299b3809bc2f81dbcee8d
-      size: 25498
+      md5: e260c434c458da81aa33b80df204926a
+      size: 23909
     - path: paper/results.tex
       hash: md5
       md5: 1342ce0e406cd27a9320470b1074676d
       size: 186
     - path: results
       hash: md5
-      md5: a05841ba8acbc9581df6a430f0d1fceb.dir
-      size: 1803
+      md5: 059d48977b2281d15bf66c00e0ff991a.dir
+      size: 2760
       nfiles: 2
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
