@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker
+title: A real-time, multi-survey, optical alert system broker 
   operating at scale
 dependencies:
   - git-lfs
@@ -173,14 +173,14 @@ metrics:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from
+    description: Alerts from the NED archival catalog exported from 
       Kowalski.
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker
+    title: A real-time, multi-survey, optical alert system broker 
       operating at scale
     description:
     kind: journal-article
@@ -201,11 +201,11 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: bf58c4802b6a0119f41155d94a8fbfca592ddbbe
+      last_sync_commit: c631127339eb3ff5bb23eeb0c798fc0f22f1519b
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski
+    description: Analyze the logs from the BOOM and Kowalski 
       benchmarks.
 references:
   - path: paper/references.bib
