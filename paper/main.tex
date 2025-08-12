@@ -62,7 +62,7 @@
 
 % Abstract of the paper
 \begin{abstract}
-With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \texttt{BOOM} (Burst \& Outburst Observations Monitory), an analysis framework focused on real-time, joint brokering of these alert streams.
+With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \texttt{BOOM} (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
 Harnessing the performance of a \texttt{Rust}-based software stack relying on a non-relational (NoSQL) \texttt{MongoDB} database combined with a \texttt{Redis}/\texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing, as well as results with custom filters we have built to demonstrate the system's capabilities.
 We further outline the development plan for \texttt{BABAMUL}, the public version of \texttt{BOOM} processing LSST alerts.
@@ -326,8 +326,9 @@ After experimenting with all 4 approaches, integrating \texttt{ort} in a \texttt
 \subsection{Throughput Testing}
 
 Figure~\ref{fig:scaling} shows scaling behavior for both BOOM and its
-predecessor, Kowalski, in terms of normalized throughput versus the
-number of workers.
+predecessor, Kowalski, in terms of throughput in alerts processed per second
+versus the number of worker processes.
+\todo[inline]{Describe, archive, and cite benchmarking repo.}
 In addition to its increased throughput, BOOM performs better as more
 computing resources are added,
 though since there are three different worker counts to vary,
@@ -342,7 +343,8 @@ increased computing power.
     \includegraphics[width=0.45\textwidth]{figures/scaling.png}
     \caption{
         Scalability testing results for BOOM and Kowalski.
-        Values for each system are normalized by their lowest value.
+        The dashed horizontal line represents the average alert production
+        rate of the Rubin observatory: 10,000 alerts every 30 seconds.
     }
     \label{fig:scaling}
 \end{figure}
