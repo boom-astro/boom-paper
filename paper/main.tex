@@ -325,10 +325,23 @@ After experimenting with all 4 approaches, integrating \texttt{ort} in a \texttt
 
 \subsection{Throughput Testing}
 
-Figure~\ref{fig:scaling} shows scaling behavior for both BOOM and its
-predecessor, Kowalski, in terms of throughput in alerts processed per second
+In order to ensure BOOM will be able to handle the additional load from the
+Rubin alert stream (10,000 alerts every 30 seconds) and beyond,
+a throughput test was performed over various
+numbers of workers on a 64 core machine.
+One night of ZTF alerts was ingested, cross-matched against the
+NED historical catalog, classified against multiple ML models,
+and then filtered against 25 representative filters.
+Kowalski was also run for the same scenario with varying worker
+process counts for comparison.
+Code and datasets to reproduce the results are available
+from~\cite{Bachant2025BoomCalkit}.
+
+\todo[inline]{Need to archive benchmarking repo to cite.}
+
+Figure~\ref{fig:scaling} shows throughput testing results for both BOOM
+and Kowalski in terms of alerts processed per second
 versus the number of worker processes.
-\todo[inline]{Describe, archive, and cite benchmarking repo.}
 In addition to its increased throughput, BOOM performs better as more
 computing resources are added,
 though since there are three different worker counts to vary,
@@ -336,7 +349,9 @@ there is some tuning to get ideal scaling,
 which is seen in the figure as a jagged line compared to Kowalski's
 smoother relationship.
 Overall, this shows that BOOM's throughput will make better use of
-increased computing power.
+increased computing power,
+and should be able to handle the Rubin alert stream with fewer than 10
+worker processes.
 
 \begin{figure}
     \centering
