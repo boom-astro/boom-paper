@@ -171,8 +171,8 @@ stages:
     desc: Automatically generated from the 'analyze-logs' stage in 
       calkit.yaml. Changes made here will be overwritten.
   analyze-logs:
-    cmd: calkit nb execute --environment analyze-logs --no-check --to 
-      html "notebooks/analyze-logs.ipynb"
+    cmd: calkit nb execute --environment analyze-logs --no-check 
+      --language python --to html "notebooks/analyze-logs.ipynb"
     deps:
       - .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       - .calkit/env-locks/analyze-logs.txt
