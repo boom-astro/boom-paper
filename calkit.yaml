@@ -201,7 +201,7 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: 9d4198d140cc5cf9a109a0e4bed6c3d7250db909
+      last_sync_commit: 2759059cafca8750c183dcf06dcc4481be11a94e
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
