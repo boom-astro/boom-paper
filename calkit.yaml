@@ -184,6 +184,9 @@ datasets:
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
+  - path: paper/figures/scaling.png
+    title: BOOM scaling
+    stage: analyze-logs
 
 publications:
   - path: paper/main.pdf
