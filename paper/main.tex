@@ -163,10 +163,11 @@ When read from a list messages are removed from it, and one message can only be 
 This is precisely what we need for \texttt{BOOM},
 where alert processing is not performed by one but many processes,
 to parallelize over the data streams.
-Also, \texttt{BOOM} does not rely on one process to ingest, enrich,
-and filter a stream one alert at a time,
-but instead is composed of dedicated processes
-for each of these processing steps. In \texttt{Kowalski}, alert processing was parallelized using a cluster of a single type of worker responsible for the full processing of each alert packet. This includes cross-matching with other surveys, running machine learning models, inserting entries in the database, and running all user-defined filters. With this design, each operation is performed on no more than one alert at a time, and all processes are equipped with all the tools required to perform these operations. However, database queries such as retrieving or inserting documents benefit from being performed over batches of entries rather than on only one, as we reduce the number of roundtrips over network and some of the overhead incurred by each operation. Similarly, machine learning models take advantage of hardware such as GPUs to parallelize inference over multiple inputs rather than one by one. Also, when fully processing alerts one by one using a single worker type, if a single operation represents a significant portion of your processing time, the only option available to speed up processing of a data stream is to add more copies of the same end-to-end worker type. Consequently, it is impossible to only scale the amount of compute for one specific operation, and all other operations are copied as well.
+% Also, \texttt{BOOM} does not rely on one process to ingest, enrich
+% and filter a stream one alert at a time,
+% but instead is composed of dedicated processes
+% for each of these processing steps. In \texttt{Kowalski}, alert processing was parallelized using a cluster of a single type of worker responsible for the full processing of each alert packet. This includes cross-matching with other surveys, running machine learning models, inserting entries in the database, and running all user-defined filters. With this design, each operation is performed on no more than one alert at a time, and all processes are equipped with all the tools required to perform these operations. However, database queries such as retrieving or inserting documents benefit from being performed over batches of entries rather than on only one, as it reduces the number of roundtrips over network and some of the overhead incurred by each invididual operation. Similarly, machine learning models take advantage of hardware such as GPUs to parallelize inference over multiple inputs rather than one by one. Also, when fully processing alerts one by one using a single worker type, if a single operation represents a significant portion of your processing time, the only option available to speed up processing of a data stream is to add more copies of the same end-to-end worker type. Consequently, it is impossible to only scale the amount of compute for one specific operation, and all other operations are scaled as well. In \texttt{Kowalski}'s case, the overall processing time was dominated firstly - and mostly - by running user-defined filters, and second by machine learning inference. While in \texttt{BOOM} the inital ingestion of alerts into the database is also done sequentially, inference and filtering are handled by 2 separate worker types able to perform these over batches of alerts, greatly reducing the amount of DB operations performed. Also, since these operations are handled by different processes they can be scaled up independently, to avoid scaling up the database, CPU, and memory usage from other processing steps. Reducing database load across the board is even more critical for \texttt{BOOM}, as the newly introduced multi-survey features require numerous additional operations to begin with.
+
 \rednote{this approach and technical choice is detailed in section X}.
 \todo[inline]{Fix reference for section.}
 There, \texttt{Valkey} is used to communicate data between various
@@ -195,26 +196,17 @@ and do not have a noticeable memory impact.
 
 \subsection{Parallelized and Distributed Alerts Processing}
 
-It had become clear with \texttt{Kowalski} that making one process responsible
-for processing one alert at a time in its entirety
-(i.e. ingestion, enrichment,
-and filtering) does not allow us to scale optimally.
-When one of the processing steps becomes a bottleneck,
-the only solution with a single worker approach is
-to make more copies of the same worker,
-rather than only scale the processing
-step that requires more resources to keep up with the expected throughput.
-For example,
-with the advances of machine learning techniques yielding ever larger
-and complex models,
-adding more models to run on an alert stream requires more
-compute time not for every step of the processing but only to run these
-additional models.
-Therefore, the ability to only scale processes responsible of
-running models without also allocating resources to other processing steps,
-which do not need them, is much more effective and scalable.
-Next, we will describe
-how the alert processing steps have been split in multiple ``workers:''
+BOOM employs a different architectural approach than its predecessor Kowalski, using dedicated worker types for each processing stage rather than a single monolithic worker design. In Kowalski, alert processing was parallelized using a cluster of identical workers where each worker was responsible for the complete end-to-end processing of individual alert packets. This included performing database insertions and queries such as cross-matching with archival catalogs, running user-defined filters, inserting and updating alerts and objects, and running machine learning models. While this design simplified deployment and management, it suffered from significant inefficiencies that prevented it from scaling up sufficiently and efficiently.
+
+The single worker type approach creates several unavoidable bottlenecks. First, by forcing a sequential processing of alerts one at a time, it prevents the system from taking advantage of batch operations that are essential for both database efficiency and machine learning performance. Database queries such as retrieving or inserting documents benefit substantially from being performed over batches of entries rather than one by one, as this reduces network round-trips and the overhead incurred by each operation. Similarly, machine learning models are designed to parallelize inference over multiple inputs simultaneously (to leverage hardware acceleration such as GPUs, though it already improves performance in a CPU environment) rather than processing them sequentially.
+
+Perhaps more critically, the monolithic worker design creates inflexible scaling constraints. When a single operation represents a significant portion of processing time, the only available solution is to add more copies of the complete end-to-end worker, inevitably scaling all operations regardless of whether they constitute bottlenecks. In Kowalski's case, processing time was dominated primarily by user-defined filters and secondarily by machine learning inference, yet scaling these bottlenecks required also scaling other processing steps that were not performance-limiting factors, in turn unnecessarily scaling database load, CPU usage, and memory consumption, slowing down the overall system.
+
+BOOM addresses these limitations through a multi-tier architecture with dedicated worker types for ingestion, inference, and filtering operations. While initial alert ingestion remains sequential, both inference and filtering are handled by specialized worker types that process batches of alerts, dramatically reducing the number of database operations required. This architectural separation enables independent scaling of different processing stages, allowing administrators to increase compute resources only where bottlenecks occur. This resource optimization becomes particularly important given BOOM's expanded multi-survey capabilities, which introduce numerous additional database operations compared to single-survey systems. This results in more efficient hardware utilization and lower overall resource consumption while providing superior processing throughput and flexibility.
+
+An alternative approach might consider using single end-to-end workers that process batches of alerts through sequential processing stages with parallelization where possible. However, this design creates a fundamental latency bottleneck: since certain initial operations like deserializing Kafka Avro packets and cross-matching with archival catalogs must be performed sequentially on individual alerts, a worker cannot begin machine learning inference until it completes all preliminary processing for every alert in its batch. As batch sizes increase to improve ML efficiency, latency from an alert being emitted and it being processed increases proportionally because the worker must sequentially process all alerts before any can proceed to inference, and then filtering. The only way to reduce this latency would be to decrease batch sizes by adding more workers, but this ultimately converges to the inefficient single-worker-single-alert scenario, negating the benefits of batch processing entirely.
+
+Next, we will describe exactly how the alert processing steps mentioned above have been split in multiple ``workers:''
 
 \todo[inline]{
     PB: I'm still struggling to understand how splitting a serial pipeline
@@ -228,7 +220,7 @@ how the alert processing steps have been split in multiple ``workers:''
     I started a notebook in the \texttt{boom-paper} repo on GitHub
     to simulate the different architectures using SimPy
     in case we want some evidence to back up this relatively strong statement:
-    ``much more effective and scalable''.
+    ``much more effective and scalable''. -> Theo: please look at the section I just wrote above. The goal is to find an architecture that minimizes useless resource allocation and DB usage when we want/need to scale some processing step to handle the throughput. We just can't afford to scale up processing steps that don't need to since it's all mostly DB operations and the more load we put on the DB, the slower things get or at least we reduce the amount of things we can do in parallel. A single worker type architecture where we batch where we cant (so single worker type but working over batches of alerts) also won't do, since then we essentially assign N alerts to any given worker also for operations that can be batched, and there we end up doing work sequentially that could have been parallelized.
 }
 
 \subsubsection{Alert Ingestion Worker}
