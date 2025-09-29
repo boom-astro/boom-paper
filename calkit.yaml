@@ -1,8 +1,9 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker
+title: A real-time, multi-survey, optical alert system broker 
   operating at scale
 description: >
-  This project contains all of the files necessary to reproduce the results and
+  This project contains all of the files necessary to reproduce the results
+  and
   compile the paper.
 authors:
   - first_name: Theophile
@@ -181,7 +182,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from
+    description: Alerts from the NED archival catalog exported from 
       Kowalski.
 
 figures:
@@ -193,7 +194,7 @@ figures:
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker
+    title: A real-time, multi-survey, optical alert system broker 
       operating at scale
     description:
     kind: journal-article
@@ -214,12 +215,12 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: f02ee109d83f2420703811eda5d46fbe8dfec394
+      last_sync_commit: 1514a4162e39ae6d9b7516c96cd407c49dad6367
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski
+    description: Analyze the logs from the BOOM and Kowalski 
       benchmarks.
 
 references:
