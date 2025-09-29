@@ -175,27 +175,6 @@ pipeline:
         - paper/aastex631.cls
         - paper/results.tex
 
-# These are pulled out into the run logs
-metrics:
-  boom_n_ml_workers:
-    stage: benchmark-boom
-    description: Number of BOOM machine learning workers.
-    read_from:
-      path: config/boom/config.yaml
-      key: workers.ZTF.ml.n_workers
-  boom_run_time_s:
-    description: Total run time of the BOOM benchmark in seconds.
-    stage: benchmark-boom
-    read_from:
-      path: results/results.json
-      key: boom_run_time_s
-  kowalski_run_time_s:
-    description: Total run time of the Kowalski benchmark in seconds.
-    stage: benchmark-kowalski
-    read_from:
-      path: results/results.json
-      key: kowalski_run_time_s
-
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
