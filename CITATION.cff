@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: If you use these files, please cite is using these metadata.
+title: A real-time, multi-survey, optical alert system broker 
+  operating at scale
+abstract: >
+  This project contains all of the files necessary to reproduce the results
+  and compile the paper.
+version: v0.1
+date-released: '2025-09-29'
+repository-code:
+authors:
+  - family-names: Jegou du Laz
+    given-names: Theophile
+    orcid: 0009-0003-6181-4526
+  - family-names: Bachant
+    given-names: Peter
+    orcid: 0000-0003-4039-6954
+  - family-names: Simones
+    given-names: Jacob
+    orcid:
+  - family-names: Coughlin
+    given-names: Michael
+    orcid: 0000-0002-8262-2924
+  - family-names: Kasliwal
+    given-names: Mansi
+    orcid: 0000-0002-5619-4938
+identifiers:
+  - description: Release v0.1
+    type: doi
+    value: 10.22002/640bx-nbn45

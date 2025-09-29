@@ -227,3 +227,17 @@ references:
 
 showcase:
   - publication: paper/main.pdf
+
+releases:
+  v0.1:
+    kind: project
+    path: .
+    git_rev: d43b20e
+    date: "2025-09-29"
+    publisher: caltechdata
+    record_id: 640bx-nbn45
+    doi: 10.22002/640bx-nbn45
+    url: https://doi.org/10.22002/640bx-nbn45
+    description: >
+      This project contains all of the files necessary to reproduce the
+      results and compile the paper.

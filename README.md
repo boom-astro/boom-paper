@@ -1,5 +1,7 @@
 # BOOM paper
 
+[![DOI](https://data.caltech.edu/badge/DOI/10.22002/640bx-nbn45.svg)](https://handle.stage.datacite.org/10.22002/640bx-nbn45)
+
 The first paper about BOOM development.
 
 To clone the project, including all datasets and artifacts, run:
