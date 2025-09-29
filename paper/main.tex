@@ -275,23 +275,23 @@ BOOM's filter worker is the third and last worker type to process alerts before 
 
 Just as the Alert worker sends candidate IDs to the Enrichment worker for it to process the associated alerts, the Enrichment worker then sends the same candidate IDs of the alerts it processed to the filter worker. These are read in batches, so that filters run on a batch of alerts rather than on one of them at a time. Just as it did for the ML worker, this saves on DB usage and overhead, reducing the time required to filter on alerts, as well as the load put on the database. Once all filters have run on a batch of candidate IDs, we are left with a hashmap, with the candidates that have passed at least one filter as keys, and the list of filters ids that each candidate have passed and their annotations if any as values. We then query the database to retrieve all the relevant data products for these alerts and build \texttt{BOOM}'s own \texttt{Alert} struct. This struct is identical for all surveys (but populated with a custom logic for each), and contains:
 \begin{itemize}
-    \item metadata about the object and alert, such as IDs, 
+    \item metadata about the object and alert, such as IDs,
         position, and survey of origin.
-    \item a list of `Classifications`, defined by the classifier 
+    \item a list of `Classifications`, defined by the classifier
         name and score.
-    \item a list of `Photometry`, defined by their time, band, 
-        flux data, and pipeline of origin (alert vs forced 
+    \item a list of `Photometry`, defined by their time, band,
+        flux data, and pipeline of origin (alert vs forced
         photometry).
     \item the 3 cutouts: science, reference, difference
-    \item a list of filters that they passed, defined by their 
+    \item a list of filters that they passed, defined by their
         IDs and an optional `annotations` field.
     \item a list of `archival-matches`, containing all cross-
-        matches with archival catalogs, as performed by the 
-        `Alert` worker. Each cross-match entry is characterized 
-        by its catalog name, and all the fields that are relevant 
+        matches with archival catalogs, as performed by the
+        `Alert` worker. Each cross-match entry is characterized
+        by its catalog name, and all the fields that are relevant
         for this catalog.
     \item a list of `survey-matches`, containing all the cross-
-        matches with other surveys processed by `BOOM`. These 
+        matches with other surveys processed by `BOOM`. These
         follow as similar schema as described above.
 \end{itemize}
 
@@ -361,9 +361,7 @@ and then filtered against 25 representative filters.
 Kowalski was also run for the same scenario with varying worker
 process counts for comparison.
 Code and datasets to reproduce the results are available
-from~\cite{Bachant2025BoomCalkit}.
-
-\todo[inline]{Need to archive benchmarking repo to cite.}
+from~\cite{JegouDuLaz2025BoomCalkit}.
 
 Figure~\ref{fig:scaling} shows throughput testing results for both BOOM
 and Kowalski in terms of alerts processed per second
@@ -396,7 +394,7 @@ As described above, the purpose of filters implemented in brokers like \texttt{B
 
 We have integrated the output of \texttt{BOOM} filters within \texttt{SkyPortal}, where each filter is organized into a dedicated user ``group.'' While for some configurations all candidates are automatically saved to a group, e.g. for automated triggering of spectroscopic follow-up, many times, users manually vet these alerts through a process known as candidate scanning.
 
-\texttt{SkyPortal} naturally allows for multiple alert streams, and so no substantial changes have been required to allow for scanning. 
+\texttt{SkyPortal} naturally allows for multiple alert streams, and so no substantial changes have been required to allow for scanning.
 \rednote{Any specific changes to \texttt{SkyPortal} to manage the multiple alert streams? -> Something to think about... If we want users to see photometry from 2 surveys i.e. photometry from 2 objects together we need to copy the photometry from one object over to the other one which means duplication, match and combine on the fly, or pre-match and only combine on the fly}
 The candidates interface displays contextual image cutouts from ZTF and other relevant surveys, light curves, astrometric and photometric metadata (e.g., coordinates, cross-matches with the Transient Name Server), and direct links to external resources. Users can efficiently review this information to identify sources of genuine astrophysical interest and selectively save them for follow-up.
 
