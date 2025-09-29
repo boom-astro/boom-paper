@@ -1,6 +1,9 @@
 name: boom-paper
 title: A real-time, multi-survey, optical alert system broker
   operating at scale
+description: >
+  This project contains all of the files necessary to reproduce the results and
+  compile the paper.
 authors:
   - first_name: Theophile
     last_name: Jegou du Laz
