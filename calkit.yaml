@@ -1,9 +1,32 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
+title: A real-time, multi-survey, optical alert system broker
   operating at scale
+authors:
+  - first_name: Theophile
+    last_name: Jegou du Laz
+    affiliation: California Institute of Technology
+    orcid: 0009-0003-6181-4526
+  - first_name: Peter
+    last_name: Bachant
+    affiliation: California Institute of Technology
+    orcid: 0000-0003-4039-6954
+  - first_name: Jacob
+    last_name: Simones
+    affiliation: University of Minnesota
+    orcid:
+  - first_name: Michael
+    last_name: Coughlin
+    affiliation: University of Minnesota
+    orcid: 0000-0002-8262-2924
+  - first_name: Mansi
+    last_name: Kasliwal
+    affiliation: California Institute of Technology
+    orcid: 0000-0002-5619-4938
+
 dependencies:
   - git-lfs
   - jq
+
 environments:
   tex:
     kind: docker
@@ -24,6 +47,7 @@ environments:
     kind: uv-venv
     prefix: .venv3
     python: "3.13.5"
+
 pipeline:
   stages:
     # TODO: Add manual step stage for exporting workflow diagram
@@ -150,6 +174,7 @@ pipeline:
         - paper/aasjournal.bst
         - paper/aastex631.cls
         - paper/results.tex
+
 # These are pulled out into the run logs
 metrics:
   boom_n_ml_workers:
@@ -170,17 +195,20 @@ metrics:
     read_from:
       path: results/results.json
       key: kowalski_run_time_s
+
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
+
 figures:
   - path: paper/figures/workflow.pdf
     title: BOOM workflow
+
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -202,12 +230,15 @@ publications:
         - results.tex
         - figures/scaling.png
       last_sync_commit: f02ee109d83f2420703811eda5d46fbe8dfec394
+
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
+
 references:
   - path: paper/references.bib
+
 showcase:
   - publication: paper/main.pdf
