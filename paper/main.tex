@@ -81,7 +81,15 @@ Modern optical surveys now scan the entire sky daily, reaching depths that allow
 The upcoming Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST) exemplifies the scale of future transient discovery \citep{Ivezic2019}. LSST will scan large swaths of the sky to unprecedented depths. Each potential discovery will be immediately broadcast as an alert, not directly to the entire community but to a set of pre-selected alert brokers, tasked with redistributing the data stream to the wider community, while providing easy-to-use tools to search for and visualize candidates of specific astronomical objects.
 For comparison, the Zwicky Transient Facility (ZTF) \citep{Bellm:19:ZTFScheduler,Graham2018,DeSm2018,Masci2019}, the current survey that the community most commonly uses for transient follow-up, produces $\sim 10^5$--$10^6$ alerts per night, while LSST will be more than an order of magnitude larger ($\sim 2 \times 10^7$).
 
-Real-time processing and rapid follow-up of this alert stream is critical for many science cases, with brokering software needing to keep up with the rate of alerts while maintaining or increasing the number of features it aims to offer to the end user. The alerts emitted by these large surveys include a variety of transient phenomena, including very young Type Ia supernovae (SN\,Ia) with either an early ``flash'' or ``bump'' in their light curves well before the epoch of maximum light (e.g., iPTF14atg; \cite{cao_strong_2015}, SN2017cbv; \cite{Hosseinzadeh_2017} and SN2019yvq; \cite{Miller_2020}), luminous fast blue optical transients (LFBOTs) \cite{PrMa2018,Perley2019,HoGo2019,HoPe2020,Perley_2021}, with optical and (sometimes) copious X-ray emission evolving on short timescales, $\gamma$-ray burst afterglows \cite{NyFr2009,GeMe2012} from either collapsars or neutron star mergers, kilonovae associated with binary neutron star mergers \citep{AbEA2017b} such as AT2017gfo \citep{CoFo2017,SmCh2017,AbEA2017f}, and jetted tidal disruption events whose accretion leads to the launch of a relativistic jet \citep{Bloom2011Sci,Andreoni_2022}, amongst many other science cases. These young and/or fast transient science cases are bolstered by the rise of instruments in other messengers, e.g., Advanced LIGO \citep{aLIGO} and Advanced Virgo \citep{adVirgo} for gravitational waves, e.g., IceCube \citep{AaAc2017} for neutrinos, or other wavelengths,  the {\it Neil Gehrels Swift Observatory} mission \citep{GeCh2004}, Fermi's Gamma-ray Burst Monitor (Fermi-GBM) \citep{MeLi2009}, the Space-based multi-band astronomical Variable Objects Monitor (SVOM), and Einstein Probe \citep{Yuan_2022} for $\gamma$-rays and X-rays.
+Real-time processing and rapid follow-up of this alert stream is critical for many science cases, with brokering software needing to keep up with the rate of alerts while maintaining or increasing the number of features it aims to offer to the end user. The alerts emitted by these large surveys include a variety of transient phenomena, including, among many other science cases,
+\begin{itemize}
+\item Very young Type Ia supernovae (SN\,Ia) with either an early ``flash'' or ``bump'' in their light curves well before the epoch of maximum light (e.g., iPTF14atg; \cite{cao_strong_2015}, SN2017cbv; \cite{Hosseinzadeh_2017} and SN2019yvq; \cite{Miller_2020})
+\item Luminous fast blue optical transients (LFBOTs) \cite{PrMa2018,Perley2019,HoGo2019,HoPe2020,Perley_2021}, with optical and (sometimes) copious X-ray emission evolving on short timescales
+\item $\gamma$-ray burst afterglows \cite{NyFr2009,GeMe2012} from either collapsars or neutron star mergers
+\item Kilonovae associated with binary neutron star mergers \citep{AbEA2017b} such as AT2017gfo \citep{CoFo2017,SmCh2017,AbEA2017f}
+\item Jetted tidal disruption events whose accretion leads to the launch of a relativistic jet \citep{Bloom2011Sci,Andreoni_2022}
+\end{itemize}
+These young and/or fast transient science cases are bolstered by the rise of instruments in other messengers, e.g., Advanced LIGO \citep{aLIGO} and Advanced Virgo \citep{adVirgo} for gravitational waves, e.g., IceCube \citep{AaAc2017} for neutrinos, or other wavelengths,  the {\it Neil Gehrels Swift Observatory} mission \citep{GeCh2004}, Fermi's Gamma-ray Burst Monitor (Fermi-GBM) \citep{MeLi2009}, the Space-based multi-band astronomical Variable Objects Monitor (SVOM), and Einstein Probe \citep{Yuan_2022} for $\gamma$-rays and X-rays.
 
 There is a large software ecosystem enabling time-domain astronomy.
 For example, the General Coordinates Network (GCN; \citealt{SiRa2023}) and the Scalable Cyberinfrastructure to support Multi-Messenger Astrophysics\footnote{\url{https://scimma.org/}} (SCiMMA) project are platforms where multi-messenger instruments share real-time alerts with the community that can then be either followed-up directly or cross-matched with alert streams.
@@ -131,11 +139,11 @@ In the following subsections, we present the key design features and implemented
 
 \texttt{Apache Kafka} has become the gold standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes for a wide variety of production-grade software, in academia and industry. Optical alerts from surveys like ZTF and LSST are transmitted as Avro packets\footnote{\url{https://avro.apache.org}} over Kafka, which means that the ability to feed from \texttt{Kafka} topics, which represent one data stream that a client can read from, is absolutely required by any alert brokering software. Its ecosystem of libraries available for all major programming languages makes it extremely easy to the client to develop pipeline around it. For these reasons, also adopting \texttt{Kafka} as our downstream message sharing system ensures compatibility with existing downstream services, which are designed to consume alerts from \texttt{Kafka}. For each survey supported by our software, an associated \texttt{Kafka} consumer has been developed to feed from the \texttt{avro}-formatted alerts. The consumers take advantage of \texttt{Kafka}'s partitioning feature (where one topic is broken down in N partitions that a client can read from independently, with multiple processes) to process any given survey's alert stream(s) in parallel, maximizing the input rate.
 
-\todo[inline]{
-    maybe the section under that comment should move elsewhere, or be in some
-    info-card like we did in the NSF WOU ZTF+LSST proposal, to highlight the
-    capabilities of Rust and its relevance for this project?
-}
+% \todo[inline]{
+%     maybe the section under that comment should move elsewhere, or be in some
+%     info-card like we did in the NSF WOU ZTF+LSST proposal, to highlight the
+%     capabilities of Rust and its relevance for this project?
+% }
 
 % Instead of implementing an alert consumer software for every survey, we heavily rely on \texttt{rust}'s \texttt{Trait} system. \texttt{Trait} lets a developer define a blueprint for \texttt{Struct}s, which are \texttt{rust}'s data structure equivalent to Python classes. Thereafter, functions can be written to not take specific \texttt{Struct}s as input, but anything that implements one or more \texttt{Trait}s. For example, we define the \texttt{AlertConsumer} trait with a method definition called \texttt{consume} (responsible for reading from \texttt{Kafka} with survey-specific parameters). Then, the main function responsible for reading from \texttt{Kafka} specifies that it takes any \texttt{Struct} that implements the \texttt{AlertConsumer} trait as input. This ensures type-safety across a codebase, while minimizing duplication and without sacrificing performance. Also, when multiple \texttt{Struct}s implementing the same \texttt{Trait} have an identical implementation for a function, that function can simply be defined and implemented in the trait itself, to avoid re-defining it in any of the \texttt{Struct}s.
 % This \texttt{Trait}, \texttt{Struct}s, and generic functions pattern is repeated throughout the BOOM codebase, where all alert processors that share common operations between at least two surveys can be deduplicated. By ensuring that little to no code is duplicated from one survey to another, we can ensure BOOM's scability as more surveys are supported in the future.
@@ -143,7 +151,7 @@ In the following subsections, we present the key design features and implemented
 \subsection{Job scheduling with \texttt{Valkey}}
 
 Whereas \texttt{Kafka} shines when it comes to reliably sharing
-messages at scale across the web,
+messages at scale across the Web,
 it is not the most performant solution for inter-process communication,
 as topics are stored on disk,
 which results in a throughput limited by the host's I/O capabilities.
@@ -152,14 +160,14 @@ a high-performance and open source in-memory datastore backed by the Linux Found
 \texttt{Valkey} can be used for a variety of workflows,
 including caching and message queues.
 Unlike \texttt{Kafka},
-all data stored with \texttt{Valkey} lives in RAM,
-ensuring a much higher throughout than physically possible on HDDs or SSDs. However, a `persistence` features can be enabled, which let's \texttt{Valkey} periodically create backups on disk, so that its content can be restored in case of a catastrophic failure. This process is done asynchronous and has minimal impact on performance.
+all data stored with \texttt{Valkey} live in RAM,
+ensuring much higher throughout than physically possible on HDDs or SSDs. However, a `persistence` feature can be enabled, which lets us \texttt{Valkey} periodically create backups on disk, so that its content can be restored in case of a catastrophic failure. This process is done asynchronously and has minimal impact on performance.
 Once data is read from the various survey's \texttt{Kafka} topics,
 \texttt{BOOM}'s \texttt{Kafka} consumer stores alerts to be processed in
 a \texttt{Valkey} list;
 this is a simple array from which processes on the same machine or network
 can read from, one element at a time or in batches.
-When read from a list messages are removed from it, and one message can only be retrieved by one process.
+When read from a list, messages are removed from it and one message can only be retrieved by one process.
 This is precisely what we need for \texttt{BOOM},
 where alert processing is not performed by one but many processes,
 to parallelize over the data streams.
@@ -227,7 +235,7 @@ Next, we will describe exactly how the alert processing steps mentioned above ha
 
 \texttt{BOOM}'s first worker type is the \texttt{Alert Ingestion} worker. It feeds from the \texttt{Valkey} queue that has been populated with \texttt{Apache} Avro alert packets by the \texttt{Kafka} consumer(s), and its main role is to ingest xmatch-enriched reformatted alerts to the \texttt{MongoDB} collections of a given survey. It processes one alert packet at a time (multiple workers of this type are spawned to handle the load), going through the following streams:
 \begin{itemize}
-\item Read the \texttt{Apache} Avro byte data to deserialize into \texttt{rust} \texttt{Struct}s matching the schema provided by the survey emitting the alerts. Here, we really heavily on the \texttt{serde} and \texttt{apache-avro} rust structs; the former also allows us to customize the deserialization logic to modify the alert data's schema of each survey, in an effort to reduce some of the differences between different surveys' schemas, and to address some of their inefficiencies.
+\item Read the \texttt{Apache} Avro byte data to deserialize into \texttt{rust} \texttt{Struct}s matching the schema provided by the survey emitting the alerts. Here, we really heavily on the \texttt{serde} and \texttt{apache-avro} rust crates; the former also allows us to customize the deserialization logic to modify the alert data's schema of each survey, in an effort to reduce some of the differences between different surveys' schemas, and to address some of their inefficiencies.
 \item We separate the candidate metadata about the current detection, candidate identifier (referred thereafter as candid, the unique identifier of the candidate), and object identifier (refered thereafter as objectId, the unique identifier of the associated object) from its cutout images and time-series.
 \item The candidate, candid, and objectId are stored in the alert collection (uniquely indexed by candid).
 \item The science, reference, difference cutout images are stored in the cutout collection (also uniquely indexed by candid).
@@ -290,7 +298,7 @@ Although most popular machine learning frameworks have been designed in Python a
         \texttt{CUDA} or Apple's \texttt{CoreML}).
 \end{itemize}
 
-After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity`` ratio. So far, all \texttt{Kowalski} models have been converted to \texttt{ONNX} and have been implemented in \texttt{BOOM}.
+After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio. So far, all \texttt{Kowalski} models have been converted to \texttt{ONNX} and have been implemented in \texttt{BOOM}.
 
 \todo[inline]{TODO for Sushant: Talk about AppleCider and it's ONNX version}
 
@@ -448,7 +456,16 @@ More broadly, \texttt{BOOM} empowers researchers with a flexible, scalable platf
 In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating filtering of alerts:
 
 \begin{itemize}
-\item \rednote{Thomas: can move this into main section once edited.} \textbf{Filter visualization.} We urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. These requirements hint at the need for visual tools to compose complex and multi-step pipelines using a graph-like system, where users can build filters using simple drag-and-drop mechanisms, and where each filter can be exported as its own module, to later be reimported as one of the many building blocks of much more complex pipelines. By completely abstracting the underlying -- and often too technical -- query language to run such pipelines on a database with high performance, we hope to redirect the scientists' efforts and attention to the higher-level decision-making and design required to successfully execute their science program.
+\item \rednote{Thomas: can move this into main section once edited.} \textbf{Filter visualization.} We urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. To address this need, we have developed a visual, block-based system that enables scientists to build filters through an intuitive form-based interface. Each filter can be exported as an independent module and later reimported as a building block within more complex pipelines. By fully abstracting the underlying—and often too technical—query language required to run such pipelines efficiently on a database with high performance, we hope to redirect the scientists’ efforts and attention to the higher-level decision-making and design required to successfully execute their science program. 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/filter_interface.png}
+    \caption{Filter Builder}
+    \label{fig:filter_interface}
+\end{figure}
+This interface, as shown in \label{fig:filter_interface}, accommodates both basic and advanced use cases. Conditions can be applied directly to arrays or subsets of data, and an integrated LaTeX-compatible equation editor enables seamless inclusion of mathematical expressions in filters and scientific publications. Filters are constructed as combinations of conditions under a logical operator (AND/OR), which themselves can be encapsulated as reusable blocks. For instance, a block may evaluate whether a source is likely a star, and such blocks can be incorporated into larger, more complex queries. Annotations can also be added to a filter, enabling customized output formatting to emphasize the most relevant information.
+This modular design accelerates the development of new filters, promotes collaborative workflows, and ensures consistency between research teams. By simplifying filter creation, supporting reusability, and abstracting technical complexity, the system enhances both the efficiency and scientific rigor of astronomical alert processing through our broker.
+
 \item \textbf{Filter validation.} We propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. These tools could easily integrate as part of the filter-building process, enforcing validation before proceeding to submission and real-time operations. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results.
 \end{itemize}
 
