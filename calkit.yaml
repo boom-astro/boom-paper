@@ -214,7 +214,7 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: 5ea5dc25e5a1d0497670aa694209574e466cce4f
+      last_sync_commit: 4c551492c72a3692373a83b8ef50679bf4ca3dfa
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
