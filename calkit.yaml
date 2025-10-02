@@ -206,6 +206,8 @@ publications:
         - references.bib
         - aasjournal.bst
         - aastex631.cls
+        - figures/filter_interface.png
+        - figures/AT 2025knz.png
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
       dvc_sync_paths:
@@ -214,7 +216,7 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: 172530d64ff445c68a99a6445964d7011f74f021
+      last_sync_commit: 3440f9d4e7c997f1e5f9793bbc4ccc5557615624
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
