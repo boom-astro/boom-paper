@@ -176,24 +176,9 @@ Perhaps more critically, the monolithic worker design creates inflexible scaling
 
 \texttt{BOOM} addresses these limitations through a multi-tier architecture with dedicated worker types for ingestion, inference, and filtering operations. While initial alert ingestion remains sequential, both inference and filtering are handled by specialized worker types that process batches of alerts, dramatically reducing the number of database operations required. This architectural separation enables independent scaling of different processing stages, allowing administrators to increase compute resources only where bottlenecks occur. This resource optimization becomes particularly important given \texttt{BOOM}'s expanded multi-survey capabilities, which introduce numerous additional database operations compared to single-survey systems. This results in more efficient hardware utilization and lower overall resource consumption, while providing superior processing throughput and flexibility.
 
-An alternative approach might consider using single end-to-end workers that process not one but batches of alerts through sequential processing stages with parallelization where possible. However, this design creates a fundamental latency bottleneck: since certain initial operations like deserializing \texttt{Avro} packets and cross-matching with archival catalogs and surveys must be performed sequentially on individual alerts, a worker cannot begin machine learning inference on a batch until it completes all preliminary processing for every alert. As batch sizes increase to improve machine learning efficiency, latency from an alert being emitted and it being processed increases proportionally because the worker must sequentially process all alerts in a batch before any can proceed to inference, and then filtering. The only way to reduce this latency would be to decrease batch sizes and  adding more workers, but this ultimately converges to the inefficient single-worker-single-alert scenario, negating the benefits of batch processing entirely.
+An alternative approach might consider using single end-to-end workers that process not one but batches of alerts through sequential processing stages with parallelization where possible. However, this design creates a fundamental latency bottleneck: since certain initial operations like deserializing \texttt{Avro} packets and cross-matching with archival catalogs and surveys must be performed sequentially on individual alerts, a worker cannot begin machine learning inference on a batch until it completes all preliminary processing for every alert. As batch sizes increase to improve machine learning efficiency, latency from an alert being emitted and it being processed increases proportionally because the worker must sequentially process all alerts in a batch before any can proceed to inference, and then filtering. The only way to reduce this latency would be to decrease batch sizes and add more workers, but this ultimately converges to the inefficient single-worker-single-alert scenario, negating the benefits of batch processing entirely.
 
-Next, we will describe exactly how the alert processing steps mentioned above have been split into multiple ``workers:''
-
-\todo[inline]{
-    PB: I'm still struggling to understand how splitting a serial pipeline
-    into multiple queues increases throughput without running on a cluster
-    with heterogeneous compute nodes, for example.
-    Maybe a diagram would be helpful here.
-    It seems like batching, not multiple queues,
-    would produce the biggest performance gain.
-    Or, doing ML inference for all models in parallel,
-    since that's the only thing we can do concurrently to a given alert.
-    I started a notebook in the \texttt{boom-paper} repo on GitHub
-    to simulate the different architectures using SimPy
-    in case we want some evidence to back up this relatively strong statement:
-    ``much more effective and scalable''. -> Theo: please look at the section I just wrote above. The goal is to find an architecture that minimizes useless resource allocation and DB usage when we want/need to scale some processing step to handle the throughput. We just can't afford to scale up processing steps that don't need to since it's all mostly DB operations and the more load we put on the DB, the slower things get or at least we reduce the amount of things we can do in parallel. A single worker type architecture where we batch where we cant (so single worker type but working over batches of alerts) also won't do, since then we essentially assign N alerts to any given worker also for operations that can be batched, and there we end up doing work sequentially that could have been parallelized.
-}
+Next, we will describe exactly how the alert processing steps mentioned above have been split into multiple ``workers.''
 
 \subsubsection{Alert Ingestion Worker}
 
@@ -388,7 +373,7 @@ More broadly, \texttt{BOOM} empowers researchers with a flexible, scalable platf
 In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating filtering of alerts:
 
 \begin{itemize}
-\item \rednote{Thomas: can move this into main section once edited.} \textbf{Filter visualization.} We urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. To address this need, we have developed a visual, block-based system that enables scientists to build filters through an intuitive form-based interface. Each filter can be exported as an independent module and later reimported as a building block within more complex pipelines. By fully abstracting the underlying—and often too technical—query language required to run such pipelines efficiently on a database with high performance, we hope to redirect the scientists’ efforts and attention to the higher-level decision-making and design required to successfully execute their science program. 
+\item \rednote{Thomas: can move this into main section once edited.} \textbf{Filter visualization.} We urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. To address this need, we have developed a visual, block-based system that enables scientists to build filters through an intuitive form-based interface. Each filter can be exported as an independent module and later reimported as a building block within more complex pipelines. By fully abstracting the underlying—and often too technical—query language required to run such pipelines efficiently on a database with high performance, we hope to redirect the scientists’ efforts and attention to the higher-level decision-making and design required to successfully execute their science program.
 \begin{figure}
     \centering
     \includegraphics[width=0.4\textwidth]{figures/filter_interface.png}
