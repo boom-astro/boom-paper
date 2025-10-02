@@ -166,7 +166,7 @@ Once data is read from the various survey's \texttt{Kafka} topics, \texttt{BOOM}
 
 With this data model, the data-heavy images that cannot be queried like other data products would are stored on their own and can be optionally retrieved alongside alerts using lookups, and object-specific data products (i.e. positional based) such as cross-matches and lightcurves are stored in one place instead of on every alert (as served over \texttt{Kafka} by the various surveys), which would yield considerable duplication and increase data storage requirements.
 
-\subsection{Parallelized and Distributed Alerts Processing}
+\subsection{Parallelized and Distributed Alert Processing}
 
 \texttt{BOOM} employs a different architectural approach than its predecessor \texttt{Kowalski}, using dedicated worker types for each processing stage rather than a single monolithic worker design. In \texttt{Kowalski}, alert processing was parallelized using a cluster of identical workers where each worker was responsible for the complete end-to-end processing of individual alert packets. This included performing database insertions and queries such as cross-matching with archival catalogs, running user-defined filters, inserting and updating alerts and objects, and running machine learning models. While this design simplified deployment and management, it suffered from significant inefficiencies that prevented it from scaling up sufficiently and efficiently.
 
