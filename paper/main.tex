@@ -58,7 +58,30 @@
 
 \begin{document}
 
-\title{A real-time, multi-survey, optical alert system broker operating at scale}
+\title{\textttt{BOOM} and \textttt{Babamul}: a real-time, multi-survey, optical alert system broker operating at scale}
+
+\author[0009-0003-6181-4526]{Theophile Jegou du Laz}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+
+\author[0000-0002-8262-2924]{Michael W. Coughlin}
+\affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
+
+\author[0000-0003-4039-6954]{Pete Bachant}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+
+\author{Jacob E. Simones}
+\affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
+\affil{Department of Physics, University of Minnesota-Duluth Duluth MN 55812 USA}
+
+\author[0009-0008-3603-0013]{Thomas Culino}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+
+\author{Antoine Le Calloch}
+\affiliation{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
+
+\author[0000-0003-1314-4241]{Sushant Sharma Chaudhary}\email{ssharmac@umn.edu}
+\affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
+
 
 % Abstract of the paper
 \begin{abstract}
@@ -113,7 +136,7 @@ It is with these considerations in mind that we present \texttt{BOOM}, a broker 
 In this paper, we will describe several important developments and design choices made with \texttt{BOOM} that ready it for the upcoming LSST era.
 Although this paper focuses mainly on the design and conceptual framework of \texttt{BOOM}, we encourage the interested reader to explore the repository alongside this text \footnote{https://github.com/boom-astro/boom}, and read its documentation.
 As an example of important design choices, since multiple observatories will observe the LSST footprint concurrently, \texttt{BOOM} has as its top priority, the ability to jointly filter on multiple alert streams. A relatively unique capability in the broker community.
-Furthermore, one of the main differences between \texttt{BOOM} and \texttt{Kowalski}---and most other alert brokers---was moving away from Python and instead writing the project in \texttt{Rust}, a compiled programming language with performance characteristics that make it much better suited to attaining a high throughput of alerts at scale. Processing additional alert streams in parallel increases the data volume by at least an order of magnitude, and jointly filtering on multiple streams requires even more computation, as every alert packet needs to be cross-matched with all other overlapping surveys' alert streams. While noty relying on \texttt{Python} may have the downside of making contributions from astronomers - who typically write in Python - more challenging, our experience running \texttt{Kowalski} in production has shown us that requiring computer science knowledge to make use of an alert broker will significantly limit its use, and that regardless of complexity. Below, we will describe the filter building tool we have built to ameliorate this challenge, where the user is provided with a no-code alternative to write complex queries.
+Furthermore, one of the main differences between \texttt{BOOM} and \texttt{Kowalski}---and most other alert brokers---was moving away from Python and instead writing the project in \texttt{Rust}, a compiled programming language with performance characteristics that make it much better suited to attaining a high throughput of alerts at scale. Processing additional alert streams in parallel increases the data volume by at least an order of magnitude, and jointly filtering on multiple streams requires even more computation, as every alert packet needs to be cross-matched with all other overlapping surveys' alert streams. While not relying on \texttt{Python} may have the downside of making contributions from astronomers - who typically write in Python - more challenging, our experience running \texttt{Kowalski} in production has shown us that requiring computer science knowledge to make use of an alert broker will significantly limit its use, and that regardless of complexity. Below, we will describe the filter building tool we have built to ameliorate this challenge, where the user is provided with a no-code alternative to write complex queries.
 
 In this paper, we describe the components built within \texttt{BOOM}, focusing on design choices useful in preparation for LSST data scales.
 We describe \texttt{BOOM}'s key features in Sec.~\ref{sec:pipeline}.
@@ -148,7 +171,7 @@ Once data is read from the various survey's \texttt{Kafka} topics, \texttt{BOOM}
 
 \subsection{Spatial query-ready database with \texttt{MongoDB}}
 
-\texttt{MongoDB} has proven to be a highly effective choice for alert brokering, as demonstrated by its successful implementation in \texttt{Kowalski}. Its cross-language support, flexibility, and powerful query language make it well-suited for building complex filtering pipelines for transient alerts. Namely, the \texttt{aggregation pipeline} feature has allowed us to define not only complex queries but also pipelines of queries with multiple stages, such as a cycle of filtering (\$match stage), computing (\$project, \$addField, \$lookup ... stages) steps, well-suited to implement astronomical alert filtering pipelines. \texttt{MongoDB} offers both performance and scalability, essential for handling large data volumes efficiently. It's built-in compression also simplifies data storing requirements. While \texttt{PostgreSQL} was a potential alternative, it would have required schema enforcement, which in turns requires database migrations whenever a new astronomical catalog is integrated for cross-matching or a new survey's support is added. Additionally, \texttt{MongoDB} natively supports \texttt{GeoJSON} indexes for fast spatial queries, such as cone-searches or nearest neighbour searches without any client-side implementation or extensions required, features that \texttt{PostgreSQL} does not implement natively. Just like \texttt{Kowalski}, \texttt{BOOM} relies very heavily on \texttt{MongoDB}'s native support for cone-searches between alert streamss and archival/static catalogsm, and on it's \texttt{aggregation pipeline} feature to design and execute complex user-defined filters. When it comes to our data model, alert packets are dividing into 3 distinct collections (\texttt{MongoDB's} equivalent of a table, as found in a relational context):
+\texttt{MongoDB} has proven to be a highly effective choice for alert brokering, as demonstrated by its successful implementation in \texttt{Kowalski}. Its cross-language support, flexibility, and powerful query language make it well-suited for building complex filtering pipelines for transient alerts. Namely, the \texttt{aggregation pipeline} feature has allowed us to define not only complex queries but also pipelines of queries with multiple stages, such as a cycle of filtering (\$match stage), computing (\$project, \$addField, \$lookup ... stages) steps, well-suited to implement astronomical alert filtering pipelines. \texttt{MongoDB} offers both performance and scalability, essential for handling large data volumes efficiently. It's built-in compression also simplifies data storing requirements. While \texttt{PostgreSQL} was a potential alternative, it would have required schema enforcement, which in turns requires database migrations whenever a new astronomical catalog is integrated for cross-matching or a new survey's support is added. Additionally, \texttt{MongoDB} natively supports \texttt{GeoJSON} indexes for fast spatial queries, such as cone-searches or nearest neighbour searches without any client-side implementation or extensions required, features that \texttt{PostgreSQL} does not implement natively. Just like \texttt{Kowalski}, \texttt{BOOM} relies very heavily on \texttt{MongoDB}'s native support for cone-searches between alert streams and archival/static catalogs, and on it's \texttt{aggregation pipeline} feature to design and execute complex user-defined filters. When it comes to our data model, alert packets are dividing into 3 distinct collections (\texttt{MongoDB's} equivalent of a table, as found in a relational context):
 \begin{itemize}
     \item The \texttt{Alert} collection, containing an alert's \texttt{candidate}, metadata about the latest detection that resulted in the alert being sent. To which we later append time-dependent data products, such as machine learning scores and "pre-computed" features to facilitate the implementation of user-defined filter, as described in subsection Y. Entries of the collection are indexed on the alert's candidate ID (candid, a unique identifier provided by the associated survey), its object ID (objectId, an identifier for this astronomical object, most often purely position based: detections made at the position of a previous alert will be attributed the same objectId), and its position.
     \item The {Object} collection, containing lightcurve data products (concatenated from the time-limited lightcurves provided by each alert for the same object, as surveys provide only N days worth of past detections), and matches with other catalogs and surveys. For archival catalogs matches all the relevant metadata is stored in this collection, whereas for alert-based survey matches only the survey's objectIds are stored to enable lookups when user-defined filters are run. Entries of this collection are indexes on objectId, and on the object's position (taken from its first alert ingested by \texttt{BOOM}, which is subject to change as a flux-averaged centroid may be more adequate).
