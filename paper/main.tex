@@ -213,7 +213,7 @@ Once an alert has been ingested, its candid is pushed to another \texttt{Valkey}
 \label{sec:Enrichment}
 
 While there is no obvious advantage to ingesting alerts in bulk -- other than reducing round trips to the database, which we will explore in future iterations of \texttt{BOOM} only if the load created by the \texttt{Alert} worker becomes a bottleneck as more surveys are supported -- there is a clear advantage to running machine learning models over batches of inputs, as these can easily be parallelized by the various machine learning frameworks available to us using hardware accelerators (e.g. GPUs, TPUs). So, the Enrichment worker will not read and process only one candid at a time, but a batch with a maximum size, e.g. 1000. We use an aggregation pipeline to retrieve the full batch of candidates at once, with full light curve(s) and cutouts from the database. These are then converted into the expected format for each machine learning model \texttt{BOOM} supports. If multiple models expect the same input features, these are only computed once to avoid unnecessary work. At this time, \texttt{BOOM} runs all 5 ACAI classifiers \citep{Duev+2021}, and BTSbot \citep{Rehemtulla+2024}. These models have already been used in Kowalski successfully for a number of programs, including fully automated follow-up, e.g. BTSbot.
-Although most popular machine learning frameworks have been designed in Python and, therefore, not usable as in other languages, there are a number of solutions to port \texttt{Python}-trained models over to a \texttt{rust}-based pipeline. We explored the following:
+Although most popular machine learning frameworks have been designed in Python and, therefore, not usable as in other languages, there are a number of solutions to port \texttt{Python}-trained models over to a \texttt{Rust}-based pipeline. We explored the following:
 
 \begin{itemize}
     \item If the Python ML framework used is built around a C-based low-level
@@ -224,12 +224,12 @@ Although most popular machine learning frameworks have been designed in Python a
         worker type dedicated to machine learning, one could simply implement this worker directly in
         \texttt{Python}. In fact, \texttt{BOOM}'s architecture originally had
         been designed to allow for inter-operability between languages. However, we
-        later decided to focus on a \texttt{rust}-only approach as we
+        later decided to focus on a \texttt{Rust}-only approach as we
         successfully converted \texttt{Kowalski}'s \texttt{Python}-trained model
-        to a format suitable for running directly in \texttt{rust} (described
+        to a format suitable for running directly in \texttt{Rust} (described
         below).
     \item The \texttt{pyo3} crate allows for seemless integration of Python code
-        in a \texttt{rust} runtime. Using this package, one can directly run
+        in a \texttt{Rust} runtime. Using this package, one can directly run
         Python code within a rust program. However, this did not prove to yield
         a significance performance improvement compared to the complexity added
         to the software. In addition, a lack of documentation and
@@ -248,7 +248,7 @@ Although most popular machine learning frameworks have been designed in Python a
         unnecessary, redundant, or suboptimal operators and nodes from its graph-representation, sometimes resulting in faster inference then possible in the framework used to train the converted model.
 \end{itemize}
 
-After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio. So far, all \texttt{Kowalski} models have been converted to \texttt{ONNX} and have been implemented in \texttt{BOOM}.
+After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{Rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio. So far, all \texttt{Kowalski} models have been converted to \texttt{ONNX} and have been implemented in \texttt{BOOM}.
 
 \todo[inline]{TODO for Sushant: Talk about AppleCider and it's ONNX version}
 
