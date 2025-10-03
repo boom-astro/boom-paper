@@ -306,13 +306,17 @@ As mentioned in the introduction, \texttt{BOOM}'s main concern is enabling multi
 
 To ensure that \texttt{BOOM} is able to handle the additional load from the
 Rubin alert stream ($\sim 10^4$ alerts every 30\,s) and beyond,
-a throughput test was performed over various
-numbers of workers on a 64 core machine.
+a throughput test was performed over varying
+numbers of worker processes.
 One night of ZTF alerts was ingested, cross-matched against the
 NED historical catalog, classified against multiple ML models,
 and then filtered against 25 representative filters.
 Kowalski was also run for the same scenario with varying worker
 process counts for comparison.
+The machine used for the test had a 2.9 GHz EPYC 7002 processor with 32 cores
+and 64 threads and 128 GB of 2933 MHz DDR4 memory.
+Data was written to a 12 GB/s 7200 RPM hard drive.
+ML inference was performed without GPU acceleration.
 Code and datasets to reproduce the results are available
 from~\cite{JegouDuLaz2025BoomCalkit}.
 
