@@ -76,7 +76,7 @@
 \author[0009-0008-3603-0013]{Thomas Culino}
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
-\author{Antoine Le Calloch}
+\author[0009-0009-7000-8343]{Antoine Le Calloch}
 \affiliation{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
 \author[0000-0003-1314-4241]{Sushant Sharma Chaudhary}
@@ -252,6 +252,8 @@ After experimenting with the four approaches, integrating \texttt{ort} in a \tex
 
 \todo[inline]{TODO for Sushant: Talk about AppleCider and it's ONNX version}
 
+\textcolor{blue}{AppleCiDEr \citep{applecider_paper} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, AppleCiDEr achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \texttt{BOOM}. Both models were converted from their native PyTorch implementation to the \texttt{ONNX} format, enabling efficient batch processing of alerts.}
+
 While operating \texttt{Kowalski}, we identified the following:
 \begin{itemize}
     \item A multitude of identical features that most user-defined filters relied on, computed from alert metadata and lightcurves (e.g. is this a potential asteroid, a star, near a brightstar, ...). This meant that many filters were computing the same values over and over again. This appeared to be a clear waste of database compute resources and time.
@@ -265,7 +267,7 @@ Just like alert data products are retrieved from the database in batches, we use
 \subsection{Filter Worker}
 \label{sec:filter}
 
-\texttt{BOOM}'s filter worker is the last worker type to process alerts before producing an output that other systems can read from. At initialization, the filter worker loads user-defined filters from the database. These filters are MongoDB aggregation pipeline running on the alert collection, composed of a succession of \$project and \$match stage to transform and filter on the alert data. User-defined filters -- as  written by BOOM's users -- assume that all data products are available for them to filter on. However, since these data products are divided into different collections in our data model, we pre-pend all user-defined pipelines with additional lookup stages (e.g. retrieving various lighcurves and cross-match information from the object collection). Instead of pre-pending all user defined filters with the same ``lookup'' stages that retrieve all available data products, we scan each user-defined filter to identify which ones they make use of, so we can decide where in their pipeline to add which lookup operations. This ensures that no unnecessary computation is performed. However, this system is obviously dependent on the order of the operations performed by user-defined filters. If a filter uses data products found in the object collection early on, lookups will always be performed first and for all the alerts that are filtered. If on the other hand, the filters first use candidate metadata, pre-computed features, and ML scores before potentially using object-level data products, lookups will only run for the small subset of alerts that pass the first filtering stages. User-defined filters are also encouraged to define an `annotations` key in their output document with a final \$project stage. This key may contain any field of interest for this particular filter, that they would like to see in \texttt{BOOM}'s output.
+\texttt{BOOM}'s filter worker is the last worker type to process alerts before producing an output that other systems can read from. At initialization, the filter worker loads user-defined filters from the database. These filters are defined as MongoDB aggregation pipeline running on the alert collection, composed of a succession of \$project and \$match stage to transform and filter on the alert data. User-defined filters -- as  written by BOOM's users -- assume that all data products are available for them to filter on. However, since these data products are divided into different collections in our data model, we pre-pend all user-defined pipelines with additional lookup stages (e.g. retrieving various lighcurves and cross-match information from the object collection). Instead of pre-pending all user defined filters with the same ``lookup'' stages that retrieve all available data products, we scan each user-defined filter to identify which ones they make use of, so we can decide where in their pipeline to add which lookup operations. This ensures that no unnecessary computation is performed. However, this system is obviously dependent on the order of the operations performed by user-defined filters. If a filter uses data products found in the object collection early on, lookups will always be performed first and for all the alerts that are filtered. If on the other hand, the filters first use candidate metadata, pre-computed features, and ML scores before potentially using object-level data products, lookups will only run for the small subset of alerts that pass the first filtering stages. User-defined filters are also encouraged to define an `annotations` key in their output document with a final \$project stage. This key may contain any field of interest for this particular filter, that they would like to see in \texttt{BOOM}'s output.
 
 The candids sent by the Enrichment worker to the Filter worker are read and filtered on in batches. Rather than filters sequentially on one alert at a time, each filter runs sequentially but on all the alerts at once. Again, this dramatically saves on DB usage and reduces the time required to filter on alerts. Once all filters have run on a batch of candids, we are left with a hashmap where the keys are candids that have passed at least one filter, and the values are the list of filters ids that each candid has passed, and annotations if any. Then, we query the database to retrieve all the relevant data products for the subset of alerts that have passed at least one filter, and build \texttt{BOOM}'s final output: the \texttt{Alert} struct. This struct is identical for all surveys, but populated with a custom logic for each. It contains:
 \begin{itemize}
@@ -286,10 +288,8 @@ The candids sent by the Enrichment worker to the Filter worker are read and filt
         for this catalog.
     \item a list of `survey-matches`, containing all the cross-
         matches with other surveys processed by `BOOM`. These
-        follow as similar schema as described above.
+        use the same schema as the \texttt{Alert}, but of course without \texttt{survey-matches}.
 \end{itemize}
-
-\todo[inline]{TODO: This is something to discuss about the software itself. Should the photometry of matching surveys be contained on the list of survey matches, or contatenated with the photometry that's at the top level of the `Alert` struct (what currently only contains the photometry of survey of the alert that passed the filter}
 
 This schema is subject to change, and expected to evolve as the first instances of \texttt{BOOM} are deployed to production with downstream systems connected to its output.
 
@@ -298,10 +298,6 @@ As mentioned in the introduction, \texttt{BOOM}'s main concern is enabling multi
 \section{Deployments, Science Validation and First Results}
 \label{sec:science}
 
-\subsection{Hardware Requirements}
-
-\todo{Do we really need this, and if so what should it contain? I doubt we are trying to have folks run this on their laptop. Even though they can in theory, they won't have access to real time kafka streams as input which is pretty much what this is for. So if we think this is only meant for a handful of people to deploy in production at scale, what's worth mentioning. I do feel like the Throughput testing section answers that question, as long as the hardware description that's in there is a bit more accurate. Right now there is NO mention of the CPU speed, no mention of the thread core for those cores, no mention of the total RAM available, and no mention of the type of disk used. In my opinion, this is really incomplete and we can't claim these numbers without clarifying what hardware was used to compute them! Then after showing the plot, perhaps we can make the following claim: "to process LSST data in real time, one needs to have N threads available to allocate to BOOM". I know some of that is on the calkit repo, but I feel strongly that some information should still make its way to this paper. It's relevant, and requiring folks to click on some external link when we could mention those critical values in few words is just not correct.}
-
 \subsection{Throughput Testing}
 
 To ensure that \texttt{BOOM} is able to handle the additional load from the
@@ -309,16 +305,26 @@ Rubin alert stream ($\sim 10^4$ alerts every 30\,s) and beyond,
 a throughput test was performed over varying
 numbers of worker processes.
 One night of ZTF alerts was ingested, cross-matched against the
-NED historical catalog, classified against multiple ML models,
+NED historical catalog, classified using the ML models listed in section Z,
 and then filtered against 25 representative filters.
 Kowalski was also run for the same scenario with varying worker
 process counts for comparison.
-The machine used for the test had a 2.9 GHz AMD EPYC 7002 processor
-with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
+The machine used for throughput testing had a 2.9 GHz AMD EPYC 7002 processor with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
 Data was written to a 12 GB/s 7200 RPM hard drive.
 ML inference was performed without GPU acceleration.
 Code and datasets to reproduce the results are available
 from~\cite{JegouDuLaz2025BoomCalkit}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/scaling.png}
+    \caption{
+        Scalability testing results for BOOM and Kowalski.
+        The dashed horizontal line represents the average alert production
+        rate of the Rubin observatory: 10,000 alerts for every 30-second exposure, or $\sim 333$ alert/s.
+    }
+    \label{fig:scaling}
+\end{figure}
 
 Figure~\ref{fig:scaling} shows throughput testing results for both \texttt{BOOM}
 and \texttt{Kowalski} in terms of alerts processed per second
@@ -332,18 +338,22 @@ smoother thread count to processing time relationship.
 Overall, this shows that \texttt{BOOM}'s throughput will make better use of
 increased computing power,
 and should be able to handle the Rubin alert stream with fewer than 10
-worker processes. Moreover, it shows that even with a small amount of resources allocated, \texttt{BOOM} is inherently faster than \texttt{Kowalski}.
+worker processes. Moreover, it shows that even with a small amount of CPU resources allocated, \texttt{BOOM} is inherently faster than \texttt{Kowalski}. 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.45\textwidth]{figures/scaling.png}
-    \caption{
-        Scalability testing results for BOOM and Kowalski.
-        The dashed horizontal line represents the average alert production
-        rate of the Rubin observatory: 10,000 alerts for every 30-second exposure, or $\sim 333$ alert/s.
-    }
-    \label{fig:scaling}
-\end{figure}
+\todo{Pete can you look at the mem usage from the containers that Calkit recorded? Here we only make a claim about CPU usage vs what the machine has available, but it would be better if we could show what the memory usage is. Just grabbing the max mem usage from each container minus the kafka one, and summing at all together as a "peak" memory usage would be enough. If that number is higher than you think it should be, then looking at the median/mean is the second best option.}
+
+\todo{Also there is zero mention of the compute used by MongoDB or Valkey here!!! Please also use these docker stats that the benchmark pipeline used to check what these are (can also look at the peak and median/mean if you think that's interesting)}
+
+\subsection{Hardware Requirements}
+
+Since \texttt{BOOM} requires at least one instance of each worker type, one instance for the main process spawning these, one worker to consume alerts from \texttt{Kafka}, one for \texttt{Valkey}, and one for \texttt{MongoDB}, we can state that \texttt{BOOM} requires at least 7 threads to run. However, these are not physical threads, which means that \texttt{BOOM} can run on hardware with less then 7 physical threads available, but processing speed is expected to decline in this regime. On the other hand, since jobs including alert packets are stored in memory, there is a memory requirement. With the default maximum number of alerts queued by an instance of the \texttt{Kafka} consumer (15,000), memory usage ramps up to ~1GB. This number is an optional parameter and can be lowered to as low as necessary to work with the hardware available. \texttt{MongoDB} which also benefits from caching, but it is optional and its memory usage can also be limited at startup. So, there is no set minimal CPU and memory requirement for \texttt{BOOM}, as processing simply gets faster when more compute resources are allocated to it.
+
+\rednote{I'll try to run BOOM on a raspberry PI today. Would be a nice way to support the argument made above, and show that even a small config can run BOOM, only at reduced speeds.}
+
+From Figure 2., we have shown that ~7 total worker processes and therefore threads, are sufficient to run the benchmarked version of \texttt{BOOM} at the LSST scale. So, we recommend running \texttt{BOOM} on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run 
+\texttt{MongoDB} and \texttt{Valkey}.
+
+\rednote{We should also briefly describe the current deployments, as well as how we have demonstrated one can use both Docker and Apptainer to do so (i.e. it is possible without sudo to orchestrate the app)}
 
 \subsection{Integration with \texttt{SkyPortal}}
 
@@ -388,7 +398,7 @@ The data processing system we have described -- \texttt{BOOM} -- is now operatio
 
 
 \rednote{Describe vision for \texttt{BABAMUL}}
-Using the \texttt{BOOM} codebase, we are preparing a public, production filtering of the LSST alert stream enriched by ZTF alerts, which we call \texttt{BABAMUL}. \texttt{BABAMUL} will provide a number of public streams supporting a variety of science cases through \texttt{Kafka} topics, based on the features added by \texttt{BOOM}'s workers. In this way, \texttt{BABAMUL} will serve as a general-purpose alert broker for the U.S. and international astronomy communities taking advantage of the multiple surveys currently online. Just like \texttt{BOOM}'s output, \texttt{BABAMUL}'s will be serialized into \texttt{Avro}, using a similar schema.
+Using the \texttt{BOOM} codebase, we are preparing a public, production filtering of the LSST alert stream enriched by ZTF alerts, which we call \te xttt{BABAMUL}. \texttt{BABAMUL} will provide a number of public streams supporting a variety of science cases through \texttt{Kafka} topics, based on the features added by \texttt{BOOM}'s workers. In this way, \texttt{BABAMUL} will serve as a general-purpose alert broker for the U.S. and international astronomy communities taking advantage of the multiple surveys currently online. Just like \texttt{BOOM}'s output, \texttt{BABAMUL}'s will be serialized into \texttt{Avro}, using a similar schema.
 
 % It will make use of the enriched data coming out of the \texttt{Enrichment} worker directly, equipped with a decision tree-like algorithm to divide the Rubin stream into a handful of sub-streams that its users can choose from. Tentatively, these will be: hosted and nuclear transients, hostless transients, stellar objects. In the future, we aim to break these substreams down further, using the lightcurve properties computed in \texttt{BOOM}, e.g. fast/slow rising, fast/slow fading. For now, these properties will be provided in \texttt{BABAMUL}'s output, for science users to make use of.
 
@@ -397,14 +407,21 @@ More broadly, \texttt{BOOM} empowers researchers with a flexible, scalable platf
 In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating filtering of alerts:
 
 \begin{itemize}
-\item \rednote{Thomas: can move this into main section once edited. -> UPDATE: let's discuss where to include this exactly} \textbf{Filter visualization.} We urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. To address this need, we have developed a visual, block-based system that enables scientists to build filters through an intuitive form-based interface. Each filter can be exported as an independent module and later reimported as a building block within more complex pipelines. By fully abstracting the underlying—and often too technical—query language required to run such pipelines efficiently on a database with high performance, we hope to redirect the scientists’ efforts and attention to the higher-level decision-making and design required to successfully execute their science program.
+\item \rednote{Thomas: can move this into main section once edited. -> UPDATE: let's discuss where to include this exactly} \textbf{Filter visualization.} To enable scientists to fully leverage the features of BOOM, we urgently need tools to facilitate the development of astronomical alert filters, by facilitating knowledge sharing and reusability, while greatly simplifying the design of such filters. To address this need, we have developed a visual, block-based system that enables scientists to build filters through an intuitive form-based interface. Each filter can be exported as an independent module and later reimported as a building block within more complex pipelines. By fully abstracting the underlying—and often too technical—query language required to run such pipelines efficiently on a database with high performance, we hope to redirect the scientists’ efforts and attention to the higher-level decision-making and design required to successfully execute their science program.
 \begin{figure}
     \centering
     \includegraphics[width=0.4\textwidth]{figures/filter_interface.png}
     \caption{Filter Builder}
     \label{fig:filter_interface}
 \end{figure}
-This interface, as shown in Figure~\ref{fig:filter_interface}, accommodates both basic and advanced use cases. Conditions can be applied directly to arrays or subsets of data, and an integrated LaTeX-compatible equation editor enables seamless inclusion of mathematical expressions in filters and scientific publications. Filters are constructed as combinations of conditions under a logical operator (AND/OR), which themselves can be encapsulated as reusable blocks. For instance, a block may evaluate whether a source is likely a star, and such blocks can be incorporated into larger, more complex queries. Annotations can also be added to a filter, enabling customized output formatting to emphasize the most relevant information.
+As illustrated in Figure~\ref{fig:filter_interface}, the interface supports both basic and advanced use cases. Filters are constructed as combinations of conditions under a logical operator (AND/OR), which can themselves be saved as reusable blocks. For instance, a block may evaluate whether a source is a star, and such blocks can then be incorporated into larger, more complex queries. Conditions can also be applied directly to arrays or subsets of data, and an integrated LaTeX-compatible equation editor enables seamless inclusion of mathematical expressions in filters and scientific publications. Annotations can also be added to a filter, enabling customized output formatting to emphasize the most relevant information.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/list condition.png}
+    \caption{Array Condition Interface}
+    \label{fig:placeholder}
+\end{figure}
+In addition, conditions on arrays or subsets of data are processed through a dedicated interface. After selecting an array and operator, the user assigns a name to this list condition. Depending on the operator, the interface either presents a list of subfields from the array that has been selected or provides a block component for constructing conditions on specific subfields. These options produce different output format depending on the selected operator. Once saved, those custom conditions are store in the database and are available to all users.
 This modular design accelerates the development of new filters, promotes collaborative workflows, and ensures consistency between research teams. By simplifying filter creation, supporting reusability, and abstracting technical complexity, the system enhances both the efficiency and scientific rigor of astronomical alert processing through our broker.
 
 \item \textbf{Filter validation.} We propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. These tools could easily integrate as part of the filter-building process, enforcing validation before proceeding to submission and real-time operations. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results.
