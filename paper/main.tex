@@ -310,7 +310,7 @@ and then filtered against 25 representative filters.
 Kowalski was also run for the same scenario with varying worker
 process counts for comparison.
 The machine used for throughput testing had a 2.9 GHz AMD EPYC 7002 processor with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
-Data was written to a 12 GB/s 7200 RPM hard drive.
+Data was written to a 12 Gb/s 7200 RPM hard drive.
 ML inference was performed without GPU acceleration.
 Code and datasets to reproduce the results are available
 from~\cite{JegouDuLaz2025BoomCalkit}.
@@ -338,7 +338,7 @@ smoother thread count to processing time relationship.
 Overall, this shows that \texttt{BOOM}'s throughput will make better use of
 increased computing power,
 and should be able to handle the Rubin alert stream with fewer than 10
-worker processes. Moreover, it shows that even with a small amount of CPU resources allocated, \texttt{BOOM} is inherently faster than \texttt{Kowalski}. 
+worker processes. Moreover, it shows that even with a small amount of CPU resources allocated, \texttt{BOOM} is inherently faster than \texttt{Kowalski}.
 
 \todo{Pete can you look at the mem usage from the containers that Calkit recorded? Here we only make a claim about CPU usage vs what the machine has available, but it would be better if we could show what the memory usage is. Just grabbing the max mem usage from each container minus the kafka one, and summing at all together as a "peak" memory usage would be enough. If that number is higher than you think it should be, then looking at the median/mean is the second best option.}
 
@@ -350,7 +350,7 @@ Since \texttt{BOOM} requires at least one instance of each worker type, one inst
 
 \rednote{I'll try to run BOOM on a raspberry PI today. Would be a nice way to support the argument made above, and show that even a small config can run BOOM, only at reduced speeds.}
 
-From Figure 2., we have shown that ~7 total worker processes and therefore threads, are sufficient to run the benchmarked version of \texttt{BOOM} at the LSST scale. So, we recommend running \texttt{BOOM} on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run 
+From Figure 2., we have shown that ~7 total worker processes and therefore threads, are sufficient to run the benchmarked version of \texttt{BOOM} at the LSST scale. So, we recommend running \texttt{BOOM} on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run
 \texttt{MongoDB} and \texttt{Valkey}.
 
 \rednote{We should also briefly describe the current deployments, as well as how we have demonstrated one can use both Docker and Apptainer to do so (i.e. it is possible without sudo to orchestrate the app)}
