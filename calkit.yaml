@@ -242,6 +242,10 @@ publications:
         - figures/AT 2025knz.png
         - figures/SN2025kwy.png
         - diagrams/workers.tex
+        - figures/list condition.png
+        - figures/SN2025kwy_v2.png
+        - figures/boom_scaling_benchmark_edited.png
+        - figures/boom_workers_workflow_draft.png
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
       dvc_sync_paths:
@@ -250,7 +254,7 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: e252d714ca5dab55315944e112a03c2209d2ed7d
+      last_sync_commit: 5d69c6654744d9f97ea8292a9691f6d207613a3cq
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb

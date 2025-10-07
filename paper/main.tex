@@ -79,7 +79,7 @@
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
 \author[0000-0003-4039-6954]{Peter Bachant}
-\affil{California Institute of Technology, Pasadena, CA 91125, USA}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
 \author{Jacob E. Simones}
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
@@ -94,19 +94,22 @@
 \author[0000-0003-1314-4241]{Sushant Sharma Chaudhary}
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
+\author[0000-0002-9364-5419]{Xander J. Hall}\email{xjh@andrew.cmu.edu}
+\affiliation{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
 
 % Abstract of the paper
 \begin{abstract}
 With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \boom (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
-Harnessing the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
+\boom harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing. 
+With this system, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing as well as the results with custom filters we have built to demonstrate the system's capabilities.
-We further outline the development plan for \babamul, the public version of \boom processing LSST alerts.
+We further outline the development plan for \texttt{Babamul}, the public version of \boom processing LSST alerts.
 In conclusion, we outline the development plans for \boom as we begin the LSST era.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\listoftodos
+% \listoftodos
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
@@ -160,7 +163,7 @@ We describe the future of \boom and how we envision its role in the community in
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=6.5in]{figures/workflow.pdf}
+    \includegraphics[width=6.5in]{figures/workflow_revised.pdf}
     \caption{Flowchart for BOOM.}
     \label{fig:flowchart}
 \end{figure*}
@@ -192,7 +195,7 @@ Once data is read from the various survey's \kafka topics, \boom's \kafka consum
 
 With this data model, the data-heavy images that cannot be queried like other data products would are stored on their own and can be optionally retrieved alongside alerts using lookups, and object-specific data products (i.e. positional based) such as cross-matches and lightcurves are stored in one place instead of on every alert (as served over \kafka by the various surveys), which would yield considerable duplication and increase data storage requirements.
 
-\subsection{Parallelized and Distributed Alert Processing}
+\subsection{Parallelized and Distributed Alert Processing}\
 
 \boom employs a different architectural approach than its predecessor \kowalski, using dedicated worker types for each processing stage rather than a single monolithic worker design. In \kowalski, alert processing was parallelized using a cluster of identical workers where each worker was responsible for the complete end-to-end processing of individual alert packets. This included performing database insertions and queries such as cross-matching with archival catalogs, running user-defined filters, inserting and updating alerts and objects, and running machine learning models. While this design simplified deployment and management, it suffered from significant inefficiencies that prevented it from scaling up sufficiently and efficiently.
 
@@ -204,14 +207,21 @@ Perhaps more critically, the monolithic worker design creates inflexible scaling
 
 An alternative approach might consider using single end-to-end workers that process not one but batches of alerts through sequential processing stages with parallelization where possible. However, this design creates a fundamental latency bottleneck: since certain initial operations like deserializing \texttt{Avro} packets and cross-matching with archival catalogs and surveys must be performed sequentially on individual alerts, a worker cannot begin machine learning inference on a batch until it completes all preliminary processing for every alert. As batch sizes increase to improve machine learning efficiency, latency from an alert being emitted and it being processed increases proportionally because the worker must sequentially process all alerts in a batch before any can proceed to inference, and then filtering. The only way to reduce this latency would be to decrease batch sizes and add more workers, but this ultimately converges to the inefficient single-worker-single-alert scenario, negating the benefits of batch processing entirely.
 
-Next, we will describe exactly how the alert processing steps mentioned above have been split into multiple ``workers'', as illustrated in Figure 2.
-
 \begin{figure*}[t]
   \centering
   \resizebox{\textwidth}{!}{\input{diagrams/workers}}
   \caption{Decision tree workflow of each boom worker}
   \label{fig:workflow}
 \end{figure*}
+
+Next, we will describe exactly how the alert processing steps mentioned above have been split into multiple ``workers'', as illustrated in Fig.~\ref{fig:workflow}.
+
+% \begin{figure*}[t]
+%   \centering
+%   \resizebox{\textwidth}{!}{\input{diagrams/workers}}
+%   \caption{Decision tree workflow of each boom worker}
+%   \label{fig:workflow}
+% \end{figure*}
 
 % \begin{figure*}[t]
 %     \centering
@@ -345,7 +355,7 @@ from~\cite{JegouDuLaz2025BoomCalkit}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{figures/scaling.png}
+    \includegraphics[width=3.5in]{figures/boom_scaling_benchmark_edited.png}
     \caption{
         Scalability testing results for BOOM and Kowalski.
         The dashed horizontal line represents the average alert production
@@ -369,20 +379,20 @@ and should be able to handle the Rubin alert stream with fewer than 10
 worker processes. Moreover, it shows that even with a small amount of CPU resources allocated, \boom is inherently faster than \kowalski.
 
 
-\todo{Pete can you look at the mem usage from the containers that Calkit recorded? Here we only make a claim about CPU usage vs what the machine has available, but it would be better if we could show what the memory usage is. Just grabbing the max mem usage from each container minus the kafka one, and summing at all together as a "peak" memory usage would be enough. If that number is higher than you think it should be, then looking at the median/mean is the second best option.}
+\rednote{Pete can you look at the mem usage from the containers that Calkit recorded? Here we only make a claim about CPU usage vs what the machine has available, but it would be better if we could show what the memory usage is. Just grabbing the max mem usage from each container minus the kafka one, and summing at all together as a "peak" memory usage would be enough. If that number is higher than you think it should be, then looking at the median/mean is the second best option.}
 
-\todo{Also there is no mention of the compute used by MongoDB or Valkey here. Please also use these docker stats that the benchmark pipeline used to check what these are (can also look at the peak and median/mean if you think that's interesting)}
+\rednote{Also there is no mention of the compute used by MongoDB or Valkey here. Please also use these docker stats that the benchmark pipeline used to check what these are (can also look at the peak and median/mean if you think that's interesting)}
 
 \subsection{Hardware Requirements}
 
 Since \boom requires at least 7 threads to run: one for each worker type, one for the main process, one for consuming \kafka alerts, one for \valkey, and one for \mongo. These are logical threads rather than physical ones, allowing \boom to operate on hardware with fewer than 7 physical cores, though processing speed will decrease accordingly.
 Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey stores up to 15,000 alerts using 1GB of memory, while other job scheduling items consume negligible space. This maximum can be adjusted downward to reduce \valkey's memory footprint. \mongo also benefits from caching, but its memory allocation can be capped at startup.
 
-From Figure 2., we have shown that $\sim 7$ total worker threads are sufficient to run the benchmarked version of \boom at the LSST scale. So, we recommend running \boom on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run \mongo and \valkey.
+From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker threads are sufficient to run the benchmarked version of \boom at the LSST scale. So, we recommend running \boom on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run \mongo and \valkey.
 
 While BOOM has no strict minimum hardware requirements, we recommend at least 8 cores and 16GB of RAM.
 
-\rednote{I'll try to run \boom on a raspberry PI today. Would be a nice way to support the argument made above, and show that even a small config can run \boom, only at reduced speeds. -> UPDATE: doesn't run easily on RPI as MongoDB's recent versions don't support these lower end arm64 chips. Will try again on a mac mini tomorrow}
+\rednote{Will try again on a mac mini. Would be good to show some readily available consumer-grade hardware where BOOM can run just fine, to set some example of small configs that supports it (given that we don't have any set hardware requiremnt)}
 
 \rednote{We should also briefly describe the current deployments, as well as how we have demonstrated one can use both Docker and Apptainer to do so (i.e. it is possible without sudo to orchestrate the app)}
 
@@ -437,8 +447,6 @@ To test \boom's abilities to handle alert streams with vastly different depths, 
 %     \label{fig:ztfdecamat2025knz}
 % \end{figure}
 
-% \todo{I talked with Xander: We'll use a better example, such as https://fritz.science/source/T202505231407305m004723. While it does have enough data in DECam to be discovered without ZTF, we can just say that "we use real DECam data, but simulate LSST's cadence". That way we can give an example that's faithful to what LSST will give us in production, but using real data and not just a simulated lightcurve. That will be more scientifically interesting than this broker-y example of a somewhat random transient.}
-
 Over the course of a 3-day experiment where ZTF and DECam observed spatially coincident fields, we observed 207 ZTF objects with matching DECam objects; this relatively small number is due to the pre-filtering used by DECam before sending alerts, as mentioned above. In \boom, these were matched by the \texttt{Alert} worker, and a simple user-defined filter looking for ZTF alerts with matching DECam transients was implemented, which resulted in these 207 candidates to be sent to \boom's kafka cluster, and thereafter read and ingested by a dedicated \skyportal instance.
 
 % While none of the transient discovered in the course of the short experiment have been found only due to the ZTF and DECam joint filtering synergy, we have been able to validate the cross-survey-matching and cross-survey-filtering capabilities of the software, with real data. Moreover, at least one example of what the joint-filtering features may enable with LSST was found: AT 2025knz (in ZTF: ZTF25aaqemjr, in DECam: T202505171244413m120108). Often, user-defined filters require at least 2 detections (regardless of band) with enough time separation (e.g. >15 minutes) to rule out transients as potential moving objects. This can be particularly constraining, as we are then bound by the cadence of one instrument to observe a transient at least twice. If the observations are too close the object cannot pass the filter, if they are too far from each other we loose time between first detection and follow-up observations and/or classification. AT 2025knz was first detected by ZTF at mag = 19.7 in g-band, and a second time in g-band 46.7 hours later. However, DECam also detected the transient in r-band 46.0 hours after the first detection. This means the transient passed its filter with a sufficient number of detection and could be assigned for follow-up $sim 42 $ minutes then it would have been with ZTF-only. This amount of time -- as short as it may be -- is already relevant for young and short lived transients. Moreover, additional observations of the same object introduced by multi-survey data processing, irrespective of time scale, will be beneficial for machine learning approaches. With LSST's cadence, we are hoping to see more drastic examples of this synergy's benefits, e.g. transients first seen by LSST, followed by ZTF detections hours later. \rednote{Theo: Michael maybe you can get a bit more scientific here, and get people exited? My software self just doesn't have the magic words in mind that astro folks want to hear :)}
@@ -446,14 +454,14 @@ Over the course of a 3-day experiment where ZTF and DECam observed spatially coi
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=6.5in]{figures/SN2025kwy.png}
+    \includegraphics[width=6.5in]{figures/SN2025kwy_v2.png}
     \caption{
         Alert photometry of SN 2025kwy, a young supernova candidate first detected by DECam and later observed by ZTF.
     }
-    \label{fig:ztfdecamat2025knz}
+    \label{fig:ztfdecamsn2025kwy}
 \end{figure*}
 
-While none of the transients discovered in the course of the short experiment were found solely due to the ZTF and DECam joint filtering synergy, we have been able to validate the cross-survey-matching and cross-survey-filtering capabilities of the software with real data. Amongst the transients observed by both surveys, we highlight one particular object, SN 2025kwy. Later classified as a SNIa, it was first detected by DECam at 21.98\,mag in $r$-band, followed by another $r$-band detection 3 days later at 20.2\,mag, followed the same night by $r$-band and $g$-band detections by ZTF; it was observed $\sim$\,daily by ZTF thereafter. While in this case, DECam data alone was sufficient to constrain the transient's rate of evolution at early times in $r$-band, due to LSST's current plan to take observations in a pair of filters within a night and then return to a field within a week. Therefore, to simulate what may be expected from the LSST alert stream, we sub-sample from the DECAM lightcurve and only kept the first -- and fainter -- detection, 3 days before ZTF's first observation. This leaves us with a ZTF + LSST joint-stream example as illustrated in Figure~\ref{fig:ztfdecamat2025knz}, highlighting the synergy between the 2 surveys: fainter pre-detections by LSST, followed by a higher cadence, well-sampled lightcurve from ZTF; naturally in the LSST case, the light curve would also be filled in with further photometry, including other passbands. In this scenario, the multi-survey support lets us put clear constraints on the rate of evolution of the transient at early times ($\sim 0.65$ mag/day for the first 3 days), resulting in its selection by fast-transient or young-supernova user-defined filters. Moreover, \boom had cross-matched the transient with the \texttt{NED LVS} catalog, adding additional information about its distance, host, and absolute magnitude, all which can be used as additional constraints in user-defined filters.
+While none of the transients discovered in the course of the short experiment were found solely due to the ZTF and DECam joint filtering synergy, we have been able to validate the cross-survey-matching and cross-survey-filtering capabilities of the software with real data. Amongst the transients observed by both surveys, we highlight one particular object, SN 2025kwy. Later classified as a SNIa, it was first detected by DECam at 21.98\,mag in $r$-band, followed by another $r$-band detection 3 days later at 20.2\,mag, followed the same night by $r$-band and $g$-band detections by ZTF; it was observed $\sim$\,daily by ZTF thereafter. While in this case, DECam data alone was sufficient to constrain the transient's rate of evolution at early times in $r$-band, due to LSST's current plan to take observations in a pair of filters within a night and then return to a field within a week. Therefore, to simulate what may be expected from the LSST alert stream, we sub-sample from the DECAM lightcurve and only kept the first -- and fainter -- detection, 3 days before ZTF's first observation. This leaves us with a ZTF + LSST joint-stream example as illustrated in Figure~\ref{fig:ztfdecamsn2025kwy}, highlighting the synergy between the 2 surveys: fainter pre-detections by LSST, followed by a higher cadence, well-sampled lightcurve from ZTF; naturally in the LSST case, the light curve would also be filled in with further photometry, including other passbands. In this scenario, the multi-survey support lets us put clear constraints on the rate of evolution of the transient at early times ($\sim 0.65$ mag/day for the first 3 days), resulting in its selection by fast-transient or young-supernova user-defined filters. Moreover, \boom had cross-matched the transient with the \texttt{NED LVS} catalog, adding additional information about its distance, host, and absolute magnitude, all which can be used as additional constraints in user-defined filters.
 
 \section{Conclusions}
 \label{sec:conclusion}
