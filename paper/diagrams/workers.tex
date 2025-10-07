@@ -1,0 +1,110 @@
+% \documentclass[tikz,border=10pt]{standalone}
+% \begin{document}
+\begin{tikzpicture}[
+    font=\sffamily,
+    node distance=12pt,
+    process/.style={rectangle, rounded corners=5pt, draw=black!70, fill=white,
+        very thick, align=center, text width=6cm, minimum height=0.8cm},
+    process small/.style={rectangle, rounded corners=5pt, draw=black!70, fill=white,
+        very thick, align=center, text width=5cm, minimum height=0.8cm},
+    process very small/.style={rectangle, rounded corners=5pt, draw=black!70, fill=white,
+        very thick, align=center, minimum height=0.8cm},  % No fixed text width
+    decision/.style={diamond, aspect=2.2, draw=black!70, thick, fill=white,
+        align=center, inner sep=1pt, text width=3.6cm},
+    flowarrow/.style={-{Latex[length=3mm,width=2mm]}, thick},
+    box/.style={rounded corners=10pt, inner sep=10pt, draw=none,
+        fill opacity=0.1, text opacity=1},
+    title/.style={font=\bfseries\large, align=center, text opacity=1},
+]
+
+% --------------------------------------------------
+% ==== ALERT WORKER (LEFT COLUMN) ====
+% --------------------------------------------------
+\node[box, fill=red!20, fit={(-12, -3.5) (-1, 12)}] (alertbox) {};
+\node[title] at (-6.5,11.6) {Alert Worker};
+% \node[font=\bfseries] at (-3.4,-0.5) {1};
+
+\node[process] (a1) at (-6.5,10.6) {In-Memory Storage};
+\node[process, below=of a1] (a2) {Retrieve Alert Avro Packet};
+
+% Main "no" branch continues downward
+\node[process, below=of a2] (a5) {Insert Alert \& Cutouts};
+% \node[process, below=of a4] (a5) {Insert Cutouts};
+\node[process, below=of a5] (a6) {Xmatch w/ Other Surveys' Objects};
+\node[decision, below=of a6] (a7) {Object Already Exists?};
+
+% Short "yes" branch to the left
+% \node[process, below left=of a7] (a8yes) {Update Object Lightcurves \\ + Survey Xmatches};
+\node[process small, below left=1.2cm and -1cm of a7] (a8yes) {Update Object's \\ Lightcurves \\ + Survey Xmatches};
+
+% Main "no" branch continues downward
+\node[process small, below right=0.5cm and -1cm of a7] (a8no) {Xmatch w/ Archival Catalogs};
+\node[process small, below=of a8no] (a9) {Insert Object w/ Lightcurves \\ + Survey Xmatches \\ + Archival Xmatches};
+\node[process, below=4.4cm of a7] (a10) {Candidate IDs};
+\node[process, below=of a10] (a11) {In-Memory Storage};
+
+% Arrows
+\draw[flowarrow] (a1)--(a2);
+\draw[flowarrow] (a2)--(a5);
+\draw[flowarrow] (a5)--(a6);
+\draw[flowarrow] (a6)--(a7);
+\draw[flowarrow] (a7.south west)--node[above left, font=\small]{Yes}(a8yes);
+\draw[flowarrow] (a7.south east)--node[above right, font=\small]{No}(a8no);
+\draw[flowarrow] (a8yes)--(a10);
+\draw[flowarrow] (a8no)--(a9);
+\draw[flowarrow] (a9)--(a10);
+\draw[flowarrow] (a10)--(a11);
+
+% --------------------------------------------------
+% ==== ML WORKER (CENTER COLUMN) ====
+% --------------------------------------------------
+\node[box, fill=blue!20, fit={(0.2, -3.5) (6.8, 12)}] (mlbox) {};
+\node[title] at (3.5,11.6) {ML Worker};
+% \node[font=\bfseries] at (5.7,-0.5) {2};
+
+\node[process] (m1) at (3.5,10.6) {In-Memory Storage};
+\node[process, below=of m1] (m2) {Retrieve Candidate IDs};
+\node[process, below=of m2] (m3) {Fetch Alerts w/ Lightcurves \\ + Survey Xmatches \\ +  Archival Xmatches};
+\node[process, below=of m3] (m4) {Compute Metadata \& Lightcurves alert features};
+\node[process, below=of m4] (m5) {Prepare Metadata, Lightcurves, Image ML inputs};
+\node[process, below=of m5] (m6) {Run Inference for Each Model};
+\node[process, below=of m6] (m7) {Update Alerts w/ features and ML scores};
+\node[process, below=of m7] (m8) {Candidate IDs};
+\node[process, below=of m8] (m9) {In-Memory Storage};
+
+\foreach \i/\j in {m1/m2,m2/m3,m3/m4,m4/m5,m5/m6,m6/m7,m7/m8,m8/m9}
+  \draw[flowarrow] (\i)--(\j);
+
+% --------------------------------------------------
+% ==== FILTER WORKER (RIGHT COLUMN) ====
+% --------------------------------------------------
+\node[box, fill=yellow!30, fit={(8, -3.5) (15, 12)}] (filtbox) {};
+\node[title] at (11.5,11.3) {Filter Worker};
+% \node[font=\bfseries] at (14.7,-0.5) {3};
+
+\node[process] (f1) at (11.5,10.5) {In-Memory Storage};
+\node[process, below=of f1] (f2) {Retrieve Candidate IDs};
+\node[decision, below=of f2] (f3) {Passes Any Filter?};
+
+% Short "no" branch to left
+% \node[process very small, left=2cm of f3] (f4no) {Skip};
+\node[process very small, below left=0.6cm of f3] (f4no) {Skip};
+
+% Main "yes" branch continues downward
+\node[process, below=0.8cm of f3] (f4yes) {Fetch Alert w/ metadata \\ + Lightcurves \\ + Images \\ + Survey Xmatches \\ + Archival Xmatches};
+\node[process, below=of f4yes] (f5) {Combine Alert data + Passed filters annotations};
+\node[process, below=of f5] (f6) {Serialize to Avro Packet};
+\node[process, below=of f6] (f7) {Kafka Topic};
+
+% Arrows
+\draw[flowarrow] (f1)--(f2);
+\draw[flowarrow] (f2)--(f3);
+\draw[flowarrow] (f3)--node[above left]{No}(f4no);
+\draw[flowarrow] (f3)--node[right]{Yes}(f4yes);
+\draw[flowarrow] (f4yes)--(f5);
+\draw[flowarrow] (f5)--(f6);
+\draw[flowarrow] (f6)--(f7);
+
+\end{tikzpicture}
+
+% \end{document}
