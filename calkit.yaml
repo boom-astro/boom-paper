@@ -235,6 +235,7 @@ publications:
         - aastex631.cls
         - figures/filter_interface.png
         - figures/AT 2025knz.png
+        - figures/SN2025kwy.png
         - diagrams/workers.tex
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
