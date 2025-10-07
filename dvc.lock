@@ -5,17 +5,17 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 153fb2a3b91f7b8df6c672fdb8593b7c
+      md5: 073f2fcc37f291281ee5503dbba6e8ce
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode 
-      -silent -f -synctex=1 -pdf paper/main.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
+      -interaction=nonstopmode -silent -f -synctex=1 -pdf paper/main.tex
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 153fb2a3b91f7b8df6c672fdb8593b7c
+      md5: 073f2fcc37f291281ee5503dbba6e8ce
       size: 1171
     - path: paper/aasjournal.bst
       hash: md5
@@ -25,18 +25,39 @@ stages:
       hash: md5
       md5: 3a8503ea2dc529eec05658a2b11d12d0
       size: 231673
+    - path: paper/diagrams
+      hash: md5
+      md5: 21ddb0465b2619cde3dceae5ae55ad07.dir
+      size: 5028
+      nfiles: 1
+    - path: paper/figures/AT 2025knz.png
+      hash: md5
+      md5: a09cc81f5072ad7363fa4b9586f971ca
+      size: 131412
+    - path: paper/figures/SN2025kwy.png
+      hash: md5
+      md5: 3cbcfee6f28dae7a8cff5bcc09788db8
+      size: 37786
+    - path: paper/figures/filter_interface.png
+      hash: md5
+      md5: e99ffa0ad9e476bb0008ff7efd500b77
+      size: 213068
+    - path: paper/figures/scaling.png
+      hash: md5
+      md5: 9802a3d3365e196158f9ca36960b1ea3
+      size: 28277
     - path: paper/figures/workflow.pdf
       hash: md5
       md5: bbdeb3fea7b0d744ffba650a0d0c40db
       size: 7722175
     - path: paper/main.tex
       hash: md5
-      md5: fcfe42b621a12cae4dada4c21ffeaa10
-      size: 60130
+      md5: 636800c603b5bf6ae93ea69da130fa26
+      size: 65750
     - path: paper/references.bib
       hash: md5
-      md5: 7a6769ebbcc9c01c7420570960f443d5
-      size: 1097668
+      md5: 941545e650d0e6d9a1fe2cf8cf5165ed
+      size: 1098424
     - path: paper/results.tex
       hash: md5
       md5: 1342ce0e406cd27a9320470b1074676d
@@ -44,8 +65,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: df8c0875764c6d114b4498db2f539014
-      size: 8308532
+      md5: f269ad065e7d0d605ac618c38eb97ec9
+      size: 8238016
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:

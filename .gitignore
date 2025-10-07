@@ -26,3 +26,4 @@ logs/kowalski
 *.tdo
 
 config/*/cats150.json
+*.rej

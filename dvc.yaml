@@ -232,7 +232,7 @@ stages:
     desc: Automatically generated from the 'analyze-logs' stage in 
       calkit.yaml. Changes made here will be overwritten.
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd 
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
       -interaction=nonstopmode -silent -f -synctex=1 -pdf 
       paper/main.tex
     deps:
@@ -242,6 +242,11 @@ stages:
       - paper/aasjournal.bst
       - paper/aastex631.cls
       - paper/results.tex
+      - paper/diagrams
+      - paper/figures/AT 2025knz.png
+      - paper/figures/filter_interface.png
+      - paper/figures/scaling.png
+      - paper/figures/SN2025kwy.png
       - .calkit/env-locks/tex.json
     outs:
       - paper/main.pdf
