@@ -243,10 +243,7 @@ stages:
       - paper/aastex631.cls
       - paper/results.tex
       - paper/diagrams
-      - paper/figures/AT 2025knz.png
-      - paper/figures/filter_interface.png
-      - paper/figures/scaling.png
-      - paper/figures/SN2025kwy.png
+      - paper/figures
       - .calkit/env-locks/tex.json
     outs:
       - paper/main.pdf

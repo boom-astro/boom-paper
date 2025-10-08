@@ -110,7 +110,7 @@
 % Abstract of the paper
 \begin{abstract}
 With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \boom (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
-\boom harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing. 
+\boom harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing.
 With this system, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing as well as the results with custom filters we have built to demonstrate the system's capabilities.
 We further outline the development plan for \texttt{Babamul}, the public version of \boom processing LSST alerts.
@@ -365,7 +365,7 @@ from~\cite{JegouDuLaz2025BoomCalkit}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=3.5in]{figures/boom_scaling_benchmark_edited.png}
+    \includegraphics[width=3.5in]{figures/scaling.png}
     \caption{
         Scalability testing results for BOOM and Kowalski.
         The dashed horizontal line represents the average alert production
@@ -386,12 +386,17 @@ smoother thread count to processing time relationship.
 Overall, this shows that \boom's throughput will make better use of
 increased computing power,
 and should be able to handle the Rubin alert stream with fewer than 10
-worker processes. Moreover, it shows that even with a small amount of CPU resources allocated, \boom is inherently faster than \kowalski.
+worker processes.
+Moreover, it shows that even with a small amount of CPU resources allocated,
+\boom is inherently more performant than \kowalski.
+\boom's memory footprint is also much lower,
+using a maximum of \boommaxmem~GB compared to \kowalski's \kowalskimaxmem~GB
+for the case with 7 total threads.
+Note that this value is the memory used by the workers alone
+and doesn't include that used by Kafka, MongoDB, or Valkey.
 
-
-\rednote{Pete can you look at the mem usage from the containers that Calkit recorded? Here we only make a claim about CPU usage vs what the machine has available, but it would be better if we could show what the memory usage is. Just grabbing the max mem usage from each container minus the kafka one, and summing at all together as a "peak" memory usage would be enough. If that number is higher than you think it should be, then looking at the median/mean is the second best option.}
-
-\rednote{Also there is no mention of the compute used by MongoDB or Valkey here. Please also use these docker stats that the benchmark pipeline used to check what these are (can also look at the peak and median/mean if you think that's interesting)}
+% PB: Note that we didn't record resource consumption from those other
+% containers
 
 \subsection{Hardware Requirements}
 
