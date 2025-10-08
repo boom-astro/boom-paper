@@ -238,7 +238,6 @@ stages:
     deps:
       - paper/main.tex
       - paper/references.bib
-      - paper/figures/workflow.pdf
       - paper/aasjournal.bst
       - paper/aastex631.cls
       - paper/results.tex
