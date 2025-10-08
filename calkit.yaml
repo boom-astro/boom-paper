@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker
+title: A real-time, multi-survey, optical alert system broker 
   operating at scale
 description: >
   This project contains all of the files necessary to reproduce the results
@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA
+    affiliation: California Institute of Technology, Pasadena, CA 
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -209,7 +209,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from
+    description: Alerts from the NED archival catalog exported from 
       Kowalski.
 
 figures:
@@ -221,7 +221,7 @@ figures:
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker
+    title: A real-time, multi-survey, optical alert system broker 
       operating at scale
     description:
     kind: journal-article
@@ -240,7 +240,6 @@ publications:
         - diagrams/workers.tex
         - figures/list condition.png
         - figures/SN2025kwy_v2.png
-        - figures/boom_scaling_benchmark_edited.png
         - figures/boom_workers_workflow_draft.png
       # Keep these out of Git in this project so we don't bloat the repo, but
       # can still version them with DVC
@@ -251,12 +250,12 @@ publications:
       push_paths:
         - results.tex
         - figures/scaling.png
-      last_sync_commit: 99e16fc2a4bc946ee597e0d5c0b3545c84a6a256
+      last_sync_commit: 0c255e6ebabcc811524463980ae5bd7ebc7aaf9f
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski
+    description: Analyze the logs from the BOOM and Kowalski 
       benchmarks.
 
 references:
