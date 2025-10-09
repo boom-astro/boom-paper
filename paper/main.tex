@@ -89,27 +89,30 @@
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
 \author[0009-0009-7000-8343]{Antoine Le Calloch}
-\affiliation{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
+\affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
 \author[0000-0003-1314-4241]{Sushant Sharma Chaudhary}
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
-\author[0000-0002-9364-5419]{Xander J. Hall}\email{xjh@andrew.cmu.edu}
-\affiliation{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
+\author[0000-0002-4843-345X]{Tyler Barna}
+\affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
-\author[0000-0002-3168-0139]{Matthew Graham}\email{mjg@caltech.edu}
-\affiliation{Division of Physics, Mathematics and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+\author[0000-0002-9364-5419]{Xander J. Hall}
+\affil{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
 
-\author[0000-0002-5619-4938]{Mansi M. Kasliwal}\email{mansi@astro.caltech.edu}
-\affiliation{Division of Physics, Mathematics and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+\author[0000-0002-3168-0139]{Matthew Graham}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
+\author[0000-0002-5619-4938]{Mansi M. Kasliwal}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
-\author[0000-0002-6011-0530]{Antonella Palmese}\email{palmese@cmu.edu}
-\affiliation{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
+\author[0000-0002-6011-0530]{Antonella Palmese}
+\affil{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
+
 
 % Abstract of the paper
 \begin{abstract}
-With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the legacy of a successful system that ran in production for ZTF for the first seven years of its operation, we introduce \boom (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
+With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the system that succesfully ran in production for ZTF for the first seven years of its operation, we introduce \boom (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
 \boom harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing.
 With this system, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing as well as the results with custom filters we have built to demonstrate the system's capabilities.
