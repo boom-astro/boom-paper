@@ -79,10 +79,10 @@
 % ==== FILTER WORKER (RIGHT COLUMN) ====
 % --------------------------------------------------
 \node[box, fill=yellow!30, fit={(8, -3.5) (15, 12)}] (filtbox) {};
-\node[title] at (11.5,11.3) {Filter Worker};
+\node[title] at (11.5,11.6) {Filter Worker};
 % \node[font=\bfseries] at (14.7,-0.5) {3};
 
-\node[process] (f1) at (11.5,10.5) {In-Memory Storage};
+\node[process] (f1) at (11.5,10.6) {In-Memory Storage};
 \node[process, below=of f1] (f2) {Retrieve Candidate IDs};
 \node[decision, below=of f2] (f3) {Passes Any Filter?};
 
