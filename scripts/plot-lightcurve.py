@@ -117,7 +117,6 @@ def plot_photometry(
     ax.legend(loc="upper left", fontsize="small")
     if export is not None:
         plt.savefig(f"{out_dir}/{at_name}.{export}", bbox_inches="tight")
-    plt.show()
 
 
 ids = ("ZTF25aaqsuda", "C202505201402422m202612")

@@ -21,7 +21,6 @@ scripts/convert2onnx/models_output/
 *.bbl
 *.blg
 logs/kowalski
-*.pdf
 *.synctex.gz
 *.tdo
 

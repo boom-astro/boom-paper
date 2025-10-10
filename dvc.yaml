@@ -219,7 +219,7 @@ stages:
       - paper/results.tex:
           cache: false
           persist: false
-      - paper/figures/scaling.png:
+      - paper/figures/scaling.pdf:
           cache: false
           persist: false
       - results:
@@ -230,6 +230,19 @@ stages:
       - .calkit/notebooks/html/notebooks/analyze-logs.html:
           cache: false
     desc: Automatically generated from the 'analyze-logs' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  plot-lightcurve:
+    cmd: calkit xenv -n analyze-logs --no-check -- python 
+      scripts/plot-lightcurve.py
+    deps:
+      - scripts/plot-lightcurve.py
+      - data/SN2025kwy.parquet
+      - .calkit/env-locks/analyze-logs.txt
+    outs:
+      - paper/figures/SN2025kwy.pdf:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'plot-lightcurve' stage in 
       calkit.yaml. Changes made here will be overwritten.
   build-paper:
     cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
