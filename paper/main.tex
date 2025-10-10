@@ -299,7 +299,7 @@ Although most popular machine learning frameworks have been designed in Python a
 
 After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{Rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio. So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom.
 
-Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \boom, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, 
+Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \boom, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata,
 and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
 
 While maintaining \kowalski, we identified the following:
@@ -407,11 +407,22 @@ and doesn't include that used by Kafka, MongoDB, or Valkey.
 Since \boom requires at least 7 threads to run: one for each worker type, one for the main process, one for consuming \kafka alerts, one for \valkey, and one for \mongo. These are logical threads rather than physical ones, allowing \boom to operate on hardware with fewer than 7 physical cores, though processing speed will decrease accordingly.
 Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey stores up to 15,000 alerts using 1GB of memory, while other job scheduling items consume negligible space. This maximum can be adjusted downward to reduce \valkey's memory footprint. \mongo also benefits from caching, but its memory allocation can be capped at startup.
 
-From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker threads are sufficient to run the benchmarked version of \boom at the LSST scale. So, we recommend running \boom on servers that have at least this number of threads to execute the software itself, and a matching number of threads free to run \mongo and \valkey.
+From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker threads are sufficient to run the benchmarked version of \boom at the LSST scale.
+Therefore, we recommend running \boom on servers that have at least this number of threads to execute the software itself,
+and a matching number of threads free to run \mongo and \valkey.
 
-While BOOM has no strict minimum hardware requirements, we recommend at least 8 cores and 16GB of RAM.
+While \boom has no strict minimum hardware requirements,
+we recommend at least 8 cores and 16GB of RAM.
 
 \rednote{Will try again on a mac mini. Would be good to show some readily available consumer-grade hardware where BOOM can run just fine, to set some example of small configs that supports it (given that we don't have any set hardware requiremnt)}
+
+\subsection{Deployment Approaches}
+
+\boom's software repository is currently configured to automatically
+deploy via GitHub Actions, running services in containers with Docker Compose.
+This configuration is fully self-sufficient,
+including services for \mongo, \kafka, \valkey, and of course \boom's
+workers and API server, with the option of enabling the \babamul feature.
 
 \rednote{We should also briefly describe the current deployments, as well as how we have demonstrated one can use both Docker and Apptainer to do so (i.e. it is possible without sudo to orchestrate the app)}
 
