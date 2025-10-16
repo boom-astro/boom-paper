@@ -5,7 +5,7 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 073f2fcc37f291281ee5503dbba6e8ce
+      md5: bb1df3bd963f21fe4bfe580f00891bbe
       size: 1171
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
@@ -15,7 +15,7 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 073f2fcc37f291281ee5503dbba6e8ce
+      md5: bb1df3bd963f21fe4bfe580f00891bbe
       size: 1171
     - path: paper/aasjournal.bst
       hash: md5
@@ -37,8 +37,8 @@ stages:
       nfiles: 15
     - path: paper/main.tex
       hash: md5
-      md5: 929898c203fb3b6624e7bc274e2c771a
-      size: 66526
+      md5: 873fcf8cefaebf8df15834c9ecd3c812
+      size: 66529
     - path: paper/references.bib
       hash: md5
       md5: 941545e650d0e6d9a1fe2cf8cf5165ed
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 67d294c7273d6f91ba527088776b563d
-      size: 6749089
+      md5: fcd738f7a24e37371da276038a161292
+      size: 6749452
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -212,8 +212,8 @@ stages:
     deps:
     - path: notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 668c215f54730958059efac06b4bedff
-      size: 69656
+      md5: 86a5c64422d55fa99bde77c9bc5631fe
+      size: 12352
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
