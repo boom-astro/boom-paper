@@ -70,7 +70,7 @@
 
 \begin{document}
 
-\title{\boom and \texttt{Babamul}: a real-time, multi-survey, optical alert broker operating at scale}
+\title{\boom and \texttt{Babamul}: a real-time, multi-survey, optical alert broker system operating at scale}
 
 \author[0009-0003-6181-4526]{Theophile Jegou du Laz}
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
@@ -104,6 +104,9 @@
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
 \author[0000-0002-5619-4938]{Mansi M. Kasliwal}
+\affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
+
+\author[0000-0003-2242-0244]{Ashish Mahabal}
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
 \author[0000-0002-6011-0530]{Antonella Palmese}
@@ -363,7 +366,7 @@ As mentioned in the introduction, \boom's main concern is enabling multi-survey 
 
 While the elements of \boom described so far have been built with real-time operations in mind, since all data products are stored in its database, these can be queried after the fact.
 Just like \kowalski exposed an HTTP RESTful API to let its users perform bulk archival searches or to run semi-real-time pipelines,
-\boom is deployed alongside a similar API. API users can query any alert collections, as well as any other archival catalogs used by \boom during real-time processing for cross-matching. For advanced users, the API directly exposes \mongo's real-only query features.
+\boom is deployed alongside a similar API. API users can query any alert collections, as well as any other archival catalogs used by \boom during real-time processing for cross-matching. For advanced users, the API directly exposes \mongo's various query features (e.g., find and aggregate queries).
 With the user-defined filters defined as aggregation pipelines, these can by design run on large batches of data and not only a set of candidates. This resulted in the implementation of filter ``re-running'' features, where users of the API can re-run their filters over entire night's worth of alerts, or alerts of known objects. Such a feature can be used while designing user-defined filters, and to validate their results before enabling them in production. Moreover, API endpoints have been implemented to return all data products associated to a given survey's \textit{objectId}, including data products from other matching surveys.
 
 \section{Deployments, Science Validation and First Results}
@@ -376,14 +379,13 @@ Rubin alert stream ($\sim 10^4$ alerts every 30\,s) and beyond,
 a throughput test was performed over varying
 numbers of worker processes.
 One night of ZTF alerts was ingested, cross-matched against the
-NED historical catalog, classified using all ML models listed in section \ref{sec:enrichment},
-and then filtered against 25 representative filters.
+NED LVS catalog, enriched with the ML models scores and features listed in section \ref{sec:enrichment},
+and finally filtered against 25 representative filters.
 Kowalski was also run for the same scenario with varying worker
 process counts for comparison.
 The machine used for throughput testing had a 2.9 GHz AMD EPYC 7002 processor with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
-Data was written to a 12 Gb/s 7200 RPM hard drive.
-ML inference was performed without GPU acceleration.
-Code and datasets to reproduce the results are available
+Data were written to a 12 Gb/s 7200 RPM hard drive (effective hard drive write and read speeds are much lower, no more than 250 MB/s), and ML inference was performed without GPU acceleration.
+The code and datasets to reproduce the results are available
 from~\cite{JegouDuLaz2025BoomCalkit}.
 
 \begin{figure}
@@ -402,8 +404,7 @@ and \kowalski in terms of alerts processed per second
 versus the number of worker processes.
 In addition to its increased throughput, \boom performs better as more
 computing resources are added,
-though since there are three different worker counts to vary,
-there is some tuning to get ideal scaling,
+though since there are three different worker counts to vary there is some tuning to get ideal scaling,
 which is seen in the figure as a jagged line compared to \kowalski's
 smoother thread count to processing time relationship.
 Overall, this shows that \boom's throughput will make better use of
@@ -414,26 +415,17 @@ Moreover, it shows that even with a small amount of CPU resources allocated,
 \boom is inherently more performant than \kowalski.
 \boom's memory footprint is also much lower,
 using a maximum of \boommaxmem~GB compared to \kowalski's \kowalskimaxmem~GB
-for the case with 7 total threads.
-Note that this value is the memory used by the workers alone
-and doesn't include that used by Kafka, MongoDB, or Valkey.
-
-% PB: Note that we didn't record resource consumption from those other
-% containers
+for the case with 7 total threads. Note that this value is the memory used by the workers alone
+and doesn't include that used by Kafka, MongoDB, or Valkey. In fact, the $\sim \boomthroughputfactor \times$ throughput factor reported in the introduction was calculated with this 7 thread configuration. However, it is obvious from Figure~\ref{fig:scaling} that the throughput factor is much larger when more threads are allocated, as \boom continues to scale more efficiently than \kowalski. With 16 threads or more, the throughput factor is maximized on this hardware, and \boom is able to process $\sim 2.5 \times$ the LSST alert rate.
 
 \subsection{Hardware Requirements}
 
- \boom requires at least the following processes to run: one for each worker type, one for the main process, one to consume alerts from \kafka, one for \valkey, one for \mongo, and one for its \kafka output. Since it operates in a fully asynchronous context, it can function with less physical threads than there are processes.
-Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey stores up to 15,000 alerts using 1GB of memory, while other job scheduling items consume negligible space. This maximum can be adjusted downward to reduce \valkey's memory footprint. \mongo also benefits from caching, but its memory allocation can be capped at startup.
+ \boom requires at least the following processes to run: one for each worker type, one for the main process, one to consume alerts from \texttt{Kafka}, one for \texttt{Valkey}, one for \texttt{MongoDB}, and one for its \kafka output. Since it operates in a fully asynchronous context, it can function with less physical threads than there are processes.
+Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey will stores up to 15,000 alerts using $\sim 1$ GB of memory, while other job scheduling items consume negligible amounts of memory. This maximum alert number can be adjusted downward to reduce \texttt{Valkey}'s memory footprint. \mongo also benefits from caching, and similarly its memory allocation can be capped at startup.
 
 From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker are sufficient to run the benchmarked version of \boom at the LSST scale.
 Therefore, we recommend running \boom on servers that have at least this number of threads to execute the software itself,
-and a matching number of threads free to run \mongo and \valkey.
-
-While \boom has no strict minimum hardware requirements,
-we recommend at least 8 cores and 16GB of RAM to support latency-free processing at the LSST scale.
-
-% \rednote{Will try again on a mac mini. Would be good to show some readily available consumer-grade hardware where BOOM can run just fine, to set some example of small configs that supports it (given that we don't have any set hardware requirement)}
+and a matching number of threads to run \mongo and \valkey efficiently.
 
 \subsection{Deployment Approaches}
 
