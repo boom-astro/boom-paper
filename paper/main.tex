@@ -94,11 +94,14 @@
 \author[0000-0003-1314-4241]{Sushant Sharma Chaudhary}
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
+\author[0000-0002-9364-5419]{Xander J. Hall}
+\affil{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
+
 \author[0000-0002-4843-345X]{Tyler Barna}
 \affil{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
-\author[0000-0002-9364-5419]{Xander J. Hall}
-\affil{McWilliams Center for Cosmology and Astrophysics, Department of Physics, Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213 }
+\author{Daniel Warshofsky}
+\affiliation{School of Physics and Astronomy, University of Minnesota, Minneapolis, Minnesota 55455, USA}
 
 \author[0000-0002-3168-0139]{Matthew Graham}
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
@@ -126,6 +129,10 @@
 \author[0000-0002-0387-370X]{Reed L. Riddle}
 \affiliation{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
+\author[0000-0003-3367-3415]{George Helou}
+\affiliation{IPAC, California Institute of Technology, 1200 E. California
+             Blvd, Pasadena, CA 91125, USA}
+
 
 % Abstract of the paper
 \begin{abstract}
@@ -136,10 +143,6 @@ We describe the workflow that enables the real-time processing as well as the re
 We further outline the development plan for \texttt{Babamul}, the public LSST alert streams from \boom.
 In conclusion, we outline the development plans for \boom as we begin the LSST era.
 \end{abstract}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \listoftodos
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
@@ -178,15 +181,15 @@ To identify the most interesting objects for particular science cases, brokers c
 Specifically, to supplement the LSST alert stream, a variety of other optical systems such as the La Silla Schmidt Southern Survey (LS4; \citealt{miller2025lasillaschmidtsouthern}) and ZTF will be trailing the LSST footprint daily. To maximize the science synergies enabled by these coordinated observations, brokers will need to perform joint filtering on these alert streams.
 This will be essential to readily identify, for example, fast transients within these streams. The relatively slow cadence of LSST and other optical surveys' limited depth  make such identification difficult. Thus, the rate of evolution of these phenomena cannot be precisely measured when alerts from these surveys' streams are used separately.
 
-It is with these considerations in mind that we present \boom, an astronomical alert broker that builds upon our experience with \kowalski\footnote{\url{https://github.com/skyportal/Kowalski}}, an open source, multi-survey data archive and alert broker \citep{DuMa2019}. \kowalski has been used in production by the ZTF collaboration for over seven years, with \skyportal as its ``marshal``.
+It is with these considerations in mind that we present \texttt{BOOM}, an astronomical alert broker that builds upon our experience with \kowalski\footnote{\url{https://github.com/skyportal/Kowalski}}, an open source, multi-survey data archive and alert broker \citep{DuMa2019}. \kowalski has been used in production by the ZTF collaboration for over seven years, with \skyportal as its ``marshal``.
 In this paper, we will describe several important developments and design choices made with \boom that ready it for the upcoming LSST era.
-Although this paper focuses mainly on the design and conceptual framework of \boom, we encourage the interested reader to explore the repository alongside this text \footnote{https://github.com/boom-astro/boom}, and read its documentation.
+Although this paper focuses mainly on the design and conceptual framework of \texttt{BOOM}, we encourage the interested reader to explore the repository alongside this text \footnote{https://github.com/boom-astro/boom}, and read its documentation.
 
 As an example of important design choices, since multiple observatories will observe the LSST footprint concurrently, \boom has as its top priority, the ability to jointly filter on multiple alert streams, a relatively unique capability in the broker community. Furthermore, one of the main differences between \boom and \kowalski---and most other alert brokers---is moving away from Python and instead writing the project in \texttt{Rust}, a compiled programming language with performance characteristics that make it much better suited to attaining a high throughput of alerts at scale. Processing additional alert streams in parallel increases the data volume by at least an order of magnitude, and jointly filtering on multiple streams requires even more computation, as every alert packet needs to be cross-matched with all other overlapping surveys' alert streams. While not relying on \texttt{Python} may have the downside of making contributions from astronomers - who typically write in Python - more challenging, our experience running \kowalski in production has shown us that requiring computer science knowledge to make use of an alert broker will significantly limit its use, regardless of complexity. In the following sections, we will describe the filter building tool we have built to ameliorate this challenge, where the user is provided with a no-code alternative to write complex queries.
 
-In this paper, we describe the components built within \boom, focusing on design choices useful in preparation for LSST data scales.
-We describe \boom's key features in Sec.~\ref{sec:pipeline}.
-We demonstrate some of \boom's capabilities, including throughput measurements, in Sec.~\ref{sec:science}.
+In this paper, we describe the components built within \texttt{BOOM}, focusing on design choices useful in preparation for LSST data scales.
+We describe \texttt{BOOM}'s key features in Sec.~\ref{sec:pipeline}.
+We demonstrate some of \texttt{BOOM}'s capabilities, including throughput measurements, in Sec.~\ref{sec:science}.
 We describe the future of \boom and how we envision its role in the community in Sec.~\ref{sec:conclusion}.
 
 \section{\boom Framework}
@@ -194,7 +197,7 @@ We describe the future of \boom and how we envision its role in the community in
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=6.5in]{figures/workflow_revised.pdf}
+    \includegraphics[width=7.2in]{figures/boom_workflow_final.pdf}
     \caption{Flowchart for BOOM.}
     \label{fig:flowchart}
 \end{figure*}
@@ -205,7 +208,7 @@ In this section, we present the key design features and implemented capabilities
 
 \subsection{Input/Output through \texttt{Apache Kafka}}
 
-\texttt{Apache Kafka} has become the gold standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes for a wide variety of production-grade software in academia and industry. Optical alerts from surveys like ZTF and LSST are transmitted as Avro packets\footnote{\url{https://avro.apache.org}} over \kafka, which means that the ability to feed from \kafka topics - which represent one data stream that a client can read from - is absolutely required by any alert brokering software. Its ecosystem of libraries, available for all major programming languages, makes it extremely easy for the client to develop pipelines around it. For these reasons, adopting \kafka as our downstream data sharing system ensures compatibility with existing downstream services, which are also designed to consume alerts from \kafka . For each survey supported by our software, an associated \kafka consumer has been developed to feed from the \texttt{Avro}-formatted alerts. The consumers take advantage of \kafka's partitioning feature (where one topic is broken down in N partitions that a client can read from independently, with multiple processes) to process any given survey's alert stream(s) in parallel, maximizing the input rate. \boom's output, as described in subsection \ref{sec:filter}, is also serialized to \texttt{Avro} and produced to a \kafka cluster.
+\texttt{Apache Kafka} has become the gold standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes for a wide variety of production-grade software in academia and industry. Optical alerts from surveys like ZTF and LSST are transmitted as Avro packets\footnote{\url{https://avro.apache.org}} over \kafka, which means that the ability to feed from \kafka topics - which represent one data stream that a client can read from - is absolutely required by any alert brokering software. Its ecosystem of libraries, available for all major programming languages, makes it extremely easy for the client to develop pipelines around it. For these reasons, adopting \kafka as our downstream data sharing system ensures compatibility with existing downstream services, which are also designed to consume alerts from \kafka . For each survey supported by our software, an associated \kafka consumer has been developed to feed from the \texttt{Avro}-formatted alerts. The consumers take advantage of \kafka's partitioning feature (where one topic is broken down in N partitions that a client can read from independently, with multiple processes) to process any given survey's alert stream(s) in parallel, maximizing the input rate. \texttt{BOOM}'s output, as described in subsection \ref{sec:filter}, is also serialized to \texttt{Avro} and produced to a \kafka cluster.
 
 \subsection{Job scheduling with \valkey}
 
@@ -213,7 +216,7 @@ Whereas \kafka shines when it comes to reliable message sharing at scale across 
 Instead, we opted for \valkey, a high-performance and open source in-memory datastore backed by the Linux Foundation.
 \valkey can be used for a variety of workflows, including caching and message queues.
 Unlike \kafka, all data stored by \valkey live in RAM, ensuring much higher throughput than physically possible with data stored on HDDs or SSDs. However, a `persistence` feature can also be enabled, which allows \valkey to periodically create backups on disk, so that its content can be restored in the event of a catastrophic failure. This process is performed asynchronously and did not show a noticeable impact on performance.
-Once data is read from the various survey's \kafka topics, \boom's \kafka consumer stores alerts to be processed in \valkey lists; these are simple array data structures from which processes on the same machine or network can read from concurrently, one element at a time or in batches. When read from a list, messages are removed from it and one message can only be retrieved by one process. This is precisely what we need for \boom, where alert processing is not performed by one but by many processes, to parallelize over the data streams. Message queues used by \boom's workers to communicate with each other only share a minimal amount of information: mostly pointers to database documents, and unique identifiers of alert packets. Thus, they do not have a significant memory impact. However, memory usage remains a concern when relying heavily on in-memory storage technologies for larger data products, such as the original \texttt{avro} alerts at the first stage of processing. With this in mind, \boom sets limits on how many alert packets are stored in memory at once. Moreover, since \valkey is only used as a job queue, all lists are meant to be temporary and consumed as they are filled. As long as \boom is configured to handle incoming alerts with little to no throttling, which means providing it with sufficient compute capabilities, these lists remain fairly empty and so does the overall memory usage.
+Once data is read from the various survey's \kafka topics, \texttt{BOOM}'s \kafka consumer stores alerts to be processed in \valkey lists; these are simple array data structures from which processes on the same machine or network can read from concurrently, one element at a time or in batches. When read from a list, messages are removed from it and one message can only be retrieved by one process. This is precisely what we need for \texttt{BOOM}, where alert processing is not performed by one but by many processes, to parallelize over the data streams. Message queues used by \texttt{BOOM}'s workers to communicate with each other only share a minimal amount of information: mostly pointers to database documents, and unique identifiers of alert packets. Thus, they do not have a significant memory impact. However, memory usage remains a concern when relying heavily on in-memory storage technologies for larger data products, such as the original \texttt{avro} alerts at the first stage of processing. With this in mind, \boom sets limits on how many alert packets are stored in memory at once. Moreover, since \valkey is only used as a job queue, all lists are meant to be temporary and consumed as they are filled. As long as \boom is configured to handle incoming alerts with little to no throttling, which means providing it with sufficient compute capabilities, these lists remain fairly empty and so does the overall memory usage.
 
 \subsection{Spatial query-ready database with \mongo}
 
@@ -227,14 +230,14 @@ it would have required schema enforcement, which in turns requires database migr
 Additionally, \mongo natively supports \texttt{GeoJSON} indexes for fast spatial queries, such as cone-searches or nearest neighbor searches without any client-side implementation or extensions required, features that \texttt{PostgreSQL} does not implement natively.
 Just like \kowalski, \boom relies very heavily on \mongo's native support for cone-searches between alert streams and archival/static catalogs, and on it's \texttt{aggregation pipeline} feature to design and execute complex user-defined filters. When it comes to our data model, alert packets are dividing into 3 distinct collections (\texttt{MongoDB's} equivalent of a table, as found in a relational context):
 \begin{itemize}
-    \item The \texttt{Alert} collection, containing an alert's \texttt{candidate}, metadata about the latest detection that resulted in the alert being sent. To which we later append time-dependent data products, such as machine learning scores and ``pre-computed'' features to facilitate the implementation of user-defined filter, as described in subsection Y. Entries of the collection are indexed on the alert's candidate ID (\textit{candid}, a unique identifier provided by the associated survey), its object ID (\textit{objectId}, an identifier for this astronomical object, most often purely position based: detections made at the position of a previous alert will be attributed the same \textit{objectId}), and its position.
-    \item The {Object} collection, containing lightcurve data products (concatenated from the time-limited lightcurves provided by each alert for the same object, as surveys provide only N days worth of past detections), and matches with other catalogs and surveys. For archival catalogs matches all the relevant metadata is stored in this collection, whereas for alert-based survey matches only the survey's \textit{objectIds} are stored to enable lookups when user-defined filters are run. Entries of this collection are indexes on \textit{objectId}, and on the object's position (taken from its first alert ingested by \boom, which is subject to change as a flux-averaged centroid may be more adequate).
+    \item The \texttt{Alert} collection, containing an alert's \texttt{candidate}, metadata about the latest detection that resulted in the alert being sent. To which we later append time-dependent data products, such as machine learning scores and ``pre-computed'' features to facilitate the implementation of user-defined filter, as described in subsection \ref{sec:enrichment}. Entries of the collection are indexed on the alert's candidate ID (\textit{candid}, a unique identifier provided by the associated survey), its object ID (\textit{objectId}, an identifier for this astronomical object, most often purely position based: detections made at the position of a previous alert will be attributed the same \textit{objectId}), and its position.
+    \item The {Object} collection, containing lightcurve data products (concatenated from the time-limited lightcurves provided by each alert for the same object, as surveys provide only N days worth of past detections), and matches with other catalogs and surveys. For archival catalogs matches all the relevant metadata is stored in this collection, whereas for alert-based survey matches only the survey's \textit{objectIds} are stored to enable lookups when user-defined filters are run. Entries of this collection are indexes on \textit{objectId}, and on the object's position (taken from its first alert ingested by \texttt{BOOM}, which is subject to change as a flux-averaged centroid may be more adequate).
     \item The {Cutout} collection, simply containing the science, reference, and difference image cutouts from the alert packet. This collection is also indexed on the alert's \textit{candid}, to enable quick lookups of alert images based on their identifier.
 \end{itemize}
 
 With this data model, the data-heavy images that cannot be queried like other data products would are stored on their own and can be optionally retrieved alongside alerts using lookups, and object-specific data products (i.e. positional based) such as cross-matches and lightcurves are stored in one place instead of on every alert (as served over \kafka by the various surveys), which would yield considerable duplication and increase data storage requirements.
 
-\subsection{Parallelized and Distributed Alert Processing}\
+\subsection{Parallelized and Distributed Alert Processing}
 
 \boom employs a different architectural approach than its predecessor \kowalski, using dedicated worker types for each processing stage rather than a single monolithic worker design. In \kowalski, alert processing was parallelized using a cluster of identical workers where each worker was responsible for the complete end-to-end processing of individual alert packets. This included performing database insertions and queries such as cross-matching with archival catalogs, running user-defined filters, inserting and updating alerts and objects, and running machine learning models. While this design simplified deployment and management, it suffered from significant inefficiencies that prevented it from scaling up sufficiently and efficiently.
 
@@ -242,7 +245,7 @@ The single worker-type approach creates several unavoidable bottlenecks. First, 
 
 Perhaps more critically, the monolithic worker design creates inflexible scaling constraints. When a single operation represents a significant portion of processing time, in single end-to-end worker scenario, the only available solution is to add more copies of the same one worker, inevitably scaling all of its operations regardless of whether they constitute bottlenecks. In \kowalski's case, processing time was dominated primarily by user-defined filters and secondarily by machine learning inference, yet scaling these bottlenecks required also scaling other processing steps that were not performance-limiting factors, in turn unnecessarily scaling database load, CPU usage, and memory consumption, slowing down the overall system.
 
-\boom addresses these limitations through a multi-tier architecture with dedicated worker types for ingestion, inference, and filtering operations. While initial alert ingestion remains sequential, both inference and filtering are handled by specialized worker types that process batches of alerts, dramatically reducing the number of database operations required. This architectural separation enables independent scaling of different processing stages, allowing administrators to increase compute resources only where bottlenecks occur. This resource optimization becomes particularly important given \boom's expanded multi-survey capabilities, which introduce numerous additional database operations compared to single-survey systems. This results in more efficient hardware utilization and lower overall resource consumption, while providing superior processing throughput and flexibility.
+\boom addresses these limitations through a multi-tier architecture with dedicated worker types for ingestion, inference, and filtering operations. While initial alert ingestion remains sequential, both inference and filtering are handled by specialized worker types that process batches of alerts, dramatically reducing the number of database operations required. This architectural separation enables independent scaling of different processing stages, allowing administrators to increase compute resources only where bottlenecks occur. This resource optimization becomes particularly important given \texttt{BOOM}'s expanded multi-survey capabilities, which introduce numerous additional database operations compared to single-survey systems. This results in more efficient hardware utilization and lower overall resource consumption, while providing superior processing throughput and flexibility.
 
 An alternative approach might consider using single end-to-end workers that process not one but batches of alerts through sequential processing stages with parallelization where possible. However, this design creates a fundamental latency bottleneck: since certain initial operations like deserializing \texttt{Avro} packets and cross-matching with archival catalogs and surveys must be performed sequentially on individual alerts, a worker cannot begin machine learning inference on a batch until it completes all preliminary processing for every alert. As batch sizes increase to improve machine learning efficiency, latency from an alert being emitted and it being processed increases proportionally because the worker must sequentially process all alerts in a batch before any can proceed to inference, and then filtering. The only way to reduce this latency would be to decrease batch sizes and add more workers, but this ultimately converges to the inefficient single-worker-single-alert scenario, negating the benefits of batch processing entirely.
 
@@ -255,23 +258,9 @@ An alternative approach might consider using single end-to-end workers that proc
 
 Next, we will describe exactly how the alert processing steps mentioned above have been split into multiple ``workers'', as illustrated in Fig.~\ref{fig:workflow}.
 
-% \begin{figure*}[t]
-%   \centering
-%   \resizebox{\textwidth}{!}{\input{diagrams/workers}}
-%   \caption{Decision tree workflow of each boom worker}
-%   \label{fig:workflow}
-% \end{figure*}
-
-% \begin{figure*}[t]
-%     \centering
-%     \includegraphics[width=6.5in]{figures/boom_workers_workflow_draft.png}
-%     \caption{Diagram of BOOM's distributed alert processing worker architecture.}
-%     \label{fig:worker-flowchart}
-% \end{figure*}
-
 \subsubsection{Alert Ingestion Worker}
 
-\boom's first worker type is the \texttt{Alert Ingestion} worker. It feeds from the \valkey queue that has been populated with \texttt{Avro} alert packets by the \kafka consumer(s), and its main role is to ingest crossmatch-enriched reformatted alerts to the \mongo collections of a given survey. It processes one alert packet at a time (multiple workers of this type are spawned to handle the load and maximize parallelization), going through the following steps:
+\texttt{BOOM}'s first worker type is the \texttt{Alert Ingestion} worker. It feeds from the \valkey queue that has been populated with \texttt{Avro} alert packets by the \kafka consumer(s), and its main role is to ingest crossmatch-enriched reformatted alerts to the \mongo collections of a given survey. It processes one alert packet at a time (multiple workers of this type are spawned to handle the load and maximize parallelization), going through the following steps:
 \begin{itemize}
 \item Read the \texttt{Apache Avro} byte data to deserialize into \texttt{Rust} \texttt{struct}s matching the schema provided by the survey emitting the alerts. Here, we rely heavily on the \texttt{serde} and \texttt{apache-avro} crates; the former also allows us to customize the deserialization logic to modify the alert schema of each survey, in an effort to reduce some of the differences between different surveys schemas, and to address some of their inefficiencies.
 \item We separate the candidate metadata about the current detection, \textit{candid}, and \textit{objectId} from its cutout images and time-series.
@@ -297,7 +286,7 @@ Although most popular machine learning frameworks have been designed in Python a
         support and documentation, making it an unsustainable approach.
     \item As we are relying on a ``compartmentalized'' architecture with a
         worker type dedicated to machine learning, one could simply implement this worker directly in
-        \texttt{Python}. In fact, \boom's architecture originally had
+        \texttt{Python}. In fact, \texttt{BOOM}'s architecture originally had
         been designed to allow for inter-operability between languages. However, we
         later decided to focus on a \texttt{Rust}-only approach as we
         successfully converted \kowalski's \texttt{Python}-trained model
@@ -319,13 +308,13 @@ Although most popular machine learning frameworks have been designed in Python a
         TensorFlow enable conversion of trained model to the
         \texttt{ONNX} format, which can then be loaded into any language
         with an \texttt{ONNX} runtime (which is, most). In
-        Rust, we used the \texttt{ort} crate (https://ort.pyke.io/). Also, \texttt{ONNX}'s graph optimizer is able to remove
+        Rust, we used the \texttt{ort} crate (https://ort.pyke.io/). Also, \texttt{ONNX}'s graph optimizer is able to removex
         unnecessary, redundant, or suboptimal operators and nodes from its graph-representation, sometimes resulting in faster inference then possible in the framework used to train the converted model.
 \end{itemize}
 
 After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{Rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio.
 
-So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \boom, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
+So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \texttt{BOOM}, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
 
 While maintaining \kowalski, we identified the following:
 \begin{itemize}
@@ -334,15 +323,15 @@ While maintaining \kowalski, we identified the following:
 \end{itemize}
 
 To address both of these issues, the \texttt{Enrichment} worker now computes a number of these features directly. These depend on the data products available and therefore on the survey of origin. The features currently implement are subject to change, and new ``pre-computed'' features will be added to BOOM.
-These are computed in the same loop responsible of generating ML model inputs. They can be used both in user-defined filters, and while performing archival searches through \boom's Restful API. With multi-survey support in mind, we aim to add additional lightcurve-based features that not only rely on the current object's lightcurve, but concatenated with those from other matching surveys.
+These are computed in the same loop responsible of generating ML model inputs. They can be used both in user-defined filters, and while performing archival searches through \texttt{BOOM}'s Restful API. With multi-survey support in mind, we aim to add additional lightcurve-based features that not only rely on the current object's lightcurve, but concatenated with those from other matching surveys.
 
 Just as alert data products are retrieved from the database in batches, we use \mongo's batch update operator to update all processed alerts at once with ML scores and features. Once the batch update is finished, the \textit{candids} of processed alerts are sent back to redis for the next and last worker type to read from: the \texttt{Filter} worker.
 
 \subsubsection{Filter Worker}
 \label{sec:filter}
-\boom's filter worker is the last worker type to process alerts before producing an output that other systems can read from. At initialization, the filter worker loads user-defined filters from the database. These filters are defined as MongoDB aggregation pipeline running on the alert collection, composed of a succession of \$project and \$match stage to transform and filter on the alert data iteratively. User-defined filters---as  written by BOOM's users---assume that all data products are available for them to filter on. However, since these data products are divided into different collections in our data model, we pre-pend all user-defined pipelines with additional lookup stages (e.g. retrieving various lighcurves and cross-match information from the object collection). Instead of pre-pending all user defined filters with the same ``lookup'' stages that retrieve all available data products, we scan each user-defined filter to identify which ones they make use of, so we can decide where in their pipeline to add which lookup operations. This ensures that no unnecessary computation is performed. However, this system is obviously dependent on the order of the operations performed by user-defined filters. If a filter uses data products found in the object collection early on, lookups will always be performed first and for all the alerts that are filtered. If on the other hand, the filters first use candidate metadata, pre-computed features, and ML scores before potentially using object-level data products, lookups will only run for the small subset of alerts that pass the first filtering stages. User-defined filters are also encouraged to define an `annotations` key in their output document with a final \$project stage. This key may contain any field of interest for this particular filter, that they would like to see in \boom's output.
+\texttt{BOOM}'s filter worker is the last worker type to process alerts before producing an output that other systems can read from. At initialization, the filter worker loads user-defined filters from the database. These filters are defined as MongoDB aggregation pipeline running on the alert collection, composed of a succession of \$project and \$match stage to transform and filter on the alert data iteratively. User-defined filters---as  written by BOOM's users---assume that all data products are available for them to filter on. However, since these data products are divided into different collections in our data model, we pre-pend all user-defined pipelines with additional lookup stages (e.g. retrieving various lighcurves and cross-match information from the object collection). Instead of pre-pending all user defined filters with the same ``lookup'' stages that retrieve all available data products, we scan each user-defined filter to identify which ones they make use of, so we can decide where in their pipeline to add which lookup operations. This ensures that no unnecessary computation is performed. However, this system is obviously dependent on the order of the operations performed by user-defined filters. If a filter uses data products found in the object collection early on, lookups will always be performed first and for all the alerts that are filtered. If on the other hand, the filters first use candidate metadata, pre-computed features, and ML scores before potentially using object-level data products, lookups will only run for the small subset of alerts that pass the first filtering stages. User-defined filters are also encouraged to define an `annotations` key in their output document with a final \$project stage. This key may contain any field of interest for this particular filter, that they would like to see in \texttt{BOOM}'s output.
 
-The \textit{candids} sent by the Enrichment worker to the Filter worker are read and filtered on in batches. Rather than filters sequentially on one alert at a time, each filter runs sequentially but on all the alerts at once. This dramatically saves on DB usage and reduces the time required to filter on alerts. Once all filters have run on a batch of \textit{candids}, we are left with a hashmap where the keys are \textit{candids} that have passed at least one filter, and the values are the list of filters ids that each \textit{candid} has passed, and annotations if any. Then, we query the database to retrieve all the relevant data products for the subset of alerts that have passed at least one filter, and build \boom's final output: the \texttt{Alert} struct. This struct is identical for all surveys, but populated with a custom logic for each. It contains:
+The \textit{candids} sent by the Enrichment worker to the Filter worker are read and filtered on in batches. Rather than filters sequentially on one alert at a time, each filter runs sequentially but on all the alerts at once. This dramatically saves on DB usage and reduces the time required to filter on alerts. Once all filters have run on a batch of \textit{candids}, we are left with a hashmap where the keys are \textit{candids} that have passed at least one filter, and the values are the list of filters ids that each \textit{candid} has passed, and annotations if any. Then, we query the database to retrieve all the relevant data products for the subset of alerts that have passed at least one filter, and build \texttt{BOOM}'s final output: the \texttt{Alert} struct. This struct is identical for all surveys, but populated with a custom logic for each. It contains:
 \begin{itemize}
     \item metadata about the object and alert, such as IDs,
         position, and survey of origin.
@@ -366,7 +355,7 @@ The \textit{candids} sent by the Enrichment worker to the Filter worker are read
 
 This schema is subject to change and expected to evolve as the first instances of \boom are deployed to production, with downstream systems connected to their respective outputs.
 
-As mentioned in the introduction, \boom's main concern is enabling multi-survey filtering. Since alerts from one survey are matched with objects from all other supported surveys and the matching surveys' \textit{objectIds} have been stored in the object collection, user-defined filters can make use of other survey's lightcurves. This is made possible by the addition of lookups in the user-defined pipelines, to other survey's object collection using the \textit{objectIds} stored in the database. Thereafter, users' filters can concatenate these lightcurves and use them as one, or simply make use of the matching information. Section \ref{science_validation} showcases what these features enabled during a joint-stream experiment conducted in May 2025.
+As mentioned in the introduction, \texttt{BOOM}'s main concern is enabling multi-survey filtering. Since alerts from one survey are matched with objects from all other supported surveys and the matching surveys' \textit{objectIds} have been stored in the object collection, user-defined filters can make use of other survey's lightcurves. This is made possible by the addition of lookups in the user-defined pipelines, to other survey's object collection using the \textit{objectIds} stored in the database. Thereafter, users' filters can concatenate these lightcurves and use them as one, or simply make use of the matching information. Section \ref{science_validation} showcases what these features enabled during a joint-stream experiment conducted in May 2025.
 
 \subsection{A RESTful API for archival searches}
 
@@ -413,13 +402,13 @@ computing resources are added,
 though since there are three different worker counts to vary there is some tuning to get ideal scaling,
 which is seen in the figure as a jagged line compared to \kowalski's
 smoother thread count to processing time relationship.
-Overall, this shows that \boom's throughput will make better use of
+Overall, this shows that \texttt{BOOM}'s throughput will make better use of
 increased computing power,
 and should be able to handle the Rubin alert stream with fewer than 10
 worker processes.
 Moreover, it shows that even with a small amount of CPU resources allocated,
 \boom is inherently more performant than \kowalski.
-\boom's memory footprint is also much lower,
+\texttt{BOOM}'s memory footprint is also much lower,
 using a maximum of \boommaxmem~GB compared to \kowalski's \kowalskimaxmem~GB
 for the case with 7 total threads. Note that this value is the memory used by the workers alone
 and doesn't include that used by Kafka, MongoDB, or Valkey. In fact, the $\sim \boomthroughputfactor \times$ throughput factor reported in the introduction was calculated with this 7 thread configuration. However, it is obvious from Figure~\ref{fig:scaling} that the throughput factor is much larger when more threads are allocated, as \boom continues to scale more efficiently than \kowalski. With 16 threads or more, the throughput factor is maximized on this hardware, and \boom is able to process $\sim 2.5 \times$ the LSST alert rate.
@@ -435,10 +424,10 @@ and a matching number of threads to run \mongo and \valkey efficiently.
 
 \subsection{Deployment Approaches}
 
-\boom's software repository is currently configured to automatically
+\texttt{BOOM}'s software repository is currently configured to automatically
 deploy via GitHub Actions, running services in containers with Docker Compose.
 This configuration is fully self-sufficient,
-including services for \mongo, \kafka, \valkey, and of course \boom's
+including services for \mongo, \kafka, \valkey, and of course \texttt{BOOM}'s
 workers and API server, with the option of enabling the \babamul feature.
 
 \subsection{Integration with \skyportal}
@@ -463,12 +452,6 @@ To enable scientists to fully leverage the features of BOOM, we urgently need to
 \end{figure*}
 
 As illustrated in Figure~\ref{fig:filter_interface}, the interface supports both basic and advanced use cases. Filters are constructed as combinations of conditions under a logical operator (AND/OR), which can be saved as reusable blocks. For instance, a block may evaluate whether a source is a star, and such blocks can then be incorporated into larger, more complex blocks. Conditions can also be applied directly to arrays or subsets of data, and an integrated LaTeX-compatible equation editor enables seamless inclusion of mathematical expressions in filters that can later be exported to be included in publications.
-% \begin{figure*}[t]
-%     \centering
-%     \includegraphics[width=6.5in]{figures/list condition.png}
-%     \caption{Array Condition Interface}
-%     \label{fig:list_condition}
-% \end{figure*}[t]
 
 In addition, conditions on arrays or subsets of data are processed through a dedicated interface. After selecting an array and an operator, the user assigns a name to this array condition. Depending on the operator, the interface either presents a list of subfields from the array that has been selected, or provides a block component for constructing conditions on specific subfields. These options produce different output formats depending on the selected operator. Once saved, those custom conditions are stored in the database and are available to all users.
 This modular design accelerates the development of new filters, promotes collaborative workflows, and ensures consistency between research teams. By simplifying filter creation, supporting reusability, and abstracting technical complexity, the system enhances both the efficiency and scientific rigor of astronomical alert processing through our broker.
@@ -480,10 +463,7 @@ The DESI Transients Survey (DTS; Prop ID: 2025A-729671; PI Palmese) includes a D
 
 DTS uses the Saccadic Fast Fourier Transform (SFFT) algorithm developed in \citet{hu_image_2022} to enable fast and accurate difference imaging to identify transient alerts, see \citet{Cabrera_2024,Hu2025} for further details on the full analysis pipeline. The transient alerts are then processed with a real-bogus convolution neural network to separate unlikely artifacts such as cosmic rays. The pipeline then performs a cross-match of the alerts with Gaia DR3 to remove known stars \citep{vallenari_gaia_2023}. Finally, a match to the Legacy Survey star-galaxy catalog \citep{liu_morphological_2025} is performed to remove any remaining stellar alerts based on archival source's morphology in Legacy Survey imaging \citep{dey_overview_2019}. The remaining transients are then packaged into Alerts and sent out in a Kafka stream. The hand-selected transients, based on a visual lightcurve inspection, are then reported to TNS. This program offers a unique prelude to the issues of matching alert streams between a relatively smaller telescope such as ZTF and larger telescope like LSST. The observational depth of DTS is $\sim$\,3\,mag deeper than ZTF, comparable to the $\sim$\,4\,mag difference LSST will have.
 
-Over the course of a 3-day experiment conducted in May 2025, ZTF and DECam observed spatially coincident fields (Prop ID: 2025A-898110; PI Ahumada). To test \boom's abilities to handle alert streams with vastly different depths, a Kafka stream with ZTF-styled \texttt{Avro} alerts was developed for DTS, and the resulting alerts were emitted and processed alongside ZTF's by \boom. We observed 207 ZTF objects with matching DECam objects; this relatively small number is due to the pre-filtering used by DECam before sending alerts, as mentioned above. In \boom, these were matched by the \texttt{Alert} worker, and a simple user-defined filter looking for ZTF alerts with matching DECam transients was implemented, which identified these 207 multi-survey candidates and sent these to \boom's \kafka cluster, and thereafter read and ingested by a dedicated \skyportal instance.
-
-% While none of the transient discovered in the course of the short experiment have been found only due to the ZTF and DECam joint filtering synergy, we have been able to validate the cross-survey-matching and cross-survey-filtering capabilities of the software, with real data. Moreover, at least one example of what the joint-filtering features may enable with LSST was found: AT 2025knz (in ZTF: ZTF25aaqemjr, in DECam: T202505171244413m120108). Often, user-defined filters require at least 2 detections (regardless of band) with enough time separation (e.g. >15 minutes) to rule out transients as potential moving objects. This can be particularly constraining, as we are then bound by the cadence of one instrument to observe a transient at least twice. If the observations are too close the object cannot pass the filter, if they are too far from each other we loose time between first detection and follow-up observations and/or classification. AT 2025knz was first detected by ZTF at mag = 19.7 in g-band, and a second time in g-band 46.7 hours later. However, DECam also detected the transient in r-band 46.0 hours after the first detection. This means the transient passed its filter with a sufficient number of detection and could be assigned for follow-up $sim 42 $ minutes then it would have been with ZTF-only. This amount of time---as short as it may be---is already relevant for young and short lived transients. Moreover, additional observations of the same object introduced by multi-survey data processing, irrespective of time scale, will be beneficial for machine learning approaches. With LSST's cadence, we are hoping to see more drastic examples of this synergy's benefits, e.g. transients first seen by LSST, followed by ZTF detections hours later. \rednote{Theo: Michael maybe you can get a bit more scientific here, and get people exited? My software self just doesn't have the magic words in mind that astro folks want to hear :)}
-% In this annex, additional lightcurves of classified transients recovered in both surveys during the experiment are provided.
+Over the course of a 3-day experiment conducted in May 2025, ZTF and DECam observed spatially coincident fields (Prop ID: 2025A-898110; PI Ahumada). To test \texttt{BOOM}'s abilities to handle alert streams with vastly different depths, a Kafka stream with ZTF-styled \texttt{Avro} alerts was developed for DTS, and the resulting alerts were emitted and processed alongside ZTF's by \texttt{BOOM}. We observed 207 ZTF objects with matching DECam objects; this relatively small number is due to the pre-filtering used by DECam before sending alerts, as mentioned above. In \texttt{BOOM}, these were matched by the \texttt{Alert} worker, and a simple user-defined filter looking for ZTF alerts with matching DECam transients was implemented, which identified these 207 multi-survey candidates and sent these to \texttt{BOOM}'s \kafka cluster, and thereafter read and ingested by a dedicated \skyportal instance.
 
 \begin{figure*}[t]
     \centering
@@ -503,14 +483,12 @@ In conclusion, the data processing system we have described
 above---\texttt{BOOM}---is now operational on ZTF and well-positioned to scale to LSST.
 Designed to deliver real-time filtering of incoming alerts as well as maintain a persistent, it aims to also offer a queryable archive of all LSST alerts throughout the survey's operational lifetime. This archive will enable retrospective analyses and is structured to support future batch-processing capabilities, facilitating large-scale, post-facto scientific investigations. More broadly, \boom empowers researchers with a flexible, scalable platform that naturally allows for brokering multiple surveys simultaneously, which enables for the extraction of the maximum scientific value from current and future surveys.
 
-Using the \boom codebase, we are preparing a public production filtering of the LSST alert stream enriched by ZTF alerts, which we call \babamul.
-\texttt{Babamul} will provide a number of public streams supporting a variety of science cases through \kafka topics, based on the features added by \boom's workers. In this way, \babamul will serve as a general-purpose alert broker for the U.S. and international astronomy communities taking advantage of the multiple surveys currently online. Just like \boom's output, \babamul's will be serialized into \texttt{Avro}, using a similar schema. Also, we aim to deliver to the community a number of
+Using the \boom codebase, we are preparing a public production filtering of the LSST alert stream enriched by ZTF alerts, which we call \texttt{Babamul}.
+\texttt{Babamul} will provide a number of public streams supporting a variety of science cases through \kafka topics, based on the features added by \texttt{BOOM}'s workers. In this way, \babamul will serve as a general-purpose alert broker for the U.S. and international astronomy communities taking advantage of the multiple surveys currently online. Just like \texttt{BOOM}'s output, \texttt{Babamul}'s will be serialized into \texttt{Avro}, using a similar schema. Also, we aim to deliver to the community a number of
 ``how to's'' for \texttt{Babamul},
 illustrating what workflows can be built around its \kafka topics, such as hardware-accelerated inference, cross-matches with proprietary catalogs, or connection with self-hosted marshal instances.
 
-In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. Re-running filters is already possible through \boom's HTTP API, but it is its integration as part of the filter-building process---enforcing validation before proceeding to submission and real-time operations---which requires additional development work. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results. 
-
-% It will make use of the enriched data coming out of the \texttt{Enrichment} worker directly, equipped with a decision tree-like algorithm to divide the Rubin stream into a handful of sub-streams that its users can choose from. Tentatively, these will be: hosted and nuclear transients, hostless transients, stellar objects. In the future, we aim to break these substreams down further, using the lightcurve properties computed in \boom, e.g. fast/slow rising, fast/slow fading. For now, these properties will be provided in \babamul's output, for science users to make use of.
+In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. Re-running filters is already possible through \texttt{BOOM}'s HTTP API, but it is its integration as part of the filter-building process---enforcing validation before proceeding to submission and real-time operations---which requires additional development work. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results. 
 
 \section*{acknowledgments}
 \label{sec:acknowledgments}

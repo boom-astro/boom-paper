@@ -1,4 +1,5 @@
 % \documentclass[tikz,border=10pt]{standalone}
+% \usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, calc}
 % \begin{document}
 \begin{tikzpicture}[
     font=\sffamily,
@@ -13,36 +14,30 @@
         align=center, inner sep=1pt, text width=3.6cm},
     flowarrow/.style={-{Latex[length=3mm,width=2mm]}, thick},
     box/.style={rounded corners=10pt, inner sep=10pt, draw=none,
-        fill opacity=0.1, text opacity=1},
+        fill opacity=0.5, text opacity=1},
     title/.style={font=\bfseries\large, align=center, text opacity=1},
 ]
-
 % --------------------------------------------------
 % ==== ALERT WORKER (LEFT COLUMN) ====
 % --------------------------------------------------
-\node[box, fill=red!20, fit={(-12, -3.5) (-1, 12)}] (alertbox) {};
+\node[box, fill=red!20, fit={(-12, -2.8) (-1, 12)}] (alertbox) {};
 \node[title] at (-6.5,11.6) {Alert Worker};
 % \node[font=\bfseries] at (-3.4,-0.5) {1};
-
 \node[process] (a1) at (-6.5,10.6) {In-Memory Storage};
 \node[process, below=of a1] (a2) {Retrieve Alert Avro Packet};
-
 % Main "no" branch continues downward
 \node[process, below=of a2] (a5) {Insert Alert \& Cutouts};
 % \node[process, below=of a4] (a5) {Insert Cutouts};
 \node[process, below=of a5] (a6) {Xmatch w/ Other Surveys' Objects};
 \node[decision, below=of a6] (a7) {Object Already Exists?};
-
 % Short "yes" branch to the left
 % \node[process, below left=of a7] (a8yes) {Update Object Lightcurves \\ + Survey Xmatches};
 \node[process small, below left=1.2cm and -1cm of a7] (a8yes) {Update Object's \\ Lightcurves \\ + Survey Xmatches};
-
 % Main "no" branch continues downward
 \node[process small, below right=0.5cm and -1cm of a7] (a8no) {Xmatch w/ Archival Catalogs};
 \node[process small, below=of a8no] (a9) {Insert Object w/ Lightcurves \\ + Survey Xmatches \\ + Archival Xmatches};
 \node[process, below=4.4cm of a7] (a10) {Candidate IDs};
 \node[process, below=of a10] (a11) {In-Memory Storage};
-
 % Arrows
 \draw[flowarrow] (a1)--(a2);
 \draw[flowarrow] (a2)--(a5);
@@ -54,14 +49,12 @@
 \draw[flowarrow] (a8no)--(a9);
 \draw[flowarrow] (a9)--(a10);
 \draw[flowarrow] (a10)--(a11);
-
 % --------------------------------------------------
 % ==== ML WORKER (CENTER COLUMN) ====
 % --------------------------------------------------
-\node[box, fill=blue!20, fit={(0.2, -3.5) (6.8, 12)}] (mlbox) {};
-\node[title] at (3.5,11.6) {ML Worker};
+\node[box, fill=blue!20, fit={(0.2, -2.8) (6.8, 12)}] (mlbox) {};
+\node[title] at (3.5,11.6) {Enrichment Worker};
 % \node[font=\bfseries] at (5.7,-0.5) {2};
-
 \node[process] (m1) at (3.5,10.6) {In-Memory Storage};
 \node[process, below=of m1] (m2) {Retrieve Candidate IDs};
 \node[process, below=of m2] (m3) {Fetch Alerts w/ Lightcurves \\ + Survey Xmatches \\ +  Archival Xmatches};
@@ -71,31 +64,25 @@
 \node[process, below=of m6] (m7) {Update Alerts w/ features and ML scores};
 \node[process, below=of m7] (m8) {Candidate IDs};
 \node[process, below=of m8] (m9) {In-Memory Storage};
-
 \foreach \i/\j in {m1/m2,m2/m3,m3/m4,m4/m5,m5/m6,m6/m7,m7/m8,m8/m9}
   \draw[flowarrow] (\i)--(\j);
-
 % --------------------------------------------------
 % ==== FILTER WORKER (RIGHT COLUMN) ====
 % --------------------------------------------------
-\node[box, fill=yellow!30, fit={(8, -3.5) (15, 12)}] (filtbox) {};
+\node[box, fill=yellow!30, fit={(8, -2.8) (15, 12)}] (filtbox) {};
 \node[title] at (11.5,11.6) {Filter Worker};
 % \node[font=\bfseries] at (14.7,-0.5) {3};
-
 \node[process] (f1) at (11.5,10.6) {In-Memory Storage};
 \node[process, below=of f1] (f2) {Retrieve Candidate IDs};
 \node[decision, below=of f2] (f3) {Passes Any Filter?};
-
 % Short "no" branch to left
 % \node[process very small, left=2cm of f3] (f4no) {Skip};
 \node[process very small, below left=0.6cm of f3] (f4no) {Skip};
-
 % Main "yes" branch continues downward
 \node[process, below=0.8cm of f3] (f4yes) {Fetch Alert w/ metadata \\ + Lightcurves \\ + Images \\ + Survey Xmatches \\ + Archival Xmatches};
 \node[process, below=of f4yes] (f5) {Combine Alert data + Passed filters annotations};
 \node[process, below=of f5] (f6) {Serialize to Avro Packet};
 \node[process, below=of f6] (f7) {Kafka Topic};
-
 % Arrows
 \draw[flowarrow] (f1)--(f2);
 \draw[flowarrow] (f2)--(f3);
@@ -104,7 +91,5 @@
 \draw[flowarrow] (f4yes)--(f5);
 \draw[flowarrow] (f5)--(f6);
 \draw[flowarrow] (f6)--(f7);
-
 \end{tikzpicture}
-
 % \end{document}
