@@ -1,6 +1,7 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
-  operating at scale
+title: >
+  BOOM and Babamul: a real-time, multi-survey,
+  optical alert broker system operating at scale
 description: >
   This project contains all of the files necessary to reproduce the results
   and compile the paper.
@@ -20,7 +21,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 
+    affiliation: California Institute of Technology, Pasadena, CA
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -76,6 +77,57 @@ authors:
       Division of Physics, Mathematics, and Astronomy,
       California Institute of Technology, Pasadena, CA 91125, USA
     orcid: 0000-0002-5619-4938
+  - first_name: Ashish
+    last_name: Mahabal
+    orcid: 0000-0003-2242-0244
+    affiliation: >
+      Division of Physics, Mathematics, and Astronomy,
+      California Institute of Technology, Pasadena, CA 91125, USA
+  - first_name: Joshua S.
+    last_name: Bloom
+    orcid: 0000-0002-7777-216X
+    affiliation:
+      - Department of Astronomy, University of California,
+        Berkeley, CA 94720, USA
+      - Lawrence Berkeley National Laboratory, 1 Cyclotron Road,
+        MS 50B-4206, Berkeley, CA 94720, USA
+  - first_name: Antonella
+    last_name: Palmese
+    orcid: 0000-0002-6011-0530
+    affiliation: >
+      McWilliams Center for Cosmology and Astrophysics,
+      Department of Physics, Carnegie Mellon University,
+      5000 Forbes Avenue, Pittsburgh, PA 15213
+  - first_name: Frank J.
+    last_name: Masci
+    orcid: 0000-0002-8532-9395
+    affiliation: >
+      IPAC, California Institute of Technology, 1200 E. California
+      Blvd, Pasadena, CA 91125, USA
+  - first_name: Steven L.
+    last_name: Groom
+    orcid: 0000-0001-5668-3507
+    affiliation: >
+      IPAC, California Institute of Technology, 1200 E. California
+      Blvd, Pasadena, CA 91125, USA
+  - first_name: Richard
+    last_name: Dekany
+    orcid: 0000-0002-5884-7867
+    affiliation: >
+      Caltech Optical Observatories, California Institute of Technology,
+      Pasadena, CA 91125
+  - first_name: Reed L.
+    last_name: Riddle
+    orcid: 0000-0002-0387-370X
+    affiliation: >
+      Division of Physics, Mathematics, and Astronomy,
+      California Institute of Technology, Pasadena, CA 91125, USA
+  - first_name: George
+    last_name: Helou
+    orcid: 0000-0003-3367-3415
+    affiliation: >
+      IPAC, California Institute of Technology, 1200 E. California
+      Blvd, Pasadena, CA 91125, USA
 
 dependencies:
   - git-lfs
@@ -242,7 +294,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
   - path: logs
     title: Benchmark logs
@@ -254,17 +306,17 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different 
+    description: This figure shows the scaling of BOOM with different
       numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova 
+    description: This figure shows the lightcurve of the supernova
       SN2025kwy.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -290,7 +342,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 
 references:
