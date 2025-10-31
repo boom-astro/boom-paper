@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker
+title: A real-time, multi-survey, optical alert system broker 
   operating at scale
 description: >
   This project contains all of the files necessary to reproduce the results
@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA
+    affiliation: California Institute of Technology, Pasadena, CA 
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -242,7 +242,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from
+    description: Alerts from the NED archival catalog exported from 
       Kowalski.
   - path: logs
     title: Benchmark logs
@@ -254,17 +254,17 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different
+    description: This figure shows the scaling of BOOM with different 
       numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova
+    description: This figure shows the lightcurve of the supernova 
       SN2025kwy.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker
+    title: A real-time, multi-survey, optical alert system broker 
       operating at scale
     description:
     kind: journal-article
@@ -285,12 +285,12 @@ publications:
         - results.tex
         - figures/scaling.pdf
         - figures/SN2025kwy.pdf
-      last_sync_commit: 4094bff97efaba09f82d44f27dd38587fb91eaa4
+      last_sync_commit: 548b964fdf164262a0a0d7d8721246f8d690a42e
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski
+    description: Analyze the logs from the BOOM and Kowalski 
       benchmarks.
 
 references:
