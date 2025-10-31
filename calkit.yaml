@@ -21,7 +21,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 
+    affiliation: California Institute of Technology, Pasadena, CA
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -87,9 +87,9 @@ authors:
     last_name: Bloom
     orcid: 0000-0002-7777-216X
     affiliation:
-      - Department of Astronomy, University of California, Berkeley, 
+      - Department of Astronomy, University of California, Berkeley,
         CA 94720, USA
-      - Lawrence Berkeley National Laboratory, 1 Cyclotron Road, MS 
+      - Lawrence Berkeley National Laboratory, 1 Cyclotron Road, MS
         50B-4206, Berkeley, CA 94720, USA
   - first_name: Antonella
     last_name: Palmese
@@ -294,7 +294,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
   - path: logs
     title: Benchmark logs
@@ -306,17 +306,17 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different 
+    description: This figure shows the scaling of BOOM with different
       numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova 
+    description: This figure shows the lightcurve of the supernova
       SN2025kwy.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -342,7 +342,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 
 references:
@@ -355,8 +355,8 @@ releases:
   v0.1:
     kind: project
     path: .
-    git_rev: d43b20e
-    date: "2025-09-29"
+    git_rev: 919e52021fa61b05546a36337638a8e8846220ac
+    date: "2025-10-31"
     publisher: caltechdata
     record_id: 640bx-nbn45
     doi: 10.22002/640bx-nbn45
