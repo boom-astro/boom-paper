@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
+title: A real-time, multi-survey, optical alert system broker
   operating at scale
 description: >
   This project contains all of the files necessary to reproduce the results
@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 
+    affiliation: California Institute of Technology, Pasadena, CA
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -46,6 +46,30 @@ authors:
       School of Physics and Astronomy, University of Minnesota,
       Minneapolis, Minnesota 55455, USA
     orcid: 0000-0003-1314-4241
+  - first_name: Xander J.
+    last_name: Hall
+    orcid: 0000-0002-9364-5419
+    affiliation: >
+      McWilliams Center for Cosmology and Astrophysics,
+      Department of Physics, Carnegie Mellon University,
+      5000 Forbes Avenue, Pittsburgh, PA 15213
+  - first_name: Tyler
+    last_name: Barna
+    orcid: 0000-0002-4843-345X
+    affiliation: >
+      School of Physics and Astronomy, University of Minnesota,
+      Minneapolis, Minnesota 55455, USA
+  - first_name: Daniel
+    last_name: Warshofsky
+    affiliation: >
+      School of Physics and Astronomy, University of Minnesota,
+      Minneapolis, Minnesota 55455, USA
+  - first_name: Matthew
+    last_name: Graham
+    orcid: 0000-0002-3168-0139
+    affiliation: >
+      Division of Physics, Mathematics, and Astronomy,
+      California Institute of Technology, Pasadena, CA 91125, USA
   - first_name: Mansi
     last_name: Kasliwal
     affiliation: >
@@ -218,7 +242,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
   - path: logs
     title: Benchmark logs
@@ -230,17 +254,17 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different 
+    description: This figure shows the scaling of BOOM with different
       numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova 
+    description: This figure shows the lightcurve of the supernova
       SN2025kwy.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -266,7 +290,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 
 references:
