@@ -261,7 +261,7 @@ publications:
         - results.tex
         - figures/scaling.pdf
         - figures/SN2025kwy.pdf
-      last_sync_commit: 6e862685ef388dfa6e6afa5a233402023384735b
+      last_sync_commit: 4094bff97efaba09f82d44f27dd38587fb91eaa4
 
 notebooks:
   - path: notebooks/analyze-logs.ipynb
