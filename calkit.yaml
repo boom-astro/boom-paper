@@ -1,5 +1,5 @@
 name: boom-paper
-title: A real-time, multi-survey, optical alert system broker 
+title: A real-time, multi-survey, optical alert system broker
   operating at scale
 description: >
   This project contains all of the files necessary to reproduce the results
@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 
+    affiliation: California Institute of Technology, Pasadena, CA
       91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
@@ -218,7 +218,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
+    description: Alerts from the NED archival catalog exported from
       Kowalski.
   - path: logs
     title: Benchmark logs
@@ -230,17 +230,17 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different 
+    description: This figure shows the scaling of BOOM with different
       numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova 
+    description: This figure shows the lightcurve of the supernova
       SN2025kwy.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
+    title: A real-time, multi-survey, optical alert system broker
       operating at scale
     description:
     kind: journal-article
@@ -248,24 +248,7 @@ publications:
     overleaf:
       project_id: 67eb247c542af4e06002e7e8
       wdir: paper
-      sync_paths:
-        - main.tex
-        - references.bib
-        - aasjournal.bst
-        - aastex631.cls
-        - figures/filter_interface.png
-        - figures/AT 2025knz.png
-        - figures/SN2025kwy.png
-        - diagrams/workers.tex
-        - figures/list condition.png
-        - figures/SN2025kwy_v2.png
-        - figures/boom_workers_workflow_draft.png
-      # Keep these out of Git in this project so we don't bloat the repo, but
-      # can still version them with DVC
-      dvc_sync_paths:
-        - figures/workflow.key
-        - figures/workflow.pdf
-        - figures/workflow_revised.pdf
+      sync_paths: []
       push_paths:
         - results.tex
         - figures/scaling.pdf
@@ -275,7 +258,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
+    description: Analyze the logs from the BOOM and Kowalski
       benchmarks.
 
 references:
