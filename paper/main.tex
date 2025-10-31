@@ -1,4 +1,5 @@
-  \documentclass[linenumbers,twocolumn]{aastex631}
+  % \documentclass[linenumbers,twocolumn]{aastex631}
+\documentclass[twocolumn]{aastex631}
 
 \usepackage{longtable}
 \usepackage[flushleft]{threeparttable}
@@ -140,12 +141,11 @@
 
 % Abstract of the paper
 \begin{abstract}
-With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the system that succesfully ran in production for ZTF for the first seven years of its operation, we introduce \boom (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
-\boom harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \mongo database combined with a \texttt{Redis}/\valkey in-memory processing queue and a \kafka cluster for message sharing.
+With the arrival of ever higher throughput wide-field surveys and a multitude of multi-messenger and multi-wavelength instruments to complement them, software capable of harnessing these associated data streams is urgently required. To meet these needs, a number of community supported \emph{alert brokers} have been built, currently focused on processing of Zwicky Transient Facility (ZTF; $\sim 10^5$--$10^6$ alerts per night) with an eye towards Vera C. Rubin Observatory's Legacy Survey of Space and Time (LSST; $\sim 2 \times 10^7$ alerts per night). Building upon the system that successfully ran in production for ZTF's first seven years of operation, we introduce \texttt{BOOM} (Burst \& Outburst Observations Monitor), an analysis framework focused on real-time, joint brokering of these alert streams.
+\texttt{BOOM} harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \texttt{MongoDB} database combined with a \texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing.
 With this system, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing as well as the results with custom filters we have built to demonstrate the system's capabilities.
-We further outline the development plan for \texttt{Babamul}, the public LSST alert streams from \boom.
-In conclusion, we outline the development plans for \boom as we begin the LSST era.
+In conclusion, we present the development roadmap for both \texttt{BOOM} and \texttt{Babamul} -- the public-facing LSST alert broker built atop \texttt{BOOM} -- as we begin the Rubin era.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
@@ -329,7 +329,7 @@ While maintaining \kowalski, we identified the following:
 To address both of these issues, the \texttt{Enrichment} worker now computes a number of these features directly. These depend on the data products available and therefore on the survey of origin. The features currently implement are subject to change, and new ``pre-computed'' features will be added to BOOM.
 These are computed in the same loop responsible of generating ML model inputs. They can be used both in user-defined filters, and while performing archival searches through \texttt{BOOM}'s Restful API. With multi-survey support in mind, we aim to add additional lightcurve-based features that not only rely on the current object's lightcurve, but concatenated with those from other matching surveys.
 
-Just as alert data products are retrieved from the database in batches, we use \mongo's batch update operator to update all processed alerts at once with ML scores and features. Once the batch update is finished, the \textit{candids} of processed alerts are sent back to redis for the next and last worker type to read from: the \texttt{Filter} worker.
+Just as alert data products are retrieved from the database in batches, we use \mongo's batch update operator to update all processed alerts at once with ML scores and features. Once the batch update is finished, the \textit{candids} of processed alerts are sent back to a \valkey queue for the next and last worker type to read from: the \texttt{Filter} worker.
 
 \subsubsection{Filter Worker}
 \label{sec:filter}
