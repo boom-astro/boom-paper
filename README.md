@@ -2,7 +2,9 @@
 
 [![DOI](https://data.caltech.edu/badge/DOI/10.22002/640bx-nbn45.svg)](https://handle.stage.datacite.org/10.22002/640bx-nbn45)
 
-The first paper about BOOM development.
+The first paper about BOOM/Babamul development,
+for which the preprint is available on
+[arXiv](https://arxiv.org/abs/2511.00164).
 
 To clone the project, including all datasets and artifacts, run:
 
@@ -22,7 +24,8 @@ To sync the paper with Overleaf, execute:
 calkit overleaf sync
 ```
 
-To run the benchmarks and build the paper, execute:
+To run the benchmarks, analyze the logs, generate the figures,
+and build the paper, execute:
 
 ```sh
 calkit run
