@@ -301,7 +301,7 @@ datasets:
     description: Logs from the BOOM and Kowalski benchmarks.
 
 figures:
-  - path: paper/figures/workflow.pdf
+  - path: paper/figures/boom_workflow_final.pdf
     title: BOOM workflow
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
@@ -313,6 +313,9 @@ figures:
     stage: plot-lightcurve
     description: This figure shows the lightcurve of the supernova
       SN2025kwy.
+  - path: paper/figures/filter_interface.png
+    title: BOOM filter interface
+    description: Screenshot of the BOOM filter interface.
 
 publications:
   - path: paper/main.pdf
