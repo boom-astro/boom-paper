@@ -361,3 +361,6 @@ releases:
     record_id: 640bx-nbn45
     doi: 10.22002/640bx-nbn45
     url: https://doi.org/10.22002/640bx-nbn45
+questions:
+  - Will BOOM be able to support the increased throughput from the Rubin
+    Observatory's alert stream?
