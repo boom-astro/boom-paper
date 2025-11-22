@@ -10,6 +10,11 @@ current_datetime() {
     TZ=utc date "+%Y-%m-%d %H:%M:%S"
 }
 
+# A function to check that a number is a valid integer
+is_integer() {
+    [[ "$1" =~ ^-?[0-9]+$ ]]
+}
+
 # Remove any existing containers
 docker compose -f $COMPOSE_CONFIG down
 docker compose -f config/kowalski/compose.yaml down
@@ -31,13 +36,21 @@ N_FILTERS=25
 
 # Wait until we see all alerts
 echo "$(current_datetime) - Waiting for all alerts to be ingested"
-while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments()") -lt $EXPECTED_ALERTS ]; do
+while true; do
+    COUNT=$(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments()")
+    if is_integer "$COUNT" && [ "$COUNT" -ge "$EXPECTED_ALERTS" ]; then
+        break
+    fi
     sleep 1
 done
 
 # Wait until we see all alerts with classifications
 echo "$(current_datetime) - Waiting for all alerts to be classified"
-while [ $(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })") -lt $EXPECTED_ALERTS ]; do
+while true; do
+    COUNT=$(docker compose -f $COMPOSE_CONFIG exec mongo mongosh "mongodb://mongoadmin:mongoadminsecret@localhost:27017" --quiet --eval "db.getSiblingDB('boom').ZTF_alerts.countDocuments({ classifications: { \$exists: true } })")
+    if is_integer "$COUNT" && [ "$COUNT" -ge "$EXPECTED_ALERTS" ]; then
+        break
+    fi
     sleep 1
 done
 
@@ -45,7 +58,11 @@ done
 # We'll have log lines like `0/2 alerts passed`, from which we want to sum
 # the denominators
 echo "$(current_datetime) - Waiting for filters to run on all alerts"
-while [ $(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter $N_FILTERS" | awk -F'/' '{sum += $NF} END {print sum}') -lt $EXPECTED_ALERTS ]; do
+while true; do
+    SUM=$(docker compose -f $COMPOSE_CONFIG logs scheduler | grep "passed filter $N_FILTERS" | awk -F'/' '{sum += $NF} END {print sum}')
+    if is_integer "$SUM" && [ "$SUM" -ge "$EXPECTED_ALERTS" ]; then
+        break
+    fi
     sleep 1
 done
 
