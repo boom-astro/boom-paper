@@ -21,7 +21,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.callouts, shadows, arrows.meta,
+\usetikzlibrary{shapes.callouts, shadows, arrows,
   positioning,
   shapes.geometric,
   shapes,
@@ -318,12 +318,12 @@ Although most popular machine learning frameworks have been designed in Python a
 
 After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{Rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio.
 
-So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \texttt{BOOM}, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
+So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr} \cite{junell2025applyingmultimodallearningclassify,xu2025applecideriispectranet}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \texttt{BOOM}, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
 
 While maintaining \kowalski, we identified the following:
 \begin{itemize}
     \item A multitude of identical features that most user-defined filters relied on, computed from alert metadata and lightcurves (e.g. is this a potential asteroid, a star, near a brightstar, ...). This meant that many filters were computing the same values over and over again. This appeared to be a clear waste of database compute resources and time.
-    \item A number of transient identification pipeline which relied on n \kowalski's API to periodically query for new alerts with minimal filtering, rather than the built-in user-defined filter system. These then performed more complex computation (such as determining the peak of a large lightcurve in each band, and/or evaluating the rate of evolution before and after peak) which required too much database-specific knowledge to be implemented with \mongo operators as used by the user-defined filters.
+    \item A number of transient identification pipelines which relied on \kowalski's API to periodically query for new alerts with minimal filtering, rather than the built-in user-defined filter system. These then performed more complex computation (such as determining the peak of a large lightcurve in each band, and/or evaluating the rate of evolution before and after peak) which required too much database-specific knowledge to be implemented with \mongo operators as used by the user-defined filters.
 \end{itemize}
 
 To address both of these issues, the \texttt{Enrichment} worker now computes a number of these features directly. These depend on the data products available and therefore on the survey of origin. The features currently implement are subject to change, and new ``pre-computed'' features will be added to BOOM.
