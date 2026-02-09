@@ -322,24 +322,6 @@ publications:
     description:
     kind: journal-article
     stage: build-paper
-    overleaf:
-      project_id: 67eb247c542af4e06002e7e8
-      wdir: paper
-      sync_paths:
-        - references.bib
-        - main.tex
-        - diagrams
-        - results.tex
-        - Orcid-ID.png
-        - aasjournal.bst
-        - figures
-        - aastex631.cls
-      push_paths:
-        - results.tex
-        - figures/scaling.pdf
-        - figures/SN2025kwy.pdf
-      last_sync_commit: bdc722ca4e2c32ad7f91c15a1fe4bb75590d8d48
-
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
@@ -364,3 +346,19 @@ releases:
 questions:
   - Will BOOM be able to support the increased throughput from the Rubin
     Observatory's alert stream?
+overleaf_sync:
+  paper:
+    url: https://www.overleaf.com/project/67eb247c542af4e06002e7e8
+    sync_paths:
+      - references.bib
+      - main.tex
+      - diagrams
+      - results.tex
+      - Orcid-ID.png
+      - aasjournal.bst
+      - figures
+      - aastex631.cls
+    push_paths:
+      - results.tex
+      - figures/scaling.pdf
+      - figures/SN2025kwy.pdf
