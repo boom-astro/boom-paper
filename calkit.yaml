@@ -157,17 +157,6 @@ environments:
 
 pipeline:
   stages:
-    # TODO: Add manual step stage for exporting workflow diagram
-    # TODO: Cache producer and NED loading
-    download-ned:
-      kind: shell-command
-      environment: _system
-      command: uvx gdown
-        https://drive.google.com/uc?id=1BG46oLMbONXhIqiPrepSnhKim1xfiVbB
-        -O boom/data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
-      outputs:
-        - path: boom/data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
-          storage: null
     benchmark-boom:
       kind: python-script
       script_path: boom/tests/throughput/run.py
