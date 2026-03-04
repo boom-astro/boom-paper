@@ -10,24 +10,24 @@ stages:
   sync-overleaf:
     cmd: bash --noprofile --norc -c "calkit overleaf sync --no-commit --no-push"
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
-      -interaction=nonstopmode -silent -f -synctex=1 -pdf paper/main.tex
+    cmd: calkit latex build -e tex --no-check -f paper/main.tex
     deps:
-    - path: .calkit/env-locks/tex.json
+    - path: .calkit/env-locks/tex
       hash: md5
-      md5: 7346c419d55ee601a7f99d249e9d99ff
-      size: 1171
+      md5: 7a4d0311b5fad3efcdeaaf69da8744ce.dir
+      size: 1147
+      nfiles: 1
     - path: paper/aasjournal.bst
       hash: md5
       md5: 1e2d4614828005814bd64e3c665b8e99
       size: 36130
     - path: paper/aastex631.cls
       hash: md5
-      md5: 3a8503ea2dc529eec05658a2b11d12d0
-      size: 231673
+      md5: a7a1f122eb9cb2ba5f346a21687ee43d
+      size: 231697
     - path: paper/diagrams
       hash: md5
-      md5: 95d9ae051c27c97810b8cb1bc495f58d.dir
+      md5: 30ad3f8b6377e1a766beef5ec1ab370a.dir
       size: 5092
       nfiles: 1
     - path: paper/figures
@@ -37,12 +37,12 @@ stages:
       nfiles: 4
     - path: paper/main.tex
       hash: md5
-      md5: 1f4b6314fe95f741dff96534ca992200
-      size: 65234
+      md5: 19e05a58d121d26228cf2a31fbec36a9
+      size: 65418
     - path: paper/references.bib
       hash: md5
-      md5: 1331c82ff78fb195796cf7ee468c38be
-      size: 1102385
+      md5: 6849b673825544d813a79b520ae72d96
+      size: 1106894
     - path: paper/results.tex
       hash: md5
       md5: e160d19b7e1d5b295505e2f208fc6a21
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 5a4370b54e2fd02a811f439defd85359
-      size: 5699943
+      md5: 995bd4be7420cb819de1f3ea10ad8cd7
+      size: 5672942
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -923,10 +923,11 @@ stages:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
       --n-alert-workers=1 --n-ml-workers=3 --n-filter-workers=1
     deps:
-    - path: .calkit/env-locks/run.txt
+    - path: .calkit/env-locks/run
       hash: md5
-      md5: a5368ac627a916b79e0f013647a3268e
+      md5: 3beb896aea30b45869ae449bccbfbf52.dir
       size: 14
+      nfiles: 1
     - path: Dockerfile-boom
       hash: md5
       md5: c3ae93706b5217df6b70af7a5a819bd2
@@ -977,8 +978,8 @@ stages:
     outs:
     - path: logs/boom-na=1-nml=3-nf=1
       hash: md5
-      md5: ad8994f42e625e1d1abee9cb227cdbba.dir
-      size: 23087810
+      md5: 0a7d6a80909a795fa66308bbba779b77.dir
+      size: 1505397
       nfiles: 5
   benchmark-boom@1-3-3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
