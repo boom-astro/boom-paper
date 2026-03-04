@@ -1,6 +1,6 @@
 /target
 Cargo.lock
-data/alerts
+data/alerts/ztf
 data/schema
 __pycache__
 /env
