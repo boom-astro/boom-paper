@@ -1,13 +1,28 @@
 stages:
-  download-ned:
-    cmd: ' bash --noprofile --norc -c "uvx gdown https://drive.google.com/uc?id=1BG46oLMbONXhIqiPrepSnhKim1xfiVbB
-      -O boom/data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz"'
+  get-seed-data:
+    cmd: ' bash --noprofile --norc -c "uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+      -O ./data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz"'
     deps: []
     outs:
-      - boom/data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz:
-          cache: false
-          persist: false
-    desc: Automatically generated from the 'download-ned' stage in 
+      - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+    desc: Automatically generated from the 'get-seed-data' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  fix-seed-data:
+    cmd: ' bash --noprofile --norc fix-seed-data/run.sh'
+    deps:
+      - fix-seed-data/run.sh
+      - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      - fix-seed-data/compose.yaml
+      - fix-seed-data/mongo-init.sh
+      - fix-seed-data/boom/tests/throughput/config.yaml
+      - fix-seed-data/boom/Dockerfile
+      - fix-seed-data/dump-seed-data.sh
+      - fix-seed-data/boom/Cargo.toml
+      - fix-seed-data/boom/Cargo.lock
+      - fix-seed-data/boom/src
+    outs:
+      - data/alerts/boom_throughput.ZTF_alerts_aux_fixed.dump.gz
+    desc: Automatically generated from the 'fix-seed-data' stage in 
       calkit.yaml. Changes made here will be overwritten.
   benchmark-boom:
     cmd: calkit xenv -n run --no-check -- python 
@@ -27,8 +42,8 @@ stages:
       - boom/tests/throughput/cats150.pipeline.json
       - boom/tests/throughput/read-kafka-output.py
       - boom/tests/throughput/_run.sh
-      - boom/data/alerts/kowalski.NED.json.gz
-      - boom/data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      - data/alerts/kowalski.NED.json.gz
+      - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       - .calkit/env-locks/run
     outs:
       - logs/boom-na=${item.n_alert_workers}-nml=${item.n_ml_workers}-nf=${item.n_filter_workers}

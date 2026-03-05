@@ -2921,3 +2921,11 @@ stages:
       hash: md5
       md5: decd3ed39729067d0990aa299c4f513d
       size: 966995306
+  get-seed-data:
+    cmd: ' bash --noprofile --norc -c "uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+      -O ./data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz"'
+    outs:
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: ce2d9bf3b3e540b0d1db716b2a617213
+      size: 860278459
