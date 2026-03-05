@@ -2923,9 +2923,63 @@ stages:
       size: 966995306
   get-seed-data:
     cmd: ' bash --noprofile --norc -c "uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
-      -O ./data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz"'
+      -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz"'
     outs:
-    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       hash: md5
       md5: ce2d9bf3b3e540b0d1db716b2a617213
       size: 860278459
+  fix-seed-data:
+    cmd: ' bash --noprofile --norc fix-seed-data/run.sh'
+    deps:
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+      hash: md5
+      md5: ce2d9bf3b3e540b0d1db716b2a617213
+      size: 860278459
+    - path: fix-seed-data/boom/Cargo.lock
+      hash: md5
+      md5: 21a15ffd0e606666e722b5e5c80184a8
+      size: 134428
+    - path: fix-seed-data/boom/Cargo.toml
+      hash: md5
+      md5: 42bbe5e633c9091f29f696a1bd088d8c
+      size: 2138
+    - path: fix-seed-data/boom/Dockerfile
+      hash: md5
+      md5: 5dbd5a8cada776e3d5e1851b51c72651
+      size: 2659
+    - path: fix-seed-data/boom/src
+      hash: md5
+      md5: a779e5a34f743efaf1cf7b3540cbdfa5.dir
+      size: 838009
+      nfiles: 78
+    - path: fix-seed-data/compose.yaml
+      hash: md5
+      md5: 2463f083a5f33205775e15bb5049d1b3
+      size: 4604
+    - path: fix-seed-data/config.yaml
+      hash: md5
+      md5: b6f9591a9c786acb3f7449a9a8fe2047
+      size: 3089
+    - path: fix-seed-data/dump-seed-data.sh
+      hash: md5
+      md5: 0c93cfe09d7dafa1cc73340ccd57a0ee
+      size: 350
+    - path: fix-seed-data/mongo-init.sh
+      hash: md5
+      md5: 337073f52615b8eff488a05f3b5902d6
+      size: 1358
+    - path: fix-seed-data/run.sh
+      hash: md5
+      md5: b4316bfb3ad6ad2bf4cedd434c09d7c7
+      size: 1566
+    outs:
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: ed997ca512ec94e560a7dc2d863cbf57
+      size: 1006181378
+    - path: fix-seed-data/logs
+      hash: md5
+      md5: 541225438d9e938e6dc39bf70c715e71.dir
+      size: 13580
+      nfiles: 4

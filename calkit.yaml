@@ -162,25 +162,26 @@ pipeline:
       environment: _system
       command: uvx gdown
         https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
-        -O ./data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+        -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
-        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
     fix-seed-data:
       kind: shell-script
       environment: _system
       script_path: ./fix-seed-data/run.sh
       inputs:
-        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
         - fix-seed-data/compose.yaml
         - fix-seed-data/mongo-init.sh
-        - fix-seed-data/boom/tests/throughput/config.yaml
+        - fix-seed-data/config.yaml
         - fix-seed-data/boom/Dockerfile
         - fix-seed-data/dump-seed-data.sh
         - fix-seed-data/boom/Cargo.toml
         - fix-seed-data/boom/Cargo.lock
         - fix-seed-data/boom/src
       outputs:
-        - data/alerts/boom_throughput.ZTF_alerts_aux_fixed.dump.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+        - fix-seed-data/logs
     benchmark-boom:
       kind: python-script
       script_path: boom/tests/throughput/run.py

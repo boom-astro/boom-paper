@@ -1,0 +1,149 @@
+name: boom-benchmarking-fix-seed-data
+
+networks:
+  boom:
+
+services:
+  mongo:
+    image: mongo:8.0
+    hostname: mongo
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    restart: always
+    networks:
+      - boom
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      start_period: 20s
+  mongo-init:
+    image: mongo:8.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - boom
+    volumes:
+      - ${PWD}/fix-seed-data/mongo-init.sh:/mongo-init.sh
+      - ${PWD}/data/alerts/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz:/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+    environment:
+      - DB_NAME=boom-benchmarking
+      - DB_ADD_URI=
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    entrypoint: ["/bin/bash", "/mongo-init.sh"]
+  valkey:
+    image: valkey/valkey:7.2.6
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - VALKEY_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    expose:
+      - "6379"
+    restart: always
+    networks:
+      - boom
+    # Disable persistence for benchmarking, so we start fresh
+    command: valkey-server --save "" --appendonly no
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  broker:
+    image: apache/kafka:4.1.1
+    hostname: broker
+    ports:
+      - "9092:9092"
+    expose:
+      - "9092"
+      - "29092"
+    networks:
+      - boom
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_NODE_ID: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:29093
+      KAFKA_LISTENERS: PLAINTEXT://broker:29092,CONTROLLER://broker:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_NUM_PARTITIONS: 15
+      # Limit heap + use G1GC with fewer threads (auto-tuned based on heap size)
+      KAFKA_HEAP_OPTS: "-Xmx1G -Xms1G -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+      KAFKA_OPTS: "-Djava.security.egd=file:/dev/./urandom"
+    healthcheck:
+      test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
+      interval: 10s
+  # Run the Kafka producer just once
+  migrate-fp-flux:
+    image: boom/boom-benchmarking:latest
+    build:
+      dockerfile: ${PWD}/fix-seed-data/boom/Dockerfile
+      context: ${PWD}/fix-seed-data/boom
+      pull: false
+    command:
+      - /app/migrate_fp_flux
+    environment:
+      RUST_LOG: debug,ort=error
+    networks:
+      - boom
+    depends_on:
+      mongo:
+        condition: service_healthy
+      mongo-init:
+        condition: service_completed_successfully
+    volumes:
+      - ${PWD}/fix-seed-data/config.yaml:/app/config.yaml
+  migrate-snr:
+    image: boom/boom-benchmarking:latest
+    build:
+      dockerfile: ${PWD}/fix-seed-data/boom/Dockerfile
+      context: ${PWD}/fix-seed-data/boom
+      pull: false
+    command:
+      - /app/migrate_snr
+    environment:
+      RUST_LOG: debug,ort=error
+    networks:
+      - boom
+    depends_on:
+      mongo:
+        condition: service_healthy
+      migrate-fp-flux:
+        condition: service_completed_successfully
+    volumes:
+      - ${PWD}/fix-seed-data/config.yaml:/app/config.yaml
+  dump-seed-data:
+    image: mongo:8.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+      migrate-fp-flux:
+        condition: service_completed_successfully
+      migrate-snr:
+        condition: service_completed_successfully
+    networks:
+      - boom
+    volumes:
+      - ${PWD}/data/alerts:/data/alerts
+      - ${PWD}/fix-seed-data/dump-seed-data.sh:/dump-seed-data.sh
+    environment:
+      - DB_NAME=boom-benchmarking
+      - DB_ADD_URI=
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    entrypoint: ["/bin/bash", "/dump-seed-data.sh"]
