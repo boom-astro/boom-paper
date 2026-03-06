@@ -2896,10 +2896,11 @@ stages:
     cmd: calkit xenv -n analyze-logs --no-check -- python 
       scripts/plot-lightcurve.py
     deps:
-    - path: .calkit/env-locks/analyze-logs.txt
+    - path: .calkit/env-locks/analyze-logs
       hash: md5
-      md5: 1385557fb1c3407342a779b40a5d342b
+      md5: 24926a133e4f9db7689e4013da813e15.dir
       size: 2211
+      nfiles: 1
     - path: data/SN2025kwy.parquet
       hash: md5
       md5: 5596163f6ccfd593800b6ebaf430fccd
@@ -2911,7 +2912,7 @@ stages:
     outs:
     - path: paper/figures/SN2025kwy.pdf
       hash: md5
-      md5: 0a609e75c7719d428bbefa277db65ec9
+      md5: 0972c2d3bb15f28dfdc4c514729a26d4
       size: 19725
   download-ned:
     cmd: ' bash --noprofile --norc -c "uvx gdown https://drive.google.com/uc?id=1BG46oLMbONXhIqiPrepSnhKim1xfiVbB
