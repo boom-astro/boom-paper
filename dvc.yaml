@@ -28,7 +28,7 @@ stages:
   benchmark-boom:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py
       --n-alert-workers=${item.n_alert_workers} --n-ml-workers=${item.n_ml_workers}
-      --n-filter-workers=${item.n_filter_workers}
+      --n-filter-workers=${item.n_filter_workers} --boom-repo-dir=boom
     deps:
       - boom/tests/throughput/run.py
       - boom/src
@@ -63,7 +63,7 @@ stages:
   benchmark-boom-more:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py
       --n-alert-workers=${item._arg0.n_alert_workers} --n-ml-workers=${item._arg0.n_ml_workers}
-      --n-filter-workers=${item._arg0.n_filter_workers}
+      --n-filter-workers=${item._arg0.n_filter_workers} --boom-repo-dir=boom
     deps:
       - scripts/benchmark-boom.py
       - boom/src

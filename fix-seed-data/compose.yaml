@@ -33,7 +33,7 @@ services:
       - ${PWD}/data/alerts/kowalski.NED.json.gz:/kowalski.NED.json.gz
       - ${PWD}/data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz:/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
     environment:
-      - DB_NAME=boom-benchmarking
+      - DB_NAME=${DB_NAME:?Variable not set}
       - DB_ADD_URI=
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
@@ -142,7 +142,7 @@ services:
       - ${PWD}/data/alerts:/data/alerts
       - ${PWD}/fix-seed-data/dump-seed-data.sh:/dump-seed-data.sh
     environment:
-      - DB_NAME=boom-benchmarking
+      - DB_NAME=${DB_NAME:?Variable not set}
       - DB_ADD_URI=
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret

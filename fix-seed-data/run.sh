@@ -7,6 +7,8 @@ current_datetime() {
     TZ=utc date "+%Y-%m-%d %H:%M:%S"
 }
 
+export DB_NAME=boom_throughput
+
 # Remove any existing containers
 docker compose -f $COMPOSE_CONFIG down
 
