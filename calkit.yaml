@@ -67,6 +67,7 @@ pipeline:
         - --n-alert-workers={n_alert_workers}
         - --n-ml-workers={n_ml_workers}
         - --n-filter-workers={n_filter_workers}
+        - --boom-repo-dir=boom
       environment: run
       inputs:
         - boom/src
@@ -102,6 +103,7 @@ pipeline:
         - --n-alert-workers={n_alert_workers}
         - --n-ml-workers={n_ml_workers}
         - --n-filter-workers={n_filter_workers}
+        - --boom-repo-dir=boom
       environment: run
       inputs:
         - boom/src
