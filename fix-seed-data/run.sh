@@ -31,10 +31,10 @@ docker compose -f $COMPOSE_CONFIG down
 # Check if any containers exited with a non-zero status, which would indicate an error
 EXIT_STATUS=$(docker compose -f $COMPOSE_CONFIG ps -q | xargs docker inspect --format '{{.State.ExitCode}}' | grep -v 0 || true)
 if [ -n "$EXIT_STATUS" ]; then
-    echo "Error: One or more containers exited with a non-zero status. Please check the logs in $LOGS_DIR for details."
+    echo "$(current_datetime) - Error: One or more containers exited with a non-zero status; Please check the logs in $LOGS_DIR for details"
     exit 1
 else
-    echo "All containers completed successfully. Logs are available in $LOGS_DIR."
+    echo "$(current_datetime) - All containers completed successfully; Logs are available in $LOGS_DIR"
 fi
 
 exit 0

@@ -2971,15 +2971,15 @@ stages:
       size: 1358
     - path: fix-seed-data/run.sh
       hash: md5
-      md5: b4316bfb3ad6ad2bf4cedd434c09d7c7
-      size: 1566
+      md5: d3c64334637f05e214a2edfe72b65502
+      size: 1608
     outs:
     - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       hash: md5
-      md5: ed997ca512ec94e560a7dc2d863cbf57
+      md5: 036f51e326bee9a25e4bce5faa38cc7e
       size: 1006181378
     - path: fix-seed-data/logs
       hash: md5
-      md5: 541225438d9e938e6dc39bf70c715e71.dir
-      size: 13580
+      md5: 2aeb7e2b7e55bf685ca020eea887fd49.dir
+      size: 13666
       nfiles: 4
