@@ -65,7 +65,7 @@ pipeline:
       script_path: boom/tests/throughput/run.py
       args:
         - --n-alert-workers={n_alert_workers}
-        - --n-ml-workers={n_ml_workers}
+        - --n-enrichment-workers={n_enrichment_workers}
         - --n-filter-workers={n_filter_workers}
         - --boom-repo-dir=boom
       environment: run
@@ -85,7 +85,7 @@ pipeline:
       iterate_over:
         - arg_name: n_alert_workers
           values: [1, 3, 6]
-        - arg_name: n_ml_workers
+        - arg_name: n_enrichment_workers
           values: [3, 6, 9]
         - arg_name: n_filter_workers
           values: [1, 3]
@@ -95,13 +95,13 @@ pipeline:
         #         start: 1
         #         stop: 50
       outputs:
-        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
+        - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
     benchmark-boom-more:
       kind: python-script
       script_path: scripts/benchmark-boom.py
       args:
         - --n-alert-workers={n_alert_workers}
-        - --n-ml-workers={n_ml_workers}
+        - --n-enrichment-workers={n_enrichment_workers}
         - --n-filter-workers={n_filter_workers}
         - --boom-repo-dir=boom
       environment: run
@@ -117,7 +117,7 @@ pipeline:
         - data/kowalski.NED.json.gz
         - config/boom/cats150.boom.json
       iterate_over:
-        - arg_name: [n_alert_workers, n_ml_workers, n_filter_workers]
+        - arg_name: [n_alert_workers, n_enrichment_workers, n_filter_workers]
           values:
             - [1, 1, 1]
             - [1, 2, 1]
@@ -133,7 +133,7 @@ pipeline:
             - [9, 15, 1]
             - [9, 14, 2]
       outputs:
-        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
+        - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
     benchmark-kowalski:
       kind: python-script
       script_path: scripts/benchmark-kowalski.py
