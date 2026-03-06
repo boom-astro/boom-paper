@@ -2,5 +2,4 @@
     autostage = true
     remote = calkit
 ['remote "calkit"']
-    url = https://api.calkit.io/projects/boom-astro/boom-paper/dvc
-    auth = custom
+    url = ck://boom-astro/boom-paper
