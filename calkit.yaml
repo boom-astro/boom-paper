@@ -109,13 +109,15 @@ pipeline:
         - boom/src
         - boom/Cargo.lock
         - boom/Cargo.toml
-        - scripts/benchmark-boom.sh
-        - config/boom/config-template.yaml
-        - config/boom/compose.yaml
-        - Dockerfile-boom
-        - scripts/mongo-init.sh
-        - data/kowalski.NED.json.gz
-        - config/boom/cats150.boom.json
+        - boom/config.yaml
+        - boom/Dockerfile
+        - boom/tests/throughput/compose.yaml
+        - boom/tests/throughput/mongo-init.sh
+        - boom/tests/throughput/cats150.pipeline.json
+        - boom/tests/throughput/read-kafka-output.py
+        - boom/tests/throughput/_run.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       iterate_over:
         - arg_name: [n_alert_workers, n_enrichment_workers, n_filter_workers]
           values:
@@ -150,8 +152,13 @@ pipeline:
         - kowalski/requirements
         - scripts/mongo-init.sh
         - scripts/benchmark-kowalski.sh
-        - data/kowalski.NED.json.gz
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
         - config/kowalski/cats150.kowalski.json
+        - boom/Dockerfile
+        - boom/src
+        - boom/Cargo.toml
+        - boom/Cargo.lock
       iterate_over:
         - arg_name: n_workers
           values: [3, 6, 7, 9, 12, 15, 20, 25]

@@ -44,7 +44,8 @@ services:
       - kowalski
     volumes:
       - ${PWD}/scripts/mongo-init.sh:/mongo-init.sh
-      - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/data/alerts/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/data/alerts/kowalski.ZTF_alerts_aux.dump.gz:/kowalski.ZTF_alerts_aux.dump.gz
       - ${PWD}/config/kowalski/cats150.json:/cats150.json
     environment:
       - DB_NAME=kowalski
@@ -84,8 +85,8 @@ services:
     image: boom/boom-benchmarking:latest
     hostname: producer
     build:
-      dockerfile: ${PWD}/Dockerfile-boom
-      context: ${PWD}
+      dockerfile: ${PWD}/boom/Dockerfile
+      context: ${PWD}/boom
       pull: false
     command:
       - /app/kafka_producer
