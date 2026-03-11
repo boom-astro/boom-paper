@@ -1,0 +1,58 @@
+name: boom-benchmarking-fix-kowalski-seed-data
+
+networks:
+  kowalski:
+
+services:
+  mongo4:
+    image: mongo:4.4
+    hostname: mongo4
+    expose:
+      - "27017"
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    restart: always
+    networks:
+      - kowalski
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      start_period: 20s
+  mongo:
+    image: mongo:8.0
+    hostname: mongo
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    restart: always
+    networks:
+      - kowalski
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      start_period: 20s
+  mongo-init:
+    image: mongo:8.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+      mongo4:
+        condition: service_healthy
+    networks:
+      - kowalski
+    volumes:
+      - ${PWD}/fix-kowalski-seed-data/mongo-init.sh:/mongo-init.sh
+      - ${PWD}/data/alerts:/data/alerts
+    environment:
+      - DB_NAME=${DB_NAME:?Variable not set}
+      - DB_ADD_URI=
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
+    entrypoint: ["/bin/bash", "/mongo-init.sh"]
