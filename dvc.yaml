@@ -28,7 +28,7 @@ stages:
   benchmark-boom:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py
       --n-alert-workers=${item.n_alert_workers} --n-enrichment-workers=${item.n_enrichment_workers}
-      --n-filter-workers=${item.n_filter_workers} --boom-repo-dir=boom
+      --n-filter-workers=${item.n_filter_workers} --boom-repo-dir=boom --timeout=1200
     deps:
       - boom/tests/throughput/run.py
       - boom/src

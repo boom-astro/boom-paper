@@ -31,6 +31,13 @@ environments:
     kind: uv-venv
     prefix: .venv3
     python: "3.13.5"
+  benchmark-runner:
+    kind: current-system
+    properties:
+      - hostname
+      - n_cpus
+      - n_gpus
+      - total_memory_gb
 
 pipeline:
   stages:
@@ -68,6 +75,7 @@ pipeline:
         - --n-enrichment-workers={n_enrichment_workers}
         - --n-filter-workers={n_filter_workers}
         - --boom-repo-dir=boom
+        - --timeout=1200
       environment: run
       inputs:
         - boom/src
