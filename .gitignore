@@ -26,3 +26,4 @@ logs/kowalski
 
 config/*/cats150.json
 *.rej
+!fix-kowalski-seed-data/logs/*

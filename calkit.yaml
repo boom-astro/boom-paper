@@ -136,6 +136,18 @@ pipeline:
             - [9, 14, 2]
       outputs:
         - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
+    fix-kowalski-seed-data:
+      kind: shell-script
+      script_path: ./fix-kowalski-seed-data/run.sh
+      environment: _system
+      inputs:
+        - data/alerts/kowalski.ZTF_alerts_aux_mongo8.dump.gz
+        - fix-kowalski-seed-data/compose.yaml
+        - fix-kowalski-seed-data/mongo-init.sh
+      outputs:
+        - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+        - path: fix-kowalski-seed-data/logs
+          storage: git
     benchmark-kowalski:
       kind: python-script
       script_path: scripts/benchmark-kowalski.py
