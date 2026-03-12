@@ -666,18 +666,36 @@ stages:
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=6
     deps:
-    - path: .calkit/env-locks/run.txt
+    - path: .calkit/env-locks/run
       hash: md5
-      md5: a5368ac627a916b79e0f013647a3268e
-      size: 14
+      md5: 4f8d19a04a15af5666e769eafa047db8.dir
+      size: 190
+      nfiles: 1
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 21a15ffd0e606666e722b5e5c80184a8
+      size: 134428
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: 42bbe5e633c9091f29f696a1bd088d8c
+      size: 2138
+    - path: boom/Dockerfile
+      hash: md5
+      md5: 5dbd5a8cada776e3d5e1851b51c72651
+      size: 2659
+    - path: boom/src
+      hash: md5
+      md5: 7f5aa1ca23bf3a6cea94eca586506411.dir
+      size: 859320
+      nfiles: 78
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
       md5: 91f91eddde47653dfc370e30a675f56f
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: c5805388497602a1182c3ba1b84c871e
-      size: 4110
+      md5: d58d0d513f53362651c7d0ad2e591871
+      size: 4214
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -686,18 +704,22 @@ stages:
       hash: md5
       md5: 88e77d45ef9cc62ba3d000aeaa367d7d
       size: 1321
-    - path: data/kowalski.NED.json.gz
+    - path: data/alerts/kowalski.NED.json.gz
       hash: md5
       md5: decd3ed39729067d0990aa299c4f513d
       size: 966995306
+    - path: data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: 40a19cd4ccad68ce6e0cc4c899c5db65
+      size: 1471315575
     - path: kowalski/Makefile
       hash: md5
       md5: acd8ea2eccdc60f398008d3108ae25d8
       size: 3728
     - path: kowalski/ingester.Dockerfile
       hash: md5
-      md5: 9e13312ab68b655f4d0907c8cd26b90d
-      size: 4637
+      md5: bc9f2d4d01902640067da2a04ef915ea
+      size: 4642
     - path: kowalski/kowalski
       hash: md5
       md5: 3e44f67d19512901545ed1cb5ef45cfa.dir
@@ -719,14 +741,14 @@ stages:
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
-      md5: 62973b0dc84cf3d5a9f39f7327f317a6
-      size: 2544
+      md5: 0b67fc3256006d861c21575db5a0e187
+      size: 3744
       isexec: true
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 9c69968c20b6570eaa4cd496e6ce7da9.dir
-      size: 60097969
+      md5: 745df327bec12ba8afae0438b359e692.dir
+      size: 55277946
       nfiles: 5
   benchmark-kowalski@3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=3
