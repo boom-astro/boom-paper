@@ -152,7 +152,8 @@ stages:
       md5: 1385557fb1c3407342a779b40a5d342b
       size: 2211
   make-kowalski-mongo-key-file:
-    cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > kowalski/mongo_key.yaml"
+    cmd: bash --noprofile --norc -c "echo thisisarandomkeyfortesting > 
+      kowalski/mongo_key.yaml"
   benchmark-kowalski:
     cmd: bash --noprofile --norc scripts/benchmark-kowalski.sh
     deps:
@@ -219,8 +220,8 @@ stages:
       md5: 86a5c64422d55fa99bde77c9bc5631fe
       size: 12352
   analyze-logs:
-    cmd: calkit nb execute --environment analyze-logs --no-check --language python
-      --to html "notebooks/analyze-logs.ipynb"
+    cmd: calkit nb execute --environment analyze-logs --no-check --language 
+      python --to html "notebooks/analyze-logs.ipynb"
     deps:
     - path: .calkit/env-locks/analyze-logs.txt
       hash: md5
@@ -472,8 +473,8 @@ stages:
       md5: a5368ac627a916b79e0f013647a3268e
       size: 14
   benchmark-boom@3-3-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=3
-      --n-ml-workers=3 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=3 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -533,8 +534,9 @@ stages:
       size: 2596583
       nfiles: 5
   benchmark-boom@3-6-1:
-    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py --n-alert-workers=3
-      --n-enrichment-workers=6 --n-filter-workers=1 --boom-repo-dir=boom
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=3 --n-enrichment-workers=6 --n-filter-workers=1 
+      --boom-repo-dir=boom
     deps:
     - path: .calkit/env-locks/run
       hash: md5
@@ -603,8 +605,8 @@ stages:
       size: 1009419
       nfiles: 6
   benchmark-boom@3-9-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=3
-      --n-ml-workers=9 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=9 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -664,7 +666,8 @@ stages:
       size: 5388161
       nfiles: 5
   benchmark-kowalski@6:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=6
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=6
     deps:
     - path: .calkit/env-locks/run
       hash: md5
@@ -751,7 +754,8 @@ stages:
       size: 55277946
       nfiles: 5
   benchmark-kowalski@3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -816,7 +820,8 @@ stages:
       size: 61445462
       nfiles: 5
   benchmark-kowalski@9:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=9
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=9
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -881,7 +886,8 @@ stages:
       size: 58808550
       nfiles: 5
   benchmark-kowalski@7:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=7
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=7
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -946,70 +952,79 @@ stages:
       size: 58216662
       nfiles: 5
   benchmark-boom@1-3-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=3 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=1 --n-enrichment-workers=3 --n-filter-workers=1 
+      --boom-repo-dir=boom --timeout=1200
     deps:
     - path: .calkit/env-locks/run
       hash: md5
-      md5: 3beb896aea30b45869ae449bccbfbf52.dir
-      size: 14
-      nfiles: 1
-    - path: Dockerfile-boom
-      hash: md5
-      md5: c3ae93706b5217df6b70af7a5a819bd2
-      size: 1150
+      md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
+      size: 380
+      nfiles: 2
     - path: boom/Cargo.lock
       hash: md5
-      md5: 46326e467856f42a9411c85f128dd5bd
-      size: 127525
+      md5: 21a15ffd0e606666e722b5e5c80184a8
+      size: 134428
     - path: boom/Cargo.toml
       hash: md5
-      md5: c44142425c3c50ed0030a4d9002d8ae9
-      size: 1500
+      md5: 42bbe5e633c9091f29f696a1bd088d8c
+      size: 2138
+    - path: boom/Dockerfile
+      hash: md5
+      md5: 5dbd5a8cada776e3d5e1851b51c72651
+      size: 2659
+    - path: boom/config.yaml
+      hash: md5
+      md5: 629b7d9cb536fff27079dd6a2b78b619
+      size: 4194
     - path: boom/src
       hash: md5
-      md5: cc4d268a144f0972e4fe82a2e611d511.dir
-      size: 301549
-      nfiles: 39
-    - path: config/boom/cats150.boom.json
+      md5: d5a1c01ff64ae641ef199f7b53540b25.dir
+      size: 849025
+      nfiles: 81
+    - path: boom/tests/throughput/_run.sh
+      hash: md5
+      md5: 9159a1527499363d2bca77559a9257e3
+      size: 7383
+      isexec: true
+    - path: boom/tests/throughput/cats150.pipeline.json
       hash: md5
       md5: ebc45020590af88faed284084c6f660a
       size: 16704
-    - path: config/boom/compose.yaml
+    - path: boom/tests/throughput/compose.yaml
       hash: md5
-      md5: 659e9a9a82af91ec5589722fdca6fd58
-      size: 4794
-    - path: config/boom/config-template.yaml
+      md5: 3ccbdce67db45421dc4d8ff450ca7d72
+      size: 5486
+    - path: boom/tests/throughput/mongo-init.sh
       hash: md5
-      md5: ec3ac9575b3cc1baee476a7ad0def08a
-      size: 1965
-    - path: data/kowalski.NED.json.gz
+      md5: 8e25dc86cd09010ddc2adccb7cd503ef
+      size: 4034
+      isexec: true
+    - path: boom/tests/throughput/read-kafka-output.py
+      hash: md5
+      md5: 4284d6fdd113618bab9564d4b121174f
+      size: 963
+    - path: boom/tests/throughput/run.py
+      hash: md5
+      md5: 447b671c814568dbe901571d933c9e2f
+      size: 5104
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: ed30deae98f4f460fade9dfbee850a84
+      size: 860278459
+    - path: data/alerts/kowalski.NED.json.gz
       hash: md5
       md5: decd3ed39729067d0990aa299c4f513d
       size: 966995306
-    - path: scripts/benchmark-boom.py
-      hash: md5
-      md5: a71babbdc4c1e9da6589023aa378fe41
-      size: 1851
-    - path: scripts/benchmark-boom.sh
-      hash: md5
-      md5: 341723e6e6e76896d8c0f662b5c6b490
-      size: 2321
-      isexec: true
-    - path: scripts/mongo-init.sh
-      hash: md5
-      md5: 62973b0dc84cf3d5a9f39f7327f317a6
-      size: 2544
-      isexec: true
     outs:
-    - path: logs/boom-na=1-nml=3-nf=1
+    - path: logs/boom-na=1-ne=3-nf=1
       hash: md5
-      md5: 0a7d6a80909a795fa66308bbba779b77.dir
-      size: 1505397
-      nfiles: 5
+      md5: e556694b148e230f009bb13d8f7cce6e.dir
+      size: 24030071
+      nfiles: 7
   benchmark-boom@1-3-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=3 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=3 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1069,8 +1084,8 @@ stages:
       size: 30656855
       nfiles: 5
   benchmark-boom@1-6-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=6 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=6 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1130,8 +1145,8 @@ stages:
       size: 22518909
       nfiles: 5
   benchmark-boom@1-6-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=6 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=6 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1191,8 +1206,8 @@ stages:
       size: 31190855
       nfiles: 5
   benchmark-boom@1-9-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=9 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=9 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1252,8 +1267,8 @@ stages:
       size: 20194310
       nfiles: 5
   benchmark-boom@1-9-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=9 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=9 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1313,8 +1328,8 @@ stages:
       size: 30360371
       nfiles: 5
   benchmark-boom@3-3-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=3
-      --n-ml-workers=3 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=3 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1374,8 +1389,9 @@ stages:
       size: 2549720
       nfiles: 5
   benchmark-boom@3-6-3:
-    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py --n-alert-workers=3
-      --n-enrichment-workers=6 --n-filter-workers=3 --boom-repo-dir=boom
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=3 --n-enrichment-workers=6 --n-filter-workers=3 
+      --boom-repo-dir=boom
     deps:
     - path: .calkit/env-locks/run
       hash: md5
@@ -1444,8 +1460,8 @@ stages:
       size: 1248472
       nfiles: 6
   benchmark-boom@3-9-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=3
-      --n-ml-workers=9 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=9 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1505,8 +1521,8 @@ stages:
       size: 7852613
       nfiles: 5
   benchmark-boom@6-3-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=3 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=3 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1566,8 +1582,9 @@ stages:
       size: 1286254
       nfiles: 5
   benchmark-boom@6-3-3:
-    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py --n-alert-workers=6
-      --n-enrichment-workers=3 --n-filter-workers=3 --boom-repo-dir=boom --timeout=1200
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=6 --n-enrichment-workers=3 --n-filter-workers=3 
+      --boom-repo-dir=boom --timeout=1200
     deps:
     - path: .calkit/env-locks/run
       hash: md5
@@ -1636,8 +1653,8 @@ stages:
       size: 2307143
       nfiles: 7
   benchmark-boom@6-6-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=6 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=6 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1697,8 +1714,8 @@ stages:
       size: 609642
       nfiles: 5
   benchmark-boom@6-6-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=6 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=6 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1758,8 +1775,8 @@ stages:
       size: 996183
       nfiles: 5
   benchmark-boom@6-9-1:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=9 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=9 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1819,8 +1836,8 @@ stages:
       size: 1011069
       nfiles: 5
   benchmark-boom@6-9-3:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=9 --n-filter-workers=3
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=9 --n-filter-workers=3
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1880,7 +1897,8 @@ stages:
       size: 2023896
       nfiles: 5
   benchmark-kowalski@12:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=12
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=12
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -1945,7 +1963,8 @@ stages:
       size: 58304307
       nfiles: 5
   benchmark-kowalski@15:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=15
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=15
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2010,8 +2029,8 @@ stages:
       size: 57877539
       nfiles: 5
   benchmark-boom-more@_arg00:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=1 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=1 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2071,8 +2090,8 @@ stages:
       size: 9617281
       nfiles: 5
   benchmark-boom-more@_arg01:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=1
-      --n-ml-workers=2 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=1 --n-ml-workers=2 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2132,8 +2151,8 @@ stages:
       size: 19490141
       nfiles: 5
   benchmark-boom-more@_arg02:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=2
-      --n-ml-workers=2 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=2 --n-ml-workers=2 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2193,8 +2212,8 @@ stages:
       size: 1258596
       nfiles: 5
   benchmark-boom-more@_arg03:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=3
-      --n-ml-workers=4 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=3 --n-ml-workers=4 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2254,8 +2273,8 @@ stages:
       size: 2588732
       nfiles: 5
   benchmark-boom-more@_arg04:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=4
-      --n-ml-workers=6 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=4 --n-ml-workers=6 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2315,8 +2334,8 @@ stages:
       size: 2342210
       nfiles: 5
   benchmark-boom-more@_arg05:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=4
-      --n-ml-workers=7 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=4 --n-ml-workers=7 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2376,8 +2395,8 @@ stages:
       size: 2037939
       nfiles: 5
   benchmark-boom-more@_arg06:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=5
-      --n-ml-workers=8 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=5 --n-ml-workers=8 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2437,8 +2456,8 @@ stages:
       size: 1233122
       nfiles: 5
   benchmark-boom-more@_arg07:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=5
-      --n-ml-workers=5 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=5 --n-ml-workers=5 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2498,8 +2517,8 @@ stages:
       size: 625084
       nfiles: 5
   benchmark-boom-more@_arg08:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=6
-      --n-ml-workers=10 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=6 --n-ml-workers=10 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2559,8 +2578,8 @@ stages:
       size: 573915
       nfiles: 5
   benchmark-boom-more@_arg09:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=7
-      --n-ml-workers=11 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=7 --n-ml-workers=11 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2620,8 +2639,8 @@ stages:
       size: 543003
       nfiles: 5
   benchmark-boom-more@_arg010:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=8
-      --n-ml-workers=13 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=8 --n-ml-workers=13 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2681,8 +2700,8 @@ stages:
       size: 573590
       nfiles: 5
   benchmark-boom-more@_arg011:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=9
-      --n-ml-workers=15 --n-filter-workers=1
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=9 --n-ml-workers=15 --n-filter-workers=1
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2742,8 +2761,8 @@ stages:
       size: 551374
       nfiles: 5
   benchmark-boom-more@_arg012:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py --n-alert-workers=9
-      --n-ml-workers=14 --n-filter-workers=2
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-boom.py 
+      --n-alert-workers=9 --n-ml-workers=14 --n-filter-workers=2
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2803,7 +2822,8 @@ stages:
       size: 1141086
       nfiles: 5
   benchmark-kowalski@20:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=20
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=20
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2868,7 +2888,8 @@ stages:
       size: 58058977
       nfiles: 5
   benchmark-kowalski@25:
-    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py --n-workers=25
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
+      --n-workers=25
     deps:
     - path: .calkit/env-locks/run.txt
       hash: md5
@@ -2933,7 +2954,8 @@ stages:
       size: 57781580
       nfiles: 5
   plot-lightcurve:
-    cmd: calkit xenv -n analyze-logs --no-check -- python scripts/plot-lightcurve.py
+    cmd: calkit xenv -n analyze-logs --no-check -- python 
+      scripts/plot-lightcurve.py
     deps:
     - path: .calkit/env-locks/analyze-logs
       hash: md5

@@ -99,12 +99,13 @@ pipeline:
         - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
     benchmark-boom-more:
       kind: python-script
-      script_path: scripts/benchmark-boom.py
+      script_path: boom/tests/throughput/run.py
       args:
         - --n-alert-workers={n_alert_workers}
         - --n-enrichment-workers={n_enrichment_workers}
         - --n-filter-workers={n_filter_workers}
         - --boom-repo-dir=boom
+        - --timeout=1200
       environment: run
       inputs:
         - boom/src
