@@ -31,13 +31,6 @@ environments:
     kind: uv-venv
     prefix: .venv3
     python: "3.13.5"
-  benchmark-runner:
-    kind: current-system
-    properties:
-      - hostname
-      - n_cpus
-      - n_gpus
-      - total_memory_gb
 
 pipeline:
   stages:
