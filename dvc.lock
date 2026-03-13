@@ -32,7 +32,7 @@ stages:
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: b318a04509909bc7feae6337dfd116c0.dir
+      md5: 650371d09c5398e6a26d4fbda514d7c5.dir
       size: 5428990
       nfiles: 4
     - path: paper/main.tex
@@ -50,7 +50,7 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 749401ae0dc44632490f5e4e605ec190
+      md5: f05358b4f87ee6d6b52cf11808bed0bd
       size: 5672560
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
@@ -414,8 +414,8 @@ stages:
       nfiles: 6
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 1e03499460a099b2266f0f9d64bf853a.dir
-      size: 55484615
+      md5: e48b1aaafc71c186c4db171c3decb875.dir
+      size: 55503865
       nfiles: 6
     - path: logs/kowalski-n=7
       hash: md5
@@ -430,15 +430,15 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a3822cea7bf425e5b8ede963c5e88377
-      size: 82950
+      md5: 4954e1f2e3954a19cbf788f9f6c916e7
+      size: 82951
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
       md5: 5cee980ebbf8c6dcce997c4b4be4d89a
       size: 373870
     - path: paper/figures/scaling.pdf
       hash: md5
-      md5: becfd23f37a44215da9652d967995e8a
+      md5: 2d161986fb0a20b9d7ea37cb1b2e9991
       size: 14857
     - path: paper/results.tex
       hash: md5
