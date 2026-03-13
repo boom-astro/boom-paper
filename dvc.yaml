@@ -65,13 +65,13 @@ stages:
       calkit.yaml. Changes made here will be overwritten.
   benchmark-boom-more:
     cmd: calkit xenv -n run --no-check -- python 
-      scripts/benchmark-boom.py 
+      boom/tests/throughput/run.py 
       --n-alert-workers=${item._arg0.n_alert_workers} 
       --n-enrichment-workers=${item._arg0.n_enrichment_workers} 
       --n-filter-workers=${item._arg0.n_filter_workers} 
-      --boom-repo-dir=boom
+      --boom-repo-dir=boom --timeout=1200
     deps:
-      - scripts/benchmark-boom.py
+      - boom/tests/throughput/run.py
       - boom/src
       - boom/Cargo.lock
       - boom/Cargo.toml

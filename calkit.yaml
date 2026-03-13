@@ -226,6 +226,12 @@ datasets:
   - path: logs
     title: Benchmark logs
     description: Logs from the BOOM and Kowalski benchmarks.
+  - path: results/kowalski.csv
+    title: Kowalski benchmark results
+    description: Results from the Kowalski benchmark.
+  - path: results/boom.csv
+    title: BOOM benchmark results
+    description: Results from the BOOM benchmark.
 
 figures:
   - path: paper/figures/boom_workflow_final.pdf
