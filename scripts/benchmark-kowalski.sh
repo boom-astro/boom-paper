@@ -17,10 +17,12 @@ docker compose -f config/boom/compose.yaml down
 
 # Spin up services with Docker Compose
 mkdir -p logs/kowalski
+rm -rf logs/kowalski/*
 docker compose -f $COMPOSE_CONFIG up --build -d
 
 # Send the logs to file so we can analyze later
 docker compose -f $COMPOSE_CONFIG logs producer > logs/kowalski/producer.log &
+docker compose -f $COMPOSE_CONFIG logs mongo-init > logs/kowalski/mongo-init.log &
 
 # Detect that all alerts have been processed
 # First wait for the file to be created
