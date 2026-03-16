@@ -1923,8 +1923,8 @@ stages:
       nfiles: 81
     - path: boom/tests/throughput/_run.sh
       hash: md5
-      md5: 9159a1527499363d2bca77559a9257e3
-      size: 7383
+      md5: 298527131bd4531f459652207d21b868
+      size: 7664
       isexec: true
     - path: boom/tests/throughput/cats150.pipeline.json
       hash: md5
@@ -1958,8 +1958,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=6-nf=3
       hash: md5
-      md5: e57cc2db0fb02eecd3e3aa25ccf2445b.dir
-      size: 19259200
+      md5: b2814d0184f4a48ef7546b4031aac94d.dir
+      size: 1031930
       nfiles: 7
   benchmark-boom@6-9-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
