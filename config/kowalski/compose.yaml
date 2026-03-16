@@ -80,11 +80,12 @@ services:
       test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
       interval: 10s
   producer:
-    image: boom/boom-benchmarking:latest
+    image: boom/boom-producer:latest
+    pull_policy: never
     hostname: producer
     build:
-      dockerfile: ${PWD}/boom/Dockerfile
-      context: ${PWD}/boom
+      dockerfile: ${PWD}/boom-producer/Dockerfile
+      context: ${PWD}/boom-producer
       pull: false
     command:
       - /app/kafka_producer

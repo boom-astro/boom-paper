@@ -167,10 +167,10 @@ pipeline:
         - data/alerts/kowalski.NED.json.gz
         - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
         - config/kowalski/cats150.kowalski.json
-        - boom/Dockerfile
-        - boom/src
-        - boom/Cargo.toml
-        - boom/Cargo.lock
+        - boom-producer/Dockerfile
+        - boom-producer/src
+        - boom-producer/Cargo.toml
+        - boom-producer/Cargo.lock
       iterate_over:
         - arg_name: n_workers
           values: [3, 6, 7, 9, 12, 15, 20, 25]

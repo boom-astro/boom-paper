@@ -541,8 +541,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=3-nf=1
       hash: md5
-      md5: 25365c0d02dcc68398f26c01836fe360.dir
-      size: 21702405
+      md5: 497ffd0610321e9dfa946fb77c204499.dir
+      size: 21800713
       nfiles: 7
   benchmark-boom@3-6-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -612,8 +612,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=6-nf=1
       hash: md5
-      md5: 4e1fa17f9fb720dc5cb368c0544a0fca.dir
-      size: 21069457
+      md5: c4d0afe68151045f161b493b72817cbc.dir
+      size: 21164209
       nfiles: 7
   benchmark-boom@3-9-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -683,8 +683,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=9-nf=1
       hash: md5
-      md5: 619f4fac467dc59c8849cfa6da53093b.dir
-      size: 22015769
+      md5: d94743ec9a9f5c61c6c9d8294e780e57.dir
+      size: 22115281
       nfiles: 7
   benchmark-kowalski@6:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -695,22 +695,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -718,8 +718,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -760,8 +760,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -771,8 +771,8 @@ stages:
     outs:
     - path: logs/kowalski-n=6
       hash: md5
-      md5: 9c37dd042bdda1f1944782d0d2268802.dir
-      size: 64713611
+      md5: 48b6a95e071783a48830514e8e8aa7d8.dir
+      size: 65217683
       nfiles: 6
   benchmark-kowalski@3:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -783,22 +783,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -806,8 +806,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -848,8 +848,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -859,8 +859,8 @@ stages:
     outs:
     - path: logs/kowalski-n=3
       hash: md5
-      md5: a7061fb9ac65191896fe0caa3cf79c73.dir
-      size: 66434321
+      md5: 9fdaf9033ed3014df63662fdae1da02c.dir
+      size: 66938755
       nfiles: 6
   benchmark-kowalski@9:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -871,22 +871,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -894,8 +894,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -936,8 +936,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -947,8 +947,8 @@ stages:
     outs:
     - path: logs/kowalski-n=9
       hash: md5
-      md5: a818e0a34ef522048b72d0ae421e2423.dir
-      size: 63043465
+      md5: 715693f76893c6e70be87fe1e2e65589.dir
+      size: 63546107
       nfiles: 6
   benchmark-kowalski@7:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -959,22 +959,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -982,8 +982,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -1024,8 +1024,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -1035,8 +1035,8 @@ stages:
     outs:
     - path: logs/kowalski-n=7
       hash: md5
-      md5: 09f0bc31101dc95606d8562760955c48.dir
-      size: 63826784
+      md5: 669e7d56b29e2fc09dd09fb2400e4efb.dir
+      size: 64329516
       nfiles: 6
   benchmark-boom@1-3-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1106,8 +1106,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=3-nf=1
       hash: md5
-      md5: 70a00f9943db19f5d5a797603c836434.dir
-      size: 35858401
+      md5: 106f41252b50ac578202be46c8314be8.dir
+      size: 35955925
       nfiles: 7
   benchmark-boom@1-3-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1177,8 +1177,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=3-nf=3
       hash: md5
-      md5: 5f94bddbd0b4b7d68c657c41ea368858.dir
-      size: 39205209
+      md5: 2c3cda9531e46a2c592e7044b69e9d68.dir
+      size: 39304721
       nfiles: 7
   benchmark-boom@1-6-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1248,8 +1248,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=6-nf=1
       hash: md5
-      md5: 8e7a6dba356f2f02c160666697a586cd.dir
-      size: 40621919
+      md5: 5905ae9a3137f2e0227bed7489f5ffde.dir
+      size: 40718561
       nfiles: 7
   benchmark-boom@1-6-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1319,8 +1319,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=6-nf=3
       hash: md5
-      md5: 7a89088031104fc59b4d6fea7bdd0ba5.dir
-      size: 48430576
+      md5: 9c79d69921768625cb71a0f1b7250987.dir
+      size: 48526364
       nfiles: 7
   benchmark-boom@1-9-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1390,8 +1390,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=9-nf=1
       hash: md5
-      md5: eeabea85512dc17c0419cc813d245b85.dir
-      size: 43217312
+      md5: f0e5deddcd95ad99f436c56d00da205f.dir
+      size: 43311728
       nfiles: 7
   benchmark-boom@1-9-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1461,8 +1461,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=9-nf=3
       hash: md5
-      md5: 6fae76ad571c043d89ff66e3c18ebfc4.dir
-      size: 50900111
+      md5: 91030f39bd8d3276e4edbbfadb42a494.dir
+      size: 50997705
       nfiles: 7
   benchmark-boom@3-3-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1532,8 +1532,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=3-nf=3
       hash: md5
-      md5: 99412a0c4b03a23b1efd21aa12e895e9.dir
-      size: 21349407
+      md5: 3f96e7fa8c96baff5079b5aeffbe9a9c.dir
+      size: 21446931
       nfiles: 7
   benchmark-boom@3-6-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1603,8 +1603,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=6-nf=3
       hash: md5
-      md5: 3eee85715552a480a0fd57e873ca132d.dir
-      size: 20972976
+      md5: 9583bfac7d4bee1d3f1b10a86fbec0f0.dir
+      size: 21070052
       nfiles: 7
   benchmark-boom@3-9-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1674,8 +1674,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=9-nf=3
       hash: md5
-      md5: 02c21c2431da01d138746bde2aba6418.dir
-      size: 23282346
+      md5: 1acaac4d128e12633c04b0d9899be4bc.dir
+      size: 23376902
       nfiles: 7
   benchmark-boom@6-3-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1745,8 +1745,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=3-nf=1
       hash: md5
-      md5: 4dd41fd3c32eab4bf4bc61ea8d4c1a9d.dir
-      size: 20013871
+      md5: 421e364553c87e93c660663e4d294eaf.dir
+      size: 20112347
       nfiles: 7
   benchmark-boom@6-3-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1816,8 +1816,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=3-nf=3
       hash: md5
-      md5: 58f0f6c24bdb443451e730b7fdd584c9.dir
-      size: 19679454
+      md5: d4d10ef9a69bda7d412323b5b9f344fb.dir
+      size: 19778770
       nfiles: 7
   benchmark-boom@6-6-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1887,8 +1887,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=6-nf=1
       hash: md5
-      md5: 43a8171d2e3814b3df467b7d94372c77.dir
-      size: 19353049
+      md5: 0404d29ac385490cbb8ef5e48c077093.dir
+      size: 19450209
       nfiles: 7
   benchmark-boom@6-6-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -1958,8 +1958,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=6-nf=3
       hash: md5
-      md5: 8ab960701475928dde278b0e31d62032.dir
-      size: 19161508
+      md5: e57cc2db0fb02eecd3e3aa25ccf2445b.dir
+      size: 19259200
       nfiles: 7
   benchmark-boom@6-9-1:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2029,8 +2029,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=9-nf=1
       hash: md5
-      md5: cd9726fd59d122e70495760f5a5b5dfa.dir
-      size: 18932899
+      md5: ba5a15250242327198ac5d18694ec034.dir
+      size: 19029275
       nfiles: 7
   benchmark-boom@6-9-3:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2100,8 +2100,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=9-nf=3
       hash: md5
-      md5: 0755bd134916635c50ae294bcad0c3ec.dir
-      size: 18758917
+      md5: 7821aed0cf2159c8b2c4724eaed19cda.dir
+      size: 18855293
       nfiles: 7
   benchmark-kowalski@12:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -2112,22 +2112,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -2135,8 +2135,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -2177,8 +2177,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -2188,8 +2188,8 @@ stages:
     outs:
     - path: logs/kowalski-n=12
       hash: md5
-      md5: 3b63d3dc14e20287ac42af67e4dc7378.dir
-      size: 62412613
+      md5: 39c831b06225c9965713d4aea319f0b6.dir
+      size: 55024963
       nfiles: 6
   benchmark-kowalski@15:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -2200,22 +2200,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -2223,8 +2223,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -2265,8 +2265,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -2276,8 +2276,8 @@ stages:
     outs:
     - path: logs/kowalski-n=15
       hash: md5
-      md5: 4f79646a72fe5c21dcef653dd7f6be3b.dir
-      size: 61924601
+      md5: 8f316a0ad9fb4f7a09c5ae3500afbfe4.dir
+      size: 62426727
       nfiles: 6
   benchmark-boom-more@_arg00:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2347,8 +2347,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=1-nf=1
       hash: md5
-      md5: 95e3d13f1cd281d8d5297a4b288b0944.dir
-      size: 18330861
+      md5: 829d6cada04e481ce64046447541e8e3.dir
+      size: 18428385
       nfiles: 7
   benchmark-boom-more@_arg01:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2418,8 +2418,8 @@ stages:
     outs:
     - path: logs/boom-na=1-ne=2-nf=1
       hash: md5
-      md5: 34961572da498b229163f34c435a3aab.dir
-      size: 17451365
+      md5: 04c062aa8f3ef7619d1148dfa9313c92.dir
+      size: 17548889
       nfiles: 7
   benchmark-boom-more@_arg02:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2489,8 +2489,8 @@ stages:
     outs:
     - path: logs/boom-na=2-ne=2-nf=1
       hash: md5
-      md5: 7739a93aec4ecc17a586abd43d2eb56c.dir
-      size: 16746197
+      md5: 62b367911a2d3c5b398969a0ff6664ae.dir
+      size: 16844925
       nfiles: 7
   benchmark-boom-more@_arg03:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2560,8 +2560,8 @@ stages:
     outs:
     - path: logs/boom-na=3-ne=4-nf=1
       hash: md5
-      md5: 7ed27ba33d43c1cc0930e4306365575a.dir
-      size: 16255309
+      md5: 2f85efb242d778b07ae30efcf4ef6739.dir
+      size: 16351181
       nfiles: 7
   benchmark-boom-more@_arg04:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2631,8 +2631,8 @@ stages:
     outs:
     - path: logs/boom-na=4-ne=6-nf=1
       hash: md5
-      md5: 86560b6a16731d764bf331ddf1e558ec.dir
-      size: 16002430
+      md5: 22b5546a1386d2b7ff455ce0f41bebfc.dir
+      size: 16099170
       nfiles: 7
   benchmark-boom-more@_arg05:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2702,8 +2702,8 @@ stages:
     outs:
     - path: logs/boom-na=4-ne=7-nf=1
       hash: md5
-      md5: 09432ce579256d8da125609f47a95273.dir
-      size: 15766804
+      md5: 47cc752d204daf006830ed27d901fc5d.dir
+      size: 15864300
       nfiles: 7
   benchmark-boom-more@_arg06:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2773,8 +2773,8 @@ stages:
     outs:
     - path: logs/boom-na=5-ne=8-nf=1
       hash: md5
-      md5: e3e79be74a34ae3bc0af8e571d5e4348.dir
-      size: 15573409
+      md5: ada0fe9f9a70d510fcc37ca057b39e44.dir
+      size: 15668441
       nfiles: 7
   benchmark-boom-more@_arg07:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2844,8 +2844,8 @@ stages:
     outs:
     - path: logs/boom-na=5-ne=5-nf=1
       hash: md5
-      md5: 2ff8af6a4ddad73596e890eef7037fe6.dir
-      size: 15243698
+      md5: 45f92d976ede658289d64f11b3b86590.dir
+      size: 15341110
       nfiles: 7
   benchmark-boom-more@_arg08:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2915,8 +2915,8 @@ stages:
     outs:
     - path: logs/boom-na=6-ne=10-nf=1
       hash: md5
-      md5: 43acffb8e5936bf64256c1a5d1813bd3.dir
-      size: 15126330
+      md5: 2d027c14f315117f6edcc0abf284d1c0.dir
+      size: 15224022
       nfiles: 7
   benchmark-boom-more@_arg09:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -2986,8 +2986,8 @@ stages:
     outs:
     - path: logs/boom-na=7-ne=11-nf=1
       hash: md5
-      md5: 01129c007f1b416b980fc7059d189470.dir
-      size: 14899452
+      md5: 28ca4a5a0f54250bdf0b6f0418987d65.dir
+      size: 14994904
       nfiles: 7
   benchmark-boom-more@_arg010:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -3057,8 +3057,8 @@ stages:
     outs:
     - path: logs/boom-na=8-ne=13-nf=1
       hash: md5
-      md5: 1fce516d153b0703cc6a9336a0677e42.dir
-      size: 14737755
+      md5: deee3cbd7d2ef4611468c14038c25ec0.dir
+      size: 14834047
       nfiles: 7
   benchmark-boom-more@_arg011:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -3128,8 +3128,8 @@ stages:
     outs:
     - path: logs/boom-na=9-ne=15-nf=1
       hash: md5
-      md5: 688f39d85bbf0267286ff6994b741257.dir
-      size: 14594023
+      md5: d558ca65b4b6c7fb384fffb81d59d73f.dir
+      size: 14690259
       nfiles: 7
   benchmark-boom-more@_arg012:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
@@ -3199,8 +3199,8 @@ stages:
     outs:
     - path: logs/boom-na=9-ne=14-nf=2
       hash: md5
-      md5: 2724fa7d6c23e38525517abe3adfe0e9.dir
-      size: 14403539
+      md5: 141cd81fa4b8d1e54b0a8fbf93539f69.dir
+      size: 14501651
       nfiles: 7
   benchmark-kowalski@20:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -3211,22 +3211,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -3234,8 +3234,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -3276,8 +3276,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -3287,8 +3287,8 @@ stages:
     outs:
     - path: logs/kowalski-n=20
       hash: md5
-      md5: 113d108d34e5f1cab8da8f56ec46c9de.dir
-      size: 61486622
+      md5: be49ce740be5f4dcea148c9fb2c26f82.dir
+      size: 61990036
       nfiles: 6
   benchmark-kowalski@25:
     cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py 
@@ -3299,22 +3299,22 @@ stages:
       md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
       size: 380
       nfiles: 2
-    - path: boom/Cargo.lock
+    - path: boom-producer/Cargo.lock
       hash: md5
       md5: 21a15ffd0e606666e722b5e5c80184a8
       size: 134428
-    - path: boom/Cargo.toml
+    - path: boom-producer/Cargo.toml
       hash: md5
       md5: 42bbe5e633c9091f29f696a1bd088d8c
       size: 2138
-    - path: boom/Dockerfile
+    - path: boom-producer/Dockerfile
       hash: md5
       md5: 5dbd5a8cada776e3d5e1851b51c72651
       size: 2659
-    - path: boom/src
+    - path: boom-producer/src
       hash: md5
-      md5: 761471f2f372f15dddbaa4d154953d06.dir
-      size: 870782
+      md5: 0295f8f9fd32b5c723cc4ddb56e93518.dir
+      size: 849025
       nfiles: 81
     - path: config/kowalski/cats150.kowalski.json
       hash: md5
@@ -3322,8 +3322,8 @@ stages:
       size: 16821
     - path: config/kowalski/compose.yaml
       hash: md5
-      md5: b11bcb4fa5955842d4f230d4e33a7a16
-      size: 4181
+      md5: bc5734789672fab28685586cf6fb7a66
+      size: 4218
     - path: config/kowalski/config-template.yaml
       hash: md5
       md5: 71eb4243c1914de1aef8a735050d4763
@@ -3364,8 +3364,8 @@ stages:
       size: 1573
     - path: scripts/benchmark-kowalski.sh
       hash: md5
-      md5: f7ab17def16c0b34eef5bb13d26b55d1
-      size: 1791
+      md5: 828d57515c6345cdd362a26f5f65248b
+      size: 2201
       isexec: true
     - path: scripts/mongo-init.sh
       hash: md5
@@ -3375,8 +3375,8 @@ stages:
     outs:
     - path: logs/kowalski-n=25
       hash: md5
-      md5: 45bd4b8dcd09d5d23f946dccb14f771e.dir
-      size: 61144925
+      md5: 379a2ff4961c99dd41598ff01fd093ae.dir
+      size: 61648171
       nfiles: 6
   plot-lightcurve:
     cmd: calkit xenv -n analyze-logs --no-check -- python 
