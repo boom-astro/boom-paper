@@ -32,7 +32,7 @@ stages:
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: 2908e5b372766f891c67211e02facbe9.dir
+      md5: ee3b07a9306e91d202a767a7ee20c282.dir
       size: 5428938
       nfiles: 4
     - path: paper/main.tex
@@ -50,7 +50,7 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: f0bf78c7c3987b23876348145ab9858d
+      md5: 16acacc5c11f086a8a037e0c40547786
       size: 5672510
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
@@ -271,6 +271,16 @@ stages:
       hash: md5
       md5: f11b83dbc7acce0041f67b73f096a66f.dir
       size: 29545686
+      nfiles: 7
+    - path: logs/boom-na=10-ne=12-nf=3
+      hash: md5
+      md5: f89984e4d4ac0b8d714ee021c0a6444e.dir
+      size: 1220797
+      nfiles: 7
+    - path: logs/boom-na=11-ne=12-nf=2
+      hash: md5
+      md5: 79665e6d26d60ed41c61f4e7ac5a1199.dir
+      size: 1215667
       nfiles: 7
     - path: logs/boom-na=2-ne=2-nf=1
       hash: md5
@@ -505,15 +515,15 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: a2c34105cedfe6fa06a8d3e9a55d5607
-      size: 103404
+      md5: f1a8ee8f6d8903b30e9c4c4872ecf897
+      size: 104807
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 3f23a4df7f36b9ebeda41686c5a099a3
-      size: 380558
+      md5: 741a8f82b947d1984acd94e8a163a445
+      size: 380961
     - path: paper/figures/scaling.pdf
       hash: md5
-      md5: 8d57fcf815023322cfe435e693567012
+      md5: 276ce2e4386c71a30bb80d282069f811
       size: 14805
     - path: paper/results.tex
       hash: md5
@@ -521,8 +531,8 @@ stages:
       size: 247
     - path: results
       hash: md5
-      md5: 75e1e5c6e8ebea537778287b4d404741.dir
-      size: 4004
+      md5: f97c16236b1514a06faaa4ba82674ed7.dir
+      size: 4154
       nfiles: 2
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
@@ -4638,4 +4648,146 @@ stages:
       hash: md5
       md5: 3ede98a6f50360f9f07dab4b82e46427.dir
       size: 1239311
+      nfiles: 7
+  benchmark-boom-more@_arg028:
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=10 --n-enrichment-workers=12 --n-filter-workers=3 
+      --boom-repo-dir=boom --timeout=1200
+    deps:
+    - path: .calkit/env-locks/run
+      hash: md5
+      md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
+      size: 380
+      nfiles: 2
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 21a15ffd0e606666e722b5e5c80184a8
+      size: 134428
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: 42bbe5e633c9091f29f696a1bd088d8c
+      size: 2138
+    - path: boom/Dockerfile
+      hash: md5
+      md5: 5dbd5a8cada776e3d5e1851b51c72651
+      size: 2659
+    - path: boom/config.yaml
+      hash: md5
+      md5: 629b7d9cb536fff27079dd6a2b78b619
+      size: 4194
+    - path: boom/src
+      hash: md5
+      md5: 761471f2f372f15dddbaa4d154953d06.dir
+      size: 870782
+      nfiles: 81
+    - path: boom/tests/throughput/_run.sh
+      hash: md5
+      md5: c56f61bcebf59d66f0fa3cb27479b2c8
+      size: 7814
+      isexec: true
+    - path: boom/tests/throughput/cats150.pipeline.json
+      hash: md5
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
+    - path: boom/tests/throughput/compose.yaml
+      hash: md5
+      md5: 3ccbdce67db45421dc4d8ff450ca7d72
+      size: 5486
+    - path: boom/tests/throughput/mongo-init.sh
+      hash: md5
+      md5: 8e25dc86cd09010ddc2adccb7cd503ef
+      size: 4034
+      isexec: true
+    - path: boom/tests/throughput/read-kafka-output.py
+      hash: md5
+      md5: 4284d6fdd113618bab9564d4b121174f
+      size: 963
+    - path: boom/tests/throughput/run.py
+      hash: md5
+      md5: 447b671c814568dbe901571d933c9e2f
+      size: 5104
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: ed30deae98f4f460fade9dfbee850a84
+      size: 860278459
+    - path: data/alerts/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    outs:
+    - path: logs/boom-na=10-ne=12-nf=3
+      hash: md5
+      md5: f89984e4d4ac0b8d714ee021c0a6444e.dir
+      size: 1220797
+      nfiles: 7
+  benchmark-boom-more@_arg029:
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
+      --n-alert-workers=11 --n-enrichment-workers=12 --n-filter-workers=2 
+      --boom-repo-dir=boom --timeout=1200
+    deps:
+    - path: .calkit/env-locks/run
+      hash: md5
+      md5: 86480d14d5a842ae3b1739fa8e4fe7b1.dir
+      size: 380
+      nfiles: 2
+    - path: boom/Cargo.lock
+      hash: md5
+      md5: 21a15ffd0e606666e722b5e5c80184a8
+      size: 134428
+    - path: boom/Cargo.toml
+      hash: md5
+      md5: 42bbe5e633c9091f29f696a1bd088d8c
+      size: 2138
+    - path: boom/Dockerfile
+      hash: md5
+      md5: 5dbd5a8cada776e3d5e1851b51c72651
+      size: 2659
+    - path: boom/config.yaml
+      hash: md5
+      md5: 629b7d9cb536fff27079dd6a2b78b619
+      size: 4194
+    - path: boom/src
+      hash: md5
+      md5: 761471f2f372f15dddbaa4d154953d06.dir
+      size: 870782
+      nfiles: 81
+    - path: boom/tests/throughput/_run.sh
+      hash: md5
+      md5: c56f61bcebf59d66f0fa3cb27479b2c8
+      size: 7814
+      isexec: true
+    - path: boom/tests/throughput/cats150.pipeline.json
+      hash: md5
+      md5: ebc45020590af88faed284084c6f660a
+      size: 16704
+    - path: boom/tests/throughput/compose.yaml
+      hash: md5
+      md5: 3ccbdce67db45421dc4d8ff450ca7d72
+      size: 5486
+    - path: boom/tests/throughput/mongo-init.sh
+      hash: md5
+      md5: 8e25dc86cd09010ddc2adccb7cd503ef
+      size: 4034
+      isexec: true
+    - path: boom/tests/throughput/read-kafka-output.py
+      hash: md5
+      md5: 4284d6fdd113618bab9564d4b121174f
+      size: 963
+    - path: boom/tests/throughput/run.py
+      hash: md5
+      md5: 447b671c814568dbe901571d933c9e2f
+      size: 5104
+    - path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      hash: md5
+      md5: ed30deae98f4f460fade9dfbee850a84
+      size: 860278459
+    - path: data/alerts/kowalski.NED.json.gz
+      hash: md5
+      md5: decd3ed39729067d0990aa299c4f513d
+      size: 966995306
+    outs:
+    - path: logs/boom-na=11-ne=12-nf=2
+      hash: md5
+      md5: 79665e6d26d60ed41c61f4e7ac5a1199.dir
+      size: 1215667
       nfiles: 7
