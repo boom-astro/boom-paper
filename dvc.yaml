@@ -222,6 +222,9 @@ stages:
           n_enrichment_workers: 14
           n_filter_workers: 3
         - n_alert_workers: 9
+          n_enrichment_workers: 8
+          n_filter_workers: 1
+        - n_alert_workers: 9
           n_enrichment_workers: 15
           n_filter_workers: 1
         - n_alert_workers: 9
@@ -353,6 +356,7 @@ stages:
       - logs/boom-na=8-ne=12-nf=2
       - logs/boom-na=8-ne=12-nf=4
       - logs/boom-na=8-ne=14-nf=3
+      - logs/boom-na=9-ne=8-nf=1
       - logs/boom-na=9-ne=15-nf=1
       - logs/boom-na=9-ne=14-nf=2
       - logs/boom-na=10-ne=12-nf=3
