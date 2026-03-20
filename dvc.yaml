@@ -144,6 +144,12 @@ stages:
           n_enrichment_workers: 5
           n_filter_workers: 1
         - n_alert_workers: 5
+          n_enrichment_workers: 6
+          n_filter_workers: 2
+        - n_alert_workers: 5
+          n_enrichment_workers: 8
+          n_filter_workers: 2
+        - n_alert_workers: 5
           n_enrichment_workers: 10
           n_filter_workers: 2
         - n_alert_workers: 6
@@ -157,6 +163,9 @@ stages:
           n_filter_workers: 3
         - n_alert_workers: 7
           n_enrichment_workers: 9
+          n_filter_workers: 2
+        - n_alert_workers: 7
+          n_enrichment_workers: 9
           n_filter_workers: 3
         - n_alert_workers: 7
           n_enrichment_workers: 11
@@ -167,6 +176,9 @@ stages:
         - n_alert_workers: 7
           n_enrichment_workers: 15
           n_filter_workers: 3
+        - n_alert_workers: 8
+          n_enrichment_workers: 9
+          n_filter_workers: 2
         - n_alert_workers: 8
           n_enrichment_workers: 13
           n_filter_workers: 1
@@ -285,14 +297,18 @@ stages:
       - logs/boom-na=5-ne=8-nf=1
       - logs/boom-na=5-ne=8-nf=3
       - logs/boom-na=5-ne=5-nf=1
+      - logs/boom-na=5-ne=6-nf=2
+      - logs/boom-na=5-ne=8-nf=2
       - logs/boom-na=5-ne=10-nf=2
       - logs/boom-na=6-ne=10-nf=1
       - logs/boom-na=6-ne=13-nf=3
       - logs/boom-na=6-ne=16-nf=3
+      - logs/boom-na=7-ne=9-nf=2
       - logs/boom-na=7-ne=9-nf=3
       - logs/boom-na=7-ne=11-nf=1
       - logs/boom-na=7-ne=10-nf=2
       - logs/boom-na=7-ne=15-nf=3
+      - logs/boom-na=8-ne=9-nf=2
       - logs/boom-na=8-ne=13-nf=1
       - logs/boom-na=8-ne=12-nf=2
       - logs/boom-na=8-ne=12-nf=4
