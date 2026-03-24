@@ -186,6 +186,7 @@ pipeline:
             - [2, 3, 1] # _arg062
             - [5, 16, 4] # _arg063
             - [5, 9, 4] # _arg064
+            - [4, 15, 4] # _arg065
       outputs:
         - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
     fix-kowalski-seed-data:
