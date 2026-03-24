@@ -278,6 +278,9 @@ stages:
         - n_alert_workers: 2
           n_enrichment_workers: 3
           n_filter_workers: 1
+        - n_alert_workers: 5
+          n_enrichment_workers: 16
+          n_filter_workers: 4
     desc: Automatically generated from the 'benchmark-boom-more' stage
       in calkit.yaml. Changes made here will be overwritten.
   fix-kowalski-seed-data:
@@ -417,6 +420,7 @@ stages:
       - logs/boom-na=4-ne=7-nf=2
       - logs/boom-na=4-ne=14-nf=4
       - logs/boom-na=2-ne=3-nf=1
+      - logs/boom-na=5-ne=16-nf=4
       - logs/kowalski-n=3
       - logs/kowalski-n=6
       - logs/kowalski-n=7
