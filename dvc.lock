@@ -32,7 +32,7 @@ stages:
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: dad50adae948b14a8445311da636087d.dir
+      md5: c51d2d43c361dca51772b3eea9a82c6a.dir
       size: 5429530
       nfiles: 4
     - path: paper/main.tex
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 3d4014af568dd73be39c78f35a543a88
-      size: 5673062
+      md5: fc27ac07cfec1ec80090f1c2e24597fb
+      size: 5673063
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
