@@ -379,8 +379,8 @@ stages:
       nfiles: 7
     - path: logs/boom-na=4-ne=11-nf=3
       hash: md5
-      md5: 49cac9f098d136709ad2080a62dde224.dir
-      size: 1617822
+      md5: fbadddc4f47aa6dd6389fa7837d22d9d.dir
+      size: 1645983
       nfiles: 7
     - path: logs/boom-na=4-ne=12-nf=2
       hash: md5
@@ -700,15 +700,15 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: 4d53fa9e12777b08cb5aa13f0f1f647c
-      size: 145178
+      md5: caff769bd5d3ea02700502d6b5554ce6
+      size: 145176
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: c4fbc2f3ba395f0d8347ca3b1212c726
-      size: 409536
+      md5: 3dea1e408d1fa21d998ff6be0197a1d4
+      size: 409534
     - path: paper/figures/scaling.pdf
       hash: md5
-      md5: 3120483deafa175316072d3d099c4e89
+      md5: 68ed94bb26a7a08dc7f02aa38364c3ea
       size: 15397
     - path: paper/results.tex
       hash: md5
@@ -716,8 +716,8 @@ stages:
       size: 247
     - path: results
       hash: md5
-      md5: 185c28dcdb07bea810550755e7121a90.dir
-      size: 7680
+      md5: e4eb92f615cd5c1fdd52b7b2e2add0e4.dir
+      size: 7679
       nfiles: 2
   _check-env-simulate-queues:
     cmd: calkit check environment --name simulate-queues
@@ -4121,8 +4121,8 @@ stages:
     outs:
     - path: logs/boom-na=4-ne=11-nf=3
       hash: md5
-      md5: 49cac9f098d136709ad2080a62dde224.dir
-      size: 1617822
+      md5: fbadddc4f47aa6dd6389fa7837d22d9d.dir
+      size: 1645983
       nfiles: 7
   benchmark-boom-more@_arg018:
     cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py 
