@@ -5,8 +5,8 @@ stages:
     deps: []
     outs:
       - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
-    desc: Automatically generated from the 'get-seed-data' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'get-seed-data' stage in calkit.yaml.
+      Changes made here will be overwritten.
   fix-seed-data:
     cmd: ' bash --noprofile --norc fix-seed-data/run.sh'
     deps:
@@ -23,15 +23,12 @@ stages:
     outs:
       - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       - fix-seed-data/logs
-    desc: Automatically generated from the 'fix-seed-data' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'fix-seed-data' stage in calkit.yaml.
+      Changes made here will be overwritten.
   benchmark-boom:
-    cmd: calkit xenv -n run --no-check -- python 
-      boom/tests/throughput/run.py 
-      --n-alert-workers=${item.n_alert_workers} 
-      --n-enrichment-workers=${item.n_enrichment_workers} 
-      --n-filter-workers=${item.n_filter_workers} --boom-repo-dir=boom
-      --timeout=1200
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py
+      --n-alert-workers=${item.n_alert_workers} --n-enrichment-workers=${item.n_enrichment_workers}
+      --n-filter-workers=${item.n_filter_workers} --boom-repo-dir=boom --timeout=1200
     deps:
       - boom/tests/throughput/run.py
       - boom/src
@@ -61,15 +58,13 @@ stages:
       n_filter_workers:
         - 1
         - 3
-    desc: Automatically generated from the 'benchmark-boom' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'benchmark-boom' stage in calkit.yaml.
+      Changes made here will be overwritten.
   benchmark-boom-more:
-    cmd: calkit xenv -n run --no-check -- python 
-      boom/tests/throughput/run.py 
-      --n-alert-workers=${item._arg0.n_alert_workers} 
-      --n-enrichment-workers=${item._arg0.n_enrichment_workers} 
-      --n-filter-workers=${item._arg0.n_filter_workers} 
-      --boom-repo-dir=boom --timeout=1200
+    cmd: calkit xenv -n run --no-check -- python boom/tests/throughput/run.py
+      --n-alert-workers=${item._arg0.n_alert_workers} --n-enrichment-workers=${item._arg0.n_enrichment_workers}
+      --n-filter-workers=${item._arg0.n_filter_workers} --boom-repo-dir=boom
+      --timeout=1200
     deps:
       - boom/tests/throughput/run.py
       - boom/src
@@ -290,8 +285,8 @@ stages:
         - n_alert_workers: 4
           n_enrichment_workers: 10
           n_filter_workers: 4
-    desc: Automatically generated from the 'benchmark-boom-more' stage
-      in calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'benchmark-boom-more' stage in
+      calkit.yaml. Changes made here will be overwritten.
   fix-kowalski-seed-data:
     cmd: ' bash --noprofile --norc fix-kowalski-seed-data/run.sh'
     deps:
@@ -304,11 +299,11 @@ stages:
       - fix-kowalski-seed-data/logs:
           cache: false
           persist: false
-    desc: Automatically generated from the 'fix-kowalski-seed-data' 
-      stage in calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'fix-kowalski-seed-data' stage
+      in calkit.yaml. Changes made here will be overwritten.
   benchmark-kowalski:
-    cmd: calkit xenv -n run --no-check -- python 
-      scripts/benchmark-kowalski.py --n-workers=${item.n_workers}
+    cmd: calkit xenv -n run --no-check -- python scripts/benchmark-kowalski.py
+      --n-workers=${item.n_workers}
     deps:
       - scripts/benchmark-kowalski.py
       - config/kowalski/config-template.yaml
@@ -340,11 +335,11 @@ stages:
         - 15
         - 20
         - 25
-    desc: Automatically generated from the 'benchmark-kowalski' stage 
-      in calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'benchmark-kowalski' stage in
+      calkit.yaml. Changes made here will be overwritten.
   analyze-logs:
-    cmd: calkit nb execute --environment analyze-logs --no-check --to 
-      html "notebooks/analyze-logs.ipynb"
+    cmd: calkit nb execute --environment analyze-logs --no-check --to html
+      "notebooks/analyze-logs.ipynb"
     deps:
       - .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       - .calkit/env-locks/analyze-logs
@@ -455,11 +450,10 @@ stages:
           cache: false
       - .calkit/notebooks/html/notebooks/analyze-logs.html:
           cache: false
-    desc: Automatically generated from the 'analyze-logs' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'analyze-logs' stage in calkit.yaml.
+      Changes made here will be overwritten.
   plot-lightcurve:
-    cmd: calkit xenv -n analyze-logs --no-check -- python 
-      scripts/plot-lightcurve.py
+    cmd: calkit xenv -n analyze-logs --no-check -- python scripts/plot-lightcurve.py
     deps:
       - scripts/plot-lightcurve.py
       - data/SN2025kwy.parquet
@@ -468,8 +462,8 @@ stages:
       - paper/figures/SN2025kwy.pdf:
           cache: false
           persist: false
-    desc: Automatically generated from the 'plot-lightcurve' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'plot-lightcurve' stage in calkit.yaml.
+      Changes made here will be overwritten.
   build-paper:
     cmd: calkit latex build -e tex --no-check -f paper/main.tex
     deps:
@@ -484,5 +478,5 @@ stages:
     outs:
       - paper/main.pdf:
           cache: true
-    desc: Automatically generated from the 'build-paper' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'build-paper' stage in calkit.yaml.
+      Changes made here will be overwritten.
