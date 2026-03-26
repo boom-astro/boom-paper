@@ -1,31 +1,77 @@
 cff-version: 1.2.0
 message: If you use these files, please cite is using these metadata.
 title: >
-  BOOM and Babamul: A real-time, multi-survey, optical alert broker system
-  operating at scale
+  BOOM and Babamul: a real-time, multi-survey,
+  optical alert broker system operating at scale
 abstract: >
   This project contains all of the files necessary to reproduce the results
   and compile the paper.
-version: v0.1
-date-released: "2025-10-31"
+version: v0.2.0
+date-released: '2026-03-26'
 repository-code:
 authors:
   - family-names: Jegou du Laz
     given-names: Theophile
     orcid: 0009-0003-6181-4526
+  - family-names: Coughlin
+    given-names: Michael W.
+    orcid: 0000-0002-8262-2924
   - family-names: Bachant
     given-names: Peter
     orcid: 0000-0003-4039-6954
   - family-names: Simones
-    given-names: Jacob
+    given-names: Jacob E.
     orcid:
-  - family-names: Coughlin
-    given-names: Michael
-    orcid: 0000-0002-8262-2924
+  - family-names: Culino
+    given-names: Thomas
+    orcid: 0009-0008-3603-0013
+  - family-names: Le Calloch
+    given-names: Antoine
+  - family-names: Chaudhary
+    given-names: Sushant Sharma
+    orcid: 0000-0003-1314-4241
+  - family-names: Hall
+    given-names: Xander J.
+    orcid: 0000-0002-9364-5419
+  - family-names: Barna
+    given-names: Tyler
+    orcid: 0000-0002-4843-345X
+  - family-names: Warshofsky
+    given-names: Daniel
+  - family-names: Graham
+    given-names: Matthew
+    orcid: 0000-0002-3168-0139
   - family-names: Kasliwal
     given-names: Mansi
     orcid: 0000-0002-5619-4938
+  - family-names: Mahabal
+    given-names: Ashish
+    orcid: 0000-0003-2242-0244
+  - family-names: Bloom
+    given-names: Joshua S.
+    orcid: 0000-0002-7777-216X
+  - family-names: Palmese
+    given-names: Antonella
+    orcid: 0000-0002-6011-0530
+  - family-names: Masci
+    given-names: Frank J.
+    orcid: 0000-0002-8532-9395
+  - family-names: Groom
+    given-names: Steven L.
+    orcid: 0000-0001-5668-3507
+  - family-names: Dekany
+    given-names: Richard
+    orcid: 0000-0002-5884-7867
+  - family-names: Riddle
+    given-names: Reed L.
+    orcid: 0000-0002-0387-370X
+  - family-names: Helou
+    given-names: George
+    orcid: 0000-0003-3367-3415
 identifiers:
   - description: Release v0.1
     type: doi
     value: 10.22002/640bx-nbn45
+  - description: Release v0.2.0
+    type: doi
+    value: 10.22002/61jc2-wv732
