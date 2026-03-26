@@ -37,12 +37,12 @@ stages:
       nfiles: 4
     - path: paper/main.tex
       hash: md5
-      md5: 19e05a58d121d26228cf2a31fbec36a9
+      md5: f6246340652139667b3de799da42fc68
       size: 65418
     - path: paper/references.bib
       hash: md5
-      md5: 95ada239a47b37b296657ad931f01ca2
-      size: 989256
+      md5: 2b9e63a29c90897a624d2cd93d544e88
+      size: 1111078
     - path: paper/results.tex
       hash: md5
       md5: ff4215726fe8cabfc5d12b250001f063
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: f90ede44c973f18557f3db537fc5f1eb
-      size: 5673063
+      md5: 71db91a6296da818ce18d9957a9d3d6e
+      size: 5673148
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
