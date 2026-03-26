@@ -6,6 +6,351 @@ description: >
   This project contains all of the files necessary to reproduce the results
   and compile the paper.
 
+dependencies:
+  - git-lfs
+  - jq
+  - uv
+
+environments:
+  tex:
+    kind: docker
+    image: texlive/texlive:latest-full
+    description: TeXlive via Docker.
+  analyze-logs:
+    path: config/envs/analyze-logs.txt
+    kind: uv-venv
+    prefix: .venv
+    python: "3.13.5"
+  simulate-queues:
+    path: config/envs/simulate-queues.txt
+    kind: uv-venv
+    prefix: .venv2
+    python: "3.13.5"
+  run:
+    path: config/envs/run.txt
+    kind: uv-venv
+    prefix: .venv3
+    python: "3.13.5"
+
+pipeline:
+  stages:
+    get-seed-data:
+      kind: shell-command
+      environment: _system
+      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+        -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+      outputs:
+        - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+    fix-seed-data:
+      kind: shell-script
+      environment: _system
+      script_path: ./fix-seed-data/run.sh
+      inputs:
+        - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+        - fix-seed-data/compose.yaml
+        - fix-seed-data/mongo-init.sh
+        - fix-seed-data/config.yaml
+        - fix-seed-data/boom/Dockerfile
+        - fix-seed-data/dump-seed-data.sh
+        - fix-seed-data/boom/Cargo.toml
+        - fix-seed-data/boom/Cargo.lock
+        - fix-seed-data/boom/src
+      outputs:
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+        - fix-seed-data/logs
+    benchmark-boom:
+      kind: python-script
+      script_path: boom/tests/throughput/run.py
+      args:
+        - --n-alert-workers={n_alert_workers}
+        - --n-enrichment-workers={n_enrichment_workers}
+        - --n-filter-workers={n_filter_workers}
+        - --boom-repo-dir=boom
+        - --timeout=1200
+      environment: run
+      inputs:
+        - boom/src
+        - boom/Cargo.lock
+        - boom/Cargo.toml
+        - boom/config.yaml
+        - boom/Dockerfile
+        - boom/tests/throughput/compose.yaml
+        - boom/tests/throughput/mongo-init.sh
+        - boom/tests/throughput/cats150.pipeline.json
+        - boom/tests/throughput/read-kafka-output.py
+        - boom/tests/throughput/_run.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      iterate_over:
+        - arg_name: n_alert_workers
+          values: [1, 3, 6]
+        - arg_name: n_enrichment_workers
+          values: [3, 6, 9]
+        - arg_name: n_filter_workers
+          values: [1, 3]
+        # - arg_name: repetition
+        #   values:
+        #     - range:
+        #         start: 1
+        #         stop: 50
+      outputs:
+        - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
+    benchmark-boom-more:
+      kind: python-script
+      script_path: boom/tests/throughput/run.py
+      args:
+        - --n-alert-workers={n_alert_workers}
+        - --n-enrichment-workers={n_enrichment_workers}
+        - --n-filter-workers={n_filter_workers}
+        - --boom-repo-dir=boom
+        - --timeout=1200
+      environment: run
+      inputs:
+        - boom/src
+        - boom/Cargo.lock
+        - boom/Cargo.toml
+        - boom/config.yaml
+        - boom/Dockerfile
+        - boom/tests/throughput/compose.yaml
+        - boom/tests/throughput/mongo-init.sh
+        - boom/tests/throughput/cats150.pipeline.json
+        - boom/tests/throughput/read-kafka-output.py
+        - boom/tests/throughput/_run.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      iterate_over:
+        - arg_name: [n_alert_workers, n_enrichment_workers, n_filter_workers]
+          values:
+            - [1, 1, 1] # _arg00
+            - [1, 2, 1] # _arg01
+            - [2, 2, 1] # _arg02
+            - [3, 4, 1] # _arg03
+            - [3, 4, 2] # _arg04
+            - [3, 10, 3] # _arg05
+            - [3, 11, 3] # _arg06
+            - [3, 12, 3] # _arg07
+            - [3, 13, 2] # _arg08
+            - [3, 19, 3] # _arg09
+            - [4, 6, 1] # _arg010
+            - [4, 7, 1] # _arg011
+            - [4, 8, 2] # _arg012
+            - [4, 8, 3] # _arg013
+            - [4, 9, 3] # _arg014
+            - [4, 10, 3] # _arg015
+            - [4, 10, 5] # _arg016
+            - [4, 11, 3] # _arg017
+            - [4, 12, 2] # _arg018
+            - [4, 12, 3] # _arg019
+            - [4, 13, 3] # _arg020
+            - [4, 13, 4] # _arg021
+            - [5, 8, 1] # _arg022
+            - [5, 8, 3] # _arg023
+            - [5, 5, 1] # _arg024
+            - [5, 6, 2] # _arg025
+            - [5, 8, 2] # _arg026
+            - [5, 11, 3] # _arg027
+            - [5, 11, 2] # _arg028
+            - [5, 10, 2] # _arg029
+            - [5, 10, 3] # _arg030
+            - [5, 14, 4] # _arg031
+            - [6, 8, 4] # _arg032
+            - [6, 10, 1] # _arg033
+            - [6, 10, 2] # _arg034
+            - [6, 10, 3] # _arg035
+            - [6, 13, 3] # _arg036
+            - [6, 16, 3] # _arg037
+            - [7, 9, 1] # _arg038
+            - [7, 9, 2] # _arg039
+            - [7, 9, 3] # _arg040
+            - [7, 11, 1] # _arg041
+            - [7, 10, 2] # _arg042
+            - [7, 15, 3] # _arg043
+            - [8, 8, 2] # _arg044
+            - [8, 9, 1] # _arg045
+            - [8, 9, 2] # _arg046
+            - [8, 13, 1] # _arg047
+            - [8, 12, 2] # _arg048
+            - [8, 12, 4] # _arg049
+            - [8, 14, 3] # _arg050
+            - [9, 8, 1] # _arg051
+            - [9, 15, 1] # _arg052
+            - [9, 14, 2] # _arg053
+            - [10, 12, 3] # _arg054
+            - [11, 12, 2] # _arg055
+            - [6, 15, 4] # _arg056
+            - [5, 15, 4] # _arg057
+            - [3, 6, 2] # _arg058
+            - [5, 13, 4] # _arg059
+            - [4, 7, 2] # _arg060
+            - [4, 14, 4] # _arg061
+            - [2, 3, 1] # _arg062
+            - [5, 16, 4] # _arg063
+            - [5, 9, 4] # _arg064
+            - [4, 15, 4] # _arg065
+            - [4, 10, 4] # _arg066
+      outputs:
+        - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
+    fix-kowalski-seed-data:
+      kind: shell-script
+      script_path: ./fix-kowalski-seed-data/run.sh
+      environment: _system
+      inputs:
+        - data/alerts/kowalski.ZTF_alerts_aux_mongo8.dump.gz
+        - fix-kowalski-seed-data/compose.yaml
+        - fix-kowalski-seed-data/mongo-init.sh
+      outputs:
+        - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+        - path: fix-kowalski-seed-data/logs
+          storage: git
+    benchmark-kowalski:
+      kind: python-script
+      script_path: scripts/benchmark-kowalski.py
+      args:
+        - --n-workers={n_workers}
+      environment: run
+      inputs:
+        - config/kowalski/config-template.yaml
+        - config/kowalski/compose.yaml
+        - config/kowalski/supervisord.conf
+        - kowalski/ingester.Dockerfile
+        - kowalski/kowalski
+        - kowalski/Makefile
+        - kowalski/requirements
+        - scripts/mongo-init.sh
+        - scripts/benchmark-kowalski.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+        - config/kowalski/cats150.kowalski.json
+        - boom-producer/Dockerfile
+        - boom-producer/src
+        - boom-producer/Cargo.toml
+        - boom-producer/Cargo.lock
+      iterate_over:
+        - arg_name: n_workers
+          values: [3, 6, 7, 9, 12, 15, 20, 25]
+      outputs:
+        - logs/kowalski-n={n_workers}
+    analyze-logs:
+      kind: jupyter-notebook
+      notebook_path: notebooks/analyze-logs.ipynb
+      environment: analyze-logs
+      html_storage: git
+      executed_ipynb_storage: git
+      cleaned_ipynb_storage: git
+      inputs:
+        - from_stage_outputs: benchmark-boom
+        - from_stage_outputs: benchmark-boom-more
+        - from_stage_outputs: benchmark-kowalski
+      outputs:
+        - path: paper/results.tex
+          storage: git
+        - path: paper/figures/scaling.pdf
+          storage: git
+        - path: results
+          storage: git
+    plot-lightcurve:
+      kind: python-script
+      script_path: scripts/plot-lightcurve.py
+      environment: analyze-logs
+      inputs:
+        - data/SN2025kwy.parquet
+      outputs:
+        - path: paper/figures/SN2025kwy.pdf
+          storage: git
+    build-paper:
+      kind: latex
+      environment: tex
+      target_path: paper/main.tex
+      force: true
+      inputs:
+        - paper/references.bib
+        - paper/aasjournal.bst
+        - paper/aastex631.cls
+        - paper/results.tex
+        - paper/diagrams
+        - paper/figures
+
+datasets:
+  - path: data/kowalski.NED.json.gz
+    title: NED archival catalog
+    description: Alerts from the NED archival catalog exported from Kowalski.
+  - path: logs
+    title: Benchmark logs
+    description: Logs from the BOOM and Kowalski benchmarks.
+  - path: results/kowalski.csv
+    title: Kowalski benchmark results
+    description: Results from the Kowalski benchmark.
+  - path: results/boom.csv
+    title: BOOM benchmark results
+    description: Results from the BOOM benchmark.
+
+figures:
+  - path: paper/figures/boom_workflow_final.pdf
+    title: BOOM workflow
+  - path: paper/figures/scaling.pdf
+    title: BOOM scaling
+    stage: analyze-logs
+    description: This figure shows the scaling of BOOM with different numbers
+      of workers.
+  - path: paper/figures/SN2025kwy.pdf
+    title: Lightcurve of SN2025kwy
+    stage: plot-lightcurve
+    description: This figure shows the lightcurve of the supernova SN2025kwy.
+  - path: paper/figures/filter_interface.png
+    title: BOOM filter interface
+    description: Screenshot of the BOOM filter interface.
+
+publications:
+  - path: paper/main.pdf
+    title: A real-time, multi-survey, optical alert system broker operating
+      at scale
+    description:
+    kind: journal-article
+    stage: build-paper
+
+notebooks:
+  - path: notebooks/analyze-logs.ipynb
+    title: Analyzing the logs
+    description: Analyze the logs from the BOOM and Kowalski benchmarks.
+
+references:
+  - path: paper/references.bib
+
+showcase:
+  - publication: paper/main.pdf
+
+releases:
+  v0.1:
+    kind: project
+    path: .
+    git_rev: 919e52021fa61b05546a36337638a8e8846220ac
+    date: "2025-10-31"
+    publisher: caltechdata
+    record_id: 640bx-nbn45
+    doi: 10.22002/640bx-nbn45
+    url: https://doi.org/10.22002/640bx-nbn45
+
+questions:
+  - Will BOOM be able to support the increased throughput from the Rubin
+    Observatory's alert stream?
+
+overleaf_sync:
+  paper:
+    url: https://www.overleaf.com/project/67eb247c542af4e06002e7e8
+    sync_paths:
+      - references.bib
+      - main.tex
+      - diagrams
+      - results.tex
+      - Orcid-ID.png
+      - aasjournal.bst
+      - figures
+      - aastex631.cls
+    push_paths:
+      - results.tex
+      - figures/scaling.pdf
+      - figures/SN2025kwy.pdf
+
 authors:
   - first_name: Theophile
     last_name: Jegou du Laz
@@ -128,239 +473,3 @@ authors:
     affiliation: >
       IPAC, California Institute of Technology, 1200 E. California
       Blvd, Pasadena, CA 91125, USA
-
-dependencies:
-  - git-lfs
-  - jq
-
-environments:
-  tex:
-    kind: docker
-    image: texlive/texlive:latest-full
-    description: TeXlive via Docker.
-  analyze-logs:
-    path: config/envs/analyze-logs.txt
-    kind: uv-venv
-    prefix: .venv
-    python: "3.13.5"
-  simulate-queues:
-    path: config/envs/simulate-queues.txt
-    kind: uv-venv
-    prefix: .venv2
-    python: "3.13.5"
-  run:
-    path: config/envs/run.txt
-    kind: uv-venv
-    prefix: .venv3
-    python: "3.13.5"
-
-pipeline:
-  stages:
-    # TODO: Add manual step stage for exporting workflow diagram
-    # TODO: Cache producer and NED loading
-    benchmark-boom:
-      kind: python-script
-      script_path: scripts/benchmark-boom.py
-      args:
-        - --n-alert-workers={n_alert_workers}
-        - --n-ml-workers={n_ml_workers}
-        - --n-filter-workers={n_filter_workers}
-      environment: run
-      inputs:
-        - boom/src
-        - boom/Cargo.lock
-        - boom/Cargo.toml
-        - scripts/benchmark-boom.sh
-        - config/boom/config-template.yaml
-        - config/boom/compose.yaml
-        - Dockerfile-boom
-        - scripts/mongo-init.sh
-        - data/kowalski.NED.json.gz
-        - config/boom/cats150.boom.json
-      iterate_over:
-        - arg_name: n_alert_workers
-          values: [1, 3, 6]
-        - arg_name: n_ml_workers
-          values: [3, 6, 9]
-        - arg_name: n_filter_workers
-          values: [1, 3]
-        # - arg_name: repetition
-        #   values:
-        #     - range:
-        #         start: 1
-        #         stop: 50
-      outputs:
-        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
-    benchmark-boom-more:
-      kind: python-script
-      script_path: scripts/benchmark-boom.py
-      args:
-        - --n-alert-workers={n_alert_workers}
-        - --n-ml-workers={n_ml_workers}
-        - --n-filter-workers={n_filter_workers}
-      environment: run
-      inputs:
-        - boom/src
-        - boom/Cargo.lock
-        - boom/Cargo.toml
-        - scripts/benchmark-boom.sh
-        - config/boom/config-template.yaml
-        - config/boom/compose.yaml
-        - Dockerfile-boom
-        - scripts/mongo-init.sh
-        - data/kowalski.NED.json.gz
-        - config/boom/cats150.boom.json
-      iterate_over:
-        - arg_name: [n_alert_workers, n_ml_workers, n_filter_workers]
-          values:
-            - [1, 1, 1]
-            - [1, 2, 1]
-            - [2, 2, 1]
-            - [3, 4, 1]
-            - [4, 6, 1]
-            - [4, 7, 1]
-            - [5, 8, 1]
-            - [5, 5, 1]
-            - [6, 10, 1]
-            - [7, 11, 1]
-            - [8, 13, 1]
-            - [9, 15, 1]
-            - [9, 14, 2]
-      outputs:
-        - logs/boom-na={n_alert_workers}-nml={n_ml_workers}-nf={n_filter_workers}
-    benchmark-kowalski:
-      kind: python-script
-      script_path: scripts/benchmark-kowalski.py
-      args:
-        - --n-workers={n_workers}
-      environment: run
-      inputs:
-        - config/kowalski/config-template.yaml
-        - config/kowalski/compose.yaml
-        - config/kowalski/supervisord.conf
-        - kowalski/ingester.Dockerfile
-        - kowalski/kowalski
-        - kowalski/Makefile
-        - kowalski/requirements
-        - scripts/mongo-init.sh
-        - scripts/benchmark-kowalski.sh
-        - data/kowalski.NED.json.gz
-        - config/kowalski/cats150.kowalski.json
-      iterate_over:
-        - arg_name: n_workers
-          values: [3, 6, 7, 9, 12, 15, 20, 25]
-      outputs:
-        - logs/kowalski-n={n_workers}
-    analyze-logs:
-      kind: jupyter-notebook
-      notebook_path: notebooks/analyze-logs.ipynb
-      environment: analyze-logs
-      html_storage: git
-      executed_ipynb_storage: git
-      cleaned_ipynb_storage: git
-      inputs:
-        - from_stage_outputs: benchmark-boom
-        - from_stage_outputs: benchmark-boom-more
-        - from_stage_outputs: benchmark-kowalski
-      outputs:
-        - path: paper/results.tex
-          storage: git
-        - path: paper/figures/scaling.pdf
-          storage: git
-        - path: results
-          storage: git
-    plot-lightcurve:
-      kind: python-script
-      script_path: scripts/plot-lightcurve.py
-      environment: analyze-logs
-      inputs:
-        - data/SN2025kwy.parquet
-      outputs:
-        - path: paper/figures/SN2025kwy.pdf
-          storage: git
-    build-paper:
-      kind: latex
-      environment: tex
-      target_path: paper/main.tex
-      force: true
-      inputs:
-        - paper/references.bib
-        - paper/aasjournal.bst
-        - paper/aastex631.cls
-        - paper/results.tex
-        - paper/diagrams
-        - paper/figures
-
-datasets:
-  - path: data/kowalski.NED.json.gz
-    title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from Kowalski.
-  - path: logs
-    title: Benchmark logs
-    description: Logs from the BOOM and Kowalski benchmarks.
-
-figures:
-  - path: paper/figures/boom_workflow_final.pdf
-    title: BOOM workflow
-  - path: paper/figures/scaling.pdf
-    title: BOOM scaling
-    stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different numbers
-      of workers.
-  - path: paper/figures/SN2025kwy.pdf
-    title: Lightcurve of SN2025kwy
-    stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova SN2025kwy.
-  - path: paper/figures/filter_interface.png
-    title: BOOM filter interface
-    description: Screenshot of the BOOM filter interface.
-
-publications:
-  - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker operating
-      at scale
-    description:
-    kind: journal-article
-    stage: build-paper
-    overleaf:
-      project_id: 67eb247c542af4e06002e7e8
-      wdir: paper
-      sync_paths:
-        - references.bib
-        - main.tex
-        - diagrams
-        - results.tex
-        - Orcid-ID.png
-        - aasjournal.bst
-        - figures
-        - aastex631.cls
-      push_paths:
-        - results.tex
-        - figures/scaling.pdf
-        - figures/SN2025kwy.pdf
-      last_sync_commit: bdc722ca4e2c32ad7f91c15a1fe4bb75590d8d48
-
-notebooks:
-  - path: notebooks/analyze-logs.ipynb
-    title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski benchmarks.
-
-references:
-  - path: paper/references.bib
-
-showcase:
-  - publication: paper/main.pdf
-
-releases:
-  v0.1:
-    kind: project
-    path: .
-    git_rev: 919e52021fa61b05546a36337638a8e8846220ac
-    date: "2025-10-31"
-    publisher: caltechdata
-    record_id: 640bx-nbn45
-    doi: 10.22002/640bx-nbn45
-    url: https://doi.org/10.22002/640bx-nbn45
-questions:
-  - Will BOOM be able to support the increased throughput from the Rubin
-    Observatory's alert stream?

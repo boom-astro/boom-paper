@@ -17,8 +17,6 @@ services:
     hostname: mongo
     expose:
       - "27017"
-    ports:
-      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mongoadminsecret
@@ -44,7 +42,8 @@ services:
       - kowalski
     volumes:
       - ${PWD}/scripts/mongo-init.sh:/mongo-init.sh
-      - ${PWD}/data/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/data/alerts/kowalski.NED.json.gz:/kowalski.NED.json.gz
+      - ${PWD}/data/alerts/kowalski.ZTF_alerts_aux.dump.gz:/kowalski.ZTF_alerts_aux.dump.gz
       - ${PWD}/config/kowalski/cats150.json:/cats150.json
     environment:
       - DB_NAME=kowalski
@@ -81,11 +80,12 @@ services:
       test: /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server broker:9092
       interval: 10s
   producer:
-    image: boom/boom-benchmarking:latest
+    image: boom/boom-producer:latest
+    pull_policy: never
     hostname: producer
     build:
-      dockerfile: ${PWD}/Dockerfile-boom
-      context: ${PWD}
+      dockerfile: ${PWD}/boom-producer/Dockerfile
+      context: ${PWD}/boom-producer
       pull: false
     command:
       - /app/kafka_producer

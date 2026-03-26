@@ -657,7 +657,7 @@ revtex4-1.cls^^J^^J}\stop
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 \noindent{\sc Draft version \today}\\[2pt]
-{\footnotesize Typeset using \LaTeX\ {\bf RNAAS} style in AASTeX631}
+% {\footnotesize Typeset using \LaTeX\ {\bf RNAAS} style in AASTeX631}
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \else
 \vbox to 0pt{\vskip-48pt\normalsize\rptloopnum=0\loop
@@ -674,8 +674,8 @@ revtex4-1.cls^^J^^J}\stop
 {\footnotesize
 \raggedright
 {\sc Draft version \today}\\[2pt]
-{\footnotesize
-Typeset using \LaTeX\ {\bf modern} style in AASTeX631}
+% {\footnotesize
+% Typeset using \LaTeX\ {\bf modern} style in AASTeX631}
 \vskip48pt
 }
 \else
@@ -684,7 +684,7 @@ Typeset using \LaTeX\ {\bf modern} style in AASTeX631}
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 \noindent{\sc Draft version \today}\\[2pt]
-{\footnotesize Typeset using \LaTeX\ {\bf preprint} style in AASTeX631}
+% {\footnotesize Typeset using \LaTeX\ {\bf preprint} style in AASTeX631}
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \else
 %%
@@ -692,8 +692,8 @@ Typeset using \LaTeX\ {\bf modern} style in AASTeX631}
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 {\footnotesize\textsc{\@journalinfo}}\par
-{\footnotesize Typeset using \LaTeX\ {\bf preprint2} style in
-AASTeX631}
+% {\footnotesize Typeset using \LaTeX\ {\bf preprint2} style in
+% AASTeX631}
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \else
 %%
@@ -701,23 +701,23 @@ AASTeX631}
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 {\footnotesize\textsc{\@journalinfo}}\par
-{\footnotesize Typeset using \LaTeX\ {\bf twocolumn} style in
-AASTeX631}
+% {\footnotesize Typeset using \LaTeX\ {\bf twocolumn} style in
+% AASTeX631}
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \else
 \ifmanu
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 \noindent\textsc{\@journalinfo}\\[-8pt]
-{\footnotesize Typeset using \LaTeX\ {\bf manuscript} style in
-AASTeX631}
+% {\footnotesize Typeset using \LaTeX\ {\bf manuscript} style in
+% AASTeX631}
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \else
 %% Default
 \vspace*{-\headsep}\vspace*{\headheight}
 \footnotesize
 {\footnotesize\textsc{\@journalinfo}}\par
-{\footnotesize Typeset using \LaTeX\ default style in AASTeX631}%% default style
+% {\footnotesize Typeset using \LaTeX\ default style in AASTeX631}%% default style
 \par\vspace*{-\baselineskip}\vspace*{0.625in}
 \fi\fi\fi\fi\fi
 %%
@@ -1492,7 +1492,7 @@ APPENDIX}\hfill\mbox{}\par
 % \journalinfo{\@submitted}
 
  \def\journalinfo#1{\gdef\@journalinfo{#1}}
- \journalinfo{Draft version \today}
+ % \journalinfo{Draft version \today}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,1 +1,4 @@
 pyyaml==6.0.2
+pandas
+astropy
+confluent-kafka

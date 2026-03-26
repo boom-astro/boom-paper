@@ -4,3 +4,9 @@
 [submodule "kowalski"]
 	path = kowalski
 	url = https://github.com/petebachant/kowalski.git
+[submodule "fix-seed-data/boom"]
+	path = fix-seed-data/boom
+	url = https://github.com/boom-astro/boom.git
+[submodule "boom-producer"]
+	path = boom-producer
+	url = https://github.com/boom-astro/boom.git

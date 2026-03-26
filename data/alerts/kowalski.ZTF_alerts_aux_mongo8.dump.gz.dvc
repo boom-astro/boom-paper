@@ -1,0 +1,5 @@
+outs:
+- md5: e8318da0fb0b5ca23f32070f03605f0b
+  size: 1470984594
+  hash: md5
+  path: kowalski.ZTF_alerts_aux_mongo8.dump.gz

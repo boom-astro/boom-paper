@@ -1,6 +1,6 @@
 /target
 Cargo.lock
-data/alerts
+data/alerts/ztf
 data/schema
 __pycache__
 /env
@@ -26,3 +26,4 @@ logs/kowalski
 
 config/*/cats150.json
 *.rej
+!fix-kowalski-seed-data/logs/*

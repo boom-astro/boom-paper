@@ -6,3 +6,4 @@ plotly
 duckdb==1.3.2
 kaleido
 pyarrow
+scikit-learn

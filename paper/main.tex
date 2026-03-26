@@ -21,7 +21,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.callouts, shadows, arrows.meta,
+\usetikzlibrary{shapes.callouts, shadows, arrows, arrows.meta,
   positioning,
   shapes.geometric,
   shapes,
@@ -72,6 +72,7 @@
 \begin{document}
 
 \title{\boom and \texttt{Babamul}: a real-time, multi-survey, optical alert broker system operating at scale}
+\journalinfo{}
 
 \author[0009-0003-6181-4526]{Theophile Jegou du Laz}
 \affil{Division of Physics, Mathematics, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
@@ -318,12 +319,12 @@ Although most popular machine learning frameworks have been designed in Python a
 
 After experimenting with the four approaches, integrating \texttt{ort} in a \texttt{Rust}-based program to run \texttt{Python}-trained models converted to \texttt{ONNX} yielded the best ``performance vs. complexity'' ratio.
 
-So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \texttt{BOOM}, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
+So far, all \kowalski models have been converted to \texttt{ONNX} and have been implemented in \boom. Furthermore, new models and architecture are being developed to tackle LSST-era challenges, such as \texttt{AppleCiDEr} \cite{junell2025applyingmultimodallearningclassify,xu2025applecideriispectranet}. Implemented and trained in PyTorch before being converted to \texttt{ONNX} and integrated with \texttt{BOOM}, \texttt{AppleCiDEr} is a multimodal machine learning based framework for early transient classification that combines four complementary data modalities: photometry, image cutouts, metadata, and---optionally---spectra. It utilizes transformer encoders for light curves, a multimodal convolutional neural network (CNN) with domain-specific towers for images and metadata, and a dedicated CNN for spectral data. Trained on real ZTF alerts, \texttt{AppleCiDEr} achieves high accuracy across diverse transient classes. Since spectral data are not available in real time, only the photometry and image–metadata models are currently integrated into \boom.
 
 While maintaining \kowalski, we identified the following:
 \begin{itemize}
     \item A multitude of identical features that most user-defined filters relied on, computed from alert metadata and lightcurves (e.g. is this a potential asteroid, a star, near a brightstar, ...). This meant that many filters were computing the same values over and over again. This appeared to be a clear waste of database compute resources and time.
-    \item A number of transient identification pipeline which relied on n \kowalski's API to periodically query for new alerts with minimal filtering, rather than the built-in user-defined filter system. These then performed more complex computation (such as determining the peak of a large lightcurve in each band, and/or evaluating the rate of evolution before and after peak) which required too much database-specific knowledge to be implemented with \mongo operators as used by the user-defined filters.
+    \item A number of transient identification pipelines which relied on \kowalski's API to periodically query for new alerts with minimal filtering, rather than the built-in user-defined filter system. These then performed more complex computation (such as determining the peak of a large lightcurve in each band, and/or evaluating the rate of evolution before and after peak) which required too much database-specific knowledge to be implemented with \mongo operators as used by the user-defined filters.
 \end{itemize}
 
 To address both of these issues, the \texttt{Enrichment} worker now computes a number of these features directly. These depend on the data products available and therefore on the survey of origin. The features currently implement are subject to change, and new ``pre-computed'' features will be added to BOOM.
@@ -463,7 +464,7 @@ This modular design accelerates the development of new filters, promotes collabo
 \subsection{Joint ZTF + DECam program}
 \label{science_validation}
 
-The DESI Transients Survey (DTS; Prop ID: 2025A-729671; PI Palmese) includes a DECam wide field survey that observes ${\sim}100$ square degrees of sky in current Dark Energy Spectroscopic Instrument (DESI) tiles as part of the larger DECam DESI Transient Survey (2DTS) \citep{palmese_desirt_2022, hall_decam_2025}. DTS observes in the $gri$ bands down to a depth of $r\approx23.5$ on a $3$ day cadence with the goal of producing high quality light curves for thousands of extragalactic transients at a $z > 0.2$ or a peak brightness of $r\approx20.5$. As part of the 2DTS experiment, ZTF has also begun observations with a daily cadence of the same fields in the sky, offering intra-night observations at an even greater cadence.
+The DESI Transients Survey (DTS; Prop ID: 2025A-729671; PI Palmese) includes a DECam wide field survey that observes ${\sim}100$ square degrees of sky in current Dark Energy Spectroscopic Instrument (DESI) tiles as part of the larger DECam DESI Transient Survey (2DTS) \citep{palmese_desirt_2022, hall_decam_2025, hall_desi_2026}. DTS observes in the $gri$ bands down to a depth of $r\approx23.5$ on a $3$ day cadence with the goal of producing high quality light curves for thousands of extragalactic transients at a $z > 0.2$ or a peak brightness of $r\approx20.5$. As part of the 2DTS experiment, ZTF has also begun observations with a daily cadence of the same fields in the sky, offering intra-night observations at an even greater cadence.
 
 DTS uses the Saccadic Fast Fourier Transform (SFFT) algorithm developed in \citet{hu_image_2022} to enable fast and accurate difference imaging to identify transient alerts, see \citet{Cabrera_2024,Hu2025} for further details on the full analysis pipeline. The transient alerts are then processed with a real-bogus convolution neural network to separate unlikely artifacts such as cosmic rays. The pipeline then performs a cross-match of the alerts with Gaia DR3 to remove known stars \citep{vallenari_gaia_2023}. Finally, a match to the Legacy Survey star-galaxy catalog \citep{liu_morphological_2025} is performed to remove any remaining stellar alerts based on archival source's morphology in Legacy Survey imaging \citep{dey_overview_2019}. The remaining transients are then packaged into Alerts and sent out in a Kafka stream. The hand-selected transients, based on a visual lightcurve inspection, are then reported to TNS. This program offers a unique prelude to the issues of matching alert streams between a relatively smaller telescope such as ZTF and larger telescope like LSST. The observational depth of DTS is $\sim$\,3\,mag deeper than ZTF, comparable to the $\sim$\,4\,mag difference LSST will have.
 
@@ -492,12 +493,12 @@ Using the \boom codebase, we are preparing a public production filtering of the 
 ``how to's'' for \texttt{Babamul},
 illustrating what workflows can be built around its \kafka topics, such as hardware-accelerated inference, cross-matches with proprietary catalogs, or connection with self-hosted marshal instances.
 
-In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. Re-running filters is already possible through \texttt{BOOM}'s HTTP API, but it is its integration as part of the filter-building process---enforcing validation before proceeding to submission and real-time operations---which requires additional development work. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results. 
+In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. Re-running filters is already possible through \texttt{BOOM}'s HTTP API, but it is its integration as part of the filter-building process---enforcing validation before proceeding to submission and real-time operations---which requires additional development work. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results.
 
 \section*{acknowledgments}
 \label{sec:acknowledgments}
 
-We acknowledge support from the National Science Foundation grant number 2432476, ``Delivering Open, Accessible and Collaborative Infrastructure Enabling Multi-Messenger Astrophysics". 
+We acknowledge support from the National Science Foundation grant number 2432476, ``Delivering Open, Accessible and Collaborative Infrastructure Enabling Multi-Messenger Astrophysics".
 
 Based on observations obtained with the Samuel Oschin Telescope 48-inch and the 60-inch Telescope at the Palomar Observatory as part of the Zwicky Transient Facility project. ZTF is supported by the National Science Foundation under Grants No. AST-1440341, AST-2034437, and currently Award AST-2407588. ZTF receives additional funding from the ZTF partnership. Current members include Caltech, USA; Caltech/IPAC, USA; University of Maryland, USA; University of California, Berkeley, USA; University of Wisconsin at Milwaukee, USA; Cornell University, USA; Drexel University, USA; University of North Carolina at Chapel Hill, USA; Institute of Science and Technology, Austria; National Central University, Taiwan, and OKC, University of Stockholm, Sweden. Operations are conducted by Caltech's Optical Observatory (COO), Caltech/IPAC, and the University of Washington at Seattle, USA.
 
