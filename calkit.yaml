@@ -37,7 +37,8 @@ pipeline:
     get-seed-data:
       kind: shell-command
       environment: _system
-      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+      command:
+        uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
         -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
         - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
@@ -329,17 +330,17 @@ releases:
     record_id: 640bx-nbn45
     doi: 10.22002/640bx-nbn45
     url: https://doi.org/10.22002/640bx-nbn45
-
   v0.2.0:
     kind: project
     path: .
-    git_rev: '6801046'
-    date: '2026-03-26'
+    git_rev: "6801046"
+    date: "2026-03-26"
     publisher: caltechdata
     record_id: 61jc2-wv732
     doi: 10.22002/61jc2-wv732
     url: https://doi.org/10.22002/61jc2-wv732
     description:
+
 questions:
   - Will BOOM be able to support the increased throughput from the Rubin
     Observatory's alert stream?
