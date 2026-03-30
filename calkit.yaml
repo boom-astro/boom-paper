@@ -37,7 +37,8 @@ pipeline:
     get-seed-data:
       kind: shell-command
       environment: _system
-      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+      command:
+        uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
         -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
         - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
@@ -343,7 +344,7 @@ releases:
     kind: project
     path: .
     git_rev: 8fac4e1
-    date: '2026-03-30'
+    date: "2026-03-30"
     publisher: caltechdata
     record_id: ta8rd-g9j72
     doi: 10.22002/ta8rd-g9j72
