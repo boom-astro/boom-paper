@@ -1,0 +1,1845 @@
+ed30deae98f4f460fade9dfbee850a84:
+  path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+  zipfile: archive.zip
+ce2d9bf3b3e540b0d1db716b2a617213:
+  path: data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+  zipfile: archive.zip
+decd3ed39729067d0990aa299c4f513d:
+  path: data/alerts/kowalski.NED.json.gz
+  zipfile: archive.zip
+40a19cd4ccad68ce6e0cc4c899c5db65:
+  path: data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+  zipfile: archive.zip
+e8318da0fb0b5ca23f32070f03605f0b:
+  path: data/alerts/kowalski.ZTF_alerts_aux_mongo8.dump.gz
+  zipfile: archive.zip
+5a9ace1af1aa6fa978e7ac0e82960c4d:
+  path: fix-seed-data/logs/dump-seed-data.log
+  zipfile: archive.zip
+08f9292154ad86de8834f693eec59640:
+  path: fix-seed-data/logs/migrate-fp-flux.log
+  zipfile: archive.zip
+00e7560a214de4f1f8c523ab06a08d77:
+  path: fix-seed-data/logs/migrate-snr.log
+  zipfile: archive.zip
+e2ca11ab02c9c9efd73cbdf7cb2768bc:
+  path: fix-seed-data/logs/mongo-init.log
+  zipfile: archive.zip
+5f6aac8b00580ab5f405951610f437b1:
+  path: logs/boom-na=1-ne=1-nf=1/consumer.log
+  zipfile: archive.zip
+1bf36cf0d42a7ce7c15e72b65396cd19:
+  path: logs/boom-na=1-ne=1-nf=1/consumer.stats.log
+  zipfile: archive.zip
+addf399ee9fccdc863c1b9218eebd9a1:
+  path: logs/boom-na=1-ne=1-nf=1/mongo-init.log
+  zipfile: archive.zip
+79dc0f81d1959fa5bc44ac21607e3b69:
+  path: logs/boom-na=1-ne=1-nf=1/producer.log
+  zipfile: archive.zip
+973fc53eff7f80c631e614bcd8f598ec:
+  path: logs/boom-na=1-ne=1-nf=1/scheduler.log
+  zipfile: archive.zip
+bf78a398b486e1b370e0a11d0ee58b88:
+  path: logs/boom-na=1-ne=1-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+b4722a0cd925bc6b037ec054ebe768b5:
+  path: logs/boom-na=1-ne=1-nf=1/wall_time.txt
+  zipfile: archive.zip
+5df5d70d3cde2051797082670c3b2ba9:
+  path: logs/boom-na=1-ne=2-nf=1/consumer.log
+  zipfile: archive.zip
+50e78c6e28ff4dc9889c2b23387a9319:
+  path: logs/boom-na=1-ne=2-nf=1/consumer.stats.log
+  zipfile: archive.zip
+14802c2ee65e9433fc1f64a4cce3c7e0:
+  path: logs/boom-na=1-ne=2-nf=1/mongo-init.log
+  zipfile: archive.zip
+3e8b21d98b19337489132c06af648e81:
+  path: logs/boom-na=1-ne=2-nf=1/producer.log
+  zipfile: archive.zip
+103fec4645ab5ff8be87f374fb94cef2:
+  path: logs/boom-na=1-ne=2-nf=1/scheduler.log
+  zipfile: archive.zip
+13ad1751d46ef78abc4d2add2426c4d2:
+  path: logs/boom-na=1-ne=2-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+8876104ac8d3e009bbddd28351269da0:
+  path: logs/boom-na=1-ne=3-nf=3/wall_time.txt
+  zipfile: archive.zip
+999cc63e0fe3a1ce6523d6fa535885b0:
+  path: logs/boom-na=1-ne=3-nf=1/consumer.log
+  zipfile: archive.zip
+a132262115e60413e073abadb8771b5c:
+  path: logs/boom-na=1-ne=3-nf=1/consumer.stats.log
+  zipfile: archive.zip
+9432bd03581472663900c220d8b56360:
+  path: logs/boom-na=1-ne=3-nf=1/mongo-init.log
+  zipfile: archive.zip
+784271e09d8297d42002955900a8e8c4:
+  path: logs/boom-na=1-ne=3-nf=1/producer.log
+  zipfile: archive.zip
+95186b76f576da6e3298df70a0e4827a:
+  path: logs/boom-na=1-ne=3-nf=1/scheduler.log
+  zipfile: archive.zip
+f36d7f926d6eb86a620c17e5861c73a9:
+  path: logs/boom-na=1-ne=3-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+131a8185c61c162eceb74b4e1915510b:
+  path: logs/boom-na=1-ne=6-nf=1/wall_time.txt
+  zipfile: archive.zip
+ee07633009ee7ef4d5c8028a97b60948:
+  path: logs/boom-na=1-ne=3-nf=3/consumer.log
+  zipfile: archive.zip
+4962d1318171a2407bdcfa3f02b0456c:
+  path: logs/boom-na=1-ne=3-nf=3/consumer.stats.log
+  zipfile: archive.zip
+cf8e11c899b36ef4b686ce489e166009:
+  path: logs/boom-na=1-ne=3-nf=3/mongo-init.log
+  zipfile: archive.zip
+bd00fab74cbf09f966282cee424c23b4:
+  path: logs/boom-na=1-ne=3-nf=3/producer.log
+  zipfile: archive.zip
+7ef01786db49cc781281df0e924c571c:
+  path: logs/boom-na=1-ne=3-nf=3/scheduler.log
+  zipfile: archive.zip
+949adb7442a1fbe49709f800347d1c04:
+  path: logs/boom-na=1-ne=3-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+0100c8cf72a5f38c6c9dc4c2c5da4302:
+  path: logs/boom-na=1-ne=6-nf=1/consumer.log
+  zipfile: archive.zip
+e1e3e4c19cd44488b4f3657897b076d9:
+  path: logs/boom-na=1-ne=6-nf=1/consumer.stats.log
+  zipfile: archive.zip
+2357d0dc5dce89bc31434ed4c6c9026e:
+  path: logs/boom-na=1-ne=6-nf=1/mongo-init.log
+  zipfile: archive.zip
+8b22043866c262074e4bbde2c53eeb81:
+  path: logs/boom-na=1-ne=6-nf=1/producer.log
+  zipfile: archive.zip
+aa8d57526ffb573193415409036adc41:
+  path: logs/boom-na=1-ne=6-nf=1/scheduler.log
+  zipfile: archive.zip
+b20cc7db5f928af3a3fb2531dd12dd52:
+  path: logs/boom-na=1-ne=6-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+be30502ecc3765169244232f695d3f70:
+  path: logs/boom-na=1-ne=6-nf=3/consumer.log
+  zipfile: archive.zip
+cb918cb94c925be47560d8dd4cc613aa:
+  path: logs/boom-na=1-ne=6-nf=3/consumer.stats.log
+  zipfile: archive.zip
+18dd22930fed86a6f74fabc790e3979c:
+  path: logs/boom-na=1-ne=6-nf=3/mongo-init.log
+  zipfile: archive.zip
+d430178995a48f23cbd1e0c245861921:
+  path: logs/boom-na=1-ne=6-nf=3/producer.log
+  zipfile: archive.zip
+87fe0c0950336b9e21092d027c1f1a61:
+  path: logs/boom-na=1-ne=6-nf=3/scheduler.log
+  zipfile: archive.zip
+dc42a2b32670b9e288c091ff8567babd:
+  path: logs/boom-na=1-ne=6-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+e5a914a5048f80a1ceb4bf5f29b42b79:
+  path: logs/boom-na=1-ne=9-nf=3/wall_time.txt
+  zipfile: archive.zip
+3d7bf42865b3476edbb05b38c254daa3:
+  path: logs/boom-na=1-ne=9-nf=1/consumer.log
+  zipfile: archive.zip
+ea45a71cf3fea788510908e18a87b8f7:
+  path: logs/boom-na=1-ne=9-nf=1/consumer.stats.log
+  zipfile: archive.zip
+12615df0cc0aadbecc795d1b7197f99a:
+  path: logs/boom-na=1-ne=9-nf=1/mongo-init.log
+  zipfile: archive.zip
+b06da843d7699a00315ed1cdc8d23b65:
+  path: logs/boom-na=1-ne=9-nf=1/producer.log
+  zipfile: archive.zip
+357a17e63f72d41b99b8cd484732f3a5:
+  path: logs/boom-na=1-ne=9-nf=1/scheduler.log
+  zipfile: archive.zip
+531d53ef0ce648351a5538833aed3513:
+  path: logs/boom-na=1-ne=9-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+36a07d00367566e7cdafc2c8e115c64c:
+  path: logs/boom-na=1-ne=9-nf=1/wall_time.txt
+  zipfile: archive.zip
+9181379974655725b36be24a1e8b0b79:
+  path: logs/boom-na=1-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+1f8c403a569d5bfb888652001a3468a6:
+  path: logs/boom-na=1-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+bdbd8ce5cabd3aaf069179e9e9e5a1e2:
+  path: logs/boom-na=1-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+6a5f031868ed6763283653621cadd052:
+  path: logs/boom-na=1-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+35f827ddd52a55466b0ea1a7c7dc28fb:
+  path: logs/boom-na=1-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+ef6f2a555daebc172dfebae59213d69c:
+  path: logs/boom-na=1-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+1fb579b67ffb2a8bf3046f51f5657819:
+  path: logs/boom-na=10-ne=12-nf=3/consumer.log
+  zipfile: archive.zip
+a6271493cc9ba3bd88cecb1963493998:
+  path: logs/boom-na=10-ne=12-nf=3/consumer.stats.log
+  zipfile: archive.zip
+b9124d9f2585357e5cb768362847b5f9:
+  path: logs/boom-na=10-ne=12-nf=3/mongo-init.log
+  zipfile: archive.zip
+825858d0377d8f586094050594fb9c59:
+  path: logs/boom-na=10-ne=12-nf=3/producer.log
+  zipfile: archive.zip
+9d60053ff041991831b6ead0002f9ce6:
+  path: logs/boom-na=10-ne=12-nf=3/scheduler.log
+  zipfile: archive.zip
+c4043a23d91ec862361a4dd79ecab792:
+  path: logs/boom-na=10-ne=12-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+f97011d80d2382d509c43091ce7f96af:
+  path: logs/boom-na=10-ne=12-nf=3/wall_time.txt
+  zipfile: archive.zip
+fb72cd28abb565ccf9959ed2d6890c37:
+  path: logs/boom-na=11-ne=12-nf=2/consumer.log
+  zipfile: archive.zip
+bc45872a172a0c6b0f7aa4a54d1739bd:
+  path: logs/boom-na=11-ne=12-nf=2/consumer.stats.log
+  zipfile: archive.zip
+f77c2fbbcc616ff19f7a8640c31e529d:
+  path: logs/boom-na=11-ne=12-nf=2/mongo-init.log
+  zipfile: archive.zip
+6cd253f3bd46a10a29abf20a85e3444d:
+  path: logs/boom-na=11-ne=12-nf=2/producer.log
+  zipfile: archive.zip
+34d9324bc5c104b558e56e815aecefd3:
+  path: logs/boom-na=11-ne=12-nf=2/scheduler.log
+  zipfile: archive.zip
+b247c2cdc8acf2d7944b8eb8b7bb4439:
+  path: logs/boom-na=11-ne=12-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+312207f2c605087e268c030c2be3c6ef:
+  path: logs/boom-na=7-ne=9-nf=3/wall_time.txt
+  zipfile: archive.zip
+5d32d01c722611e53e2ba333df42d275:
+  path: logs/boom-na=2-ne=2-nf=1/consumer.log
+  zipfile: archive.zip
+66e9ea8ba6b0d8bac81cea188987d0c4:
+  path: logs/boom-na=2-ne=2-nf=1/consumer.stats.log
+  zipfile: archive.zip
+461f22e6f2a5a944a5f997c19438e297:
+  path: logs/boom-na=2-ne=2-nf=1/mongo-init.log
+  zipfile: archive.zip
+d1815f2866874c1601368b534dce49bf:
+  path: logs/boom-na=2-ne=2-nf=1/producer.log
+  zipfile: archive.zip
+417faf6934c6f271f87884d5d53c2567:
+  path: logs/boom-na=2-ne=2-nf=1/scheduler.log
+  zipfile: archive.zip
+050e0a323841a550ff8a4da2e1a5464d:
+  path: logs/boom-na=2-ne=2-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+09b6156995266c4e841d33965d847f53:
+  path: logs/boom-na=2-ne=2-nf=1/wall_time.txt
+  zipfile: archive.zip
+64453c330f922d3043a9aeb38b1cbe9e:
+  path: logs/boom-na=2-ne=3-nf=1/consumer.log
+  zipfile: archive.zip
+5043f50fd8e4e9b97bb5bd025b12a646:
+  path: logs/boom-na=2-ne=3-nf=1/consumer.stats.log
+  zipfile: archive.zip
+509faaacb0ffc640088ba24547bd4c13:
+  path: logs/boom-na=2-ne=3-nf=1/mongo-init.log
+  zipfile: archive.zip
+8d42645e40f3fdeb3cf8739aae0e7389:
+  path: logs/boom-na=2-ne=3-nf=1/producer.log
+  zipfile: archive.zip
+c094563fe49cfd3d314e94eed706facb:
+  path: logs/boom-na=2-ne=3-nf=1/scheduler.log
+  zipfile: archive.zip
+4bfd5ca7c30615d71c60099868b6be0d:
+  path: logs/boom-na=2-ne=3-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+f7bc652d1a0b6533007f4ee8945ce19b:
+  path: logs/boom-na=6-ne=3-nf=1/wall_time.txt
+  zipfile: archive.zip
+8ef2dcc2d9147e52be6ca4aa1d233f59:
+  path: logs/boom-na=3-ne=10-nf=3/consumer.log
+  zipfile: archive.zip
+d2f762120eedd1829e812b19c0787722:
+  path: logs/boom-na=3-ne=10-nf=3/consumer.stats.log
+  zipfile: archive.zip
+7c5d5959c8c4e3f4d08948900448f88b:
+  path: logs/boom-na=3-ne=10-nf=3/mongo-init.log
+  zipfile: archive.zip
+0d1aa409f6a46588ba212bf53a2b11be:
+  path: logs/boom-na=3-ne=10-nf=3/producer.log
+  zipfile: archive.zip
+304c97bbd3733369e85cfc3f78b5fbb7:
+  path: logs/boom-na=3-ne=10-nf=3/scheduler.log
+  zipfile: archive.zip
+e26989e704d1b9e8239e8d448328cea7:
+  path: logs/boom-na=3-ne=10-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+44ce7027c0550048a836458e5490e98c:
+  path: logs/boom-na=9-ne=14-nf=2/wall_time.txt
+  zipfile: archive.zip
+2f9c8d147d8d6af0c18c3fcfcf9e85d1:
+  path: logs/boom-na=3-ne=11-nf=3/consumer.log
+  zipfile: archive.zip
+07f143cbabab523ce1adea79d5c60545:
+  path: logs/boom-na=3-ne=11-nf=3/consumer.stats.log
+  zipfile: archive.zip
+67002df9e0e90e472e20c16e49023c29:
+  path: logs/boom-na=3-ne=11-nf=3/mongo-init.log
+  zipfile: archive.zip
+caa744013e2b66e7e3e2f2010fee2d1f:
+  path: logs/boom-na=3-ne=11-nf=3/producer.log
+  zipfile: archive.zip
+2e8a1744e653f8ed1991e98b3ea7de32:
+  path: logs/boom-na=3-ne=11-nf=3/scheduler.log
+  zipfile: archive.zip
+0dd642ca12dd95166bbeee65f59700de:
+  path: logs/boom-na=3-ne=11-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+a6bc3138d7c8297397749d4423e078fb:
+  path: logs/boom-na=3-ne=12-nf=3/consumer.log
+  zipfile: archive.zip
+107c05a1f80640e86ae95e6e9fbde752:
+  path: logs/boom-na=3-ne=12-nf=3/consumer.stats.log
+  zipfile: archive.zip
+23d119396e74c34f9d9c50825433c929:
+  path: logs/boom-na=3-ne=12-nf=3/mongo-init.log
+  zipfile: archive.zip
+76695bc7d091edd6a6c3129dd228e284:
+  path: logs/boom-na=3-ne=12-nf=3/producer.log
+  zipfile: archive.zip
+ec2467f532ad5ae15c2ca5df26088b6c:
+  path: logs/boom-na=3-ne=12-nf=3/scheduler.log
+  zipfile: archive.zip
+d1d6080b38fb9fa99eb57b67cd339d38:
+  path: logs/boom-na=3-ne=12-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+c8fecfc370116de9c5efcea60648ad99:
+  path: logs/boom-na=3-ne=13-nf=2/consumer.log
+  zipfile: archive.zip
+b9e42fc15ee2e30bb8bca830f5c9464d:
+  path: logs/boom-na=3-ne=13-nf=2/consumer.stats.log
+  zipfile: archive.zip
+8b1adef9d08ac5f0e233e9e130e89c27:
+  path: logs/boom-na=3-ne=13-nf=2/mongo-init.log
+  zipfile: archive.zip
+be304c505f6d5c25527ba81eb04aed1b:
+  path: logs/boom-na=3-ne=13-nf=2/producer.log
+  zipfile: archive.zip
+d903fa0a287bcaf984fb559f0e22f10c:
+  path: logs/boom-na=3-ne=13-nf=2/scheduler.log
+  zipfile: archive.zip
+ea6b6923e33be0164ed04857c38febf7:
+  path: logs/boom-na=3-ne=13-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+428e62a4708d2b204c0bae7dba5859ed:
+  path: logs/boom-na=3-ne=19-nf=3/consumer.log
+  zipfile: archive.zip
+036ece9c8724a79cd1b410dd939cbb9b:
+  path: logs/boom-na=3-ne=19-nf=3/consumer.stats.log
+  zipfile: archive.zip
+246106c2726fa4435642629caa1eaaa1:
+  path: logs/boom-na=3-ne=19-nf=3/mongo-init.log
+  zipfile: archive.zip
+c56345c7d7cd08f64df1460cc0e80f66:
+  path: logs/boom-na=3-ne=19-nf=3/producer.log
+  zipfile: archive.zip
+c6c641884fa94ba157e274f00bc50dd2:
+  path: logs/boom-na=3-ne=19-nf=3/scheduler.log
+  zipfile: archive.zip
+692b557e85eed3cf7801ce4ce4631c7d:
+  path: logs/boom-na=3-ne=19-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+7e6f25b8659fb68a635644cffe69e3e0:
+  path: logs/boom-na=8-ne=8-nf=2/wall_time.txt
+  zipfile: archive.zip
+6b88f101763f63874e1b81e313c20fcf:
+  path: logs/boom-na=3-ne=3-nf=1/consumer.log
+  zipfile: archive.zip
+28bbb73761fab3e20e0f380a6a45f15f:
+  path: logs/boom-na=3-ne=3-nf=1/consumer.stats.log
+  zipfile: archive.zip
+49d516191c22de44f2d9fa2f0a7a5865:
+  path: logs/boom-na=3-ne=3-nf=1/mongo-init.log
+  zipfile: archive.zip
+37c175c934b6660b86bb49678ed53bb5:
+  path: logs/boom-na=3-ne=3-nf=1/producer.log
+  zipfile: archive.zip
+131282f8f625ca3688b41e5ab3c9f63f:
+  path: logs/boom-na=3-ne=3-nf=1/scheduler.log
+  zipfile: archive.zip
+a6e67102f54674e136fd2a285db06eae:
+  path: logs/boom-na=3-ne=3-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+4c2b9c03fdcf424080c575b9f93cd07c:
+  path: logs/boom-na=3-ne=3-nf=3/consumer.log
+  zipfile: archive.zip
+718167bfd6bbc6e044981a00dbd3e846:
+  path: logs/boom-na=3-ne=3-nf=3/consumer.stats.log
+  zipfile: archive.zip
+3e247eb487d53e10e4691292bce3abd3:
+  path: logs/boom-na=3-ne=3-nf=3/mongo-init.log
+  zipfile: archive.zip
+7892252be328e9ffa974872ba94d961c:
+  path: logs/boom-na=3-ne=3-nf=3/producer.log
+  zipfile: archive.zip
+8cddd9bc7f85e192b857c67dba8a0a10:
+  path: logs/boom-na=3-ne=3-nf=3/scheduler.log
+  zipfile: archive.zip
+0c776c724d50076b1eb6ea37772f7dd3:
+  path: logs/boom-na=3-ne=3-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+0278ec50dc55064ae1090496e7100a8b:
+  path: logs/boom-na=3-ne=4-nf=1/consumer.log
+  zipfile: archive.zip
+65520f5c9c57522784eb00576ffb5edb:
+  path: logs/boom-na=3-ne=4-nf=1/consumer.stats.log
+  zipfile: archive.zip
+9620d6aac320905b149f4d06d51207b0:
+  path: logs/boom-na=3-ne=4-nf=1/mongo-init.log
+  zipfile: archive.zip
+91261e3f63e68fc4720e24e990dd55bf:
+  path: logs/boom-na=3-ne=4-nf=1/producer.log
+  zipfile: archive.zip
+3e629aad96d9425eeece530133e8d3b2:
+  path: logs/boom-na=3-ne=4-nf=1/scheduler.log
+  zipfile: archive.zip
+63c3b32cba944ff14d00ea0a8b33b870:
+  path: logs/boom-na=3-ne=4-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+38e6223019d92ec98a0274ee69de4ae0:
+  path: logs/boom-na=3-ne=4-nf=1/wall_time.txt
+  zipfile: archive.zip
+94144616752ec7511326b7922f40d628:
+  path: logs/boom-na=3-ne=4-nf=2/consumer.log
+  zipfile: archive.zip
+6c140e5ec1aa8ae7da7dcc051425d87c:
+  path: logs/boom-na=3-ne=4-nf=2/consumer.stats.log
+  zipfile: archive.zip
+42da3d5e9aaa797ed84859bdf26d60af:
+  path: logs/boom-na=3-ne=4-nf=2/mongo-init.log
+  zipfile: archive.zip
+9065d6234983aa474d8dd85a182fdcd0:
+  path: logs/boom-na=3-ne=4-nf=2/producer.log
+  zipfile: archive.zip
+16cb2042415084760f0bc8fa2c75767f:
+  path: logs/boom-na=3-ne=4-nf=2/scheduler.log
+  zipfile: archive.zip
+0ec92c5f9d989ae87dbcec4ccf7b5422:
+  path: logs/boom-na=3-ne=4-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+069cc65a70233f96a4179e07afdf761c:
+  path: logs/boom-na=3-ne=4-nf=2/wall_time.txt
+  zipfile: archive.zip
+006f2a4adb1e6e52b513f20ea4bd7fbf:
+  path: logs/boom-na=3-ne=6-nf=1/consumer.log
+  zipfile: archive.zip
+2f03e58a03c06873734f62073a4b7e92:
+  path: logs/boom-na=3-ne=6-nf=1/consumer.stats.log
+  zipfile: archive.zip
+08bcc8e8d53d6232f8c70a47dd0861b4:
+  path: logs/boom-na=3-ne=6-nf=1/mongo-init.log
+  zipfile: archive.zip
+5388a1e1b97dd7b0d723754556f2d4b5:
+  path: logs/boom-na=3-ne=6-nf=1/producer.log
+  zipfile: archive.zip
+36c0e4c16391418c65e6d9002c26aeba:
+  path: logs/boom-na=3-ne=6-nf=1/scheduler.log
+  zipfile: archive.zip
+f402641fb11625d5906dd5a80438d0ab:
+  path: logs/boom-na=3-ne=6-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+bf0afb6a20e42eda170a35bace1d2bfb:
+  path: logs/boom-na=3-ne=9-nf=1/wall_time.txt
+  zipfile: archive.zip
+6a0944bcad999b1aa16fd4993b7dd153:
+  path: logs/boom-na=3-ne=6-nf=2/consumer.log
+  zipfile: archive.zip
+a6d191e9ff4199a8fa62c892cc625320:
+  path: logs/boom-na=3-ne=6-nf=2/consumer.stats.log
+  zipfile: archive.zip
+f3910be7c7ab79e16b6737de8046b85b:
+  path: logs/boom-na=3-ne=6-nf=2/mongo-init.log
+  zipfile: archive.zip
+73227270aea1ce09f154e53e69778974:
+  path: logs/boom-na=3-ne=6-nf=2/producer.log
+  zipfile: archive.zip
+5b3f11a4eaa7a061f74d0bfe2d286b05:
+  path: logs/boom-na=3-ne=6-nf=2/scheduler.log
+  zipfile: archive.zip
+08f9bd260076d46a1ce410a2fe8befea:
+  path: logs/boom-na=3-ne=6-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+2e880f0d72f28cf56b7030acaf75a40c:
+  path: logs/boom-na=5-ne=6-nf=2/wall_time.txt
+  zipfile: archive.zip
+368b67456808d1c2bf1a71f1a91c7513:
+  path: logs/boom-na=3-ne=6-nf=3/consumer.log
+  zipfile: archive.zip
+6d2a4559be254dd66a75ff2c1690cc7e:
+  path: logs/boom-na=3-ne=6-nf=3/consumer.stats.log
+  zipfile: archive.zip
+c34b636008ad5ea3dbee8caf9370d184:
+  path: logs/boom-na=3-ne=6-nf=3/mongo-init.log
+  zipfile: archive.zip
+04e6b33490c6da6e420c0ffa9aa3c383:
+  path: logs/boom-na=3-ne=6-nf=3/producer.log
+  zipfile: archive.zip
+e58022603ed835ddad8351d878718b4b:
+  path: logs/boom-na=3-ne=6-nf=3/scheduler.log
+  zipfile: archive.zip
+d0496255d8be9b4bca8acbc048693ad8:
+  path: logs/boom-na=3-ne=6-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+1326c7016f245f43fadfc09dba8d8470:
+  path: logs/boom-na=3-ne=6-nf=3/wall_time.txt
+  zipfile: archive.zip
+7cb5a8cb6dd690b84561bdf4b99e5763:
+  path: logs/boom-na=3-ne=9-nf=1/consumer.log
+  zipfile: archive.zip
+2d3e35e84b41739746ed6e85f955efbb:
+  path: logs/boom-na=3-ne=9-nf=1/consumer.stats.log
+  zipfile: archive.zip
+de31f1dfb014a6b3668658309a9dabff:
+  path: logs/boom-na=3-ne=9-nf=1/mongo-init.log
+  zipfile: archive.zip
+0cef27597b53b0611ffb824952e00308:
+  path: logs/boom-na=3-ne=9-nf=1/producer.log
+  zipfile: archive.zip
+8fc58f6a48216d1f09322dd903158a6f:
+  path: logs/boom-na=3-ne=9-nf=1/scheduler.log
+  zipfile: archive.zip
+871e6174034991187f57767d58e9aa19:
+  path: logs/boom-na=3-ne=9-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+f9d5014b6dfabd9c9572d8794970a224:
+  path: logs/boom-na=3-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+370bc83077fbe6191e2fd17d96495df9:
+  path: logs/boom-na=3-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+1e95fa29ecb9b0e1b203dd9973ffff85:
+  path: logs/boom-na=3-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+2b21b8b685ee3253ade9035e956bcf67:
+  path: logs/boom-na=3-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+399706b79b9a14f92e960f78b4869c0a:
+  path: logs/boom-na=3-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+5b2b3ec80a42c432e4efb19aa2b9fe5d:
+  path: logs/boom-na=3-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+b873bb274378f76458fd1d31df1d75b2:
+  path: logs/boom-na=4-ne=10-nf=3/consumer.log
+  zipfile: archive.zip
+0abc8201d1e892801a8f76731333dce6:
+  path: logs/boom-na=4-ne=10-nf=3/consumer.stats.log
+  zipfile: archive.zip
+d7cdb1a4650c0ed59816b7b13bed5b51:
+  path: logs/boom-na=4-ne=10-nf=3/mongo-init.log
+  zipfile: archive.zip
+3205c83dc51aa23780a34ab1a2a9024e:
+  path: logs/boom-na=4-ne=10-nf=3/producer.log
+  zipfile: archive.zip
+df4a3f0c3047ed78ebe3a664a248ee00:
+  path: logs/boom-na=4-ne=10-nf=3/scheduler.log
+  zipfile: archive.zip
+f3d04fea3d4f5e30e7195b92305ac2b1:
+  path: logs/boom-na=4-ne=10-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+eec8c26538b6ebfe022db9dbf49b13f4:
+  path: logs/boom-na=4-ne=10-nf=4/consumer.log
+  zipfile: archive.zip
+c9e2e0ebd038daf77e085de2cd5d14f8:
+  path: logs/boom-na=4-ne=10-nf=4/consumer.stats.log
+  zipfile: archive.zip
+29eb74f01bff2c838bd067d43d994656:
+  path: logs/boom-na=4-ne=10-nf=4/mongo-init.log
+  zipfile: archive.zip
+019ffadafb1d9e65feabd00fbee089e9:
+  path: logs/boom-na=4-ne=10-nf=4/producer.log
+  zipfile: archive.zip
+9343c1e5547b34bf95340b0c8b835656:
+  path: logs/boom-na=4-ne=10-nf=4/scheduler.log
+  zipfile: archive.zip
+4c593d260a0bf76188f87616905d1745:
+  path: logs/boom-na=4-ne=10-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+d948c82f424cb160ab2568312a739d13:
+  path: logs/boom-na=4-ne=10-nf=5/consumer.log
+  zipfile: archive.zip
+825c4d2dcbb8e6b3bcfe9527c1fdd266:
+  path: logs/boom-na=4-ne=10-nf=5/consumer.stats.log
+  zipfile: archive.zip
+0152ca257f9f9d9ab561dee83831ec59:
+  path: logs/boom-na=4-ne=10-nf=5/mongo-init.log
+  zipfile: archive.zip
+09fe69df21758d8778cf51c3b706c0e2:
+  path: logs/boom-na=4-ne=10-nf=5/producer.log
+  zipfile: archive.zip
+002b9a932cea238d0ee8f2e3ee04eb46:
+  path: logs/boom-na=4-ne=10-nf=5/scheduler.log
+  zipfile: archive.zip
+818b73b100b546cf3478e095a632dad8:
+  path: logs/boom-na=4-ne=10-nf=5/scheduler.stats.log
+  zipfile: archive.zip
+a85cacc63b6b2cb2ab74a8542218cb10:
+  path: logs/boom-na=4-ne=11-nf=3/consumer.log
+  zipfile: archive.zip
+5c0d8b2d0d5f5205ab4f70484730061a:
+  path: logs/boom-na=4-ne=11-nf=3/consumer.stats.log
+  zipfile: archive.zip
+96811d1a515d7ca155e6bebc08a5a6b7:
+  path: logs/boom-na=4-ne=11-nf=3/mongo-init.log
+  zipfile: archive.zip
+609b2d12abbab3d272320a99166d0a61:
+  path: logs/boom-na=4-ne=11-nf=3/producer.log
+  zipfile: archive.zip
+7fb82e9c08b5b277ff964594be3331e5:
+  path: logs/boom-na=4-ne=11-nf=3/scheduler.log
+  zipfile: archive.zip
+555cf812ff8d7b643217de3846b59e78:
+  path: logs/boom-na=4-ne=11-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+ac8a75affd8bf2791aa4fab9a675cf0d:
+  path: logs/boom-na=4-ne=12-nf=2/consumer.log
+  zipfile: archive.zip
+347ca5abe723393b9e42f9a22363caa4:
+  path: logs/boom-na=4-ne=12-nf=2/consumer.stats.log
+  zipfile: archive.zip
+8445020d9ebb72b20323e7c64d1a5e13:
+  path: logs/boom-na=4-ne=12-nf=2/mongo-init.log
+  zipfile: archive.zip
+dcc6c9ed68779378b893b8b6f6be0f18:
+  path: logs/boom-na=4-ne=12-nf=2/producer.log
+  zipfile: archive.zip
+291663a3dfff4b75377d105dc9fe9038:
+  path: logs/boom-na=4-ne=12-nf=2/scheduler.log
+  zipfile: archive.zip
+dbca8cedbd8ea265903bac34fe4f797b:
+  path: logs/boom-na=4-ne=12-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+3df37771a98a444090942bbdfb8fef3d:
+  path: logs/boom-na=4-ne=12-nf=3/consumer.log
+  zipfile: archive.zip
+a65d4cbe1f5eb6d4ee310b29791b720e:
+  path: logs/boom-na=4-ne=12-nf=3/consumer.stats.log
+  zipfile: archive.zip
+73b8ec6612c40e2846cc5b6726dfb22f:
+  path: logs/boom-na=4-ne=12-nf=3/mongo-init.log
+  zipfile: archive.zip
+12297d510b4b62e7eec485ed681e9de4:
+  path: logs/boom-na=4-ne=12-nf=3/producer.log
+  zipfile: archive.zip
+cf3719fff0da4c4be5958fd2e3181982:
+  path: logs/boom-na=4-ne=12-nf=3/scheduler.log
+  zipfile: archive.zip
+088ba82f72d78805aa196e5c250aea5e:
+  path: logs/boom-na=4-ne=12-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+47df258fe12c9e09ed2a44aad789ff68:
+  path: logs/boom-na=4-ne=12-nf=3/wall_time.txt
+  zipfile: archive.zip
+21542fd2a44ca29b73f3ec35d67a2410:
+  path: logs/boom-na=4-ne=13-nf=3/consumer.log
+  zipfile: archive.zip
+6bf169c69cf131fd62300e6c09f0065e:
+  path: logs/boom-na=4-ne=13-nf=3/consumer.stats.log
+  zipfile: archive.zip
+60e9dfb6258393cbac907489d21dcd7c:
+  path: logs/boom-na=4-ne=13-nf=3/mongo-init.log
+  zipfile: archive.zip
+695a28152efac932bb38793ef542428b:
+  path: logs/boom-na=4-ne=13-nf=3/producer.log
+  zipfile: archive.zip
+683217c3c982e1ee34758a44dd209eb7:
+  path: logs/boom-na=4-ne=13-nf=3/scheduler.log
+  zipfile: archive.zip
+f0d8284cb295b4aedc13a95e8f34fa94:
+  path: logs/boom-na=4-ne=13-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+38a47c1b5edd60775205f8d4da31105e:
+  path: logs/boom-na=4-ne=13-nf=3/wall_time.txt
+  zipfile: archive.zip
+dae00b366803ad5f7b00085b1d4f76f2:
+  path: logs/boom-na=4-ne=13-nf=4/consumer.log
+  zipfile: archive.zip
+002c06a953595c8e316bba8fb735a5cb:
+  path: logs/boom-na=4-ne=13-nf=4/consumer.stats.log
+  zipfile: archive.zip
+9508a66a89f3143b09f3e592bac9779e:
+  path: logs/boom-na=4-ne=13-nf=4/mongo-init.log
+  zipfile: archive.zip
+15af913399672361d1ca7f24faaa4065:
+  path: logs/boom-na=4-ne=13-nf=4/producer.log
+  zipfile: archive.zip
+c90ca80a75bb4dfb40a57d3c6b184c1d:
+  path: logs/boom-na=4-ne=13-nf=4/scheduler.log
+  zipfile: archive.zip
+66854256300d2c9af97f35f1ad40c757:
+  path: logs/boom-na=4-ne=13-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+97f065bb693291139a0914e660943245:
+  path: logs/boom-na=4-ne=13-nf=4/wall_time.txt
+  zipfile: archive.zip
+15e7b3f9f98f8af2c8fc660e6359fa33:
+  path: logs/boom-na=4-ne=14-nf=4/consumer.log
+  zipfile: archive.zip
+a2a9ccd3424288401d5e52a4fbd9cf1c:
+  path: logs/boom-na=4-ne=14-nf=4/consumer.stats.log
+  zipfile: archive.zip
+04663b966447518b0f8ee55bbed575cb:
+  path: logs/boom-na=4-ne=14-nf=4/mongo-init.log
+  zipfile: archive.zip
+9e4a0f8abf6cd50c53aa3d819a1f18ac:
+  path: logs/boom-na=4-ne=14-nf=4/producer.log
+  zipfile: archive.zip
+59fabca8aaa63b44f4ba1842d4125d26:
+  path: logs/boom-na=4-ne=14-nf=4/scheduler.log
+  zipfile: archive.zip
+e8083d1b7c6b305ff4f792362a03ca0e:
+  path: logs/boom-na=4-ne=14-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+bde084480019cea2c435414be2b3b80e:
+  path: logs/boom-na=4-ne=14-nf=4/wall_time.txt
+  zipfile: archive.zip
+8edd5a501c9d03ffeb670e9d7e1aceba:
+  path: logs/boom-na=4-ne=15-nf=4/consumer.log
+  zipfile: archive.zip
+cda55b00ece68d3fb75482d0ab728d36:
+  path: logs/boom-na=4-ne=15-nf=4/consumer.stats.log
+  zipfile: archive.zip
+3362db355f266766373d33e67009ec1a:
+  path: logs/boom-na=4-ne=15-nf=4/mongo-init.log
+  zipfile: archive.zip
+ee687636b2a429c10b44354c618ab7ca:
+  path: logs/boom-na=4-ne=15-nf=4/producer.log
+  zipfile: archive.zip
+13009769995273a57a401bc3feef9166:
+  path: logs/boom-na=4-ne=15-nf=4/scheduler.log
+  zipfile: archive.zip
+9a3314fbd5587114b8f52f85f1427a37:
+  path: logs/boom-na=4-ne=15-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+2e04f667e334b2bb4c6ea8000e800805:
+  path: logs/boom-na=4-ne=15-nf=4/wall_time.txt
+  zipfile: archive.zip
+e11af5694191f275f76765bdc59b0e92:
+  path: logs/boom-na=4-ne=6-nf=1/consumer.log
+  zipfile: archive.zip
+85e02324607ca662f4e23c9817fa92fd:
+  path: logs/boom-na=4-ne=6-nf=1/consumer.stats.log
+  zipfile: archive.zip
+d2ca172e927bd8d5ccc0851083c6954b:
+  path: logs/boom-na=4-ne=6-nf=1/mongo-init.log
+  zipfile: archive.zip
+9ee645730ebbbf929cf28f309aa97f18:
+  path: logs/boom-na=4-ne=6-nf=1/producer.log
+  zipfile: archive.zip
+31ab8e6c0947f16da7f78fa972a7d099:
+  path: logs/boom-na=4-ne=6-nf=1/scheduler.log
+  zipfile: archive.zip
+a80219591538731f6d927c7a7e2f3e51:
+  path: logs/boom-na=4-ne=6-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+e4c5790fbaa2a1154c975b89734df8e7:
+  path: logs/boom-na=4-ne=6-nf=1/wall_time.txt
+  zipfile: archive.zip
+e15b637057bbbb04e8456864dad0438a:
+  path: logs/boom-na=4-ne=7-nf=1/consumer.log
+  zipfile: archive.zip
+3a55b52fba4704b9bfe7ecbd0a5fefcf:
+  path: logs/boom-na=4-ne=7-nf=1/consumer.stats.log
+  zipfile: archive.zip
+1e01f6ed4f189b2346a48528ce0a2fa8:
+  path: logs/boom-na=4-ne=7-nf=1/mongo-init.log
+  zipfile: archive.zip
+4bde240aa91fc9dfab61a64c1b654393:
+  path: logs/boom-na=4-ne=7-nf=1/producer.log
+  zipfile: archive.zip
+0851bc9b20008b52ee5102fb76cf525d:
+  path: logs/boom-na=4-ne=7-nf=1/scheduler.log
+  zipfile: archive.zip
+ea79ed0100e22c6d3787734c6012ccfa:
+  path: logs/boom-na=4-ne=7-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+19c70283c33f2fb73da104fb181cae7c:
+  path: logs/boom-na=4-ne=7-nf=1/wall_time.txt
+  zipfile: archive.zip
+eb484c7d149e6a3aec0329660614807b:
+  path: logs/boom-na=4-ne=7-nf=2/consumer.log
+  zipfile: archive.zip
+f955963cc333a71454cb6060f703416e:
+  path: logs/boom-na=4-ne=7-nf=2/consumer.stats.log
+  zipfile: archive.zip
+aca6f7fdc37b3e95e520cbb26ae8d80a:
+  path: logs/boom-na=4-ne=7-nf=2/mongo-init.log
+  zipfile: archive.zip
+bf66588816d791fc95663858da22cd82:
+  path: logs/boom-na=4-ne=7-nf=2/producer.log
+  zipfile: archive.zip
+39b4bd5705c8560fd802fbd3bfdf840a:
+  path: logs/boom-na=4-ne=7-nf=2/scheduler.log
+  zipfile: archive.zip
+c732d70f541eac16d1abbd496547fabe:
+  path: logs/boom-na=4-ne=7-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+6f9453b264e2a110e2a5a614cfe8e6c2:
+  path: logs/boom-na=4-ne=7-nf=2/wall_time.txt
+  zipfile: archive.zip
+5ac6bde43554cd24998fbc159b630bcb:
+  path: logs/boom-na=4-ne=8-nf=2/consumer.log
+  zipfile: archive.zip
+bab9ffd3134a20ed1cd952a470ba37ec:
+  path: logs/boom-na=4-ne=8-nf=2/consumer.stats.log
+  zipfile: archive.zip
+990ced95412b44d577240c7a2974bc3a:
+  path: logs/boom-na=4-ne=8-nf=2/mongo-init.log
+  zipfile: archive.zip
+aea53fd5040dc3901df5b75c1ea87217:
+  path: logs/boom-na=4-ne=8-nf=2/producer.log
+  zipfile: archive.zip
+9c416f466880594d88327f1c52c6e19d:
+  path: logs/boom-na=4-ne=8-nf=2/scheduler.log
+  zipfile: archive.zip
+492dbee5afae03888d578814ad3c1b11:
+  path: logs/boom-na=4-ne=8-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+acabe02659fbd7481f75cb990e60e0ed:
+  path: logs/boom-na=4-ne=8-nf=2/wall_time.txt
+  zipfile: archive.zip
+21a9217d24b3c6ee6352b8e6ff67734e:
+  path: logs/boom-na=4-ne=8-nf=3/consumer.log
+  zipfile: archive.zip
+2c8f3ddf2137009529ae96cccb171a0c:
+  path: logs/boom-na=4-ne=8-nf=3/consumer.stats.log
+  zipfile: archive.zip
+2936afa08934a7ff034a32198fff7d17:
+  path: logs/boom-na=4-ne=8-nf=3/mongo-init.log
+  zipfile: archive.zip
+0b731709e8baa7df7486e1bd20e8ed5b:
+  path: logs/boom-na=4-ne=8-nf=3/producer.log
+  zipfile: archive.zip
+c42226d8f1fe74b32bda721b818f6dee:
+  path: logs/boom-na=4-ne=8-nf=3/scheduler.log
+  zipfile: archive.zip
+17a9a6643a77b5d6c06df6bb673e8aad:
+  path: logs/boom-na=4-ne=8-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+2f02b5507b6c17b8e83089ef8313a25c:
+  path: logs/boom-na=4-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+005d86e7e6bb173229e6b3cc9a078969:
+  path: logs/boom-na=4-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+a7f9cf3584b3074afba6722db2a6361f:
+  path: logs/boom-na=4-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+73aba393f274a6ce2b63a816212786cb:
+  path: logs/boom-na=4-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+4659af8f532b7dc16d5293cdf5d68141:
+  path: logs/boom-na=4-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+f087a259a36a5093042df23d0bfb7963:
+  path: logs/boom-na=4-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+151138cac8ecf2158a18cd5ac771ae6c:
+  path: logs/boom-na=5-ne=10-nf=2/consumer.log
+  zipfile: archive.zip
+59c9c1c8c810d3ff996299783263961c:
+  path: logs/boom-na=5-ne=10-nf=2/consumer.stats.log
+  zipfile: archive.zip
+4a6a2b71fe272cfd2f09c9b0b5186621:
+  path: logs/boom-na=5-ne=10-nf=2/mongo-init.log
+  zipfile: archive.zip
+bbc344a65b562d309a3eb74e93017b4e:
+  path: logs/boom-na=5-ne=10-nf=2/producer.log
+  zipfile: archive.zip
+c4155b29d95b95f5060cee6f147602f0:
+  path: logs/boom-na=5-ne=10-nf=2/scheduler.log
+  zipfile: archive.zip
+c060e354b1491cc254acb9a908bbf63c:
+  path: logs/boom-na=5-ne=10-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+39fe2b7f8d40c651054702ce87623439:
+  path: logs/boom-na=5-ne=10-nf=3/consumer.log
+  zipfile: archive.zip
+3a49a792a8e859abfe4a4f2c08bc6435:
+  path: logs/boom-na=5-ne=10-nf=3/consumer.stats.log
+  zipfile: archive.zip
+9715182c7c5fb3b437ebdbef75d6c988:
+  path: logs/boom-na=5-ne=10-nf=3/mongo-init.log
+  zipfile: archive.zip
+f3506b0d05c859db302e15a84ed24d8d:
+  path: logs/boom-na=5-ne=10-nf=3/producer.log
+  zipfile: archive.zip
+0a5bd4ff0ba5236a6916a07b16f38ab7:
+  path: logs/boom-na=5-ne=10-nf=3/scheduler.log
+  zipfile: archive.zip
+7f0f83c1ac79dff86ae24589ced31763:
+  path: logs/boom-na=5-ne=10-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+74b5fa20ffde4fafc18e9ee964a20a83:
+  path: logs/boom-na=5-ne=11-nf=2/consumer.log
+  zipfile: archive.zip
+74a9adbfe632fd0c040f653b246aa849:
+  path: logs/boom-na=5-ne=11-nf=2/consumer.stats.log
+  zipfile: archive.zip
+f86e23ca22e9c3d72340470ee428db91:
+  path: logs/boom-na=5-ne=11-nf=2/mongo-init.log
+  zipfile: archive.zip
+633d705cd7dff629fa2df2795be8c3a5:
+  path: logs/boom-na=5-ne=11-nf=2/producer.log
+  zipfile: archive.zip
+e2780abbd3d086cec6effa791e6d01f0:
+  path: logs/boom-na=5-ne=11-nf=2/scheduler.log
+  zipfile: archive.zip
+3e2430876d10af157fa32ebbac5f3955:
+  path: logs/boom-na=5-ne=11-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+c25014dbf7231c3daa64d1f495d8bc9d:
+  path: logs/boom-na=5-ne=11-nf=3/consumer.log
+  zipfile: archive.zip
+d527ae51947f20050a48460ecbe75d1c:
+  path: logs/boom-na=5-ne=11-nf=3/consumer.stats.log
+  zipfile: archive.zip
+2b5a48ff6812ac821692bb59fb20c049:
+  path: logs/boom-na=5-ne=11-nf=3/mongo-init.log
+  zipfile: archive.zip
+09422b92bdf0121fb262349ada20bef9:
+  path: logs/boom-na=5-ne=11-nf=3/producer.log
+  zipfile: archive.zip
+4d74e35180d5bcf54ad07e63c822fa88:
+  path: logs/boom-na=5-ne=11-nf=3/scheduler.log
+  zipfile: archive.zip
+acd8599736f9edb5bf221ff2b9508b1c:
+  path: logs/boom-na=5-ne=11-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+84b636837a3a6955ef725d13456aaa8f:
+  path: logs/boom-na=5-ne=13-nf=4/consumer.log
+  zipfile: archive.zip
+9784fdc883d7b55389824a68e6479d8c:
+  path: logs/boom-na=5-ne=13-nf=4/consumer.stats.log
+  zipfile: archive.zip
+ef2e4b978a729382e5de722e897a3686:
+  path: logs/boom-na=5-ne=13-nf=4/mongo-init.log
+  zipfile: archive.zip
+6c990de618f07f0e66547066ac76c634:
+  path: logs/boom-na=5-ne=13-nf=4/producer.log
+  zipfile: archive.zip
+e9d3b024166eaa29bd764bde67c4c547:
+  path: logs/boom-na=5-ne=13-nf=4/scheduler.log
+  zipfile: archive.zip
+a366bb8ab2342fea2f261ab812c4a734:
+  path: logs/boom-na=5-ne=13-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+5e8aa2c4e7b652d2e1a3c860dc7f8763:
+  path: logs/boom-na=5-ne=13-nf=4/wall_time.txt
+  zipfile: archive.zip
+13f6e439d5cac52511c965c3fcff83ff:
+  path: logs/boom-na=5-ne=14-nf=4/consumer.log
+  zipfile: archive.zip
+48f32a150057d6a217f178fc748ec0b6:
+  path: logs/boom-na=5-ne=14-nf=4/consumer.stats.log
+  zipfile: archive.zip
+72e1163941177d18437eb99e89c74097:
+  path: logs/boom-na=5-ne=14-nf=4/mongo-init.log
+  zipfile: archive.zip
+325f1990741602713a9e61d3013cf0a8:
+  path: logs/boom-na=5-ne=14-nf=4/producer.log
+  zipfile: archive.zip
+d6fb6a4d57ffdeee15cef46a3c385a5d:
+  path: logs/boom-na=5-ne=14-nf=4/scheduler.log
+  zipfile: archive.zip
+2f4504e4ed946bc53aa1eea8d6f52a44:
+  path: logs/boom-na=5-ne=14-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+4b80d6b94b4ac6cd625eb4df003f1830:
+  path: logs/boom-na=5-ne=14-nf=4/wall_time.txt
+  zipfile: archive.zip
+8957dc02f91e14557823e81081905a6f:
+  path: logs/boom-na=5-ne=15-nf=4/consumer.log
+  zipfile: archive.zip
+9f3dbd94b51f49aff4bbc224be271a63:
+  path: logs/boom-na=5-ne=15-nf=4/consumer.stats.log
+  zipfile: archive.zip
+baa0d4eb823f19781bca0dfaa5dbe4cb:
+  path: logs/boom-na=5-ne=15-nf=4/mongo-init.log
+  zipfile: archive.zip
+66e358ded45f2754bca10137081dbb41:
+  path: logs/boom-na=5-ne=15-nf=4/producer.log
+  zipfile: archive.zip
+f5cd72de71e5fab8a478cdeec377fe35:
+  path: logs/boom-na=5-ne=15-nf=4/scheduler.log
+  zipfile: archive.zip
+996607c3bbb3b2a05d1c21a07b4cd679:
+  path: logs/boom-na=5-ne=15-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+4f2f609bd9ee28180886a4f8e8935127:
+  path: logs/boom-na=5-ne=15-nf=4/wall_time.txt
+  zipfile: archive.zip
+26b00a6bb29b7638a34229441d60a878:
+  path: logs/boom-na=5-ne=16-nf=4/consumer.log
+  zipfile: archive.zip
+9b3cc71527012ca271ab3b83931b439c:
+  path: logs/boom-na=5-ne=16-nf=4/consumer.stats.log
+  zipfile: archive.zip
+9347f1f0f6f02bdbaa7b62d5e851512c:
+  path: logs/boom-na=5-ne=16-nf=4/mongo-init.log
+  zipfile: archive.zip
+2e5eceaf8a2a1e5b0fcb10372d285343:
+  path: logs/boom-na=5-ne=16-nf=4/producer.log
+  zipfile: archive.zip
+3eccdbecb9d677ec2bfbdd596a175b1b:
+  path: logs/boom-na=5-ne=16-nf=4/scheduler.log
+  zipfile: archive.zip
+56ac2ac3a6a3108caaf8b4c2ed1a8c01:
+  path: logs/boom-na=5-ne=16-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+40a892263277966eb896cf2becd15779:
+  path: logs/boom-na=5-ne=16-nf=4/wall_time.txt
+  zipfile: archive.zip
+7a2c560ee1b75dd631915049543f6d42:
+  path: logs/boom-na=5-ne=5-nf=1/consumer.log
+  zipfile: archive.zip
+83f23e8031027d8492fae10772657cb2:
+  path: logs/boom-na=5-ne=5-nf=1/consumer.stats.log
+  zipfile: archive.zip
+613ac080da63cfaad56855848eca68ba:
+  path: logs/boom-na=5-ne=5-nf=1/mongo-init.log
+  zipfile: archive.zip
+bb1d90b86a829452effc12dfaac29a74:
+  path: logs/boom-na=5-ne=5-nf=1/producer.log
+  zipfile: archive.zip
+7f043cd303436c7e618823532a6d539c:
+  path: logs/boom-na=5-ne=5-nf=1/scheduler.log
+  zipfile: archive.zip
+e84c5a3ab6d9164921fbef7d53239e2e:
+  path: logs/boom-na=5-ne=5-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+d95889936389c34d511abb81ebf9b6e2:
+  path: logs/boom-na=5-ne=5-nf=1/wall_time.txt
+  zipfile: archive.zip
+557a44be635a609f0c983ac2ec451603:
+  path: logs/boom-na=5-ne=6-nf=2/consumer.log
+  zipfile: archive.zip
+9acb844751fba03371e9316aab49d157:
+  path: logs/boom-na=5-ne=6-nf=2/consumer.stats.log
+  zipfile: archive.zip
+e368abe3b278fe7aaa0ef20c686d5e2b:
+  path: logs/boom-na=5-ne=6-nf=2/mongo-init.log
+  zipfile: archive.zip
+9217169defbc9f160acfdd9850a5a06b:
+  path: logs/boom-na=5-ne=6-nf=2/producer.log
+  zipfile: archive.zip
+a3f5a881b275705fa41ef30987227dad:
+  path: logs/boom-na=5-ne=6-nf=2/scheduler.log
+  zipfile: archive.zip
+7379a6be0b17bea8b1b33a562a7b9c98:
+  path: logs/boom-na=5-ne=6-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+e67bb7bb26f04ad484985152647be5a6:
+  path: logs/boom-na=5-ne=8-nf=1/consumer.log
+  zipfile: archive.zip
+ac05b89c938e5aa28d97c7697bd2db3f:
+  path: logs/boom-na=5-ne=8-nf=1/consumer.stats.log
+  zipfile: archive.zip
+33bb93248591809a6a7bf5fd60e50a12:
+  path: logs/boom-na=5-ne=8-nf=1/mongo-init.log
+  zipfile: archive.zip
+9ec3be6fc491d26e3eea551812d1e3a2:
+  path: logs/boom-na=5-ne=8-nf=1/producer.log
+  zipfile: archive.zip
+0bf83ce4c4c90f65423f00cac986b081:
+  path: logs/boom-na=5-ne=8-nf=1/scheduler.log
+  zipfile: archive.zip
+90a32e6f4b70a2f55259334c8b8c5e4e:
+  path: logs/boom-na=5-ne=8-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+596868773dd8c788fba89dc465d457c3:
+  path: logs/boom-na=5-ne=8-nf=1/wall_time.txt
+  zipfile: archive.zip
+2a8763cc819f6170acd32179b823f0dc:
+  path: logs/boom-na=5-ne=8-nf=2/consumer.log
+  zipfile: archive.zip
+8c2787611e7bf80c8c7da46190798847:
+  path: logs/boom-na=5-ne=8-nf=2/consumer.stats.log
+  zipfile: archive.zip
+2534e15073174140ef48fe0cf4976815:
+  path: logs/boom-na=5-ne=8-nf=2/mongo-init.log
+  zipfile: archive.zip
+f914455472e1bfe61b36b66631060417:
+  path: logs/boom-na=5-ne=8-nf=2/producer.log
+  zipfile: archive.zip
+2a04fd54bb230941ccf59fc6c3822b94:
+  path: logs/boom-na=5-ne=8-nf=2/scheduler.log
+  zipfile: archive.zip
+2e9b2a4431422b9254839aba1af1eeed:
+  path: logs/boom-na=5-ne=8-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+e037067ce54290e440b2d939e1a60e96:
+  path: logs/boom-na=5-ne=8-nf=3/consumer.log
+  zipfile: archive.zip
+520b509e1d1027d980823f94c9d6c0fc:
+  path: logs/boom-na=5-ne=8-nf=3/consumer.stats.log
+  zipfile: archive.zip
+55318f23a4ed9e12c4d98f0a8ef55acf:
+  path: logs/boom-na=5-ne=8-nf=3/mongo-init.log
+  zipfile: archive.zip
+153486e618cdc8278c2950a7cc315279:
+  path: logs/boom-na=5-ne=8-nf=3/producer.log
+  zipfile: archive.zip
+971fe336b12c73eb6e4e4343d9ad7c3a:
+  path: logs/boom-na=5-ne=8-nf=3/scheduler.log
+  zipfile: archive.zip
+59590e1e25e91a1a64677e462a80654d:
+  path: logs/boom-na=5-ne=8-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+83726b17e1633736b0a0107f6d3754ec:
+  path: logs/boom-na=5-ne=9-nf=4/consumer.log
+  zipfile: archive.zip
+28ca64bd8dd6251c7d64565d61cf95cf:
+  path: logs/boom-na=5-ne=9-nf=4/consumer.stats.log
+  zipfile: archive.zip
+120921c50cd5d981a4bab1939cdfed71:
+  path: logs/boom-na=5-ne=9-nf=4/mongo-init.log
+  zipfile: archive.zip
+56bb4c9d0fb8da16674869d339e17d12:
+  path: logs/boom-na=5-ne=9-nf=4/producer.log
+  zipfile: archive.zip
+5a9b76377602989284bd8abed23464c9:
+  path: logs/boom-na=5-ne=9-nf=4/scheduler.log
+  zipfile: archive.zip
+30fdb0687252c9429aff6d52635195e7:
+  path: logs/boom-na=5-ne=9-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+e39687a43594f9ded30d67bc0033a51c:
+  path: logs/boom-na=6-ne=10-nf=1/consumer.log
+  zipfile: archive.zip
+b6f12ec12448ef032689ca549014ca67:
+  path: logs/boom-na=6-ne=10-nf=1/consumer.stats.log
+  zipfile: archive.zip
+4dd8ad9d8a9f8a9292da2bd07e77742d:
+  path: logs/boom-na=6-ne=10-nf=1/mongo-init.log
+  zipfile: archive.zip
+5a4514342bfb9b84c86853f58f764bca:
+  path: logs/boom-na=6-ne=10-nf=1/producer.log
+  zipfile: archive.zip
+bdafed4e11c86cfcd4f5fd4d10cedf78:
+  path: logs/boom-na=6-ne=10-nf=1/scheduler.log
+  zipfile: archive.zip
+1e7b5cde3f232b3f1d9d178fdffad7b1:
+  path: logs/boom-na=6-ne=10-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+55ec23c791730072189a0e999a9134dc:
+  path: logs/boom-na=6-ne=10-nf=1/wall_time.txt
+  zipfile: archive.zip
+4969055fa577ab62a621dc30726f8ef5:
+  path: logs/boom-na=6-ne=10-nf=2/consumer.log
+  zipfile: archive.zip
+edcdd8c251cfeaff9f0e3a4da2401da2:
+  path: logs/boom-na=6-ne=10-nf=2/consumer.stats.log
+  zipfile: archive.zip
+79874213fb881b8ab6940f0239dae9f2:
+  path: logs/boom-na=6-ne=10-nf=2/mongo-init.log
+  zipfile: archive.zip
+541b534d9628da610ace365d4138ba63:
+  path: logs/boom-na=6-ne=10-nf=2/producer.log
+  zipfile: archive.zip
+318e0a4dcce6062f015a006a5d3745ff:
+  path: logs/boom-na=6-ne=10-nf=2/scheduler.log
+  zipfile: archive.zip
+49d8994105fd15026f6130b7974a187c:
+  path: logs/boom-na=6-ne=10-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+1298d9d41fc5ad328e704b216af45629:
+  path: logs/boom-na=6-ne=10-nf=3/consumer.log
+  zipfile: archive.zip
+8a31de50ce5c535e113e16c43b58aebb:
+  path: logs/boom-na=6-ne=10-nf=3/consumer.stats.log
+  zipfile: archive.zip
+876e4c2a4891afe98dc8480fd7141293:
+  path: logs/boom-na=6-ne=10-nf=3/mongo-init.log
+  zipfile: archive.zip
+9b62f8485817a6b5ce866d4bdc67bd4f:
+  path: logs/boom-na=6-ne=10-nf=3/producer.log
+  zipfile: archive.zip
+4a4914c4827d85cc1dd36fdcba4d7b06:
+  path: logs/boom-na=6-ne=10-nf=3/scheduler.log
+  zipfile: archive.zip
+9bc21e9f07976b06eda524ba9a27b6ff:
+  path: logs/boom-na=6-ne=10-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+3638048a8f53870b1a1b1b5b59a7e968:
+  path: logs/boom-na=6-ne=13-nf=3/consumer.log
+  zipfile: archive.zip
+05095eb86ac347783b552b68c9172529:
+  path: logs/boom-na=6-ne=13-nf=3/consumer.stats.log
+  zipfile: archive.zip
+24f36c3fa985ece468ee9acb9a13c854:
+  path: logs/boom-na=6-ne=13-nf=3/mongo-init.log
+  zipfile: archive.zip
+0aa727169970d1768110d5600ebd16b8:
+  path: logs/boom-na=6-ne=13-nf=3/producer.log
+  zipfile: archive.zip
+0c17c459010a2e62f1ced0e25a9c05a7:
+  path: logs/boom-na=6-ne=13-nf=3/scheduler.log
+  zipfile: archive.zip
+1f831ee5e62135f1091bf1b92661eb5c:
+  path: logs/boom-na=6-ne=13-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+b9819c76fc970ccc0b023b89e22d8b6a:
+  path: logs/boom-na=6-ne=13-nf=3/wall_time.txt
+  zipfile: archive.zip
+5b8ec2b68d0f8cad3be7ba90cd5a4e4f:
+  path: logs/boom-na=6-ne=15-nf=4/consumer.log
+  zipfile: archive.zip
+1de10efcca706a010716b38e13160c97:
+  path: logs/boom-na=6-ne=15-nf=4/consumer.stats.log
+  zipfile: archive.zip
+d2ae665b895f21e8e7e4fbcef7a55fcb:
+  path: logs/boom-na=6-ne=15-nf=4/mongo-init.log
+  zipfile: archive.zip
+2956c431402688e42a5b6e9da2382773:
+  path: logs/boom-na=6-ne=15-nf=4/producer.log
+  zipfile: archive.zip
+8a6622dd45839a17fab3eb651520ebc5:
+  path: logs/boom-na=6-ne=15-nf=4/scheduler.log
+  zipfile: archive.zip
+f0efd7cc52aa9203ffd066c7ea439dc0:
+  path: logs/boom-na=6-ne=15-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+38c4d3799ca61f1c3bac7bdd22b83056:
+  path: logs/boom-na=6-ne=15-nf=4/wall_time.txt
+  zipfile: archive.zip
+c27b10821e5eb5d861e955d8a9884872:
+  path: logs/boom-na=6-ne=16-nf=3/consumer.log
+  zipfile: archive.zip
+c8779c7f4ea47ff817bc3d5ed7fefe8f:
+  path: logs/boom-na=6-ne=16-nf=3/consumer.stats.log
+  zipfile: archive.zip
+8688c5dd0193d3a690a45e947b447f95:
+  path: logs/boom-na=6-ne=16-nf=3/mongo-init.log
+  zipfile: archive.zip
+a8713922b7d82f6f9cf60fda8e046fbf:
+  path: logs/boom-na=6-ne=16-nf=3/producer.log
+  zipfile: archive.zip
+2c96ec36a025360e487dbc2db9c49e5c:
+  path: logs/boom-na=6-ne=16-nf=3/scheduler.log
+  zipfile: archive.zip
+47d2f3c3d74a7d9a126aea6c2b8f5adb:
+  path: logs/boom-na=6-ne=16-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+221f4cb3ae289a26ea493765af5d2c56:
+  path: logs/boom-na=6-ne=16-nf=3/wall_time.txt
+  zipfile: archive.zip
+8b82d6dd718351f2742b49b883f85951:
+  path: logs/boom-na=6-ne=3-nf=1/consumer.log
+  zipfile: archive.zip
+e6fc610819307f239bffcea46efce4ed:
+  path: logs/boom-na=6-ne=3-nf=1/consumer.stats.log
+  zipfile: archive.zip
+58aae5800a0510db01577780fc13b40a:
+  path: logs/boom-na=6-ne=3-nf=1/mongo-init.log
+  zipfile: archive.zip
+500ed70169ed81ffec912b35d48ee526:
+  path: logs/boom-na=6-ne=3-nf=1/producer.log
+  zipfile: archive.zip
+f2ddb6a29d7c80cbbb0a0e8da63988fb:
+  path: logs/boom-na=6-ne=3-nf=1/scheduler.log
+  zipfile: archive.zip
+a4a2e55761c58bc324d7822834cf56dd:
+  path: logs/boom-na=6-ne=3-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+f59845232e34428fb7be37e8bf77a80c:
+  path: logs/boom-na=6-ne=3-nf=3/consumer.log
+  zipfile: archive.zip
+206d78d986d3f71e9a489091bb1e5e5d:
+  path: logs/boom-na=6-ne=3-nf=3/consumer.stats.log
+  zipfile: archive.zip
+cda382c51b477aea6d6fbecd2e95c7a7:
+  path: logs/boom-na=6-ne=3-nf=3/mongo-init.log
+  zipfile: archive.zip
+df0ec3e745d8df2c6fe3cbb276b1d781:
+  path: logs/boom-na=6-ne=3-nf=3/producer.log
+  zipfile: archive.zip
+3469c4aa3ee20cdc46a3a08dcf65ed47:
+  path: logs/boom-na=6-ne=3-nf=3/scheduler.log
+  zipfile: archive.zip
+24d71b0373f108104f2b9b0e098d98b5:
+  path: logs/boom-na=6-ne=3-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+763d2151cd680f802f23e924740b6933:
+  path: logs/boom-na=6-ne=3-nf=3/wall_time.txt
+  zipfile: archive.zip
+81f00a7468a36c582b9072e72fa50f92:
+  path: logs/boom-na=6-ne=6-nf=1/consumer.log
+  zipfile: archive.zip
+ea774aac96824f9cd74241a2bb5e03b9:
+  path: logs/boom-na=6-ne=6-nf=1/consumer.stats.log
+  zipfile: archive.zip
+beba7ec81f5fb6d2752fa4b38206f5b7:
+  path: logs/boom-na=6-ne=6-nf=1/mongo-init.log
+  zipfile: archive.zip
+f8b75c1c9dccb5650a8c7a7ff89d282b:
+  path: logs/boom-na=6-ne=6-nf=1/producer.log
+  zipfile: archive.zip
+376da2803aea089cce9166191f125421:
+  path: logs/boom-na=6-ne=6-nf=1/scheduler.log
+  zipfile: archive.zip
+3d362f55e4dc960b84adff47f4cd22d9:
+  path: logs/boom-na=6-ne=6-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+da7c55376762a184da239341a3c2918b:
+  path: logs/boom-na=6-ne=6-nf=1/wall_time.txt
+  zipfile: archive.zip
+0de7dbd9c2d2b5b30982f66720bffa11:
+  path: logs/boom-na=6-ne=6-nf=3/consumer.log
+  zipfile: archive.zip
+dc6e7178721a9c054449aa217648a888:
+  path: logs/boom-na=6-ne=6-nf=3/consumer.stats.log
+  zipfile: archive.zip
+40cf7dc6e2269a027cf1c6e031057c01:
+  path: logs/boom-na=6-ne=6-nf=3/mongo-init.log
+  zipfile: archive.zip
+cd16edc277a416ae8c4dc58fb79ba3af:
+  path: logs/boom-na=6-ne=6-nf=3/producer.log
+  zipfile: archive.zip
+b47867c210d643089043c6c22c31c8ef:
+  path: logs/boom-na=6-ne=6-nf=3/scheduler.log
+  zipfile: archive.zip
+3cfaf93cd3fda2c44272608ef3516a92:
+  path: logs/boom-na=6-ne=6-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+1cfca0a0f0c447ff9284bdffdb8ca833:
+  path: logs/boom-na=6-ne=6-nf=3/wall_time.txt
+  zipfile: archive.zip
+0e1814db5d6467ce0b0825e8d51932c6:
+  path: logs/boom-na=6-ne=8-nf=4/consumer.log
+  zipfile: archive.zip
+e21b5c678bc49f3f70cd97540b330f99:
+  path: logs/boom-na=6-ne=8-nf=4/consumer.stats.log
+  zipfile: archive.zip
+5c08e928b922822af5715317615993a8:
+  path: logs/boom-na=6-ne=8-nf=4/mongo-init.log
+  zipfile: archive.zip
+83085acca5cd77cf275cf5d299981719:
+  path: logs/boom-na=6-ne=8-nf=4/producer.log
+  zipfile: archive.zip
+6d50d86ab29f4022f0e45751ab94816c:
+  path: logs/boom-na=6-ne=8-nf=4/scheduler.log
+  zipfile: archive.zip
+ee2614ce2f5c35593418ab0e4facd8c1:
+  path: logs/boom-na=6-ne=8-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+57dc1f1182fe6f51eb9bc7c34ac233f9:
+  path: logs/boom-na=6-ne=9-nf=1/consumer.log
+  zipfile: archive.zip
+af3b8934020126640ea2daee99d40577:
+  path: logs/boom-na=6-ne=9-nf=1/consumer.stats.log
+  zipfile: archive.zip
+03bbfc4a19ca8df41f95a0fa86992170:
+  path: logs/boom-na=6-ne=9-nf=1/mongo-init.log
+  zipfile: archive.zip
+33af5e4101a0e03cec12f960fb37c556:
+  path: logs/boom-na=6-ne=9-nf=1/producer.log
+  zipfile: archive.zip
+7508e3dbfdc20b17bd8838ba5329272c:
+  path: logs/boom-na=6-ne=9-nf=1/scheduler.log
+  zipfile: archive.zip
+dd2f5d71462b8b4687eea3d391b4414e:
+  path: logs/boom-na=6-ne=9-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+8e3549eebb23372a795c6b5299f111d2:
+  path: logs/boom-na=6-ne=9-nf=1/wall_time.txt
+  zipfile: archive.zip
+9d2b172d3cdd5717657cc41e102852e3:
+  path: logs/boom-na=6-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+5fc258eda412cfa5097e607445dc3806:
+  path: logs/boom-na=6-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+ea431a97bafd54fcb2d019e15a681861:
+  path: logs/boom-na=6-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+d778a8e0f7cf78f96b121e7fb9ce2b1e:
+  path: logs/boom-na=6-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+721b252d64f8ffcefc85688c48b907fe:
+  path: logs/boom-na=6-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+d6deef2b12417723031f0b5b7865d2c7:
+  path: logs/boom-na=6-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+7e9cdf9c1bdd26b478c7665fb0f8bbf0:
+  path: logs/boom-na=7-ne=10-nf=2/consumer.log
+  zipfile: archive.zip
+41e32395aa6582f5dfc0235218f75730:
+  path: logs/boom-na=7-ne=10-nf=2/consumer.stats.log
+  zipfile: archive.zip
+c2412be7b2617e7706f61aa391a4e2ce:
+  path: logs/boom-na=7-ne=10-nf=2/mongo-init.log
+  zipfile: archive.zip
+d4a9bb5cc447ac945bb4e7a8fc3f4f12:
+  path: logs/boom-na=7-ne=10-nf=2/producer.log
+  zipfile: archive.zip
+ba23a8ed4888b027742cbe93c75691d8:
+  path: logs/boom-na=7-ne=10-nf=2/scheduler.log
+  zipfile: archive.zip
+ed5540e5cbcfdf590dcc4f95221bb32c:
+  path: logs/boom-na=7-ne=10-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+9e517a7e95718f9d1accbf09858b2852:
+  path: logs/boom-na=7-ne=11-nf=1/consumer.log
+  zipfile: archive.zip
+244dd7a2808bd092d315b0446c3f844d:
+  path: logs/boom-na=7-ne=11-nf=1/consumer.stats.log
+  zipfile: archive.zip
+d77358196f43680fa85c71a66264c695:
+  path: logs/boom-na=7-ne=11-nf=1/mongo-init.log
+  zipfile: archive.zip
+8910fbe2483bda4bc7971ed0f55e5fbe:
+  path: logs/boom-na=7-ne=11-nf=1/producer.log
+  zipfile: archive.zip
+e7118200ede5e0f0088915aa8016f5a3:
+  path: logs/boom-na=7-ne=11-nf=1/scheduler.log
+  zipfile: archive.zip
+ab41c436d58cc3681d1c15c8447fa94a:
+  path: logs/boom-na=7-ne=11-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+cc956b0b3ca1bd660b266a483e17ee0f:
+  path: logs/boom-na=7-ne=11-nf=1/wall_time.txt
+  zipfile: archive.zip
+7e73cd273dfae782a849c1f758a907d4:
+  path: logs/boom-na=7-ne=15-nf=3/consumer.log
+  zipfile: archive.zip
+ffa699533beb0a8409685cbb33ab5269:
+  path: logs/boom-na=7-ne=15-nf=3/consumer.stats.log
+  zipfile: archive.zip
+5680c461fde882fcba26af1c2cc4a555:
+  path: logs/boom-na=7-ne=15-nf=3/mongo-init.log
+  zipfile: archive.zip
+7ef77a00dc04164a9e85a0f4390eaef2:
+  path: logs/boom-na=7-ne=15-nf=3/producer.log
+  zipfile: archive.zip
+8c26fd51a784de500ab53e625ba32f98:
+  path: logs/boom-na=7-ne=15-nf=3/scheduler.log
+  zipfile: archive.zip
+97a30aaccfb6e03da7ad7c5af39dc5db:
+  path: logs/boom-na=7-ne=15-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+c3643adf24b69f64b52d243857d37498:
+  path: logs/boom-na=8-ne=12-nf=4/wall_time.txt
+  zipfile: archive.zip
+7a53b18b5f24022a17035b530cb90a01:
+  path: logs/boom-na=7-ne=9-nf=1/consumer.log
+  zipfile: archive.zip
+6defa18b8b1d12842a7466077b611e69:
+  path: logs/boom-na=7-ne=9-nf=1/consumer.stats.log
+  zipfile: archive.zip
+714ad1972a19c6650cdac61c864b7295:
+  path: logs/boom-na=7-ne=9-nf=1/mongo-init.log
+  zipfile: archive.zip
+20b16e0c79160951781c53f95b34d7c9:
+  path: logs/boom-na=7-ne=9-nf=1/producer.log
+  zipfile: archive.zip
+6d3c2fb3d2ae87e249841ed15cdbcd1b:
+  path: logs/boom-na=7-ne=9-nf=1/scheduler.log
+  zipfile: archive.zip
+ccb27d71bb29d85392b329cb9754a967:
+  path: logs/boom-na=7-ne=9-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+2d8bd44b2b9fff930e6059c2dec77740:
+  path: logs/boom-na=7-ne=9-nf=1/wall_time.txt
+  zipfile: archive.zip
+d8454b58028820ecd898547563d10178:
+  path: logs/boom-na=7-ne=9-nf=2/consumer.log
+  zipfile: archive.zip
+9203bd1b66c60a31bc82d7e7a7ae34a6:
+  path: logs/boom-na=7-ne=9-nf=2/consumer.stats.log
+  zipfile: archive.zip
+d8a67e77cc22f67a874dfb1293298816:
+  path: logs/boom-na=7-ne=9-nf=2/mongo-init.log
+  zipfile: archive.zip
+eb9087afe6cba24d16127bdda408f024:
+  path: logs/boom-na=7-ne=9-nf=2/producer.log
+  zipfile: archive.zip
+30199d3dcc75df344aa4306430327a50:
+  path: logs/boom-na=7-ne=9-nf=2/scheduler.log
+  zipfile: archive.zip
+210192d72ac1021c3b34a9a8ab451793:
+  path: logs/boom-na=7-ne=9-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+4b4bd970485a2b9b7cdbd6f56c926f14:
+  path: logs/boom-na=7-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+5286f961a4ba7bc2cc3d1e4ad50e5ba5:
+  path: logs/boom-na=7-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+c47ca407713d7f4ed0b4299665b25fa5:
+  path: logs/boom-na=7-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+4f45d51396d390b6486dc4792a44281c:
+  path: logs/boom-na=7-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+70a991d35867a756348730d029b43dbe:
+  path: logs/boom-na=7-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+35e0e2e00262345096922ab766cb672f:
+  path: logs/boom-na=7-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+f9c742a6ff31516437d61ed92964b633:
+  path: logs/boom-na=8-ne=12-nf=2/consumer.log
+  zipfile: archive.zip
+d3535cc2c5a9a73e1683046f1a29ac66:
+  path: logs/boom-na=8-ne=12-nf=2/consumer.stats.log
+  zipfile: archive.zip
+5ae90586a8dd7af9d87ca85bf5cca549:
+  path: logs/boom-na=8-ne=12-nf=2/mongo-init.log
+  zipfile: archive.zip
+68c30dca82376f7f47e20ce993d4054f:
+  path: logs/boom-na=8-ne=12-nf=2/producer.log
+  zipfile: archive.zip
+7e1c1fd7bffafc0864930e5c85f78499:
+  path: logs/boom-na=8-ne=12-nf=2/scheduler.log
+  zipfile: archive.zip
+d8305ad8dee53858b74a64ef46d7a805:
+  path: logs/boom-na=8-ne=12-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+70cc798b43b6a4d1f9ca295a803537a0:
+  path: logs/boom-na=8-ne=12-nf=4/consumer.log
+  zipfile: archive.zip
+ab47818ab6a26ec54990457bf666f6b4:
+  path: logs/boom-na=8-ne=12-nf=4/consumer.stats.log
+  zipfile: archive.zip
+2f1ae32485c0bbad83e92f4db9b2be0d:
+  path: logs/boom-na=8-ne=12-nf=4/mongo-init.log
+  zipfile: archive.zip
+ddd62f824961bbdef455dcc90b7e501c:
+  path: logs/boom-na=8-ne=12-nf=4/producer.log
+  zipfile: archive.zip
+f1d7c8455fb0e27d84f05d9d1493fff2:
+  path: logs/boom-na=8-ne=12-nf=4/scheduler.log
+  zipfile: archive.zip
+965ac9a7cf94d9177caa2455ef07488a:
+  path: logs/boom-na=8-ne=12-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+a751079449f2927d2fcc5f8fc25cedc1:
+  path: logs/boom-na=8-ne=13-nf=1/consumer.log
+  zipfile: archive.zip
+9e8bff34f3860f9df53f0c901111ed94:
+  path: logs/boom-na=8-ne=13-nf=1/consumer.stats.log
+  zipfile: archive.zip
+d529b99c0010558749a54b1e6a303d78:
+  path: logs/boom-na=8-ne=13-nf=1/mongo-init.log
+  zipfile: archive.zip
+9a725c318e471d5155751ecfa9f7f4ac:
+  path: logs/boom-na=8-ne=13-nf=1/producer.log
+  zipfile: archive.zip
+e5b5fa2434b00f0da0948706e5677ec3:
+  path: logs/boom-na=8-ne=13-nf=1/scheduler.log
+  zipfile: archive.zip
+1592f6335a97f2b81c27944285a62cc9:
+  path: logs/boom-na=8-ne=13-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+efb2ceb4da6e177d2ae6007f86ecf1b3:
+  path: logs/boom-na=8-ne=13-nf=1/wall_time.txt
+  zipfile: archive.zip
+3b5d1964038132830a900a5887cce67b:
+  path: logs/boom-na=8-ne=14-nf=3/consumer.log
+  zipfile: archive.zip
+0b3917f2aefaf6cb422f0e4f6e0c614b:
+  path: logs/boom-na=8-ne=14-nf=3/consumer.stats.log
+  zipfile: archive.zip
+bd9da74fad3a3cb9e8c1ec82729203d2:
+  path: logs/boom-na=8-ne=14-nf=3/mongo-init.log
+  zipfile: archive.zip
+2964bd99901d87a8c6353a5066914671:
+  path: logs/boom-na=8-ne=14-nf=3/producer.log
+  zipfile: archive.zip
+844dec19606cedf7637407e102666e93:
+  path: logs/boom-na=8-ne=14-nf=3/scheduler.log
+  zipfile: archive.zip
+ae81ac39fe6a35ef98d493e471ec1b0b:
+  path: logs/boom-na=8-ne=14-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+8fe34188ae29341a4da3df3fed1bb156:
+  path: logs/boom-na=8-ne=14-nf=3/wall_time.txt
+  zipfile: archive.zip
+b8f72f8a6416edc54533580e5ab0ba96:
+  path: logs/boom-na=8-ne=8-nf=2/consumer.log
+  zipfile: archive.zip
+5ac08392635958e92ef300c205674bc4:
+  path: logs/boom-na=8-ne=8-nf=2/consumer.stats.log
+  zipfile: archive.zip
+10a329f50109f193adbde2a958af176a:
+  path: logs/boom-na=8-ne=8-nf=2/mongo-init.log
+  zipfile: archive.zip
+27b9ac16ead1efee3235b1fd7933512d:
+  path: logs/boom-na=8-ne=8-nf=2/producer.log
+  zipfile: archive.zip
+b57ad0773f15a2e3ec50eae465eb66a9:
+  path: logs/boom-na=8-ne=8-nf=2/scheduler.log
+  zipfile: archive.zip
+bc524a19c6967bf5468aab3a8b3132a6:
+  path: logs/boom-na=8-ne=8-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+cddb4bbe926f98c2d6c2dcc94e04e7e4:
+  path: logs/boom-na=8-ne=9-nf=1/consumer.log
+  zipfile: archive.zip
+877a98024226ed6a5c149f0fe5a7981c:
+  path: logs/boom-na=8-ne=9-nf=1/consumer.stats.log
+  zipfile: archive.zip
+827803ae16fd4a71d0f478fdc5e772e5:
+  path: logs/boom-na=8-ne=9-nf=1/mongo-init.log
+  zipfile: archive.zip
+80976965c174f35779866759d892b5e5:
+  path: logs/boom-na=8-ne=9-nf=1/producer.log
+  zipfile: archive.zip
+66fcad6bd0557f30da396906ece5bee2:
+  path: logs/boom-na=8-ne=9-nf=1/scheduler.log
+  zipfile: archive.zip
+4332e2b9d24a9346df8e69bafde1781a:
+  path: logs/boom-na=8-ne=9-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+a0950d45c873c22c9c6a8b5fe069c0ea:
+  path: logs/boom-na=8-ne=9-nf=1/wall_time.txt
+  zipfile: archive.zip
+a2c001e547d9033294a10e81377e8e57:
+  path: logs/boom-na=8-ne=9-nf=2/consumer.log
+  zipfile: archive.zip
+ebd59e8328e4fdb22be496fdfb162318:
+  path: logs/boom-na=8-ne=9-nf=2/consumer.stats.log
+  zipfile: archive.zip
+a680bf59aa3b74a8d75a0a5b3e39eed5:
+  path: logs/boom-na=8-ne=9-nf=2/mongo-init.log
+  zipfile: archive.zip
+732eeb504c16d79f2ce15a0f76c39d34:
+  path: logs/boom-na=8-ne=9-nf=2/producer.log
+  zipfile: archive.zip
+2fc7856258895660f1ad9cae7d79602c:
+  path: logs/boom-na=8-ne=9-nf=2/scheduler.log
+  zipfile: archive.zip
+98fc3812f37c7a358d8c7fc752812268:
+  path: logs/boom-na=8-ne=9-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+f5eea4f85305b3032532733cd80ec73f:
+  path: logs/boom-na=9-ne=14-nf=2/consumer.log
+  zipfile: archive.zip
+696d783572fa611e03aee2ca279f02b1:
+  path: logs/boom-na=9-ne=14-nf=2/consumer.stats.log
+  zipfile: archive.zip
+9855846f3fa2ba762a3bb9a0c74e8bb4:
+  path: logs/boom-na=9-ne=14-nf=2/mongo-init.log
+  zipfile: archive.zip
+e6e69dfae9f987f80535e90a73d2c8d4:
+  path: logs/boom-na=9-ne=14-nf=2/producer.log
+  zipfile: archive.zip
+5c6d888571b7c35c3cba6b32c5c38494:
+  path: logs/boom-na=9-ne=14-nf=2/scheduler.log
+  zipfile: archive.zip
+bf6b85a38b9ded9d270e7e35b1839620:
+  path: logs/boom-na=9-ne=14-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+0ecb19432dbd48425f73f3be2af3e5f1:
+  path: logs/boom-na=9-ne=15-nf=1/consumer.log
+  zipfile: archive.zip
+10cc121b0ab94d277c1cca64cef46689:
+  path: logs/boom-na=9-ne=15-nf=1/consumer.stats.log
+  zipfile: archive.zip
+aaa4fbc5655b710d355ca158b514a025:
+  path: logs/boom-na=9-ne=15-nf=1/mongo-init.log
+  zipfile: archive.zip
+96d7340a1879ff4988cf57c88af7e4d8:
+  path: logs/boom-na=9-ne=15-nf=1/producer.log
+  zipfile: archive.zip
+e5e80bbcb99df42ce637feef5c7619d2:
+  path: logs/boom-na=9-ne=15-nf=1/scheduler.log
+  zipfile: archive.zip
+4b24abd7aadba28085b9c748aaf686e5:
+  path: logs/boom-na=9-ne=15-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+84bc50088a067ecbbc4a5e74d9665146:
+  path: logs/boom-na=9-ne=15-nf=1/wall_time.txt
+  zipfile: archive.zip
+ff29580c0c7051102cf9c60eb9b9c867:
+  path: logs/boom-na=9-ne=8-nf=1/consumer.log
+  zipfile: archive.zip
+b096e15eb8e57d000349a148ddf302e7:
+  path: logs/boom-na=9-ne=8-nf=1/consumer.stats.log
+  zipfile: archive.zip
+59e8f334539347943845861ae5edc902:
+  path: logs/boom-na=9-ne=8-nf=1/mongo-init.log
+  zipfile: archive.zip
+36cce0356848937bbecae3855ee2a9d7:
+  path: logs/boom-na=9-ne=8-nf=1/producer.log
+  zipfile: archive.zip
+8264780b2e36438425fe68f5dcb7d4d1:
+  path: logs/boom-na=9-ne=8-nf=1/scheduler.log
+  zipfile: archive.zip
+280ebba5313fa0da2d5734fd8eb53394:
+  path: logs/boom-na=9-ne=8-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+7ab79e98964d798affe347d90f7cb5f0:
+  path: logs/boom-na=9-ne=8-nf=1/wall_time.txt
+  zipfile: archive.zip
+46c4dc1c03e8e366bd6d08c28076dcbf:
+  path: logs/kowalski-n=12/alert_broker_ztf.log
+  zipfile: archive.zip
+566f04fe518216d5f425c5d0c77ff96a:
+  path: logs/kowalski-n=12/dask_cluster.log
+  zipfile: archive.zip
+da11e37bb2ed02f0c83f68e56573afb7:
+  path: logs/kowalski-n=12/ingester.stats.log
+  zipfile: archive.zip
+2697e5e9d46ebce10023e5805189e3a2:
+  path: logs/kowalski-n=12/mongo-init.log
+  zipfile: archive.zip
+76123345b6e0e679b5098860d083b6cf:
+  path: logs/kowalski-n=12/producer.log
+  zipfile: archive.zip
+92975e54a0a29fe082108e9b15eba05f:
+  path: logs/kowalski-n=12/supervisord.log
+  zipfile: archive.zip
+123001185ac10c4dae9096a034d7316d:
+  path: logs/kowalski-n=15/alert_broker_ztf.log
+  zipfile: archive.zip
+9a5f2ef54bcb818838fded77deaa8077:
+  path: logs/kowalski-n=15/dask_cluster.log
+  zipfile: archive.zip
+9d0ab7ddbc0f26ee17b2b27e0148f2c6:
+  path: logs/kowalski-n=15/ingester.stats.log
+  zipfile: archive.zip
+539ac4e4f45e06cd25168629d891024c:
+  path: logs/kowalski-n=15/mongo-init.log
+  zipfile: archive.zip
+2bd2d488ae6d87b9555d5a2ec3a16c95:
+  path: logs/kowalski-n=15/producer.log
+  zipfile: archive.zip
+ffb4253e4a9b037bbf4cecd07ae9ad7f:
+  path: logs/kowalski-n=15/supervisord.log
+  zipfile: archive.zip
+b118fe911d7a3d7c1fefc0fe93934097:
+  path: logs/kowalski-n=20/alert_broker_ztf.log
+  zipfile: archive.zip
+6a87188033907f530a7f3d4ae8fa0a3c:
+  path: logs/kowalski-n=20/dask_cluster.log
+  zipfile: archive.zip
+540d85c70ae61eb83c4e8949fce73417:
+  path: logs/kowalski-n=20/ingester.stats.log
+  zipfile: archive.zip
+2181a2890d0fb24b469e801ffbcf60e1:
+  path: logs/kowalski-n=20/mongo-init.log
+  zipfile: archive.zip
+8be795821d0c3efdadc70122a57cb2a2:
+  path: logs/kowalski-n=20/producer.log
+  zipfile: archive.zip
+29492febc24c23b3cf672acec0d0d9af:
+  path: logs/kowalski-n=20/supervisord.log
+  zipfile: archive.zip
+5ee31588c340ad5160f6a177ff53b171:
+  path: logs/kowalski-n=25/alert_broker_ztf.log
+  zipfile: archive.zip
+71ca6c729069ba249c4e39e9d47c6fe9:
+  path: logs/kowalski-n=25/dask_cluster.log
+  zipfile: archive.zip
+af4a8920d057aa32fc0a6db56d4f276c:
+  path: logs/kowalski-n=25/ingester.stats.log
+  zipfile: archive.zip
+2f56951cb371830277ef2eaf6f0f3296:
+  path: logs/kowalski-n=25/mongo-init.log
+  zipfile: archive.zip
+1521338d5090b829f00112d4a168c821:
+  path: logs/kowalski-n=25/producer.log
+  zipfile: archive.zip
+f8a352673f73ad6075b1d084c87e71f1:
+  path: logs/kowalski-n=25/supervisord.log
+  zipfile: archive.zip
+7a5da645ab422b10b4b9a43d5323c9c1:
+  path: logs/kowalski-n=3/alert_broker_ztf.log
+  zipfile: archive.zip
+bf9e62981b75e1f43333dfb5a6738db8:
+  path: logs/kowalski-n=3/dask_cluster.log
+  zipfile: archive.zip
+064db60310fc6186956dc0e632ee0de0:
+  path: logs/kowalski-n=3/ingester.stats.log
+  zipfile: archive.zip
+94af3e94c28e9a3968476366084f3f8d:
+  path: logs/kowalski-n=3/mongo-init.log
+  zipfile: archive.zip
+249fabea80a53ebe1ddad8ec04618127:
+  path: logs/kowalski-n=3/producer.log
+  zipfile: archive.zip
+96add3336f17747959f68a4353e2aa13:
+  path: logs/kowalski-n=3/supervisord.log
+  zipfile: archive.zip
+f8327e2db9a365ff142e783333b06119:
+  path: logs/kowalski-n=6/alert_broker_ztf.log
+  zipfile: archive.zip
+d04dcde2de302046447a5f47a28f72e0:
+  path: logs/kowalski-n=6/dask_cluster.log
+  zipfile: archive.zip
+5a7577139327034d35cc2b18d88c0dfe:
+  path: logs/kowalski-n=6/ingester.stats.log
+  zipfile: archive.zip
+53700e6e4fcc87df544bab8bfae7371b:
+  path: logs/kowalski-n=6/mongo-init.log
+  zipfile: archive.zip
+79be745025f3e9ff155a5206381b07bc:
+  path: logs/kowalski-n=6/producer.log
+  zipfile: archive.zip
+03fd27fd08158c3426d3b88e4830bf81:
+  path: logs/kowalski-n=6/supervisord.log
+  zipfile: archive.zip
+e4df911431363ea919c4fa7d94375a97:
+  path: logs/kowalski-n=7/alert_broker_ztf.log
+  zipfile: archive.zip
+42db3a671f3dfa2c01d4f2f0e1786e3f:
+  path: logs/kowalski-n=7/dask_cluster.log
+  zipfile: archive.zip
+c88aef7036e54df8dc60c57691ec0a68:
+  path: logs/kowalski-n=7/ingester.stats.log
+  zipfile: archive.zip
+13455cd14bbd5ebbd412ef2cde9dbece:
+  path: logs/kowalski-n=7/mongo-init.log
+  zipfile: archive.zip
+0e6fe1f609b5baee56092dfd835bd512:
+  path: logs/kowalski-n=7/producer.log
+  zipfile: archive.zip
+afcc48f75ee0a5817e2900fb7ade349e:
+  path: logs/kowalski-n=7/supervisord.log
+  zipfile: archive.zip
+bfa588108222392e6137b9cd849066be:
+  path: logs/kowalski-n=9/alert_broker_ztf.log
+  zipfile: archive.zip
+7949e7b3cd4d0fb9f94e1fb5dc5d5daf:
+  path: logs/kowalski-n=9/dask_cluster.log
+  zipfile: archive.zip
+60e22cf7b9827859a437a391b8849f52:
+  path: logs/kowalski-n=9/ingester.stats.log
+  zipfile: archive.zip
+9bb2a245638abf6e4002df0a4d38ceee:
+  path: logs/kowalski-n=9/mongo-init.log
+  zipfile: archive.zip
+ebae2c982a4d75b0075c0a2bcbc6fd72:
+  path: logs/kowalski-n=9/producer.log
+  zipfile: archive.zip
+37f1cb9935b589ef19ef50d80a49c0c1:
+  path: logs/kowalski-n=9/supervisord.log
+  zipfile: archive.zip
+71db91a6296da818ce18d9957a9d3d6e:
+  path: paper/main.pdf
+  zipfile: archive.zip
