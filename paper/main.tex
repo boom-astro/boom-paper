@@ -332,7 +332,7 @@ These are computed in the same loop responsible of generating ML model inputs. T
 
 Just as alert data products are retrieved from the database in batches, we use \mongo's batch update operator to update all processed alerts at once with ML scores and features. Once the batch update is finished, the \textit{candids} of processed alerts are sent back to a \valkey queue for the next and last worker type to read from: the \texttt{Filter} worker.
 
-To further improve throughput, we are developing an optional GPU worker that offloads batch inference to a hardware accelerator. By batching alert processing the BTSBot classifier on $\sim$1000 alerts simultaneously on a single NVIDIA P100, we observe an approximately ten-fold improvement in enrichment throughput compared to CPU-only inference. Building on this GPU-accelerated architecture, we are developing a lightcurve fitting library that performs both nonparametric and parametric model fitting directly within \boom's \texttt{Rust}-based pipeline. For nonparametric fitting, Gaussian Process (GP) regression is applied per-band and jointly across bands (using a two-dimensional time--wavelength kernel) to produce smooth interpolations of sparsely sampled lightcurves, from which features such as rise and decay timescales, peak magnitudes, and color evolution are extracted. For parametric fitting, a particle swarm optimization algorithm performs model selection across a library of analytical lightcurve models \citep{deSoto_2024}, with posterior uncertainties estimated via stochastic variational inference (SVI). All fitting stages, including GP hyperparameter selection, PSO model fitting, and SVI, are implemented as batch CUDA kernels, enabling thousands of sources to be processed in parallel on a single GPU. 
+To further improve throughput, we are developing an optional GPU worker that offloads batch inference to a hardware accelerator. By batching alert processing the BTSBot classifier on $\sim$1000 alerts simultaneously on a single NVIDIA P100, we observe an approximately ten-fold improvement in enrichment throughput compared to CPU-only inference. Building on this GPU-accelerated architecture, we are developing a lightcurve fitting library that performs both nonparametric and parametric model fitting directly within \boom's \texttt{Rust}-based pipeline. For nonparametric fitting, Gaussian Process (GP) regression is applied per-band and jointly across bands (using a two-dimensional time--wavelength kernel) to produce smooth interpolations of sparsely sampled lightcurves, from which features such as rise and decay timescales, peak magnitudes, and color evolution are extracted. For parametric fitting, a particle swarm optimization algorithm performs model selection across a library of analytical lightcurve models \citep{deSoto_2024}, with posterior uncertainties estimated via stochastic variational inference (SVI). All fitting stages, including GP hyperparameter selection, PSO model fitting, and SVI, are implemented as batch CUDA kernels, enabling thousands of sources to be processed in parallel on a single GPU.
 
 \subsubsection{Filter Worker}
 \label{sec:filter}
@@ -380,13 +380,17 @@ To ensure that \boom is able to handle the additional load from the
 Rubin alert stream ($\sim 10^4$ alerts every 30\,s) and beyond,
 a throughput test was performed over varying
 numbers of worker processes.
-One night of ZTF alerts (2025-03-11, with $\sim 30k$ alerts total, a number sufficient to measure throughput) was ingested, cross-matched against the
-NED LVS catalog, enriched with the ML models scores and features listed in section \ref{sec:enrichment},
+One night of ZTF alerts (2025-03-11, with $\sim 30k$ alerts total,
+a number sufficient to measure throughput) was ingested,
+cross-matched against the NED LVS catalog,
+enriched with the ML models scores and features listed in section \ref{sec:enrichment},
 and finally filtered against 25 representative filters.
 \kowalski was also run for the same scenario with varying worker
 process counts for comparison. For both brokers, the database is pre-loaded with the full object-level data products (lightcurves, cross-matches) for all objects that have been detected prior to 2025-03-11. This ensures that the throughput test is representative of what is expected in production, where most alerts are emitted for existing -- and often persistent -- objects that may have thousands of data points in their light curves.
 The machine used for throughput testing has a 2.9 GHz AMD EPYC 7002 processor with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
-Data were written to a 12 Gb/s 7200 RPM hard drive (effective hard drive write and read speeds are much lower, no more than 250 MB/s), and ML inference was performed without GPU acceleration.
+Data were written to a 12 Gb/s 7200 RPM hard drive
+(effective hard drive write and read speeds are much lower, no more than 250 MB/s),
+and ML inference was performed without GPU acceleration.
 The code and datasets to reproduce the results are available
 from~\cite{JegouDuLaz2026BoomCalkit}.
 
@@ -405,10 +409,21 @@ Figure~\ref{fig:scaling} shows throughput testing results for both \boom
 and \kowalski in terms of alerts processed per second
 versus the number of worker processes.
 In addition to its increased throughput, \boom performs better as more
-computing resources are added,
-though since there are three different worker counts to vary there is some tuning to get ideal scaling,
-which is seen in the figure as a jagged line compared to \kowalski's
+computing resources are added, i.e., it has better strong scaling characteristics,
+though since there are three different worker counts to vary there is some
+tuning required to achieve optimal worker counts,
+which is seen in the figure as a more jagged line compared to \kowalski's
 smoother thread count to processing time relationship.
+We also see an interesting plateau in \boom's performance from 15
+up until 19 workers,
+which is due to the optimal enrichment to filter/alert worker ratio being
+approximately 1:3,
+meaning enrichment workers can become a bottleneck if this ratio is not maintained.
+This presents the opportunity for future work to implement a dynamic
+scheduler that can automatically adjust the number of workers of each
+type based on the current load and processing times,
+to ensure optimal performance at all times without the need for manual tuning.
+
 Overall, this shows that \texttt{BOOM}'s throughput will make better use of
 increased computing power,
 and should be able to handle the Rubin alert stream with fewer than 10
