@@ -236,12 +236,12 @@ pipeline:
       script_path: scripts/run-boom-get-db-sizes.sh
       environment: run
       inputs:
-        - scripts/run-boom-get-db-sizes.sh
         - boom/src
         - boom/Cargo.lock
         - boom/Cargo.toml
         - boom/config.yaml
         - boom/Dockerfile
+        - boom/tests/throughput/run.py
         - boom/tests/throughput/compose.yaml
         - boom/tests/throughput/mongo-init.sh
         - boom/tests/throughput/cats150.pipeline.json
@@ -257,7 +257,6 @@ pipeline:
       script_path: scripts/run-kowalski-get-db-sizes.sh
       environment: run
       inputs:
-        - scripts/run-kowalski-get-db-sizes.sh
         - config/kowalski/config-template.yaml
         - config/kowalski/compose.yaml
         - config/kowalski/supervisord.conf
@@ -292,7 +291,9 @@ pipeline:
           storage: git
         - path: paper/figures/scaling.pdf
           storage: git
-        - path: results
+        - path: results/boom.csv
+          storage: git
+        - path: results/kowalski.csv
           storage: git
     plot-lightcurve:
       kind: python-script

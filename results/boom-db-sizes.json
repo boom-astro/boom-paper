@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-03-31T21:07:57.278Z",
+  "database": "boom-benchmarking",
+  "benchmark_config": {
+    "n_alert_workers": 3,
+    "n_enrichment_workers": 6,
+    "n_filter_workers": 3,
+    "timeout_secs": 300
+  },
+  "collections": [
+    {
+      "collection": "NED",
+      "count": 47000,
+      "data_size_bytes": 63322375,
+      "storage_size_bytes": 32514048,
+      "total_index_size_bytes": 1347584,
+      "total_size_bytes": 33861632
+    },
+    {
+      "collection": "ZTF_alerts",
+      "count": 29142,
+      "data_size_bytes": 74873478,
+      "storage_size_bytes": 29708288,
+      "total_index_size_bytes": 1646592,
+      "total_size_bytes": 31354880
+    },
+    {
+      "collection": "ZTF_alerts_aux",
+      "count": 27948,
+      "data_size_bytes": 3940520746,
+      "storage_size_bytes": 2318807040,
+      "total_index_size_bytes": 2269184,
+      "total_size_bytes": 2321076224
+    },
+    {
+      "collection": "ZTF_alerts_cutouts",
+      "count": 29142,
+      "data_size_bytes": 1157884631,
+      "storage_size_bytes": 1178210304,
+      "total_index_size_bytes": 434176,
+      "total_size_bytes": 1178644480
+    },
+    {
+      "collection": "filters",
+      "count": 25,
+      "data_size_bytes": 89041,
+      "storage_size_bytes": 24576,
+      "total_index_size_bytes": 40960,
+      "total_size_bytes": 65536
+    }
+  ]
+}
