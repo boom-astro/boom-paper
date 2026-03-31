@@ -37,7 +37,8 @@ pipeline:
     get-seed-data:
       kind: shell-command
       environment: _system
-      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+      command:
+        uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
         -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
         - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
@@ -230,6 +231,51 @@ pipeline:
           values: [3, 6, 7, 9, 12, 15, 20, 25]
       outputs:
         - logs/kowalski-n={n_workers}
+    benchmark-boom-db-sizes:
+      kind: shell-script
+      script_path: scripts/run-boom-get-db-sizes.sh
+      environment: run
+      inputs:
+        - scripts/run-boom-get-db-sizes.sh
+        - boom/src
+        - boom/Cargo.lock
+        - boom/Cargo.toml
+        - boom/config.yaml
+        - boom/Dockerfile
+        - boom/tests/throughput/compose.yaml
+        - boom/tests/throughput/mongo-init.sh
+        - boom/tests/throughput/cats150.pipeline.json
+        - boom/tests/throughput/read-kafka-output.py
+        - boom/tests/throughput/_run.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      outputs:
+        - path: results/boom-db-sizes.json
+          storage: git
+    benchmark-kowalski-db-sizes:
+      kind: shell-script
+      script_path: scripts/run-kowalski-get-db-sizes.sh
+      environment: run
+      inputs:
+        - scripts/run-kowalski-get-db-sizes.sh
+        - config/kowalski/config-template.yaml
+        - config/kowalski/compose.yaml
+        - config/kowalski/supervisord.conf
+        - kowalski/ingester.Dockerfile
+        - kowalski/kowalski
+        - kowalski/Makefile
+        - kowalski/requirements
+        - scripts/mongo-init.sh
+        - data/alerts/kowalski.NED.json.gz
+        - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+        - config/kowalski/cats150.kowalski.json
+        - boom-producer/Dockerfile
+        - boom-producer/src
+        - boom-producer/Cargo.toml
+        - boom-producer/Cargo.lock
+      outputs:
+        - path: results/kowalski-db-sizes.json
+          storage: git
     analyze-logs:
       kind: jupyter-notebook
       notebook_path: notebooks/analyze-logs.ipynb

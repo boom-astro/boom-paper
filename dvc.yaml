@@ -337,6 +337,57 @@ stages:
         - 25
     desc: Automatically generated from the 'benchmark-kowalski' stage in
       calkit.yaml. Changes made here will be overwritten.
+  benchmark-boom-db-sizes:
+    cmd: calkit xenv -n run --no-check -- bash --noprofile --norc scripts/run-boom-get-db-sizes.sh
+    deps:
+      - scripts/run-boom-get-db-sizes.sh
+      - scripts/run-boom-get-db-sizes.sh
+      - boom/src
+      - boom/Cargo.lock
+      - boom/Cargo.toml
+      - boom/config.yaml
+      - boom/Dockerfile
+      - boom/tests/throughput/compose.yaml
+      - boom/tests/throughput/mongo-init.sh
+      - boom/tests/throughput/cats150.pipeline.json
+      - boom/tests/throughput/read-kafka-output.py
+      - boom/tests/throughput/_run.sh
+      - data/alerts/kowalski.NED.json.gz
+      - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+      - .calkit/env-locks/run
+    outs:
+      - results/boom-db-sizes.json:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'benchmark-boom-db-sizes' stage
+      in calkit.yaml. Changes made here will be overwritten.
+  benchmark-kowalski-db-sizes:
+    cmd: calkit xenv -n run --no-check -- bash --noprofile --norc scripts/run-kowalski-get-db-sizes.sh
+    deps:
+      - scripts/run-kowalski-get-db-sizes.sh
+      - scripts/run-kowalski-get-db-sizes.sh
+      - config/kowalski/config-template.yaml
+      - config/kowalski/compose.yaml
+      - config/kowalski/supervisord.conf
+      - kowalski/ingester.Dockerfile
+      - kowalski/kowalski
+      - kowalski/Makefile
+      - kowalski/requirements
+      - scripts/mongo-init.sh
+      - data/alerts/kowalski.NED.json.gz
+      - data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+      - config/kowalski/cats150.kowalski.json
+      - boom-producer/Dockerfile
+      - boom-producer/src
+      - boom-producer/Cargo.toml
+      - boom-producer/Cargo.lock
+      - .calkit/env-locks/run
+    outs:
+      - results/kowalski-db-sizes.json:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'benchmark-kowalski-db-sizes'
+      stage in calkit.yaml. Changes made here will be overwritten.
   analyze-logs:
     cmd: calkit nb execute --environment analyze-logs --no-check --to html
       "notebooks/analyze-logs.ipynb"
