@@ -1,0 +1,342 @@
+ed30deae98f4f460fade9dfbee850a84:
+  path: data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
+  zipfile: archive.zip
+ce2d9bf3b3e540b0d1db716b2a617213:
+  path: data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+  zipfile: archive.zip
+decd3ed39729067d0990aa299c4f513d:
+  path: data/alerts/kowalski.NED.json.gz
+  zipfile: archive.zip
+40a19cd4ccad68ce6e0cc4c899c5db65:
+  path: data/alerts/kowalski.ZTF_alerts_aux.dump.gz
+  zipfile: archive.zip
+e8318da0fb0b5ca23f32070f03605f0b:
+  path: data/alerts/kowalski.ZTF_alerts_aux_mongo8.dump.gz
+  zipfile: archive.zip
+5a9ace1af1aa6fa978e7ac0e82960c4d:
+  path: fix-seed-data/logs/dump-seed-data.log
+  zipfile: archive.zip
+08f9292154ad86de8834f693eec59640:
+  path: fix-seed-data/logs/migrate-fp-flux.log
+  zipfile: archive.zip
+00e7560a214de4f1f8c523ab06a08d77:
+  path: fix-seed-data/logs/migrate-snr.log
+  zipfile: archive.zip
+e2ca11ab02c9c9efd73cbdf7cb2768bc:
+  path: fix-seed-data/logs/mongo-init.log
+  zipfile: archive.zip
+6d33add4aab5d638b9b06a0aca00d167:
+  path: logs/boom-na=1-ne=1-nf=1/collection_stats.json
+  zipfile: archive.zip
+147fa2949565e5def1234ff726e45ebc:
+  path: logs/boom-na=1-ne=1-nf=1/consumer.log
+  zipfile: archive.zip
+2be0c2353dbbe6479910b4fc50868834:
+  path: logs/boom-na=1-ne=1-nf=1/consumer.stats.log
+  zipfile: archive.zip
+2081f71229f7b6ae7800f5475c1ce8ae:
+  path: logs/boom-na=1-ne=1-nf=1/mongo-init.log
+  zipfile: archive.zip
+d6a7ccb6571eaea5079773714a44f93b:
+  path: logs/boom-na=1-ne=1-nf=1/producer.log
+  zipfile: archive.zip
+071c1a975a091b4aec1b68c388ed0a81:
+  path: logs/boom-na=1-ne=1-nf=1/scheduler.log
+  zipfile: archive.zip
+d5a6f340c9d8290f7f60c9e3b9f51733:
+  path: logs/boom-na=1-ne=1-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+aec9597948fc253e1dc8aaa0d71cb722:
+  path: logs/boom-na=1-ne=1-nf=1/wall_time.txt
+  zipfile: archive.zip
+53c9ffe2796540dc1ce5747914fb6f6b:
+  path: logs/boom-na=1-ne=3-nf=1/collection_stats.json
+  zipfile: archive.zip
+9e6f845cbcec1632f17e97a4ab0d6b35:
+  path: logs/boom-na=1-ne=3-nf=1/consumer.log
+  zipfile: archive.zip
+2e5d64ec74d5d0355b026975f7655a49:
+  path: logs/boom-na=1-ne=3-nf=1/consumer.stats.log
+  zipfile: archive.zip
+140b3d6bf6fbfb44658316155b0087be:
+  path: logs/boom-na=1-ne=3-nf=1/mongo-init.log
+  zipfile: archive.zip
+137bc4114195d45c08d171a0d38827db:
+  path: logs/boom-na=1-ne=3-nf=1/producer.log
+  zipfile: archive.zip
+bf849eb3c8358b4836353e08b94bd921:
+  path: logs/boom-na=1-ne=3-nf=1/scheduler.log
+  zipfile: archive.zip
+aae4c99aacae91e40005b9f81a8dd784:
+  path: logs/boom-na=1-ne=3-nf=1/scheduler.stats.log
+  zipfile: archive.zip
+131a8185c61c162eceb74b4e1915510b:
+  path: logs/boom-na=1-ne=3-nf=1/wall_time.txt
+  zipfile: archive.zip
+92736f3e753d2590a6a7823c5f2da5b4:
+  path: logs/boom-na=2-ne=6-nf=2/collection_stats.json
+  zipfile: archive.zip
+f945208143b0fcb12c7414833d4829ce:
+  path: logs/boom-na=2-ne=6-nf=2/consumer.log
+  zipfile: archive.zip
+acf1859693135ffa682652c8482c92df:
+  path: logs/boom-na=2-ne=6-nf=2/consumer.stats.log
+  zipfile: archive.zip
+a0f959d831dd9862b85144c5a25b8514:
+  path: logs/boom-na=2-ne=6-nf=2/mongo-init.log
+  zipfile: archive.zip
+e9cbf52d331fd2db514fee2a6e338fe5:
+  path: logs/boom-na=2-ne=6-nf=2/producer.log
+  zipfile: archive.zip
+141ee4d78dbb82fa61f1f9c359a88c12:
+  path: logs/boom-na=2-ne=6-nf=2/scheduler.log
+  zipfile: archive.zip
+eaac4080343d197a9ae5e21340c8021c:
+  path: logs/boom-na=2-ne=6-nf=2/scheduler.stats.log
+  zipfile: archive.zip
+33970200012a9137c9e96f5c529da985:
+  path: logs/boom-na=2-ne=6-nf=2/wall_time.txt
+  zipfile: archive.zip
+0feda131046eb4857670ec365ce19510:
+  path: logs/boom-na=3-ne=9-nf=3/collection_stats.json
+  zipfile: archive.zip
+3ac798c733bcb7f2a1181d456efef8df:
+  path: logs/boom-na=3-ne=9-nf=3/consumer.log
+  zipfile: archive.zip
+28a94e37aea8af57bc0606f69da6312b:
+  path: logs/boom-na=3-ne=9-nf=3/consumer.stats.log
+  zipfile: archive.zip
+e967eeff570d9837352179235ae0db40:
+  path: logs/boom-na=3-ne=9-nf=3/mongo-init.log
+  zipfile: archive.zip
+63c9048b4f9dea689dde7a88e7352f37:
+  path: logs/boom-na=3-ne=9-nf=3/producer.log
+  zipfile: archive.zip
+d2a919f0204874e2d70e97887834f592:
+  path: logs/boom-na=3-ne=9-nf=3/scheduler.log
+  zipfile: archive.zip
+bb85966c599473ec9b33a3879cbcca9f:
+  path: logs/boom-na=3-ne=9-nf=3/scheduler.stats.log
+  zipfile: archive.zip
+7e6f25b8659fb68a635644cffe69e3e0:
+  path: logs/boom-na=3-ne=9-nf=3/wall_time.txt
+  zipfile: archive.zip
+b0876ad4c578fd0e35f2bfbe5f09ca39:
+  path: logs/boom-na=4-ne=12-nf=4/collection_stats.json
+  zipfile: archive.zip
+353d9ff70aeeb8c13875a765f82e1de0:
+  path: logs/boom-na=4-ne=12-nf=4/consumer.log
+  zipfile: archive.zip
+f794a0a8ea0838d31f9e2e470e3b09d3:
+  path: logs/boom-na=4-ne=12-nf=4/consumer.stats.log
+  zipfile: archive.zip
+a2db8077b8435465655559e95fd855a1:
+  path: logs/boom-na=4-ne=12-nf=4/mongo-init.log
+  zipfile: archive.zip
+f41e282f70697fcf3b8975b30649e3d0:
+  path: logs/boom-na=4-ne=12-nf=4/producer.log
+  zipfile: archive.zip
+cbd8f2bd74259f2cbd117d654006e4fa:
+  path: logs/boom-na=4-ne=12-nf=4/scheduler.log
+  zipfile: archive.zip
+34d7d392e09d5761b7481b6bb9fdef44:
+  path: logs/boom-na=4-ne=12-nf=4/scheduler.stats.log
+  zipfile: archive.zip
+af4e95ee5128f980745a61b1a3ec4ff0:
+  path: logs/boom-na=4-ne=12-nf=4/wall_time.txt
+  zipfile: archive.zip
+b8354a8b3533d7371ac67ae551d83c16:
+  path: logs/boom-na=5-ne=15-nf=5/collection_stats.json
+  zipfile: archive.zip
+34f1ebc2ecafa941f5a98a5805b3e8ad:
+  path: logs/boom-na=5-ne=15-nf=5/consumer.log
+  zipfile: archive.zip
+8df5f99a36276db8e617acb0408e6af8:
+  path: logs/boom-na=5-ne=15-nf=5/consumer.stats.log
+  zipfile: archive.zip
+6ed2882b300b90bb7f52c7f37602800c:
+  path: logs/boom-na=5-ne=15-nf=5/mongo-init.log
+  zipfile: archive.zip
+67f3b4f1fa009fcc89d98a53f4ec603a:
+  path: logs/boom-na=5-ne=15-nf=5/producer.log
+  zipfile: archive.zip
+a7fa1efb2d9302f07f890f7f5e4b8c7b:
+  path: logs/boom-na=5-ne=15-nf=5/scheduler.log
+  zipfile: archive.zip
+9f3576c83a25a15ec9ab49a730e25162:
+  path: logs/boom-na=5-ne=15-nf=5/scheduler.stats.log
+  zipfile: archive.zip
+08f6ab662385f558f4b65ba4c1fd0f12:
+  path: logs/boom-na=5-ne=15-nf=5/wall_time.txt
+  zipfile: archive.zip
+82b9ce7cf07e9638aa73e471199dfe72:
+  path: logs/kowalski-n=12/alert_broker_ztf.log
+  zipfile: archive.zip
+aec4cecde49fe243565b54151c37b066:
+  path: logs/kowalski-n=12/collection_stats.json
+  zipfile: archive.zip
+c3d86e1fd9fe708921a1ed601cc620b2:
+  path: logs/kowalski-n=12/dask_cluster.log
+  zipfile: archive.zip
+115d88416b17b75b6df75b00044f7784:
+  path: logs/kowalski-n=12/ingester.stats.log
+  zipfile: archive.zip
+a6b45ee112615c114a065ea5255cddda:
+  path: logs/kowalski-n=12/mongo-init.log
+  zipfile: archive.zip
+4b347adddf544e33e2af656eb0acb1c6:
+  path: logs/kowalski-n=12/producer.log
+  zipfile: archive.zip
+72f2c2e0d88da1885e85f4f86d3e08b7:
+  path: logs/kowalski-n=12/supervisord.log
+  zipfile: archive.zip
+a0794e3ce3b3a9216920cc83bccc694d:
+  path: logs/kowalski-n=15/alert_broker_ztf.log
+  zipfile: archive.zip
+37600b9e7f3967acd2c3f3a9712e7e5f:
+  path: logs/kowalski-n=15/collection_stats.json
+  zipfile: archive.zip
+1f4d6d9427d2620dfc883c6728b9f59a:
+  path: logs/kowalski-n=15/dask_cluster.log
+  zipfile: archive.zip
+2fa488cf246d6bb7908a0dc2745332b8:
+  path: logs/kowalski-n=15/ingester.stats.log
+  zipfile: archive.zip
+7c16b4227aa30ba4d95d5d0daa480926:
+  path: logs/kowalski-n=15/mongo-init.log
+  zipfile: archive.zip
+87c7c3550e2dce29de4de07c3a2877aa:
+  path: logs/kowalski-n=15/producer.log
+  zipfile: archive.zip
+8bd037bd3ff4504dea900b1c201d9f13:
+  path: logs/kowalski-n=15/supervisord.log
+  zipfile: archive.zip
+2917a772719a0ff5cec994e66708e720:
+  path: logs/kowalski-n=20/alert_broker_ztf.log
+  zipfile: archive.zip
+3eb77d2b4c3a0ce10dc6d5524688fb84:
+  path: logs/kowalski-n=20/collection_stats.json
+  zipfile: archive.zip
+0bfcb131eb94ac80151406aedaf939a7:
+  path: logs/kowalski-n=20/dask_cluster.log
+  zipfile: archive.zip
+7f80e9b351d38cd65fb29e88b05d8a8c:
+  path: logs/kowalski-n=20/ingester.stats.log
+  zipfile: archive.zip
+18d381037e13d5fccb606d963a552312:
+  path: logs/kowalski-n=20/mongo-init.log
+  zipfile: archive.zip
+e3bb1f72fd67df4895003e704779c236:
+  path: logs/kowalski-n=20/producer.log
+  zipfile: archive.zip
+23d00e9bf6cdaa0eb49d8cc0df812bad:
+  path: logs/kowalski-n=20/supervisord.log
+  zipfile: archive.zip
+fe6b5ef438e45bac1b6a0937cfe021af:
+  path: logs/kowalski-n=25/alert_broker_ztf.log
+  zipfile: archive.zip
+826b553dc6e32e0215ec73c53867f983:
+  path: logs/kowalski-n=25/collection_stats.json
+  zipfile: archive.zip
+5f81ba55321e3e5f88fded284d5f52e5:
+  path: logs/kowalski-n=25/dask_cluster.log
+  zipfile: archive.zip
+71cc79416121535a370226d24b9125ee:
+  path: logs/kowalski-n=25/ingester.stats.log
+  zipfile: archive.zip
+b0302291951d90538f459478b7adf101:
+  path: logs/kowalski-n=25/mongo-init.log
+  zipfile: archive.zip
+1d604c0e98aa9589fcce9461c0820c80:
+  path: logs/kowalski-n=25/producer.log
+  zipfile: archive.zip
+f9395a9d347660e79fc50be094a763ad:
+  path: logs/kowalski-n=25/supervisord.log
+  zipfile: archive.zip
+d02b4d6df461c95600f9bbaac464280b:
+  path: logs/kowalski-n=3/alert_broker_ztf.log
+  zipfile: archive.zip
+568cabd067da1d128c6d8062fc9a328d:
+  path: logs/kowalski-n=3/collection_stats.json
+  zipfile: archive.zip
+6030e7cd766e8df32d61d9748c069f54:
+  path: logs/kowalski-n=3/dask_cluster.log
+  zipfile: archive.zip
+09646968eb13d382d992aff498202c93:
+  path: logs/kowalski-n=3/ingester.stats.log
+  zipfile: archive.zip
+5511c3a0768e001e21adb11f3b4891fa:
+  path: logs/kowalski-n=3/mongo-init.log
+  zipfile: archive.zip
+a31d0c6cf186659eb9ebafb558c960b3:
+  path: logs/kowalski-n=3/producer.log
+  zipfile: archive.zip
+1bf05d2fbb8763746f309e419da3f008:
+  path: logs/kowalski-n=3/supervisord.log
+  zipfile: archive.zip
+6e90950e27f9c2097939611e22532b68:
+  path: logs/kowalski-n=6/alert_broker_ztf.log
+  zipfile: archive.zip
+78bd468114c863fc53313bcaa1a9b809:
+  path: logs/kowalski-n=6/collection_stats.json
+  zipfile: archive.zip
+3efe05b974a6df35f4946734984e1a41:
+  path: logs/kowalski-n=6/dask_cluster.log
+  zipfile: archive.zip
+09b99fc9ee11eb5f6010d491cedb9a9a:
+  path: logs/kowalski-n=6/ingester.stats.log
+  zipfile: archive.zip
+c4351738ac7cada55da98ac889b7cf19:
+  path: logs/kowalski-n=6/mongo-init.log
+  zipfile: archive.zip
+6fd5061b11ecb42819e29249e681cc28:
+  path: logs/kowalski-n=6/producer.log
+  zipfile: archive.zip
+583e83c9b8b864f92a13a61045b09d1e:
+  path: logs/kowalski-n=6/supervisord.log
+  zipfile: archive.zip
+fee76ccb1adc9caa862b46b178f328e0:
+  path: logs/kowalski-n=7/alert_broker_ztf.log
+  zipfile: archive.zip
+cb7b2cf0fc28a13a550dd686a42fd87a:
+  path: logs/kowalski-n=7/collection_stats.json
+  zipfile: archive.zip
+e05685bedff58dbc615ba384af939520:
+  path: logs/kowalski-n=7/dask_cluster.log
+  zipfile: archive.zip
+56675a0432724818ed53571e0b552d8d:
+  path: logs/kowalski-n=7/ingester.stats.log
+  zipfile: archive.zip
+9551523c64c9d506b6a8dccc871b4497:
+  path: logs/kowalski-n=7/mongo-init.log
+  zipfile: archive.zip
+0fecd3fce31e578827c5c1e417db93ba:
+  path: logs/kowalski-n=7/producer.log
+  zipfile: archive.zip
+f05f11316bd09623a186ec5ccddeeedb:
+  path: logs/kowalski-n=7/supervisord.log
+  zipfile: archive.zip
+f45733d5b3b5fd922e3318a64375515c:
+  path: logs/kowalski-n=9/alert_broker_ztf.log
+  zipfile: archive.zip
+c42e2846de9408f1e2c2d2a7e68f3ee3:
+  path: logs/kowalski-n=9/collection_stats.json
+  zipfile: archive.zip
+a16b4c39fccc8d4e47e064ff35b23218:
+  path: logs/kowalski-n=9/dask_cluster.log
+  zipfile: archive.zip
+d2fea8c08e7582fb584fc5f289f8eff3:
+  path: logs/kowalski-n=9/ingester.stats.log
+  zipfile: archive.zip
+d02635f6db05b18181ffc6fbed71859c:
+  path: logs/kowalski-n=9/mongo-init.log
+  zipfile: archive.zip
+32aaa5d729d13234327ac03cfe8aa2b0:
+  path: logs/kowalski-n=9/producer.log
+  zipfile: archive.zip
+b754b349d60615592ef91a0caca4696b:
+  path: logs/kowalski-n=9/supervisord.log
+  zipfile: archive.zip
+9daa09164381d9980151f3ec46666421:
+  path: paper/main.pdf
+  zipfile: archive.zip
