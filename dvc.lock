@@ -32,8 +32,8 @@ stages:
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: 91cdba724b2bd55d51bb559484302468.dir
-      size: 5429160
+      md5: 7979993d92da379586c6c75922abff06.dir
+      size: 5429161
       nfiles: 4
     - path: paper/main.tex
       hash: md5
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: ca415bebe5c3ce20a0e25a1df9f21874
-      size: 5682341
+      md5: 5b1842acf6ee257eeddbeb8c745f1801
+      size: 5690520
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
@@ -225,13 +225,13 @@ stages:
     deps:
     - path: .calkit/env-locks/analyze-logs
       hash: md5
-      md5: d373952d2c1f00996872a1de318f6fd8.dir
-      size: 4560
+      md5: d77b91836f8d49dfa9b01470406b8eb6.dir
+      size: 4620
       nfiles: 2
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: b804fac7d85fc27279551c1ddb86ad64
-      size: 16912
+      md5: 4973abcd739e56f0a66941eeea330cb6
+      size: 17912
     - path: logs/boom-na=1-ne=1-nf=1
       hash: md5
       md5: ff1ba8f9958addd6a6147cd05bfa2b1d.dir
@@ -305,16 +305,16 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: e91a8ff3d2e2fe12a787dcbb5688fffc
-      size: 80952
+      md5: 229ded95fe88fb068fe57e46986192d5
+      size: 79216
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
-      md5: 9bae26190eb50f669f9dbb921ca6940f
-      size: 380460
+      md5: 2594595ef599473d4b300a79895d4ee1
+      size: 373407
     - path: paper/figures/scaling.pdf
       hash: md5
-      md5: a2f5bcb14286638e9f79ca661277edc5
-      size: 15027
+      md5: 9e166f23c0acefc18969968100a43240
+      size: 15028
     - path: paper/results.tex
       hash: md5
       md5: 178c3c1d45ba52bc7d83f23bc33b5b6c
@@ -3262,8 +3262,8 @@ stages:
     deps:
     - path: .calkit/env-locks/analyze-logs
       hash: md5
-      md5: d373952d2c1f00996872a1de318f6fd8.dir
-      size: 4560
+      md5: d77b91836f8d49dfa9b01470406b8eb6.dir
+      size: 4620
       nfiles: 2
     - path: data/SN2025kwy.parquet
       hash: md5
@@ -3276,7 +3276,7 @@ stages:
     outs:
     - path: paper/figures/SN2025kwy.pdf
       hash: md5
-      md5: 2f31beb8bf744f2bd9be8748999734c5
+      md5: 82c8de55592125931db6cec9d998369c
       size: 19725
   download-ned:
     cmd: bash --noprofile --norc -c "uvx gdown 
