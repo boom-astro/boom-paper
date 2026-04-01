@@ -7847,10 +7847,10 @@ a.anchor-link {
 <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">boom_ref_config_n_alert_workers</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">boom_ref_config_n_enrichment_workers</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">boom_ref_config_n_filter_workers</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">kowalski_ref_config_n_workers</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">boom_ref_config_n_alert_workers</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">boom_ref_config_n_enrichment_workers</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">boom_ref_config_n_filter_workers</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">kowalski_ref_config_n_workers</span> <span class="o">=</span> <span class="mi">8</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"calkit.yaml"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">calkit_config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -7983,7 +7983,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>BOOM throughput factor: 7.3
+<pre>BOOM throughput factor: 7.1
 </pre>
 </div>
 </div>
@@ -8288,10 +8288,10 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>BOOM consumer max memory (MB): 99.45
-BOOM scheduler max memory (MB): 1350.0
-BOOM max memory (MB): 1418.93
-Kowalski max memory (MB): 18420.0
+<pre>BOOM consumer max memory (MB): 99.15
+BOOM scheduler max memory (MB): 519.5
+BOOM max memory (MB): 588.45
+Kowalski max memory (MB): 12560.0
 </pre>
 </div>
 </div>
@@ -8356,7 +8356,7 @@ Kowalski max memory (MB): 18420.0
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>BOOM storage per alert (GB): 0.0001
-BOOM storage for 10 years of LSST (PB): 3.4
+BOOM storage for 10 years of LSST (PB): 3.3
 </pre>
 </div>
 </div>
@@ -8370,7 +8370,7 @@ BOOM storage for 10 years of LSST (PB): 3.4
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (9, 7)</small><table border="1" class="dataframe"><thead><tr><th>system</th><th>collection</th><th>count</th><th>data_size_bytes</th><th>storage_size_bytes</th><th>total_index_size_bytes</th><th>total_size_bytes</th></tr><tr><td>str</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>"boom"</td><td>"NED"</td><td>1872544</td><td>2336799997</td><td>1085542400</td><td>83001344</td><td>1168543744</td></tr><tr><td>"kowalski"</td><td>"NED"</td><td>1872544</td><td>2336799997</td><td>1082433536</td><td>84385792</td><td>1166819328</td></tr><tr><td>"boom"</td><td>"ZTF_alerts"</td><td>29142</td><td>74873970</td><td>23564288</td><td>12288</td><td>23576576</td></tr><tr><td>"kowalski"</td><td>"ZTF_alerts"</td><td>29142</td><td>1236251278</td><td>1280937984</td><td>8822784</td><td>1289760768</td></tr><tr><td>"boom"</td><td>"ZTF_alerts_aux"</td><td>27948</td><td>3940527601</td><td>2025451520</td><td>2199552</td><td>2027651072</td></tr><tr><td>"kowalski"</td><td>"ZTF_alerts_aux"</td><td>27948</td><td>7911732546</td><td>3215101952</td><td>901120</td><td>3216003072</td></tr><tr><td>"boom"</td><td>"ZTF_alerts_cutouts"</td><td>29142</td><td>1157884631</td><td>866041856</td><td>4096</td><td>866045952</td></tr><tr><td>"boom"</td><td>"filters"</td><td>25</td><td>89041</td><td>24576</td><td>40960</td><td>65536</td></tr><tr><td>"kowalski"</td><td>"filters"</td><td>25</td><td>91450</td><td>24576</td><td>40960</td><td>65536</td></tr></tbody></table></div>
+<small>shape: (9, 7)</small><table border="1" class="dataframe"><thead><tr><th>system</th><th>collection</th><th>count</th><th>data_size_bytes</th><th>storage_size_bytes</th><th>total_index_size_bytes</th><th>total_size_bytes</th></tr><tr><td>str</td><td>str</td><td>i64</td><td>i64</td><td>i64</td><td>i64</td><td>i64</td></tr></thead><tbody><tr><td>"boom"</td><td>"NED"</td><td>1872544</td><td>2336799997</td><td>1085542400</td><td>83001344</td><td>1168543744</td></tr><tr><td>"kowalski"</td><td>"NED"</td><td>1872544</td><td>2336799997</td><td>1082433536</td><td>84385792</td><td>1166819328</td></tr><tr><td>"boom"</td><td>"ZTF_alerts"</td><td>29142</td><td>74872822</td><td>28352512</td><td>1396736</td><td>29749248</td></tr><tr><td>"kowalski"</td><td>"ZTF_alerts"</td><td>29142</td><td>1236251278</td><td>1290047488</td><td>8204288</td><td>1298251776</td></tr><tr><td>"boom"</td><td>"ZTF_alerts_aux"</td><td>27948</td><td>3940514445</td><td>2116407296</td><td>2207744</td><td>2118615040</td></tr><tr><td>"kowalski"</td><td>"ZTF_alerts_aux"</td><td>27948</td><td>7911732546</td><td>2728529920</td><td>913408</td><td>2729443328</td></tr><tr><td>"boom"</td><td>"ZTF_alerts_cutouts"</td><td>29142</td><td>1157884631</td><td>649908224</td><td>466944</td><td>650375168</td></tr><tr><td>"boom"</td><td>"filters"</td><td>25</td><td>89041</td><td>24576</td><td>40960</td><td>65536</td></tr><tr><td>"kowalski"</td><td>"filters"</td><td>25</td><td>91450</td><td>24576</td><td>40960</td><td>65536</td></tr></tbody></table></div>
 </div>
 </div>
 </div>
