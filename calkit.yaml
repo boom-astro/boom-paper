@@ -37,10 +37,8 @@ pipeline:
     get-seed-data:
       kind: shell-command
       environment: _system
-      command: uvx gdown 
-        https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
-        -O 
-        ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
+        -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
         - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
     fix-seed-data:
@@ -84,8 +82,7 @@ pipeline:
         - data/alerts/kowalski.NED.json.gz
         - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       iterate_over:
-        - arg_name: [n_alert_workers, n_enrichment_workers, 
-                n_filter_workers]
+        - arg_name: [n_alert_workers, n_enrichment_workers, n_filter_workers]
           values:
             - [1, 1, 1]
             - [1, 3, 1]
@@ -180,8 +177,7 @@ pipeline:
 datasets:
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
-    description: Alerts from the NED archival catalog exported from 
-      Kowalski.
+    description: Alerts from the NED archival catalog exported from Kowalski.
   - path: logs
     title: Benchmark logs
     description: Logs from the BOOM and Kowalski benchmarks.
@@ -198,21 +194,20 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different 
-      numbers of workers.
+    description: This figure shows the scaling of BOOM with different numbers
+      of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
-    description: This figure shows the lightcurve of the supernova 
-      SN2025kwy.
+    description: This figure shows the lightcurve of the supernova SN2025kwy.
   - path: paper/figures/filter_interface.png
     title: BOOM filter interface
     description: Screenshot of the BOOM filter interface.
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker 
-      operating at scale
+    title: A real-time, multi-survey, optical alert system broker operating
+      at scale
     description:
     kind: journal-article
     stage: build-paper
@@ -220,8 +215,7 @@ publications:
 notebooks:
   - path: notebooks/analyze-logs.ipynb
     title: Analyzing the logs
-    description: Analyze the logs from the BOOM and Kowalski 
-      benchmarks.
+    description: Analyze the logs from the BOOM and Kowalski benchmarks.
 
 references:
   - path: paper/references.bib
@@ -271,8 +265,8 @@ releases:
     description:
 
 questions:
-  - Will BOOM be able to support the increased throughput from the 
-    Rubin Observatory's alert stream?
+  - Will BOOM be able to support the increased throughput from the Rubin
+    Observatory's alert stream?
 
 overleaf_sync:
   paper:
@@ -306,8 +300,8 @@ authors:
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 
-      91125, USA
+    affiliation: California Institute of Technology, Pasadena, CA 91125,
+      USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
     last_name: Simones
@@ -372,10 +366,10 @@ authors:
     last_name: Bloom
     orcid: 0000-0002-7777-216X
     affiliation:
-      - Department of Astronomy, University of California, Berkeley, 
-        CA 94720, USA
-      - Lawrence Berkeley National Laboratory, 1 Cyclotron Road, MS 
-        50B-4206, Berkeley, CA 94720, USA
+      - Department of Astronomy, University of California, Berkeley, CA
+        94720, USA
+      - Lawrence Berkeley National Laboratory, 1 Cyclotron Road, MS 50B-4206,
+        Berkeley, CA 94720, USA
   - first_name: Antonella
     last_name: Palmese
     orcid: 0000-0002-6011-0530
