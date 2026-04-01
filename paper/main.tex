@@ -146,7 +146,7 @@ With the arrival of ever higher throughput wide-field surveys and a multitude of
 \texttt{BOOM} harnesses the performance of a \texttt{Rust}-based software stack relying on a non-relational \texttt{MongoDB} database combined with a \texttt{Valkey} in-memory processing queue and a \texttt{Kafka} cluster for message sharing.
 With this system, we demonstrate feature parity with the existing ZTF system with a throughput $\sim \boomthroughputfactor \times$ higher.
 We describe the workflow that enables the real-time processing as well as the results with custom filters we have built to demonstrate the system's capabilities.
-In conclusion, we present the development roadmap for both \texttt{BOOM} and \texttt{Babamul} -- the public-facing LSST alert broker built atop \texttt{BOOM} -- as we begin the Rubin era.
+In conclusion, we present the development roadmap for both \texttt{BOOM} and \texttt{Babamul}---the public-facing LSST alert broker built atop \texttt{BOOM}---as we begin the Rubin era.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
@@ -184,15 +184,40 @@ Feeding these marshals are the ``enriched'' alert streams from the brokers, incl
 To identify the most interesting objects for particular science cases, brokers can cross-match alerts against static catalogs (e.g., Gaia DR3, \cite{Gaia2023}; PanSTARRs DR1, \cite{ChMa2016}; milliquas, \cite{Flesch_2023}; NED LVS, \cite{Cook_2023}) and look for specific properties using machine learning classification pipelines (e.g., AstroM3, \cite{rizhko2024astrom}; BTSbot, \cite{Rehemtulla+2024}; ACAI, \cite{duev2021phenomenologicalclassificationzwickytransient}; Maven, \cite{zhang2024mavenmultimodalfoundationmodel}). All brokers provide their own filtering system that makes use of the ``enriched'' alert data to identify objects of interest for specific science cases. Depending on the broker, the filters can be from a standard set based on community feedback or customized by the user directly. Furthermore, they may run in real-time as alerts are coming in, or anytime after the alert data is processed to perform archival searches. So far, alert brokers have been providing these services predominantly for the ZTF alert stream. However, now that a number of surveys providing real-time alert streams will overlap in space and time, we---as a community---have an opportunity to enrich each survey with the data products from the others.
 
 Specifically, to supplement the LSST alert stream, a variety of other optical systems such as the La Silla Schmidt Southern Survey (LS4; \citealt{miller2025lasillaschmidtsouthern}) and ZTF will be trailing the LSST footprint daily. To maximize the science synergies enabled by these coordinated observations, brokers will need to perform joint filtering on these alert streams.
-This will be essential to readily identify, for example, fast transients within these streams. The relatively slow cadence of LSST and other optical surveys' limited depth  make such identification difficult. Thus, the rate of evolution of these phenomena cannot be precisely measured when alerts from these surveys' streams are used separately.
+This will be essential to readily identify, for example, fast transients within these streams.
+The relatively slow cadence of LSST and other optical surveys' limited depth make such identification difficult. Thus, the rate of evolution of these phenomena cannot be precisely measured when alerts from these surveys' streams are used separately.
 
 It is with these considerations in mind that we present \texttt{BOOM}, an astronomical alert broker that builds upon our experience with \kowalski\footnote{\url{https://github.com/skyportal/Kowalski}}, an open source, multi-survey data archive and alert broker \citep{DuMa2019}. \kowalski has been used in production by the ZTF collaboration for over seven years, with \skyportal as its ``marshal``.
 In this paper, we will describe several important developments and design choices made with \boom that ready it for the upcoming LSST era.
 Although this paper focuses mainly on the design and conceptual framework of \texttt{BOOM}, we encourage the interested reader to explore the repository alongside this text \footnote{https://github.com/boom-astro/boom}, and read its documentation.
 
-As an example of important design choices, since multiple observatories will observe the LSST footprint concurrently, \boom has as its top priority, the ability to jointly filter on multiple alert streams, a relatively unique capability in the broker community. Furthermore, one of the main differences between \boom and \kowalski---and most other alert brokers---is moving away from Python and instead writing the project in \texttt{Rust}, a compiled programming language with performance characteristics that make it much better suited to attaining a high throughput of alerts at scale. Processing additional alert streams in parallel increases the data volume by at least an order of magnitude, and jointly filtering on multiple streams requires even more computation, as every alert packet needs to be cross-matched with all other overlapping surveys' alert streams. While not relying on \texttt{Python} may have the downside of making contributions from astronomers - who typically write in Python - more challenging, our experience running \kowalski in production has shown us that requiring computer science knowledge to make use of an alert broker will significantly limit its use, regardless of complexity. In the following sections, we will describe the filter building tool we have built to ameliorate this challenge, where the user is provided with a no-code alternative to write complex queries.
+As an example of important design choices,
+since multiple observatories will observe the LSST footprint concurrently,
+\boom has as its top priority,
+the ability to jointly filter on multiple alert streams,
+a relatively unique capability in the broker community.
+Furthermore, one of the main differences between
+\boom and \kowalski---and most other alert brokers---is moving away from
+Python and instead writing the project in \texttt{Rust},
+a compiled programming language with performance characteristics that make
+it much better suited to attaining a high throughput of alerts at scale.
+Processing additional alert streams in parallel increases the data volume
+by at least an order of magnitude,
+and jointly filtering on multiple streams requires even more computation,
+as every alert packet needs to be cross-matched with all other
+overlapping surveys' alert streams.
+While not relying on \texttt{Python}
+may have the downside of making contributions from astronomers---who
+typically write in Python---more challenging,
+our experience running \kowalski in production has shown us that requiring
+computer science knowledge to make use of an alert broker will significantly
+limit its use, regardless of complexity. In the following sections,
+we will describe the filter building tool we have built to ameliorate this
+challenge, where the user is provided with a no-code alternative to write
+complex queries.
 
-In this paper, we describe the components built within \texttt{BOOM}, focusing on design choices useful in preparation for LSST data scales.
+In this paper, we describe the components built within \texttt{BOOM},
+focusing on design choices useful in preparation for LSST data scales.
 We describe \texttt{BOOM}'s key features in Sec.~\ref{sec:pipeline}.
 We demonstrate some of \texttt{BOOM}'s capabilities, including throughput measurements, in Sec.~\ref{sec:science}.
 We describe the future of \boom and how we envision its role in the community in Sec.~\ref{sec:conclusion}.
@@ -213,7 +238,7 @@ In this section, we present the key design features and implemented capabilities
 
 \subsection{Input/Output through \texttt{Apache Kafka}}
 
-\texttt{Apache Kafka} has become the gold standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes for a wide variety of production-grade software in academia and industry. Optical alerts from surveys like ZTF and LSST are transmitted as Avro packets\footnote{\url{https://avro.apache.org}} over \kafka, which means that the ability to feed from \kafka topics - which represent one data stream that a client can read from - is absolutely required by any alert brokering software. Its ecosystem of libraries, available for all major programming languages, makes it extremely easy for the client to develop pipelines around it. For these reasons, adopting \kafka as our downstream data sharing system ensures compatibility with existing downstream services, which are also designed to consume alerts from \kafka . For each survey supported by our software, an associated \kafka consumer has been developed to feed from the \texttt{Avro}-formatted alerts. The consumers take advantage of \kafka's partitioning feature (where one topic is broken down in N partitions that a client can read from independently, with multiple processes) to process any given survey's alert stream(s) in parallel, maximizing the input rate. \texttt{BOOM}'s output, as described in subsection \ref{sec:filter}, is also serialized to \texttt{Avro} and produced to a \kafka cluster.
+\texttt{Apache Kafka} has become the gold standard for astronomical alert brokering due to its scalability, fault tolerance, and capacity to handle large data volumes for a wide variety of production-grade software in academia and industry. Optical alerts from surveys like ZTF and LSST are transmitted as Avro packets\footnote{\url{https://avro.apache.org}} over \kafka, which means that the ability to feed from \kafka topics---which represent one data stream that a client can read from---is absolutely required by any alert brokering software. Its ecosystem of libraries, available for all major programming languages, makes it extremely easy for the client to develop pipelines around it. For these reasons, adopting \kafka as our downstream data sharing system ensures compatibility with existing downstream services, which are also designed to consume alerts from \kafka . For each survey supported by our software, an associated \kafka consumer has been developed to feed from the \texttt{Avro}-formatted alerts. The consumers take advantage of \kafka's partitioning feature (where one topic is broken down in N partitions that a client can read from independently, with multiple processes) to process any given survey's alert stream(s) in parallel, maximizing the input rate. \texttt{BOOM}'s output, as described in subsection \ref{sec:filter}, is also serialized to \texttt{Avro} and produced to a \kafka cluster.
 
 \subsection{Job scheduling with \valkey}
 
@@ -430,10 +455,12 @@ acceleration, further improving throughput.
 
 \texttt{BOOM}'s memory footprint is also greatly reduced,
 using a maximum of \boommaxmem~GB compared to \kowalski's \kowalskimaxmem~GB
-for the case with 25 workers. Note that this value is the memory used by
-the workers alone
+for the case with \refconfignworkers workers,
+which roughly corresponds to the point at which \boom crosses the Rubin
+alert rate threshold.
+Note that this value is the memory used by the workers alone
 and doesn't include that used by Kafka, MongoDB, or Valkey.
-Regarding storage requirements, if we extrapolate the benchmark database's
+Regarding storage requirements, if we extrapolate this benchmark database's
 total size to 10 years of 10 million alerts per night as expected by LSST,
 we will require \boomstoragetenyrlsstpb~PB of storage.
 However, that is assuming all data is stored for all time, which is subject
@@ -441,7 +468,7 @@ to revision based on user needs.
 
 \subsection{Hardware Requirements}
 
- \boom requires at least the following processes to run: one for each worker type, one for the main process, one to consume alerts from \texttt{Kafka}, one for \texttt{Valkey}, one for \texttt{MongoDB}, and one for its \kafka output. Since it operates in a fully asynchronous context, it can function with less physical threads than there are processes.
+\boom requires at least the following processes to run: one for each worker type, one for the main process, one to consume alerts from \texttt{Kafka}, one for \texttt{Valkey}, one for \texttt{MongoDB}, and one for its \kafka output. Since it operates in a fully asynchronous context, it can function with less physical threads than there are processes.
 Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey will stores up to 15,000 alerts using $\sim 1$ GB of memory, while other job scheduling items consume negligible amounts of memory. This maximum alert number can be adjusted downward to reduce \texttt{Valkey}'s memory footprint. \mongo also benefits from caching, and similarly its memory allocation can be capped at startup.
 
 From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker are sufficient to run the benchmarked version of \boom at the LSST scale.
@@ -512,12 +539,12 @@ As of February 25th 2026, LSST alerts are now publicly available through all Rub
     \item First, filter out low-quality alerts and solar-system candidates. The filter conditions are survey-specific and will evolve over time especially for LSST. Moreover, we hope to bring back SSO candidates into their own dedicated Kafka streams, at a later date.
     \item Secondly, we categorize each alert to associate it to a single kafka stream. \babamul aims to deliver disjoint (guaranteeing no duplication) streams that redistribute the entire alert stream to the community, split into its different parts. For example, a ZTF alert with an LSST match and matching to a known stellar object will be assigned to the \texttt{babamul.ztf.lsst-match.stellar} Kafka stream.
     \item Alerts are bundled in an Avro package that contains: all metadata about the current alert, the features computed by the Enrichment worker, a lightweight lightcurve schema, matches with other surveys and their lightcurves, but no image cutouts. This lets us trim down on the alert stream size significantly, necessary to support many users in parallel. The information bundled in \babamul alerts are more than sufficient for downstream users to run a filter layer of filtering to narrow down the number of relevant candidates drastically. For those that are left, the API may be used to retrieve additional data products (crossmatches with other catalogs, all lightcurve metadata, and images).
-    \item Last but not least, the Avro-serialized alerts are sent to their associated Kafka stream, configured to enable compression at the Kafka-level (which offers higher compression rates and throughput -- for both server and client -- then when enabled at the Avro-level).
+    \item Last but not least, the Avro-serialized alerts are sent to their associated Kafka stream, configured to enable compression at the Kafka-level (which offers higher compression rates and throughput---for both server and client---then when enabled at the Avro-level).
 \end{itemize}
 
 \babamul ships with a dedicated Python client\footnote{\url{https://pypi.org/project/babamul/}} to facilitate accessing the alert streams. In this client, Pydantic is used to serialize Avro packets to Python classes, enabling type-safety checks, auto-completion in IDEs, and easier integration with Agentic coding tools. Moreover, by treating each alert as a full-blown Python class, this lets us add various helper functions and methods to facilitate using the data products or fetching additional information from the API. Example use-cases for the client are provided as Jupyter notebooks\footnote{\url{https://github.com/boom-astro/babamul/tree/main/examples}}.
 
-\texttt{Babamul}'s web application serves as the entry point to its Kafka cluster, Restful API, Python client, and help sections. But, its main purpose is to provide visualization tools for each objects, as well as tools to search for them in an intuitive manner. So far, individual object pages and ID-based searches have been implemented, while coordinate and property based searches -- all already available through the API -- are still in the works. Also, a dedicated SkyPortal extension is actively being developed. Based on the Python client, it will let members of the community filter and ingest revelant alerts to their own TOM and marshal instances.
+\texttt{Babamul}'s web application serves as the entry point to its Kafka cluster, Restful API, Python client, and help sections. But, its main purpose is to provide visualization tools for each objects, as well as tools to search for them in an intuitive manner. So far, individual object pages and ID-based searches have been implemented, while coordinate and property based searches---all already available through the API---are still in the works. Also, a dedicated SkyPortal extension is actively being developed. Based on the Python client, it will let members of the community filter and ingest revelant alerts to their own TOM and marshal instances.
 
 \section{Conclusions}
 \label{sec:conclusion}
@@ -526,9 +553,10 @@ In conclusion, the data processing system we have described
 above---\texttt{BOOM}---is now operational on ZTF and well-positioned to scale to LSST.
 Designed to deliver real-time filtering of incoming alerts, it also offers a queryable archive of all ZTF and LSST alerts throughout the surveys' operational lifetime. This archive will enable retrospective analyses and is structured to support future batch-processing capabilities, facilitating large-scale, post-facto scientific investigations. More broadly, \boom empowers researchers with a flexible, scalable platform that naturally allows for brokering multiple surveys simultaneously, which enables for the extraction of the maximum scientific value from current and future surveys.
 
-Since LSST alerts have been made public, many transients of interest were identified using \boom or \texttt{babamul} (\cite{2026TNSAN..43....1H}, \cite{2026TNSAN..44....1K}, \cite{2026TNSAN..68....1J}), and reported to the community. Also, ZTF's own SkyPortal instance -- Fritz -- is now equipped with the filter building UI described in section \ref{filter_building}, and ZTF collaborators have designed filters that run on the stream in real-time, with Fritz then ingesting the identified candidates to enable various candidate scanning workflows, as done previously with Kowalski (but with the addition of multi-survey information).
+Since LSST alerts have been made public, many transients of interest were identified using \boom or \texttt{babamul} (\cite{2026TNSAN..43....1H}, \cite{2026TNSAN..44....1K}, \cite{2026TNSAN..68....1J}), and reported to the community. Also, ZTF's own SkyPortal instance---Fritz---is now equipped with the filter building UI described in section \ref{filter_building}, and ZTF collaborators have designed filters that run on the stream in real-time, with Fritz then ingesting the identified candidates to enable various candidate scanning workflows, as done previously with Kowalski (but with the addition of multi-survey information).
 
-In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments. Re-running filters is already possible through \texttt{BOOM}'s HTTP API and through the filter-building UI, but enforcing validation of the filter results before proceeding to submission for real-time operations ---which requires additional development work --- is lacking. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results.
+In the future, we have a number of critical developments we plan for the platform, mostly focused on facilitating alert filtering. Namely, we propose the development of software dedicated to re-running these complex filters after the fact, to validate their capabilities, purity, and to estimate the rates at which we can expect automated ToOs for the targeted follow-up instruments.
+Re-running filters is already possible through \texttt{BOOM}'s HTTP API and through the filter-building UI, but enforcing validation of the filter results before proceeding to submission for real-time operations---which requires additional development work---is lacking. This way, any iteration of a given filter would automatically come with associated statistics, building a strong baseline and point of reference as we iterate to improve any survey's results.
 
 \section*{acknowledgments}
 \label{sec:acknowledgments}
