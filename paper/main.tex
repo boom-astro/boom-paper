@@ -471,7 +471,7 @@ to revision based on user needs.
 \boom requires at least the following processes to run: one for each worker type, one for the main process, one to consume alerts from \texttt{Kafka}, one for \texttt{Valkey}, one for \texttt{MongoDB}, and one for its \kafka output. Since it operates in a fully asynchronous context, it can function with less physical threads than there are processes.
 Memory requirements depend primarily on alert storage and job scheduling. By default, \valkey will stores up to 15,000 alerts using $\sim 1$ GB of memory, while other job scheduling items consume negligible amounts of memory. This maximum alert number can be adjusted downward to reduce \texttt{Valkey}'s memory footprint. \mongo also benefits from caching, and similarly its memory allocation can be capped at startup.
 
-From Figure~\ref{fig:scaling}, we have shown that $\sim 7$ total worker are sufficient to run the benchmarked version of \boom at the LSST scale.
+From Figure~\ref{fig:scaling}, we have shown that $\sim \refconfignworkers$ total workers are sufficient to run the benchmarked version of \boom at the LSST scale.
 Therefore, we recommend running \boom on servers that have at least this number of threads to execute the software itself,
 and a matching number of threads to run \mongo and \valkey efficiently.
 
