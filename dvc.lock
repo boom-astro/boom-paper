@@ -32,7 +32,7 @@ stages:
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: 4c4b2fb7bc3d1ab5c15d35df6e7b6416.dir
+      md5: 7cd4ba9b970b564f0655ae1c21861229.dir
       size: 5429160
       nfiles: 4
     - path: paper/main.tex
@@ -50,7 +50,7 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 441b4cc938049a58ecb42426f7ae706c
+      md5: 71985ae6a539c3cf27791de34844e799
       size: 5682356
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
@@ -230,8 +230,8 @@ stages:
       nfiles: 2
     - path: .calkit/notebooks/cleaned/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: d120bfcfec0ec3d1d4ce0ad0f7d3960c
-      size: 16132
+      md5: 5e89af3db3158f16bc0cfd80b8b1fe66
+      size: 16914
     - path: logs/boom-na=1-ne=1-nf=1
       hash: md5
       md5: ff1ba8f9958addd6a6147cd05bfa2b1d.dir
@@ -305,7 +305,7 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/analyze-logs.ipynb
       hash: md5
-      md5: d0e596864d2a7e60ce7bf36492434022
+      md5: ee93db82a3b052c64ae2f4c805560040
       size: 80952
     - path: .calkit/notebooks/html/notebooks/analyze-logs.html
       hash: md5
@@ -313,7 +313,7 @@ stages:
       size: 380460
     - path: paper/figures/scaling.pdf
       hash: md5
-      md5: da1797645aca34134ac3360bb9ed8a4d
+      md5: ab8a3bf5db5a0b4bd967e7b82a1d56b9
       size: 15027
     - path: paper/results.tex
       hash: md5
