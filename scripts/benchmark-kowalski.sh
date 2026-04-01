@@ -59,6 +59,48 @@ while [ $(docker compose -f "$COMPOSE_CONFIG" exec mongo mongo "mongodb://mongoa
     sleep 1
 done
 
+echo "$(current_datetime) - All alerts ingested and classified"
+
+# Export collection stats to JSON before shutting down
+echo "$(current_datetime) - Collecting MongoDB collection stats"
+MONGO_RESULT="$({
+	docker compose -f "$COMPOSE_CONFIG" exec mongo \
+		mongo -u mongoadmin -p mongoadminsecret --authenticationDatabase admin \
+		--quiet \
+		--eval '
+const dbName = "kowalski";
+const d = db.getSiblingDB(dbName);
+function collectionStats(name) {
+	const c = d.getCollection(name);
+	const s = c.stats();
+	return {
+		collection: name,
+		count: c.count(),
+		data_size_bytes: s.size,
+		storage_size_bytes: s.storageSize,
+		total_index_size_bytes: s.totalIndexSize,
+		total_size_bytes: s.totalSize
+	};
+}
+const collectionNames = d.getCollectionNames().sort();
+const out = {
+	generated_at_utc: new Date().toISOString(),
+	database: dbName,
+	collections: collectionNames.map(collectionStats)
+};
+print(JSON.stringify(out));
+'
+} | tail -n 1)"
+
+if [ -n "$MONGO_RESULT" ]; then
+	if command -v jq >/dev/null 2>&1; then
+		printf '%s\n' "$MONGO_RESULT" | jq . > logs/kowalski/collection_stats.json
+	else
+		printf '%s\n' "$MONGO_RESULT" > logs/kowalski/collection_stats.json
+	fi
+	echo "$(current_datetime) - Wrote collection stats to logs/kowalski/collection_stats.json"
+fi
+
 echo "$(current_datetime) - All tasks completed; shutting down Kowalski services"
 
 # Shut down the services
