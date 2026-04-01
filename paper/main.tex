@@ -391,7 +391,7 @@ products (lightcurves, cross-matches) for all objects that have been detected
 prior to 2025-03-11. This ensures that the throughput test is representative
 of what is expected in production, where most alerts are emitted for
 existing---and often persistent---objects that may have thousands of data
-points in their light curves.
+points in their light curves. The selected night consists of 29,142 alerts total, observed across 105 exposures for a total of 70 unique ZTF fields. Since the database is pre-loaded with all previous history for the objects associated to the alerts being processed (most of which had been detected already: 27,948, or $\sim 95.9 \%$), processing a larger or smaller batch of alerts will not have any impact on the measured throughput, and only increase the time required to explore the worker count parameter grid.
 The machine used for throughput testing has a 2.9 GHz AMD EPYC 7002 processor
 with 32 cores, 64 threads, and 128 GB of 2933 MHz DDR4 memory.
 Data were written to a 12 Gb/s 7200 RPM hard drive
