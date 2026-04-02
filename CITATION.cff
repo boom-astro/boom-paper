@@ -6,8 +6,8 @@ title: >
 abstract: >
   This project contains all of the files necessary to reproduce the results
   and compile the paper.
-version: v0.2.2
-date-released: '2026-04-01'
+version: v0.2.3
+date-released: '2026-04-02'
 repository-code:
 authors:
   - family-names: Jegou du Laz
@@ -81,3 +81,6 @@ identifiers:
   - description: Release v0.2.2
     type: doi
     value: 10.22002/9ec63-5b373
+  - description: Release v0.2.3
+    type: doi
+    value: 10.22002/9ny00-86t38

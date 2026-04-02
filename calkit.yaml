@@ -263,6 +263,16 @@ releases:
     doi: 10.22002/9ec63-5b373
     url: https://doi.org/10.22002/9ec63-5b373
     description:
+  v0.2.3:
+    kind: project
+    path: .
+    git_rev: 1c3db9f
+    date: '2026-04-02'
+    publisher: caltechdata
+    record_id: 9ny00-86t38
+    doi: 10.22002/9ny00-86t38
+    url: https://doi.org/10.22002/9ny00-86t38
+    description:
 
 questions:
   - Will BOOM be able to support the increased throughput from the Rubin
