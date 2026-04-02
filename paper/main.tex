@@ -15,6 +15,7 @@
 \usepackage{url}
 \usepackage{subfigure}
 \usepackage{rotating}
+\usepackage{amsmath}
 \usepackage{enumitem}\setlist[description]{font=\textendash\enskip\scshape\bfseries}
 % \usepackage{lineno}
 
@@ -460,11 +461,11 @@ which roughly corresponds to the point at which \boom crosses the Rubin
 alert rate threshold.
 Note that this value is the memory used by the workers alone
 and doesn't include that used by Kafka, MongoDB, or Valkey.
-Regarding storage requirements, if we extrapolate this benchmark database's
-total size to 10 years of 10 million alerts per night as expected by LSST,
-we will require \boomstoragetenyrlsstpb~PB of storage.
-However, that is assuming all data is stored for all time, which is subject
-to revision based on user needs.
+% Regarding storage requirements, if we extrapolate this benchmark database's
+% total size to 10 years of 10 million alerts per night as expected by LSST,
+% we will require \boomstoragetenyrlsstpb~PB of storage.
+% However, that is assuming all data is stored for all time, which is subject
+% to revision based on user needs.
 
 \subsection{Hardware Requirements}
 
@@ -474,6 +475,20 @@ Memory requirements depend primarily on alert storage and job scheduling. By def
 From Figure~\ref{fig:scaling}, we have shown that $\sim \refconfignworkers$ total workers are sufficient to run the benchmarked version of \boom at the LSST scale.
 Therefore, we recommend running \boom on servers that have at least this number of threads to execute the software itself,
 and a matching number of threads to run \mongo and \valkey efficiently.
+
+\subsection{LSST Alerts Storage Requirements}
+
+On Caltech's production instance we see that with LSST's current schema, 10M alerts -- which is LSST's expected alert count for a single night -- occupy 7.67 GB on disk (accounting for MongoDB's built-in compression, as otherwise the data would occupy $\sim$\,4$\times$ that amount). Therefore, if we assume LSST will observe $\sim$300 nights a year, we expect the LSST alert collection to use 2.3\,TB a year, and 23\,TB for the total length of the survey (10 years).
+
+Estimating the disk size requirements for the object-level collection (LSST\_alerts\_aux) is not as straightforward, as we do not have a representative set yet. To date, LSST alerts that were emitted from the deep drilling fields, which means few distinct objects but hundreds of datapoints for these sources a night. In the wide fast deep survey mode that LSST will operate in for its 10 years, we can expect 2 observations per night for many objects, with 5+ days gaps in between. Ultimately, this means lightcurves with relatively fewer datapoints but for many distinct objects, which is not comparable to the ZTF cadence or the current LSST DDF alerts. We estimate the storage requirements for LSST object-level data as follows: Over its $\sim$8 years of operations, ZTF has produced 880\,M alerts corresponding to 222\,M unique objects, which occupy 1.4\,TB on disk; this corresponds to an alerts-to-objects ratio of 4:1. Assuming LSST emits 10\,M alerts per night over $\sim$300 nights per year, it would generate 3\,B alerts annually, yielding 750\,M unique objects per year and $\sim$7.5\,B after 10 years. Since LSST's cadence is approximately 5 times lower than ZTF's, individual object records are expected to accumulate detections at a rate $\sim$5 times more slowly (as disk usage is dominated by lightcurve data), however we know for many transients that they will be detected to much fainter magnitudes, and therefore the same object will be detected for much longer. Scaling accordingly:
+\[
+\frac{1.4 \times 7500}{222 \times 5} \approx 9.5 \text{ TB}
+\]
+where 7500=7.5\,B/1\,M is the ratio of expected LSST unique objects to ZTF's, and the factor of 4 accounts for LSST's lower per-object data volume.
+
+As for the disk space occupied by the alert cutout data, this all depends on what a BOOM instance can afford to store on disk. Images are by far the most storage hungry data product, and storing even just 10\,M uses $\sim 645$\,GB. Thankfully, image cutouts can easily be retrieved directly from the LSST data science platform APIs, and are never used to filter on images (instead, ML scores or features may be computed from the images as we get alerts, and these quantities are what one may query on). So, here, we plan to only keep up to N hours of alert cutouts in MongoDB, where N can be tuned to fit the disk space available on a deployment, and needs to be equal or superior to 80 hours (which is the planned image embargo period for new LSST images, which means one cannot retrieve cutouts from images taken in the past 80 hours, and these need to be sourced from alert packets). The cutout API of BOOM and its public facing extension Babamul will be equipped to serve images sourced from the LSST data science platform APIs when these aren't available in MongoDB anymore. With a retention period of 7 days (which is the value used by the Caltech BOOM instance), cutouts will never need more than $\sim 4.5$ TB.
+
+Summing up the data requirements for the alert collection (23TB), object collection (12TB) and ``in-out`` cutout collection (4.5TB max), BOOM's LSST data requirement totals 39.5\,TB, at the end of LSST's planned 10-year lifespan.
 
 \subsection{Deployment Approaches}
 
