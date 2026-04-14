@@ -27,18 +27,18 @@ stages:
       size: 231697
     - path: paper/diagrams
       hash: md5
-      md5: 30ad3f8b6377e1a766beef5ec1ab370a.dir
-      size: 5092
+      md5: a58e6db8523afed25c97ab6f02cd053d.dir
+      size: 5068
       nfiles: 1
     - path: paper/figures
       hash: md5
-      md5: 7979993d92da379586c6c75922abff06.dir
-      size: 5429161
-      nfiles: 4
+      md5: 044d226061fa12432190165d74742cd7.dir
+      size: 5562743
+      nfiles: 5
     - path: paper/main.tex
       hash: md5
-      md5: fc4bc5c196d8050c94def0182a894829
-      size: 75140
+      md5: 0dcc845a4592811e38b5d22f81413d1e
+      size: 79103
     - path: paper/references.bib
       hash: md5
       md5: cdff733197de1f924abfa044c3d2992e
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: 65b83cfa3da035be209d14d8708627ed
-      size: 5694329
+      md5: e0438a9fe7e577aec91e6be680d69325
+      size: 5700495
   run-benchmarks:
     cmd: bash --noprofile --norc scripts/run-benchmarks.sh
     deps:
