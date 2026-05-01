@@ -1,13 +1,14 @@
 cff-version: 1.2.0
 message: If you use these files, please cite is using these metadata.
 title: >
-  BOOM and Babamul: a real-time, multi-survey,
-  optical alert broker system operating at scale
+  BOOM and Babamul: a real-time, multi-survey, optical alert broker system
+  operating at scale
 abstract: >
   This project contains all of the files necessary to reproduce the results
-  and compile the paper.
-version: v0.2.3
-date-released: '2026-04-02'
+  and
+  compile the paper.
+version: v0.2.4
+date-released: '2026-05-01'
 repository-code:
 authors:
   - family-names: Jegou du Laz
@@ -84,3 +85,6 @@ identifiers:
   - description: Release v0.2.3
     type: doi
     value: 10.22002/9ny00-86t38
+  - description: Release v0.2.4
+    type: doi
+    value: 10.22002/xkxga-41b84
