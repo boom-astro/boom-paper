@@ -1,10 +1,10 @@
 name: boom-paper
 title: >
-  BOOM and Babamul: a real-time, multi-survey,
-  optical alert broker system operating at scale
+  BOOM and Babamul: a real-time, multi-survey, optical alert broker system
+  operating at scale
 description: >
-  This project contains all of the files necessary to reproduce the results
-  and compile the paper.
+  This project contains all of the files necessary to reproduce the results and
+  compile the paper.
 
 dependencies:
   - git-lfs
@@ -37,8 +37,9 @@ pipeline:
     get-seed-data:
       kind: shell-command
       environment: _system
-      command: uvx gdown https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL
-        -O ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
+      command: uvx gdown
+        https://drive.google.com/uc?id=126uLk7xah2EpJR741ziPO-cxQ43nZUoL -O
+        ./data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
       outputs:
         - data/alerts/boom_throughput.ZTF_alerts_aux_before_fix.dump.gz
     fix-seed-data:
@@ -82,15 +83,15 @@ pipeline:
         - data/alerts/kowalski.NED.json.gz
         - data/alerts/boom_throughput.ZTF_alerts_aux.dump.gz
       iterate_over:
-        - arg_name: [n_alert_workers, n_enrichment_workers, n_filter_workers]
+        - arg_name: [ n_alert_workers, n_enrichment_workers, n_filter_workers ]
           values:
-            - [1, 1, 1]
-            - [1, 3, 1]
-            - [2, 5, 1]
-            - [2, 6, 2]
-            - [3, 9, 3]
-            - [4, 12, 4]
-            - [5, 15, 5]
+            - [ 1, 1, 1 ]
+            - [ 1, 3, 1 ]
+            - [ 2, 5, 1 ]
+            - [ 2, 6, 2 ]
+            - [ 3, 9, 3 ]
+            - [ 4, 12, 4 ]
+            - [ 5, 15, 5 ]
       outputs:
         - logs/boom-na={n_alert_workers}-ne={n_enrichment_workers}-nf={n_filter_workers}
     fix-kowalski-seed-data:
@@ -130,7 +131,7 @@ pipeline:
         - boom-producer/Cargo.lock
       iterate_over:
         - arg_name: n_workers
-          values: [3, 5, 8, 10, 15, 20, 25]
+          values: [ 3, 5, 8, 10, 15, 20, 25 ]
       outputs:
         - logs/kowalski-n={n_workers}
     analyze-logs:
@@ -175,6 +176,11 @@ pipeline:
         - paper/figures
 
 datasets:
+  - path: data/alerts/ztf/public/20250311
+    title: ZTF public alerts
+    description: Alerts from the ZTF public stream on 2025-03-11.
+    imported_from:
+      url: https://ztf.uw.edu/alerts/public/ztf_public_20250311.tar.gz
   - path: data/kowalski.NED.json.gz
     title: NED archival catalog
     description: Alerts from the NED archival catalog exported from Kowalski.
@@ -194,8 +200,7 @@ figures:
   - path: paper/figures/scaling.pdf
     title: BOOM scaling
     stage: analyze-logs
-    description: This figure shows the scaling of BOOM with different numbers
-      of workers.
+    description: This figure shows the scaling of BOOM with different numbers of workers.
   - path: paper/figures/SN2025kwy.pdf
     title: Lightcurve of SN2025kwy
     stage: plot-lightcurve
@@ -206,8 +211,7 @@ figures:
 
 publications:
   - path: paper/main.pdf
-    title: A real-time, multi-survey, optical alert system broker operating
-      at scale
+    title: A real-time, multi-survey, optical alert system broker operating at scale
     description:
     kind: journal-article
     stage: build-paper
@@ -257,7 +261,7 @@ releases:
     kind: project
     path: .
     git_rev: 72f6e2c
-    date: '2026-04-01'
+    date: "2026-04-01"
     publisher: caltechdata
     record_id: 9ec63-5b373
     doi: 10.22002/9ec63-5b373
@@ -267,7 +271,7 @@ releases:
     kind: project
     path: .
     git_rev: 1c3db9f
-    date: '2026-04-02'
+    date: "2026-04-02"
     publisher: caltechdata
     record_id: 9ny00-86t38
     doi: 10.22002/9ny00-86t38
@@ -299,106 +303,103 @@ authors:
   - first_name: Theophile
     last_name: Jegou du Laz
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
     orcid: 0009-0003-6181-4526
   - first_name: Michael W.
     last_name: Coughlin
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
     orcid: 0000-0002-8262-2924
   - first_name: Peter
     last_name: Bachant
-    affiliation: California Institute of Technology, Pasadena, CA 91125,
-      USA
+    affiliation: California Institute of Technology, Pasadena, CA 91125, USA
     orcid: 0000-0003-4039-6954
   - first_name: Jacob E.
     last_name: Simones
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
     orcid:
   - first_name: Thomas
     last_name: Culino
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
     orcid: 0009-0008-3603-0013
   - first_name: Antoine
     last_name: Le Calloch
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
   - first_name: Sushant Sharma
     last_name: Chaudhary
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
     orcid: 0000-0003-1314-4241
   - first_name: Xander J.
     last_name: Hall
     orcid: 0000-0002-9364-5419
     affiliation: >
-      McWilliams Center for Cosmology and Astrophysics,
-      Department of Physics, Carnegie Mellon University,
-      5000 Forbes Avenue, Pittsburgh, PA 15213
+      McWilliams Center for Cosmology and Astrophysics, Department of Physics,
+      Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213
   - first_name: Tyler
     last_name: Barna
     orcid: 0000-0002-4843-345X
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
   - first_name: Daniel
     last_name: Warshofsky
     affiliation: >
-      School of Physics and Astronomy, University of Minnesota,
-      Minneapolis, Minnesota 55455, USA
+      School of Physics and Astronomy, University of Minnesota, Minneapolis,
+      Minnesota 55455, USA
   - first_name: Matthew
     last_name: Graham
     orcid: 0000-0002-3168-0139
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
   - first_name: Mansi
     last_name: Kasliwal
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
     orcid: 0000-0002-5619-4938
   - first_name: Ashish
     last_name: Mahabal
     orcid: 0000-0003-2242-0244
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
   - first_name: Joshua S.
     last_name: Bloom
     orcid: 0000-0002-7777-216X
     affiliation:
-      - Department of Astronomy, University of California, Berkeley, CA
-        94720, USA
+      - Department of Astronomy, University of California, Berkeley, CA 94720,
+        USA
       - Lawrence Berkeley National Laboratory, 1 Cyclotron Road, MS 50B-4206,
         Berkeley, CA 94720, USA
   - first_name: Antonella
     last_name: Palmese
     orcid: 0000-0002-6011-0530
     affiliation: >
-      McWilliams Center for Cosmology and Astrophysics,
-      Department of Physics, Carnegie Mellon University,
-      5000 Forbes Avenue, Pittsburgh, PA 15213
+      McWilliams Center for Cosmology and Astrophysics, Department of Physics,
+      Carnegie Mellon University, 5000 Forbes Avenue, Pittsburgh, PA 15213
   - first_name: Frank J.
     last_name: Masci
     orcid: 0000-0002-8532-9395
     affiliation: >
-      IPAC, California Institute of Technology, 1200 E. California
-      Blvd, Pasadena, CA 91125, USA
+      IPAC, California Institute of Technology, 1200 E. California Blvd,
+      Pasadena, CA 91125, USA
   - first_name: Steven L.
     last_name: Groom
     orcid: 0000-0001-5668-3507
     affiliation: >
-      IPAC, California Institute of Technology, 1200 E. California
-      Blvd, Pasadena, CA 91125, USA
+      IPAC, California Institute of Technology, 1200 E. California Blvd,
+      Pasadena, CA 91125, USA
   - first_name: Richard
     last_name: Dekany
     orcid: 0000-0002-5884-7867
@@ -409,11 +410,11 @@ authors:
     last_name: Riddle
     orcid: 0000-0002-0387-370X
     affiliation: >
-      Division of Physics, Mathematics, and Astronomy,
-      California Institute of Technology, Pasadena, CA 91125, USA
+      Division of Physics, Mathematics, and Astronomy, California Institute of
+      Technology, Pasadena, CA 91125, USA
   - first_name: George
     last_name: Helou
     orcid: 0000-0003-3367-3415
     affiliation: >
-      IPAC, California Institute of Technology, 1200 E. California
-      Blvd, Pasadena, CA 91125, USA
+      IPAC, California Institute of Technology, 1200 E. California Blvd,
+      Pasadena, CA 91125, USA
