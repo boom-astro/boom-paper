@@ -1,6 +1,6 @@
 # BOOM paper
 
-[![DOI](https://data.caltech.edu/badge/DOI/10.22002/xkxga-41b84.svg)](https://handle.stage.datacite.org/10.22002/xkxga-41b84)
+[![DOI](https://data.caltech.edu/badge/DOI/10.22002/xkxga-41b84.svg)](https://doi.org/10.22002/xkxga-41b84)
 
 The first paper about BOOM/Babamul development,
 for which the preprint is available on
